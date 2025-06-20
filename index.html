@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ronit Bhatia | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+      background: url('https://www.transparenttextures.com/patterns/geometry.png'), linear-gradient(to right, #e0eafc, #cfdef3);
+      background-attachment: fixed;
+      background-size: cover;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .section {
+      scroll-margin-top: 80px;
+      padding: 60px 20px;
+    }
+    .project-card, .exp-card {
+      border-left: 4px solid #0d6efd;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #fafafa;
+    }
+    .about-img {
+      max-width: 250px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Ronit Bhatia</a>
+      <div>
+        <a href="#about" class="me-3">About</a>
+        <a href="#projects" class="me-3">Projects</a>
+        <a href="#experience" class="me-3">Experience</a>
+        <a href="#skills" class="me-3">Skills</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Ronit Bhatia</h1>
+      <p class="lead">I build AI-powered systems that make a real difference, combining technical depth with a practical mindset. I enjoy working where software meets creativity, turning ambitious ideas into clear, useful products through thoughtful engineering.</p>
+      <p><a href="mailto:rb943@cornell.edu">rb943@cornell.edu</a> | <a href="https://github.com/ronitbhatia">GitHub</a> | <a href="https://www.linkedin.com/in/ronit-bhatia/">LinkedIn</a></p>
+      <a class="btn btn-primary" href="Resume.pdf" download>Download Resume</a>
+    </div>
+  </section>
+
+  <section class="section bg-white" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+          <img src="IMG_5623.jpg" alt="Ronit Bhatia" class="img-fluid about-img">
+        </div>
+        <div class="col-md-8">
+          <h2>About Me</h2>
+          <p>Recently graduated with a Master of Engineering in Engineering Management from Cornell University, bringing a strong blend of technical expertise and strategic perspective on how technology drives impact. Passionate about artificial intelligence and machine learning, with experience in developing projects that transform data into meaningful insights and intelligent systems.</p>
+          <p>Skilled in data science, software development, and applied machine learning, with a continuous drive to explore how these tools address real-world challenges. Known for a curious mindset, analytical problem-solving, and a commitment to creating solutions that are both innovative and practical.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="mb-5 text-center fw-bold">Projects</h2>
+  
+      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
+        <h4 class="text-primary">ExcellenSight: AI-Powered ChatGPT Feedback Analyzer</h4><a href="https://github.com/ronitbhatia/ExcellenSight" class="btn btn-sm btn-secondary mb-3" target="_blank">View on GitHub</a>
+        <div class="project-description">
+          <p>ExcellenSight is a robust, end-to-end natural language processing system designed to extract actionable insights from extensive user feedback on ChatGPT. At its core is a custom neural network model developed from scratch, intentionally avoiding any reliance on pre-trained architectures. This multi-task network consists of a shared encoder with two task-specific heads: one for classifying feedback into five well-defined trend categories (such as pain points or praise), and another for summarizing key messages into coherent, sentence-level insights. This combination enables nuanced understanding of public sentiment toward ChatGPT.</p>
+          <div class="more-text" style="display: none;">
+            <p>The pipeline begins by ingesting thousands of raw user comments and applying thorough data preprocessing techniques. It then trains the neural model on these cleaned datasets while monitoring classification accuracy and summarization quality. ExcellenSight automatically compiles professional-grade reports that include not only text-based trend summaries but also rich visualizations such as training loss graphs and frequency bar charts. These reports are generated in both Markdown and HTML, allowing for flexible sharing and integration.</p>
+            <p>To enhance usability, the platform is deployed as a Streamlit application that supports real-time interaction. Users can upload new datasets, inspect categorized reviews, and explore generated insights dynamically through the app interface. The entire system is engineered to be highly scalable, capable of processing tens of thousands of reviews for large-scale sentiment analysis. ExcellenSight stands out for its ability to transform raw textual feedback into data-driven insights that can inform UX design, marketing, and product improvements.</p>
+          </div>
+          <button class="btn btn-outline-primary btn-sm mt-3 read-more-project-btn">Read More</button>
+        </div>
+      </div>
+  
+      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
+        <h4 class="text-primary">Taskify: AI-Powered Task-to-Team Member Matching System</h4><a href="https://github.com/ronitbhatia/Taskify" class="btn btn-sm btn-secondary mb-3" target="_blank">View on GitHub</a>
+        <div class="project-description">
+          <p>Taskify is a sophisticated AI-driven recommendation engine that automates the assignment of organizational tasks to the most suitable team members. It leverages a custom Transformer-based neural network that integrates both semantic information (from task descriptions) and structured features (from team member profiles) to predict compatibility with high precision. The architecture is designed with a hybrid attention mechanism that enables contextual understanding of both the task and the team landscape.</p>
+          <div class="more-text" style="display: none;">
+            <p>To simulate real-world diversity, the training dataset consists of over 40,000 synthetic examples representing task-member pairs from different departments, roles, and expertise levels. The model is trained as a binary classifier that outputs a compatibility score, helping prioritize task allocation based on predicted effectiveness. The inclusion of cross-attention layers ensures that relational nuances between task requirements and individual qualifications are well captured.</p>
+            <p>Validation is an integral part of Taskify’s workflow, featuring a full suite of evaluation metrics such as accuracy, precision, recall, F1-score, and confusion matrices. These tools help monitor performance across various organizational settings. For usability, Taskify includes a local Streamlit interface that allows real-time input of task descriptions and displays the top recommended team members, complete with their fit scores. This functionality makes the model directly actionable in a project management setting. Taskify’s adaptability, depth of inference, and real-time deployment capabilities make it an impactful tool for enhancing collaboration and efficiency in team-based environments.</p>
+          </div>
+          <button class="btn btn-outline-primary btn-sm mt-3 read-more-project-btn">Read More</button>
+        </div>
+      </div>
+        <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
+        <h4 class="text-primary">GDELT Monitoring System: LLM-Powered Global Macro Investment Engine</h4><a href="https://github.com/ronitbhatia/GDELT-Monitoring-system" class="btn btn-sm btn-secondary mb-3" target="_blank">View on GitHub</a>
+        <div class="project-description">
+          <p>This project simulates the decision-making workflow of a portfolio manager at a Global Macro Hedge Fund, using a fully local LLM (Large Language Model) to generate investment strategies based on real-time global news. Built around the GDELT database, the system scrapes live geopolitical event data, processes and cleans it, stores it in a vector database, and uses prompt-engineered LLM reasoning to recommend country-level long or short financial positions.</p>
+          <div class="more-text" style="display: none;">
+            <p>The architecture includes dedicated Python modules for scraping data from the GDELT website, transforming it for NLP pipelines, and embedding text data into a Chroma vector database. Exploratory analysis and vector visualizations are performed using PCA and t-SNE. The investment decision engine uses a locally hosted LLaMA 3.2B model through Ollama, enabling privacy-preserving inference completely offline. By using prompt engineering and text embeddings, the LLM summarizes recent geopolitical trends and recommends trade actions at the country level.</p>
+            <p>The entire pipeline can be executed end-to-end locally via Python scripts, and is structured for modular testing and scalability. This project highlights a unique blend of real-world data aggregation, machine learning infrastructure, and financial analysis powered by AI, showcasing the application of generative models in global finance and investment research.</p>
+          </div>
+          <button class="btn btn-outline-primary btn-sm mt-3 read-more-project-btn">Read More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.querySelectorAll('.read-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const moreText = button.previousElementSibling;
+        if (moreText.style.display === 'none') {
+          moreText.style.display = 'block';
+          button.textContent = 'Read Less';
+        } else {
+          moreText.style.display = 'none';
+          button.textContent = 'Read More';
+        }
+      });
+    });
+  </script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ronit Bhatia | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .section {
+      scroll-margin-top: 80px;
+      padding: 60px 20px;
+    }
+    .experience-entry {
+      border-left: 4px solid #0d6efd;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+<section class="section bg-light" id="experience">
+  <div class="container">
+    <h2 class="mb-5 text-center fw-bold">Experience</h2>
+
+    <div class="experience-entry mb-4">
+      <h5 class="text-primary fw-semibold">Gallox Semiconductors</h5>
+      <h6>Software Engineer Intern</h6>
+      <p class="text-muted">Nov 2024 – Jan 2025</p>
+      <div class="short-description">
+        <p>Developed automation solutions for power device characterization.</p>
+      </div>
+      <div class="more-text" style="display: none;">
+        <p>Designed a real-time data visualization tool using Python to capture and analyze test measurements. This enhanced debugging efficiency during lab evaluations. Collaborated with engineers to automate workflows and reduce testing time.</p>
+      </div>
+      <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
+    </div>
+
+    <div class="experience-entry mb-4">
+      <h5 class="text-primary fw-semibold">Cornell CALS</h5>
+      <h6>Student Research Assistant</h6>
+      <p class="text-muted">Aug 2024 – Dec 2024</p>
+      <div class="short-description">
+        <p>Used ML to analyze crop-based GHG emissions and streamline geospatial data.</p>
+      </div>
+      <div class="more-text" style="display: none;">
+        <p>Applied k-means clustering and regression models for data-driven insights. Built Python scripts for preprocessing and consistent formatting of emission datasets. Developed clustering strategies for identifying high-emission crops to aid sustainable farming efforts.</p>
+      </div>
+      <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
+    </div>
+
+    <div class="experience-entry mb-4">
+      <h5 class="text-primary fw-semibold">ColentAI</h5>
+      <h6>Software Developer Intern</h6>
+      <p class="text-muted">Jan 2024 – Mar 2024</p>
+      <div class="short-description">
+        <p>Optimized generative AI models using NLP and API integrations.</p>
+      </div>
+      <div class="more-text" style="display: none;">
+        <p>Worked on performance tuning of LLMs through parameter optimization and fine-tuning. Integrated third-party APIs to improve data acquisition for training. Built a skill taxonomy engine leveraging NLP for classification and keyword extraction.</p>
+      </div>
+      <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
+    </div>
+
+    <div class="experience-entry mb-4">
+      <h5 class="text-primary fw-semibold">Cardinality-AI</h5>
+      <h6>Data Analyst Intern</h6>
+      <p class="text-muted">June 2021 – Sept 2021</p>
+      <div class="short-description">
+        <p>Processed structured data for ML pipelines using SQL and MATLAB.</p>
+      </div>
+      <div class="more-text" style="display: none;">
+        <p>Performed feature engineering and statistical validation to improve prediction latency. Used MATLAB to visualize and interpret multi-dimensional data patterns, contributing to real-time insights for government and social services platforms.</p>
+      </div>
+      <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('#experience .read-more-btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const moreText = button.parentElement.querySelector('.more-text');
+        if (moreText.style.display === 'none' || moreText.style.display === '') {
+          moreText.style.display = 'block';
+          button.textContent = 'Read Less';
+        } else {
+          moreText.style.display = 'none';
+          button.textContent = 'Read More';
+        }
+      });
+    });
+  });
+</script>
+
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="mb-5 text-center fw-bold">Skills</h2>
+      <div class="row text-center">
+        <div class="col-md-6 mb-4">
+          <h5 class="text-primary">Programming Languages</h5>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" /><p>Python</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="40" /><p>C/C++</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" /><p>SQL</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" width="40" /><p>Go</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" /><p>JavaScript</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" /><p>HTML</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" /><p>CSS</p></div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <h5 class="text-primary">Machine Learning & AI Tools</h5>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="40" /><p>TensorFlow</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="40" /><p>PyTorch</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="40" /><p>Scikit-learn</p></div>
+            <div><img src="langchain-color.svg" width="40" /><p>LangChain</p></div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <h5 class="text-primary">Tools & DevOps</h5>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" /><p>Git</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" /><p>GitHub</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" /><p>Docker</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="40" /><p>VSCode</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" width="40" /><p>MATLAB</p></div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <h5 class="text-primary">Cloud Platforms</h5>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40" /><p>AWS</p></div>
+            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="40" /><p>GCP</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.querySelectorAll('.read-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const moreText = button.previousElementSibling;
+        if (moreText.style.display === 'none') {
+          moreText.style.display = 'block';
+          button.textContent = 'Read Less';
+        } else {
+          moreText.style.display = 'none';
+          button.textContent = 'Read More';
+        }
+      });
+    });
+  </script>
+  
+
+</body>
+</html>
