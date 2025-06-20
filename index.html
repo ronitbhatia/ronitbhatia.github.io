@@ -122,6 +122,23 @@
           <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
         </div>
       </div>
+      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
+        <h5 class="text-primary fw-semibold">Rock-Paper-Scissors Recognition on ESP32S3</h5>
+        <a href="#" class="btn btn-sm btn-secondary mb-3 disabled">Demo Not Available</a>
+        <div class="project-description">
+          <p>This project demonstrates a proof-of-concept vision-based rock-paper-scissors game designed to run on the <strong>ESP32S3 Sense</strong> microcontroller. As part of a systems integration pitch for a next-generation interactive game device, I developed a CNN-based hand gesture classifier to recognize rock, paper, and scissors signs from a camera feed using only onboard hardware and Python/MicroPython.</p>
+          <div class="more-text" style="display: none;">
+            <p>The project focused solely on recognizing the hand gestures, not implementing the full game logic. The ESP32S3 served as both the image acquisition and inference engine. All training data was collected using the onboard camera, cleaned and augmented, and later used to train a compact <strong>convolutional neural network</strong> tuned for resource-constrained environments.</p>
+      
+            <p>Images were captured at <strong>96x96 resolution</strong> and resampled to <strong>32x32 bitmaps</strong> to reduce memory usage. The pre-processing pipeline involved basic image transformations and was kept lightweight to match the ESP32's limited capabilities. Techniques like edge detection and thresholding were considered but avoided where possible due to compute constraints.</p>
+      
+            <p>To improve generalization, I gathered several hundred clean images per class directly from the ESP camera, using a custom socket server/client setup. I then applied augmentation and trained the CNN on a laptop. The final model achieved <span class="badge bg-success">56% classification accuracy</span> when deployed back onto the ESP device using MicroPython.</p>
+      
+            <p>Key takeaways included navigating embedded deployment constraints, applying image processing creatively, and validating the use of affordable microcontrollers in real-world vision tasks. This project served as a technical feasibility test and proof of execution for future gesture-based consumer products.</p>
+          </div>
+          <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
+        </div>
+      </div>
     </div>
   </section>
 
