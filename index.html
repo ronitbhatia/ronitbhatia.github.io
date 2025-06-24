@@ -333,6 +333,25 @@
           <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
         </div>
       </div>
+      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
+        <h5 class="text-primary fw-semibold">L-Store: Lineage-Based Database Storage Engine</h5>
+        <a href="#" class="btn btn-sm btn-secondary mb-3 disabled">Demo Not Available</a>
+        <div class="project-description">
+            <p>This project demonstrates the implementation of a comprehensive <strong>relational database storage engine</strong> based on the L-Store architecture, designed to bridge the gap between transactional and analytical workloads. <strong>I served as the project lead</strong> for our team and built a complete database system from scratch using Python, implementing novel <strong>lineage-based storage</strong> with columnar data organization and update-friendly architecture.</p>
+            <div class="more-text" style="display: none;">
+                <p>The project was structured across three progressive milestones, each building upon the previous implementation. <strong>Milestone 1</strong> established the foundational single-threaded, in-memory database with columnar storage, implementing base and tail page architecture where original records (base pages) are kept separate from updates (tail pages). This design eliminates the need for immediate in-place updates while maintaining query performance through clever indirection mechanisms.</p>
+    
+                <p><strong>Milestone 2</strong> introduced durability and advanced data management by implementing a complete <strong>bufferpool system</strong> with LRU page replacement, disk persistence, and a sophisticated background merge process. The merge operation consolidates tail records with base pages in a contention-free manner using Tail-Page Sequence Numbers (TPS) for lineage tracking. Additionally, I implemented comprehensive <strong>secondary indexing</strong> capabilities using hash tables and B-trees for accelerated query processing.</p>
+    
+                <p><strong>Milestone 3</strong> completed the system with full <strong>ACID transaction support</strong> and multi-threaded concurrency control. I implemented strict two-phase locking (2PL) with no-wait deadlock prevention, allowing multiple transactions to execute concurrently while maintaining serializability. The system handles transaction atomicity through proper rollback mechanisms and isolation through record-level locking managed by a centralized lock manager.</p>
+    
+                <p>Key technical achievements include implementing a <strong>columnar storage engine</strong> with 4KB page granularity, developing a sophisticated page directory for RID-to-page mapping, creating a background merge thread that operates without blocking foreground transactions, and building a complete concurrency control system supporting multi-statement transactions. The final implementation achieved high performance with support for complex analytical queries while maintaining transactional consistency.</p>
+    
+                <p>This project provided deep insights into database internals, storage optimization strategies, and the challenges of building production-grade database systems. The L-Store architecture demonstrates how modern databases can efficiently handle both <span class="badge bg-success">write-intensive</span> and <span class="badge bg-info">read-intensive</span> workloads within a single unified engine.</p>
+            </div>
+            <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
+        </div>
+    </div>    
     </div>
   </section>
 
@@ -492,13 +511,6 @@
       </div>
     </div>
   </section>
-  
-  
-  
-  
-
-
-
 
   <section class="section" id="skills">
     <div class="container">
