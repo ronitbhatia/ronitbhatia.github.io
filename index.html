@@ -1,637 +1,870 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ronit Bhatia | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  integrity="sha512-yHjFA+4lVsC6MoYIG9+dqzZcm1pIlCm2ypBdKkWx1c/8DThUo7EO7ksR5umCB2HFElwH6T2WRk8Z+u7tU9EVzQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fdfdfd;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronit Bhatia | Portfolio</title>
+    <meta name="description" content="Software Engineer & ML Enthusiast - Building impactful solutions through thoughtful engineering">
+    <meta name="author" content="Ronit Bhatia">
     
-    nav.navbar {
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      padding: 10px 0;
-    }
-    nav.navbar a {
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    nav.navbar a:hover {
-      color: #0d6efd;
-    }
-
-  .section-alt {
-  background: #f4f8ff; /* soft light blue */
-}
-
-
-
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  color: #111;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 40px;
-  background: transparent; /* allow particles to show through */
-}
-
-#particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-  background: linear-gradient(to bottom right, #fdfdfd, #e8f0ff); /* optional gradient */
-}
-
-.hero .container {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  align-items: center;
-  max-width: 1400px;
-  gap: 50px;
-}
-
-
-.hero .text-content {
-  max-width: 600px;
-  flex: 1 1 45%;
-}
-
-.hero h1 {
-  font-size: 3.8rem;
-  font-weight: 800;
-  color: #001f3f;
-  margin-bottom: 10px;
-}
-
-.hero .typing-text {
-  display: inline-block;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #e25822;
-  margin-bottom: 30px;
-  min-width: 200px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  color: #444;
-  line-height: 1.7;
-  margin-bottom: 15px;
-}
-
-.hero a {
-  color: #0056b3;
-  text-decoration: underline;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.hero .text-content a:hover {
-  color: #003366;
-}
-
-.hero .btn {
-  background-color: #3f51b5;
-  color: #fff;
-  padding: 12px 28px;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.hero .btn:hover {
-  background-color: #2c387e;
-}
-
-.hero .image {
-  flex: 1 1 40%;
-  text-align: center;
-}
-
-.hero .image img {
-  max-width: 300px;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background: #ffcc00;
-  padding: 10px;
-}
-
-.typed-cursor {
-  display: none;
-}
-
-.hero .image img:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-
-.avatar-wrapper {
-  width: 280px;
-  height: 280px;
-  background-color: #a3baff; /* light blue */
-  border-radius: 50%;
-  overflow: hidden;
-  padding: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.avatar-wrapper:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 40px rgba(163, 186, 255, 0.6);
-}
-
-.avatar-wrapper img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-
-
-
-
-    .section {
-      scroll-margin-top: 80px;
-      padding: 60px 20px;
-    }
-    .project-card, .exp-card, .experience-entry {
-      border-left: 4px solid #0d6efd;
-      padding: 15px;
-      margin-bottom: 20px;
-      background: #fafafa;
-    }
-    .about-img {
-      max-width: 250px;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .about-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    }
-  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000" class="me-2" viewBox="0 0 640 512">
-          <path d="M0 400c0 26.5 21.5 48 48 48h544c26.5 0 48-21.5 48-48H0zm592-64V80c0-26.5-21.5-48-48-48H96C69.5 32 48 53.5 48 80v256h544z"/>
-        </svg>
-        Ronit Bhatia
-      </a>
-      <div>
-        <a href="#about" class="me-3">About</a>
-        <a href="#projects" class="me-3">Projects</a>
-        <a href="#experience" class="me-3">Experience</a>
-        <a href="#education" class="me-3">Education</a>
-        <a href="#skills" class="me-3">Skills</a>
-      </div>
-    </div>
-  </nav>
-
-  <section class="hero" id="home">
-    <div id="particles-js"></div>
-    <div class="container">
-      <div class="text-content">
-        <h1>Hi There,<br> I'm Ronit</h1>
-        <p>I am into <span class="typing-text"></span></p>
-        <p>
-          I build software systems that create real impact, combining deep technical skills with a practical mindset. I enjoy working where software meets creativity, turning ambitious ideas into clear, useful products through thoughtful engineering.
-        </p>
-        <p>
-          <a href="mailto:rb943@cornell.edu">rb943@cornell.edu</a> |
-          <a href="https://github.com/ronitbhatia" target="_blank">GitHub</a> |
-          <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank">LinkedIn</a>
-        </p>
-        <a class="btn btn-light mt-3" href="Resume.pdf" download>Download Resume</a>
-      </div>
-      <div class="avatar-wrapper">
-        <img src="PNG image-41F8-9B5E-EC-0.png" alt="Ronit Avatar">
-      </div>
-    </div>
-  </section>
-  
-  
-  
-
-  <section class="section bg-white" id="about">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4 text-center mb-4 mb-md-0">
-          <img src="IMG_5623.jpg" alt="Ronit Bhatia" class="img-fluid about-img">
-        </div>
-        <div class="col-md-8">
-          <h2>About Me</h2>
-          <p>Recently graduated with a Master of Engineering in Engineering Management from Cornell University, bringing a strong blend of technical expertise and strategic perspective on how technology drives impact. Passionate about artificial intelligence and machine learning, with experience in developing projects that transform data into meaningful insights and intelligent systems.</p>
-          <p>Skilled in data science, software development, and applied machine learning, with a continuous drive to explore how these tools address real-world challenges. Known for a curious mindset, analytical problem-solving, and a commitment to creating solutions that are both innovative and practical.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="projects">
-    <div class="container">
-      <h2 class="mb-5 text-center fw-bold">Projects</h2>
-  
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">ExcellenSight: AI-Powered ChatGPT Feedback Analyzer</h5>
-        <a href="https://github.com/ronitbhatia/ExcellenSight" class="btn btn-sm btn-secondary mb-3" target="_blank">View on GitHub</a>
-        <div class="project-description">
-          <p>ExcellenSight is a robust, end-to-end natural language processing system designed to extract actionable insights from extensive user feedback on ChatGPT. At its core is a custom neural network model developed from scratch, intentionally avoiding any reliance on pre-trained architectures. This multi-task network consists of a shared encoder with two task-specific heads: one for classifying feedback into five well-defined trend categories (such as pain points or praise), and another for summarizing key messages into coherent, sentence-level insights. This combination enables nuanced understanding of public sentiment toward ChatGPT.</p>
-          <div class="more-text" style="display: none;">
-            <p>The pipeline begins by ingesting thousands of raw user comments and applying thorough data preprocessing techniques. It then trains the neural model on these cleaned datasets while monitoring classification accuracy and summarization quality. ExcellenSight automatically compiles professional-grade reports that include not only text-based trend summaries but also rich visualizations such as training loss graphs and frequency bar charts. These reports are generated in both Markdown and HTML, allowing for flexible sharing and integration.</p>
-            <p>To enhance usability, the platform is deployed as a Streamlit application that supports real-time interaction. Users can upload new datasets, inspect categorized reviews, and explore generated insights dynamically through the app interface. The entire system is engineered to be highly scalable, capable of processing tens of thousands of reviews for large-scale sentiment analysis. ExcellenSight stands out for its ability to transform raw textual feedback into data-driven insights that can inform UX design, marketing, and product improvements.</p>
-          </div>
-          <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
-        </div>
-      </div>
-  
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">Taskify: AI-Powered Task-to-Team Member Matching System</h5>
-        <a href="https://github.com/ronitbhatia/Taskify" class="btn btn-sm btn-secondary mb-3" target="_blank">View on GitHub</a>
-        <div class="project-description">
-          <p>Taskify is a sophisticated AI-driven recommendation engine that automates the assignment of organizational tasks to the most suitable team members. It leverages a custom Transformer-based neural network that integrates both semantic information (from task descriptions) and structured features (from team member profiles) to predict compatibility with high precision. The architecture is designed with a hybrid attention mechanism that enables contextual understanding of both the task and the team landscape.</p>
-          <div class="more-text" style="display: none;">
-            <p>To simulate real-world diversity, the training dataset consists of over 40,000 synthetic examples representing task-member pairs from different departments, roles, and expertise levels. The model is trained as a binary classifier that outputs a compatibility score, helping prioritize task allocation based on predicted effectiveness. The inclusion of cross-attention layers ensures that relational nuances between task requirements and individual qualifications are well captured.</p>
-            <p>Validation is an integral part of Taskify's workflow, featuring a full suite of evaluation metrics such as accuracy, precision, recall, F1-score, and confusion matrices. These tools help monitor performance across various organizational settings. For usability, Taskify includes a local Streamlit interface that allows real-time input of task descriptions and displays the top recommended team members, complete with their fit scores. This functionality makes the model directly actionable in a project management setting. Taskify's adaptability, depth of inference, and real-time deployment capabilities make it an impactful tool for enhancing collaboration and efficiency in team-based environments.</p>
-          </div>
-          <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
-        </div>
-      </div>
-
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">GDELT Monitoring System: LLM-Powered Global Macro Investment Engine</h5>
-        <a href="https://github.com/ronitbhatia/GDELT-Monitoring-system" class="btn btn-sm btn-secondary mb-3" target="_blank">View on GitHub</a>
-        <div class="project-description">
-          <p>This project simulates the decision-making workflow of a portfolio manager at a Global Macro Hedge Fund, using a fully local LLM (Large Language Model) to generate investment strategies based on real-time global news. Built around the GDELT database, the system scrapes live geopolitical event data, processes and cleans it, stores it in a vector database, and uses prompt-engineered LLM reasoning to recommend country-level long or short financial positions.</p>
-          <div class="more-text" style="display: none;">
-            <p>The architecture includes dedicated Python modules for scraping data from the GDELT website, transforming it for NLP pipelines, and embedding text data into a Chroma vector database. Exploratory analysis and vector visualizations are performed using PCA and t-SNE. The investment decision engine uses a locally hosted LLaMA 3.2B model through Ollama, enabling privacy-preserving inference completely offline. By using prompt engineering and text embeddings, the LLM summarizes recent geopolitical trends and recommends trade actions at the country level.</p>
-            <p>The entire pipeline can be executed end-to-end locally via Python scripts, and is structured for modular testing and scalability. This project highlights a unique blend of real-world data aggregation, machine learning infrastructure, and financial analysis powered by AI, showcasing the application of generative models in global finance and investment research.</p>
-          </div>
-          <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
-        </div>
-      </div>
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">Rock-Paper-Scissors Recognition on ESP32S3</h5>
-        <a href="#" class="btn btn-sm btn-secondary mb-3 disabled">Demo Not Available</a>
-        <div class="project-description">
-          <p>This project demonstrates a proof-of-concept vision-based rock-paper-scissors game designed to run on the <strong>ESP32S3 Sense</strong> microcontroller. As part of a systems integration pitch for a next-generation interactive game device, I developed a CNN-based hand gesture classifier to recognize rock, paper, and scissors signs from a camera feed using only onboard hardware and Python/MicroPython.</p>
-          <div class="more-text" style="display: none;">
-            <p>The project focused solely on recognizing the hand gestures, not implementing the full game logic. The ESP32S3 served as both the image acquisition and inference engine. All training data was collected using the onboard camera, cleaned and augmented, and later used to train a compact <strong>convolutional neural network</strong> tuned for resource-constrained environments.</p>
-      
-            <p>Images were captured at <strong>96x96 resolution</strong> and resampled to <strong>32x32 bitmaps</strong> to reduce memory usage. The pre-processing pipeline involved basic image transformations and was kept lightweight to match the ESP32's limited capabilities. Techniques like edge detection and thresholding were considered but avoided where possible due to compute constraints.</p>
-      
-            <p>To improve generalization, I gathered several hundred clean images per class directly from the ESP camera, using a custom socket server/client setup. I then applied augmentation and trained the CNN on a laptop. The final model achieved <span class="badge bg-success">56% classification accuracy</span> when deployed back onto the ESP device using MicroPython.</p>
-      
-            <p>Key takeaways included navigating embedded deployment constraints, applying image processing creatively, and validating the use of affordable microcontrollers in real-world vision tasks. This project served as a technical feasibility test and proof of execution for future gesture-based consumer products.</p>
-          </div>
-          <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
-        </div>
-      </div>
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">L-Store: Lineage-Based Database Storage Engine</h5>
-        <a href="#" class="btn btn-sm btn-secondary mb-3 disabled">Demo Not Available</a>
-        <div class="project-description">
-            <p>This project demonstrates the implementation of a comprehensive <strong>relational database storage engine</strong> based on the L-Store architecture, designed to bridge the gap between transactional and analytical workloads. <strong>I served as the project lead</strong> for our team and built a complete database system from scratch using Python, implementing novel <strong>lineage-based storage</strong> with columnar data organization and update-friendly architecture.</p>
-            <div class="more-text" style="display: none;">
-                <p>The project was structured across three progressive milestones, each building upon the previous implementation. <strong>Milestone 1</strong> established the foundational single-threaded, in-memory database with columnar storage, implementing base and tail page architecture where original records (base pages) are kept separate from updates (tail pages). This design eliminates the need for immediate in-place updates while maintaining query performance through clever indirection mechanisms.</p>
-    
-                <p><strong>Milestone 2</strong> introduced durability and advanced data management by implementing a complete <strong>bufferpool system</strong> with LRU page replacement, disk persistence, and a sophisticated background merge process. The merge operation consolidates tail records with base pages in a contention-free manner using Tail-Page Sequence Numbers (TPS) for lineage tracking. Additionally, I implemented comprehensive <strong>secondary indexing</strong> capabilities using hash tables and B-trees for accelerated query processing.</p>
-    
-                <p><strong>Milestone 3</strong> completed the system with full <strong>ACID transaction support</strong> and multi-threaded concurrency control. I implemented strict two-phase locking (2PL) with no-wait deadlock prevention, allowing multiple transactions to execute concurrently while maintaining serializability. The system handles transaction atomicity through proper rollback mechanisms and isolation through record-level locking managed by a centralized lock manager.</p>
-    
-                <p>Key technical achievements include implementing a <strong>columnar storage engine</strong> with 4KB page granularity, developing a sophisticated page directory for RID-to-page mapping, creating a background merge thread that operates without blocking foreground transactions, and building a complete concurrency control system supporting multi-statement transactions. The final implementation achieved high performance with support for complex analytical queries while maintaining transactional consistency.</p>
-    
-                <p>This project provided deep insights into database internals, storage optimization strategies, and the challenges of building production-grade database systems. The L-Store architecture demonstrates how modern databases can efficiently handle both <span class="badge bg-success">write-intensive</span> and <span class="badge bg-info">read-intensive</span> workloads within a single unified engine.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <div class="nav-logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16,18 22,12 16,6"></polyline>
+                        <polyline points="8,6 2,12 8,18"></polyline>
+                    </svg>
+                </div>
+                <span class="nav-brand-text">Ronit Bhatia</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">about</a>
+                <a href="#projects" class="nav-link">projects</a>
+                <a href="#experience" class="nav-link">experience</a>
+                <a href="#education" class="nav-link">education</a>
+                <a href="#skills" class="nav-link">skills</a>
             </div>
-            <button class="btn btn-outline-primary btn-sm mt-3 read-more-btn">Read More</button>
         </div>
-    </div>    
-    </div>
-  </section>
+    </nav>
 
-  <section class="section bg-white" id="experience">
-    <div class="container">
-      <h2 class="mb-5 text-center fw-bold">Experience</h2>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi There,
+                        <br>
+                        <span class="hero-gradient-text">I'm Ronit</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        I am into <span class="typing-text"></span>
+                    </p>
+                    
+                    <p class="hero-description">
+                        I build software systems that create real impact, combining deep technical skills with a practical mindset. I enjoy working where software meets creativity, turning ambitious ideas into clear, useful products through thoughtful engineering.
+                    </p>
+                    
+                    <div class="hero-links">
+                        <a href="mailto:roncy.bhatia@gmail.com" class="hero-link email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            roncy.bhatia@gmail.com
+                        </a>
+                        <a href="https://github.com/ronitbhatia" target="_blank" class="hero-link github">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" class="hero-link linkedin">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
 
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">Gallox Semiconductors</h5>
-        <h6>Software Engineer Intern</h6>
-        <p class="text-muted">Nov 2024 – Jan 2025</p>
-        <div class="short-description">
-          <p>Built smart automation tools to test semiconductor power devices, helping engineers save time and get more accurate results. My work made it easier to spot issues early and sped up the overall testing process in the lab.</p>
-        </div>
-        <div class="more-text" style="display: none;">
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-cogs"></i> Automation Framework Development</h6>
-            <p class="mb-2">Architected and implemented comprehensive automation frameworks for semiconductor power device testing, significantly streamlining the characterization workflow for high-voltage MOSFETs and IGBTs.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-chart-line"></i> Real-time Visualization System</h6>
-            <p class="mb-2">Developed a sophisticated real-time data visualization dashboard using Python's <strong>Matplotlib</strong> and <strong>Tkinter</strong> libraries, integrated with <strong>PyVISA</strong> for instrument communication protocols. The solution featured multi-threaded data acquisition, real-time plotting capabilities, and automated anomaly detection algorithms that <span class="badge bg-success">reduced manual debugging time by 40%</span>.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-network-wired"></i> System Integration</h6>
-            <p class="mb-0">Implemented robust error handling and logging mechanisms while designing modular code architecture. Collaborated with hardware engineers to integrate the system with lab equipment including oscilloscopes, power supplies, and curve tracers through <strong>SCPI command protocols</strong>.</p>
-          </div>
-        </div>
-        <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
-      </div>
+                    <a href="Resume.pdf" download class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Resume
+                    </a>
+                </div>
 
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">Cornell CALS</h5>
-        <h6>Student Research Assistant</h6>
-        <p class="text-muted">Aug 2024 – Dec 2024</p>
-        <div class="short-description">
-          <p>Explored how machine learning can help tackle climate change by analyzing greenhouse gas emissions from different crops. Built efficient tools to clean and process large amounts of geospatial data, making it easier to understand where emissions are coming from and how they can be reduced. This work supported more informed, targeted strategies for sustainable agriculture.</p>
+                <div class="hero-image">
+                    <div class="avatar-container">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-inner">
+                                <img src="PNG image-41F8-9B5E-EC-0.png" alt="Ronit Avatar" class="avatar-image">
+                            </div>
+                        </div>
+                        <div class="wave-emoji">👋</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="more-text" style="display: none;">
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-brain"></i> Machine Learning Pipeline Development</h6>
-            <p class="mb-2">Engineered sophisticated ML pipelines to analyze large-scale agricultural GHG emission datasets, implementing advanced <strong>k-means clustering algorithms</strong> with custom distance metrics optimized for multi-dimensional emission profiles.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-database"></i> Geospatial Data Processing</h6>
-            <p class="mb-2">Developed comprehensive Python-based <strong>ETL workflows</strong> using <strong>Pandas, NumPy, and GeoPandas</strong> to process and standardize geospatial crop emissions data from multiple heterogeneous sources, ensuring consistent format and coordinate system alignment across datasets.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-project-diagram"></i> Advanced Clustering & Analysis</h6>
-            <p class="mb-0">Implemented innovative unsupervised clustering methodology incorporating <strong>PCA for dimensionality reduction</strong> and silhouette analysis for optimal cluster determination. The system achieved <span class="badge bg-success">85% accuracy</span> in identifying high-emission crop categories with automated validation scripts and comprehensive logging systems.</p>
-          </div>
-        </div>
-        <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
-      </div>
 
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">ColentAI</h5>
-        <h6>Software Developer Intern</h6>
-        <p class="text-muted">Jan 2024 – Mar 2024</p>
-        <div class="short-description">
-          <p>Worked on making generative AI models smarter and faster by fine-tuning how they learn. Built reliable pipelines to pull in diverse data from APIs which helped improve the quality of training datasets. Also created an intelligent system to automatically organize skills using natural language processing, helping the AI understand and match skills more accurately and efficiently.</p>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6,9 12,15 18,9"></polyline>
+            </svg>
         </div>
-        <div class="more-text" style="display: none;">
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-robot"></i> LLM Optimization & Fine-tuning</h6>
-            <p class="mb-2">Optimized large language model performance through systematic <strong>hyperparameter tuning</strong> and advanced fine-tuning techniques, implementing gradient accumulation strategies and learning rate scheduling to improve model convergence on domain-specific datasets.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-plug"></i> API Integration & Data Acquisition</h6>
-            <p class="mb-2">Conducted extensive API research and integration work, developing robust data acquisition pipelines that interfaced with multiple third-party services including <strong>LinkedIn APIs, job boards, and professional networking platforms</strong> to enhance training data quality and diversity.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-sitemap"></i> Automated Skill Taxonomy Generator</h6>
-            <p class="mb-0">Built sophisticated automated skill taxonomy generator leveraging advanced NLP techniques including <strong>TF-IDF vectorization, NER, and BERT embeddings</strong> for semantic similarity analysis. Implemented hierarchical clustering with precision-recall metrics achieving <span class="badge bg-success">92% classification accuracy</span> and <span class="badge bg-info">60% processing time reduction</span>.</p>
-          </div>
-        </div>
-        <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
-      </div>
+    </section>
 
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">Cardinality-AI</h5>
-        <h6>Data Analyst Intern</h6>
-        <p class="text-muted">June 2021 – Sept 2021</p>
-        <div class="short-description">
-          <p>Worked on designing and building smart data pipelines to prepare large, structured datasets for machine learning. Used SQL to clean and organize the data efficiently and engineered new features to help models make better predictions. Also analyzed complex patterns using MATLAB and created interactive visualizations to help inform decisions in government and social service applications.</p>
+    <!-- About Section -->
+    <section id="about" class="section section-bg">
+        <div class="container">
+            <div class="about-content animate-fade-in">
+                <div class="about-image">
+                    <img src="IMG_5623.jpg" alt="Ronit Bhatia" class="about-photo">
+                </div>
+                
+                <div>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">About Me</h2>
+                    <div class="about-text">
+                        <p style="margin-bottom: 1.5rem;">
+                            I turn complex problems into elegant code, and complex code into real-world impact. My approach combines deep technical execution with strategic thinking, building systems that don't just work, but work intelligently.
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            What gets me excited is translating ambitious ideas into engineering solutions that actually matter. Whether I'm developing neural networks, building data pipelines, or fine-tuning AI models, I bring both analytical thinking and creative problem-solving to every challenge. I believe the best work happens when you push technical boundaries while staying grounded in practical reality.
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            My engineering philosophy is simple: understand the bigger picture, then master the details. This perspective, shaped by my engineering management background, helps me build solutions that are both technically sound and strategically valuable. I'm drawn to challenges that require thinking differently, turning messy problems into clean, impactful solutions through thoughtful engineering.                        
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="more-text" style="display: none;">
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-database"></i> Data Pipeline Architecture</h6>
-            <p class="mb-2">Architected and implemented robust data ingestion and transformation pipelines using advanced <strong>SQL techniques</strong> including window functions, CTEs, and stored procedures to efficiently process large-scale structured datasets for machine learning applications.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-cog"></i> Feature Engineering & Optimization</h6>
-            <p class="mb-2">Performed comprehensive feature engineering workflows involving polynomial feature generation, interaction term creation, and statistical normalization techniques. Implemented rigorous data validation frameworks with anomaly detection algorithms, improving model response times by <span class="badge bg-success">5%</span>.</p>
-          </div>
-          <div class="mb-3">
-            <h6 class="text-dark mb-2 fw-semibold"><i class="fas fa-chart-area"></i> Advanced Analytics & Visualization</h6>
-            <p class="mb-0">Leveraged <strong>MATLAB's</strong> advanced analytics capabilities to conduct sophisticated pattern recognition analysis using signal processing techniques, Fourier transforms, and spectral analysis. Developed custom visualization algorithms and interactive dashboards for data-driven policy recommendations and resource allocation strategies.</p>
-          </div>
-        </div>
-        <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-alt" id="education">
-    <div class="container">
-      <h2 class="mb-5 text-center fw-bold"><i class="fas fa-graduation-cap me-2"></i>Education</h2>
-  
-      <!-- Cornell -->
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">Cornell University</h5>
-        <h6>Master of Engineering in Engineering Management</h6>
-        <p class="text-muted">Aug 2024 – May 2025</p>
-        <div class="short-description">
-          <p><strong>Key Coursework:</strong></p>
-          <ul class="mb-0">
-            <li>Application of Artificial Intelligence for Engineering Managers</li>
-            <li>Product Management</li>
-            <li>Data Analytics </li>
-          </ul>
-        </div>
-        <div class="more-text" style="display: none;">
-          <ul class="mt-2 mb-0">
-            <li>Negotiations and Contracts for Engineering Managers</li>
-            <li>Decision Framing and Analytics</li>
-          </ul>
-        </div>
-        <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
-      </div>
-  
-      <!-- UC Davis -->
-      <div class="project-card shadow-sm p-4 mb-5 bg-white rounded">
-        <h5 class="text-primary fw-semibold">University of California, Davis</h5>
-        <h6>Bachelor of Science in Computer Science</h6>
-        <p class="mb-1">Minor in Technology Management</p>
-        <p class="text-muted">Sept 2020 – June 2024</p>
-        <div class="short-description">
-          <p><strong>Key Coursework:</strong></p>
-          <ul class="mb-0">
-            <li>Algorithm Design and Analysis</li>
-            <li>Machine Learning</li>
-            <li>Operating Systems</li>
-            <li>Technology Management</li>
-          </ul>
-        </div>
-        <div class="more-text" style="display: none;">
-          <ul class="mt-2 mb-0">
-            <li>Human-Computer Interaction</li>
-            <li>Database Systems</li>
-            <li>Artificial Intelligence</li>
-            <li>Programming Languages</li>
-            <li>Computer Architecture</li>
-          </ul>
-        </div>
-        <button class="btn btn-outline-primary btn-sm mt-2 read-more-btn">Read More</button>
-      </div>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- ExcellenSight Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">ExcellenSight: AI-Powered ChatGPT Feedback Analyzer</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/ExcellenSight" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Neural Networks</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">Python</span>
+                        </div>
 
-  <section class="section" id="skills">
-    <div class="container">
-      <h2 class="mb-5 text-center fw-bold">Skills</h2>
-      <div class="row text-center">
-        <div class="col-md-6 mb-4">
-          <h5 class="text-primary">Programming Languages</h5>
-          <div class="d-flex flex-wrap justify-content-center gap-4">
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" /><p>Python</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="40" /><p>C/C++</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" /><p>SQL</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" width="40" /><p>Go</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" /><p>JavaScript</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" /><p>HTML</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" /><p>CSS</p></div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <h5 class="text-primary">Machine Learning & AI Tools</h5>
-          <div class="d-flex flex-wrap justify-content-center gap-4">
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="40" /><p>TensorFlow</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="40" /><p>PyTorch</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="40" /><p>Scikit-learn</p></div>
-            <div><img src="langchain-color.svg" width="40" /><p>LangChain</p></div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <h5 class="text-primary">Tools & DevOps</h5>
-          <div class="d-flex flex-wrap justify-content-center gap-4">
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" /><p>Git</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" /><p>GitHub</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" /><p>Docker</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="40" /><p>Vscode</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" width="40" /><p>MATLAB</p></div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <h5 class="text-primary">Cloud Platforms</h5>
-          <div class="d-flex flex-wrap justify-content-center gap-4">
-            <div><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40" /><p>AWS</p></div>
-            <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="40" /><p>GCP</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                        <p class="card-description">
+                            ExcellenSight is a robust, end-to-end natural language processing system designed to extract actionable insights from extensive user feedback on ChatGPT. At its core is a custom neural network model developed from scratch, intentionally avoiding any reliance on pre-trained architectures. This multi-task network consists of a shared encoder with two task-specific heads: one for classifying feedback into five well-defined trend categories (such as pain points or praise), and another for summarizing key messages into coherent, sentence-level insights. This combination enables nuanced understanding of public sentiment toward ChatGPT.
+                        </p>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Handle all read more buttons
-      document.querySelectorAll('.read-more-btn').forEach(button => {
-        button.addEventListener('click', function() {
-          // Find the more-text div in the same parent container
-          const moreText = this.parentElement.querySelector('.more-text');
-          
-          if (moreText) {
-            if (moreText.style.display === 'none' || moreText.style.display === '') {
-              moreText.style.display = 'block';
-              this.textContent = 'Read Less';
-            } else {
-              moreText.style.display = 'none';
-              this.textContent = 'Read More';
-            }
-          }
+                        <div id="more-excellensight" class="more-content">
+                            <p class="card-description">
+                                The pipeline begins by ingesting thousands of raw user comments and applying thorough data preprocessing techniques. It then trains the neural model on these cleaned datasets while monitoring classification accuracy and summarization quality. ExcellenSight automatically compiles professional-grade reports that include not only text-based trend summaries but also rich visualizations such as training loss graphs and frequency bar charts. These reports are generated in both Markdown and HTML, allowing for flexible sharing and integration.
+                            </p>
+                            <p class="card-description">
+                                To enhance usability, the platform is deployed as a Streamlit application that supports real-time interaction. Users can upload new datasets, inspect categorized reviews, and explore generated insights dynamically through the app interface. The entire system is engineered to be highly scalable, capable of processing tens of thousands of reviews for large-scale sentiment analysis. ExcellenSight stands out for its ability to transform raw textual feedback into data-driven insights that can inform UX design, marketing, and product improvements.
+                            </p>
+                        </div>
+
+                        <button id="btn-excellensight" class="btn-outline" onclick="toggleReadMore('excellensight')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Taskify Project -->
+                <div class="card animate-fade-in" style="border-left-color: #4f46e5;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Taskify: AI-Powered Task-to-Team Member Matching System</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/Taskify" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Transformers</span>
+                            <span class="tag">ML</span>
+                            <span class="tag">Recommendation Systems</span>
+                            <span class="tag">Streamlit</span>
+                        </div>
+
+                        <p class="card-description">
+                            Taskify is a sophisticated AI-driven recommendation engine that automates the assignment of organizational tasks to the most suitable team members. It leverages a custom Transformer-based neural network that integrates both semantic information (from task descriptions) and structured features (from team member profiles) to predict compatibility with high precision. The architecture is designed with a hybrid attention mechanism that enables contextual understanding of both the task and the team landscape.
+                        </p>
+
+                        <div id="more-taskify" class="more-content">
+                            <p class="card-description">
+                                To simulate real-world diversity, the training dataset consists of over 40,000 synthetic examples representing task-member pairs from different departments, roles, and expertise levels. The model is trained as a binary classifier that outputs a compatibility score, helping prioritize task allocation based on predicted effectiveness. The inclusion of cross-attention layers ensures that relational nuances between task requirements and individual qualifications are well captured.
+                            </p>
+                            <p class="card-description">
+                                Validation is an integral part of Taskify's workflow, featuring a full suite of evaluation metrics such as accuracy, precision, recall, F1-score, and confusion matrices. These tools help monitor performance across various organizational settings. For usability, Taskify includes a local Streamlit interface that allows real-time input of task descriptions and displays the top recommended team members, complete with their fit scores. This functionality makes the model directly actionable in a project management setting. Taskify's adaptability, depth of inference, and real-time deployment capabilities make it an impactful tool for enhancing collaboration and efficiency in team-based environments.
+                            </p>
+                        </div>
+
+                        <button id="btn-taskify" class="btn-outline" onclick="toggleReadMore('taskify')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- GDELT Project -->
+                <div class="card animate-fade-in" style="border-left-color: #7c3aed;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">GDELT Monitoring System: LLM-Powered Global Macro Investment Engine</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/GDELT-Monitoring-system" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">LLMs</span>
+                            <span class="tag">Financial Analysis</span>
+                            <span class="tag">Vector DB</span>
+                            <span class="tag">NLP</span>
+                        </div>
+
+                        <p class="card-description">
+                            This project simulates the decision-making workflow of a portfolio manager at a Global Macro Hedge Fund, using a fully local LLM (Large Language Model) to generate investment strategies based on real-time global news. Built around the GDELT database, the system scrapes live geopolitical event data, processes and cleans it, stores it in a vector database, and uses prompt-engineered LLM reasoning to recommend country-level long or short financial positions.
+                        </p>
+
+                        <div id="more-gdelt" class="more-content">
+                            <p class="card-description">
+                                The architecture includes dedicated Python modules for scraping data from the GDELT website, transforming it for NLP pipelines, and embedding text data into a Chroma vector database. Exploratory analysis and vector visualizations are performed using PCA and t-SNE. The investment decision engine uses a locally hosted LLaMA 3.2B model through Ollama, enabling privacy-preserving inference completely offline. By using prompt engineering and text embeddings, the LLM summarizes recent geopolitical trends and recommends trade actions at the country level.
+                            </p>
+                            <p class="card-description">
+                                The entire pipeline can be executed end-to-end locally via Python scripts, and is structured for modular testing and scalability. This project highlights a unique blend of real-world data aggregation, machine learning infrastructure, and financial analysis powered by AI, showcasing the application of generative models in global finance and investment research.
+                            </p>
+                        </div>
+
+                        <button id="btn-gdelt" class="btn-outline" onclick="toggleReadMore('gdelt')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rock-Paper-Scissors Project -->
+                <div class="card animate-fade-in" style="border-left-color: #f97316;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Rock-Paper-Scissors Recognition on ESP32S3</h3>
+                            </div>
+                            <span class="btn-secondary disabled">
+                                Demo Not Available
+                            </span>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">ESP32</span>
+                            <span class="tag">MicroPython</span>
+                        </div>
+
+                        <p class="card-description">
+                            This project demonstrates a proof-of-concept vision-based rock-paper-scissors game designed to run on the <strong>ESP32S3 Sense</strong> microcontroller. As part of a systems integration pitch for a next-generation interactive game device, I developed a CNN-based hand gesture classifier to recognize rock, paper, and scissors signs from a camera feed using only onboard hardware and Python/MicroPython.
+                        </p>
+
+                        <div id="more-rps" class="more-content">
+                            <p class="card-description">
+                                The project focused solely on recognizing the hand gestures, not implementing the full game logic. The ESP32S3 served as both the image acquisition and inference engine. All training data was collected using the onboard camera, cleaned and augmented, and later used to train a compact <strong>convolutional neural network</strong> tuned for resource-constrained environments.
+                            </p>
+                            <p class="card-description">
+                                Images were captured at <strong>96x96 resolution</strong> and resampled to <strong>32x32 bitmaps</strong> to reduce memory usage. The pre-processing pipeline involved basic image transformations and was kept lightweight to match the ESP32's limited capabilities. Techniques like edge detection and thresholding were considered but avoided where possible due to compute constraints.
+                            </p>
+                            <p class="card-description">
+                                To improve generalization, I gathered several hundred clean images per class directly from the ESP camera, using a custom socket server/client setup. I then applied augmentation and trained the CNN on a laptop. The final model achieved <span class="badge bg-success">56% classification accuracy</span> when deployed back onto the ESP device using MicroPython.
+                            </p>
+                            <p class="card-description">
+                                Key takeaways included navigating embedded deployment constraints, applying image processing creatively, and validating the use of affordable microcontrollers in real-world vision tasks. This project served as a technical feasibility test and proof of execution for future gesture-based consumer products.
+                            </p>
+                        </div>
+
+                        <button id="btn-rps" class="btn-outline" onclick="toggleReadMore('rps')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- L-Store Project -->
+                <div class="card animate-fade-in" style="border-left-color: #10b981;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">L-Store: Lineage-Based Database Storage Engine</h3>
+                            </div>
+                            <span class="btn-secondary disabled">
+                                Demo Not Available
+                            </span>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Database Systems</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Storage Engine</span>
+                            <span class="tag">ACID</span>
+                        </div>
+
+                        <p class="card-description">
+                            This project demonstrates the implementation of a comprehensive <strong>relational database storage engine</strong> based on the L-Store architecture, designed to bridge the gap between transactional and analytical workloads. <strong>I served as the project lead</strong> for our team and built a complete database system from scratch using Python, implementing novel <strong>lineage-based storage</strong> with columnar data organization and update-friendly architecture.
+                        </p>
+
+                        <div id="more-lstore" class="more-content">
+                            <p class="card-description">
+                                The project was structured across three progressive milestones, each building upon the previous implementation. <strong>Milestone 1</strong> established the foundational single-threaded, in-memory database with columnar storage, implementing base and tail page architecture where original records (base pages) are kept separate from updates (tail pages). This design eliminates the need for immediate in-place updates while maintaining query performance through clever indirection mechanisms.
+                            </p>
+                            <p class="card-description">
+                                <strong>Milestone 2</strong> introduced durability and advanced data management by implementing a complete <strong>bufferpool system</strong> with LRU page replacement, disk persistence, and a sophisticated background merge process. The merge operation consolidates tail records with base pages in a contention-free manner using Tail-Page Sequence Numbers (TPS) for lineage tracking. Additionally, I implemented comprehensive <strong>secondary indexing</strong> capabilities using hash tables and B-trees for accelerated query processing.
+                            </p>
+                            <p class="card-description">
+                                <strong>Milestone 3</strong> completed the system with full <strong>ACID transaction support</strong> and multi-threaded concurrency control. I implemented strict two-phase locking (2PL) with no-wait deadlock prevention, allowing multiple transactions to execute concurrently while maintaining serializability. The system handles transaction atomicity through proper rollback mechanisms and isolation through record-level locking managed by a centralized lock manager.
+                            </p>
+                            <p class="card-description">
+                                Key technical achievements include implementing a <strong>columnar storage engine</strong> with 4KB page granularity, developing a sophisticated page directory for RID-to-page mapping, creating a background merge thread that operates without blocking foreground transactions, and building a complete concurrency control system supporting multi-statement transactions. The final implementation achieved high performance with support for complex analytical queries while maintaining transactional consistency.
+                            </p>
+                            <p class="card-description">
+                                This project provided deep insights into database internals, storage optimization strategies, and the challenges of building production-grade database systems. The L-Store architecture demonstrates how modern databases can efficiently handle both <span class="badge bg-success">write-intensive</span> and <span class="badge bg-info">read-intensive</span> workloads within a single unified engine.
+                            </p>
+                        </div>
+
+                        <button id="btn-lstore" class="btn-outline" onclick="toggleReadMore('lstore')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-bg">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-grid">
+                <!-- Gallox Semiconductors -->
+                <div class="card animate-fade-in" style="border-left-color: #10b981;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Gallox Semiconductors</h3>
+                                <h4 class="card-subtitle">Software Engineer Intern</h4>
+                                <div class="card-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Nov 2024 – Jan 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="card-description">
+                            Built smart automation tools to test semiconductor power devices, helping engineers save time and get more accurate results. My work made it easier to spot issues early and sped up the overall testing process in the lab.
+                        </p>
+
+                        <div id="more-gallox" class="more-content">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 0.25rem; flex-shrink: 0;">
+                                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                        <rect x="9" y="9" width="6" height="6"></rect>
+                                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                                        <line x1="1" y1="14" x2="4" y2="14"></line>
+                                    </svg>
+                                    <div>
+                                        <h5 style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Automation Framework Development</h5>
+                                        <p class="card-description">Architected comprehensive automation frameworks for semiconductor power device testing, streamlining characterization workflow for high-voltage MOSFETs and IGBTs.</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 0.25rem; flex-shrink: 0;">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                    </svg>
+                                    <div>
+                                        <h5 style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Real-time Visualization System</h5>
+                                        <p class="card-description">Developed sophisticated real-time data visualization dashboard with multi-threaded data acquisition and automated anomaly detection, reducing manual debugging time by 40%.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="btn-gallox" class="btn-outline" onclick="toggleReadMore('gallox')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cornell CALS -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Cornell CALS</h3>
+                                <h4 class="card-subtitle">Student Research Assistant</h4>
+                                <div class="card-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Aug 2024 – Dec 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="card-description">
+                            Explored how machine learning can help tackle climate change by analyzing greenhouse gas emissions from different crops. Built efficient tools to clean and process large amounts of geospatial data for sustainable agriculture strategies.
+                        </p>
+
+                        <div id="more-cornell" class="more-content">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 0.25rem; flex-shrink: 0;">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                    </svg>
+                                    <div>
+                                        <h5 style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Machine Learning Pipeline Development</h5>
+                                        <p class="card-description">Engineered sophisticated ML pipelines to analyze large-scale agricultural GHG emission datasets, implementing advanced k-means clustering algorithms with custom distance metrics.</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 0.25rem; flex-shrink: 0;">
+                                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                                    </svg>
+                                    <div>
+                                        <h5 style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Geospatial Data Processing</h5>
+                                        <p class="card-description">Developed comprehensive Python-based ETL workflows using Pandas, NumPy, and GeoPandas to process and standardize geospatial crop emissions data from multiple sources.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="btn-cornell" class="btn-outline" onclick="toggleReadMore('cornell')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ColentAI -->
+                <div class="card animate-fade-in" style="border-left-color: #7c3aed;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">ColentAI</h3>
+                                <h4 class="card-subtitle">Software Developer Intern</h4>
+                                <div class="card-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Jan 2024 – Mar 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="card-description">
+                            Worked on making generative AI models smarter and faster by fine-tuning how they learn. Built reliable pipelines to pull in diverse data from APIs which helped improve the quality of training datasets.
+                        </p>
+
+                        <div id="more-colentai" class="more-content">
+                            <p class="card-description">
+                                Optimized large language model performance through systematic hyperparameter tuning and advanced fine-tuning techniques. Conducted extensive API research and integration work, developing robust data acquisition pipelines.
+                            </p>
+                            <p class="card-description">
+                                Built sophisticated automated skill taxonomy generator leveraging advanced NLP techniques including TF-IDF vectorization, NER, and BERT embeddings for semantic similarity analysis, achieving 92% classification accuracy.
+                            </p>
+                        </div>
+
+                        <button id="btn-colentai" class="btn-outline" onclick="toggleReadMore('colentai')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cardinality-AI -->
+                <div class="card animate-fade-in" style="border-left-color: #f97316;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Cardinality-AI</h3>
+                                <h4 class="card-subtitle">Data Analyst Intern</h4>
+                                <div class="card-meta">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>June 2021 – Sept 2021</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="card-description">
+                            Worked on designing and building smart data pipelines to prepare large, structured datasets for machine learning. Used SQL to clean and organize the data efficiently and engineered new features to help models make better predictions.
+                        </p>
+
+                        <div id="more-cardinality" class="more-content">
+                            <p class="card-description">
+                                Architected and implemented robust data ingestion and transformation pipelines using advanced SQL techniques including window functions, CTEs, and stored procedures to efficiently process large-scale structured datasets.
+                            </p>
+                            <p class="card-description">
+                                Leveraged MATLAB's advanced analytics capabilities to conduct sophisticated pattern recognition analysis using signal processing techniques, Fourier transforms, and spectral analysis for data-driven policy recommendations.
+                            </p>
+                        </div>
+
+                        <button id="btn-cardinality" class="btn-outline" onclick="toggleReadMore('cardinality')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; margin-right: 0.75rem;">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                Education
+            </h2>
+            
+            <div class="education-grid">
+                <!-- Cornell -->
+                <div class="card animate-fade-in" style="border-left-color: #dc2626;">
+                    <div class="card-content">
+                        <h3 class="card-title">Cornell University</h3>
+                        <h4 class="card-subtitle">Master of Engineering in Engineering Management</h4>
+                        <div class="card-meta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span>Aug 2024 – May 2025</span>
+                        </div>
+                        
+                        <div>
+                            <p style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Key Coursework:</p>
+                            <div class="card-tags">
+                                <span class="tag">AI for Engineering Managers</span>
+                                <span class="tag">Product Management</span>
+                                <span class="tag">Data Analytics</span>
+                                <span class="tag">Decision Framing</span>
+                                <span class="tag">Negotiations and Contracts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UC Davis -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <h3 class="card-title">University of California, Davis</h3>
+                        <h4 class="card-subtitle">Bachelor of Science in Computer Science</h4>
+                        <p style="color: #64748b; margin-bottom: 0.5rem;">Minor in Technology Management</p>
+                        <div class="card-meta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span>Sept 2020 – June 2024</span>
+                        </div>
+                        
+                        <div>
+                            <p style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Key Coursework:</p>
+                            <div class="card-tags">
+                                <span class="tag">Algorithm Design and Analysis</span>
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Operating Systems</span>
+                                <span class="tag">Database Systems</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Human-Computer Interaction</span>
+                                <span class="tag">Programming Languages</span>
+                                <span class="tag">Computer Architecture</span>
+                                <span class="tag">Technology Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-bg">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-card animate-fade-in">
+                    <div class="skill-icon programming">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+
+                <!-- ML & AI -->
+                <div class="skill-card animate-fade-in">
+                    <div class="skill-icon ml">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">ML & AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">LangChain</span>
+                    </div>
+                </div>
+
+                <!-- Tools & DevOps -->
+                <div class="skill-card animate-fade-in">
+                    <div class="skill-icon tools">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Tools & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">PowerBI</span>
+                    </div>
+                </div>
+
+                <!-- Cloud Platforms -->
+                <div class="skill-card animate-fade-in">
+                    <div class="skill-icon cloud">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GCP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:rb943@cornell.edu" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://github.com/ronitbhatia" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Ronit Bhatia. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Typing animation
+            const texts = [
+                "Software Development",
+                "Machine Learning Engineering", 
+                "Data Analysis",
+                "Product Management",
+                "Web Development",
+                "Business Analysis"
+            ];
+            
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingElement = document.querySelector('.typing-text');
+            
+            const typeWriter = () => {
+                const currentText = texts[textIndex];
+                
+                if (!isDeleting) {
+                    if (charIndex < currentText.length) {
+                        if (typingElement) {
+                            typingElement.textContent = currentText.substring(0, charIndex + 1);
+                        }
+                        charIndex++;
+                        setTimeout(typeWriter, 100);
+                    } else {
+                        setTimeout(() => {
+                            isDeleting = true;
+                            typeWriter();
+                        }, 2000);
+                    }
+                } else {
+                    if (charIndex > 0) {
+                        if (typingElement) {
+                            typingElement.textContent = currentText.substring(0, charIndex - 1);
+                        }
+                        charIndex--;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % texts.length;
+                        setTimeout(typeWriter, 500);
+                    }
+                }
+            };
+            
+            typeWriter();
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Create animated dots
+            const createDots = () => {
+                const hero = document.querySelector('.hero');
+                const dotsContainer = document.createElement('div');
+                dotsContainer.className = 'animated-dots';
+                
+                for (let i = 0; i < 20; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dot.style.left = `${Math.random() * 100}%`;
+                    dot.style.top = `${Math.random() * 100}%`;
+                    dot.style.animationDelay = `${Math.random() * 6}s`;
+                    dotsContainer.appendChild(dot);
+                }
+                
+                hero.appendChild(dotsContainer);
+            };
+
+            createDots();
         });
-      });
-    });
-  </script>
 
-
-<!-- Typed.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    new Typed(".typing-text", {
-      strings: [
-        "Software Development",
-        "Machine Learning Engineering",
-        "Data Analysis",
-        "Product Management",
-        "Web Development",
-        "Business Analysis",
-      ],
-      typeSpeed: 100,
-      backSpeed: 50,
-      loop: true
-    });
-  });
-</script>
-
-<!-- Load and initialize particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script>
-  particlesJS('particles-js', {
-    particles: {
-      number: { value: 60, density: { enable: true, value_area: 800 } },
-      color: { value: '#0b0b0b' },
-      shape: { type: 'circle' },
-      opacity: { value: 0.4 },
-      size: { value: 2.5 },
-      line_linked: {
-        enable: true,
-        distance: 130,
-        color: '#999999',
-        opacity: 0.3,
-        width: 1
-      },
-      move: { enable: true, speed: 2.5 }
-    },
-    interactivity: {
-      detect_on: 'canvas',
-      events: {
-        onhover: { enable: true, mode: 'grab' },
-        onclick: { enable: false },
-        resize: true
-      }
-    },
-    retina_detect: true
-  });
-</script>
-
+        function toggleReadMore(id) {
+            const moreContent = document.getElementById(`more-${id}`);
+            const button = document.getElementById(`btn-${id}`);
+            
+            if (moreContent && button) {
+                if (moreContent.classList.contains('show')) {
+                    moreContent.classList.remove('show');
+                    button.textContent = 'Read More';
+                } else {
+                    moreContent.classList.add('show');
+                    button.textContent = 'Read Less';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
