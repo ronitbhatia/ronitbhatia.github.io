@@ -74,7 +74,7 @@
                     </p>
                     
                     <div class="hero-links">
-                        <a href="mailto:roncy.bhatia@gmail.com" class="hero-link email">
+                        <a href="mailto:roncy.bhatia@gmail.com" class="hero-link email" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
@@ -756,10 +756,10 @@
                         </div>
 
                         <div class="card-tags">
-                            <span class="tag">Hackathon</span>
                             <span class="tag">Product Management</span>
-                            <span class="tag">Rapid Prototyping</span>
-                            <span class="tag">Healthcare Tech</span>
+                            <span class="tag">Generative AI</span>
+                            <span class="tag">Prompt Engineering</span>
+                            <span class="tag">Full-Stack Development</span>
                         </div>
 
                         <p class="card-description">
@@ -784,6 +784,45 @@
                     </div>
                 </div>
 
+                <!-- Cornell Ambassador -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Student Ambassador: Cornell University</h3>
+                            </div>
+                            <span class="btn-secondary">Feb 2025 – May 2025</span>
+                        </div>
+
+                        <div class="card-tags">
+                            <span class="tag">Student Outreach</span>
+                            <span class="tag">Community Building</span>
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+
+                        <p class="card-description">
+                            Served as a dedicated ambassador for Cornell University, engaging with prospective students to provide authentic insights on academic programs, campus life, and career opportunities while fostering an inclusive and supportive community environment.
+                        </p>
+
+                        <div id="more-ambassador" class="more-content">
+                            <p class="card-description">
+                                <strong>Prospective Student Engagement:</strong> Actively engaged with hundreds of prospective students through various platforms, providing personalized guidance on academic programs, research opportunities, and the unique Cornell experience. Offered authentic perspectives on coursework rigor, faculty relationships, and the collaborative learning environment that defines Cornell's graduate programs.
+                            </p>
+                            <p class="card-description">
+                                <strong>Career Development Support:</strong> Provided comprehensive insights into career opportunities, industry connections, and professional development resources available at Cornell. Shared firsthand experiences about networking events, career fairs, and the strong alumni network that supports students in achieving their professional goals across various industries.
+                            </p>
+                            <p class="card-description">
+                                <strong>Inclusive Community Building:</strong> Played a key role in fostering an inclusive and supportive community by connecting with students from diverse backgrounds and experiences. Helped create a welcoming environment where prospective students felt comfortable asking questions and could envision themselves as part of the Cornell community, contributing to increased enrollment of underrepresented groups.
+                            </p>
+                        </div>
+
+                        <button id="btn-ambassador" class="btn-outline" onclick="toggleReadMore('ambassador')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Cornell Graduate Product Management Club -->
                 <div class="card animate-fade-in">
                     <div class="card-content">
@@ -796,9 +835,9 @@
 
                         <div class="card-tags">
                             <span class="tag">Leadership</span>
-                            <span class="tag">Community Building</span>
-                            <span class="tag">Strategy</span>
-                            <span class="tag">Operations</span>
+                            <span class="tag">Team Collaboration</span>
+                            <span class="tag">Strategic Planning</span>
+                            <span class="tag">Growth Strategy</span>
                         </div>
 
                         <p class="card-description">
@@ -835,9 +874,8 @@
 
                         <div class="card-tags">
                             <span class="tag">Consulting</span>
-                            <span class="tag">FinTech</span>
                             <span class="tag">Market Analysis</span>
-                            <span class="tag">Value Chain</span>
+                            <span class="tag">Value Chain Analysis</span>
                         </div>
 
                         <p class="card-description">
@@ -869,14 +907,13 @@
                             <div>
                                 <h3 class="card-title">Talent 2.0 Hackathon Finalist</h3>
                             </div>
-                            <span class="btn-secondary">Nov 2024 · New York City</span>
+                            <span class="btn-secondary">Nov 2024</span>
                         </div>
 
                         <div class="card-tags">
-                            <span class="tag">Hackathon</span>
-                            <span class="tag">Leadership</span>
-                            <span class="tag">VR</span>
-                            <span class="tag">Employee Experience</span>
+                            <span class="tag">Project Management</span>
+                            <span class="tag">Cost Estimation</span>
+                            <span class="tag">Strategic Thinking</span>
                         </div>
 
                         <p class="card-description">
@@ -927,6 +964,9 @@
                         <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">HTML</span>
                         <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">MicroPython</span>
+                        <span class="skill-tag">Lisp</span>
+                        <span class="skill-tag">Prolog</span>
                     </div>
                 </div>
 
@@ -952,6 +992,11 @@
                         <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">Scikit-learn</span>
                         <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">PydanticAI</span>
+                        <span class="skill-tag">Unsloth</span>
+                        <span class="skill-tag">Windsurf</span>
+                        <span class="skill-tag">Cursor</span>
                     </div>
                 </div>
 
@@ -967,6 +1012,7 @@
                     <h3 class="skill-title">Tools & DevOps</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
                         <span class="skill-tag">Docker</span>
                         <span class="skill-tag">VS Code</span>
                         <span class="skill-tag">MATLAB</span>
@@ -996,7 +1042,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="mailto:rb943@cornell.edu" class="footer-link">
+                <a href="mailto:roncy.bhatia@gmail.com" class="footer-link" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)" title="Click to copy email">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
@@ -1238,6 +1284,93 @@
                     button.textContent = 'Read Less';
                 }
             }
+        }
+
+        // Email clipboard copy functionality
+        function copyEmailToClipboard(email, event) {
+            event.preventDefault();
+            
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyNotification('Email copied to clipboard!');
+                } else {
+                    // Fallback for modern browsers
+                    navigator.clipboard.writeText(email).then(() => {
+                        showCopyNotification('Email copied to clipboard!');
+                    }).catch(() => {
+                        showCopyNotification('Failed to copy email');
+                    });
+                }
+            } catch (err) {
+                // Modern clipboard API fallback
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyNotification('Email copied to clipboard!');
+                }).catch(() => {
+                    showCopyNotification('Failed to copy email');
+                });
+            }
+            
+            // Clean up
+            document.body.removeChild(textarea);
+        }
+
+        // Show copy notification
+        function showCopyNotification(message) {
+            // Remove existing notification if any
+            const existingNotification = document.querySelector('.copy-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--accent-primary);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                backdrop-filter: blur(10px);
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
         }
     </script>
 </body>
