@@ -6,14 +6,10 @@
     <title>Ronit Bhatia | Portfolio</title>
     <meta name="description" content="Software Engineer & ML Enthusiast - Building impactful solutions through thoughtful engineering">
     <meta name="author" content="Ronit Bhatia">
-    <meta name="theme-color" id="theme-color" content="#ffffff">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="PNG image-41F8-9B5E-EC-0.png">
-    <link rel="icon" href="PNG image-41F8-9B5E-EC-0.png" sizes="192x192" type="image/png" purpose="maskable">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -310,7 +306,7 @@
                         </div>
 
                         <p class="card-description">
-                            Fraud in insurance is constantly evolving, and companies often struggle to stay ahead of sophisticated fraud rings. Partnering with a Fortune 500 insurance company, my team and I tackled a capstone project focused on the evolving challenge of fraud detection. The central question was whether the company should build its own link analysis capabilities to detect fraud networks or partner with a third-party solution. Our work explored how fraud rings form, how analytics could reveal hidden connections, and what strategy would drive the most long-term value.
+                            Fraud in insurance is constantly evolving, and companies often struggle to stay ahead of sophisticated fraud rings. Partnering with a Fortune 500 insurance company, my team and I tackled a capstone project focused on the evolving challenge of fraud detection. The central question was whether the company should build its own link analysis capabilities to detect fraud networks or partner with a third-party solution. Our work explored how fraud rings form, how analytics could reveal hidden connections, and what strategy would drive the most long-term valu
                         </p>
 
                         <div id="more-link-analysis" class="more-content">
@@ -760,10 +756,10 @@
                         </div>
 
                         <div class="card-tags">
-                            <span class="tag">Generative AI</span>
-                            <span class="tag">Prompt Engineering</span>
+                            <span class="tag">Hackathon</span>
                             <span class="tag">Product Management</span>
-                            <span class="tag">Full-Stack Development</span>
+                            <span class="tag">Rapid Prototyping</span>
+                            <span class="tag">Healthcare Tech</span>
                         </div>
 
                         <p class="card-description">
@@ -800,9 +796,9 @@
 
                         <div class="card-tags">
                             <span class="tag">Leadership</span>
-                            <span class="tag">Team Collaboration</span>
-                            <span class="tag">Strategic Planning</span>
-                            <span class="tag">Growth Strategy</span>
+                            <span class="tag">Community Building</span>
+                            <span class="tag">Strategy</span>
+                            <span class="tag">Operations</span>
                         </div>
 
                         <p class="card-description">
@@ -873,7 +869,7 @@
                             <div>
                                 <h3 class="card-title">Talent 2.0 Hackathon Finalist</h3>
                             </div>
-                            <span class="btn-secondary">Nov 2024</span>
+                            <span class="btn-secondary">Nov 2024 · New York City</span>
                         </div>
 
                         <div class="card-tags">
@@ -1000,7 +996,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="mailto:roncy.bhatia@gmail.com" class="footer-link">
+                <a href="mailto:rb943@cornell.edu" class="footer-link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
@@ -1019,8 +1015,6 @@
                     </svg>
                 </a>
             </div>
-            <div class="footer-rule"></div>
-            <p class="footer-text" style="letter-spacing: 0.08em; text-transform: lowercase; font-variant-caps: all-small-caps; margin-top: 1rem;">Designed & built by Ronit Bhatia</p>
             <p class="footer-text">© 2025 Ronit Bhatia. Built with HTML & CSS.</p>
         </div>
     </footer>
@@ -1097,10 +1091,8 @@
                 "Product Management",
                 "Web Development",
                 "Business Analysis",
-                "QA/Software Test Engineer",
-                "Full-Stack Development",
-                "Cloud/DevOps Engineer",
-                "Technical Support Engineer"
+                "AI & Neural Networks",
+                "Full-Stack Development"
             ];
             
             let textIndex = 0;
@@ -1192,40 +1184,8 @@
             createDots();
 
             // Dark mode functionality
-            // Navbar background fade after 80px scroll
-            const navbarEl = document.querySelector('.navbar');
-            const navLinksEl = document.querySelector('.nav-links');
-            const updateNavbarScrollState = () => {
-                if (!navbarEl) return;
-                if (window.scrollY > 80) {
-                    navbarEl.classList.add('scrolled');
-                } else {
-                    navbarEl.classList.remove('scrolled');
-                }
-            };
-            updateNavbarScrollState();
-            window.addEventListener('scroll', updateNavbarScrollState, { passive: true });
-
-            // Magnetic hover effect for navbar items
-            const navItems = document.querySelectorAll('.nav-link');
-            navItems.forEach((item, index) => {
-                item.addEventListener('mouseenter', () => {
-                    const prev = navItems[index - 1];
-                    const next = navItems[index + 1];
-                    if (prev) prev.classList.add('magnet-left');
-                    if (next) next.classList.add('magnet-right');
-                });
-                item.addEventListener('mouseleave', () => {
-                    const prev = navItems[index - 1];
-                    const next = navItems[index + 1];
-                    if (prev) prev.classList.remove('magnet-left');
-                    if (next) next.classList.remove('magnet-right');
-                });
-            });
-
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            const themeColorMeta = document.getElementById('theme-color');
             
             // Check for saved theme preference or default to system preference
             const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
@@ -1235,10 +1195,6 @@
             function updateToggleIcon() {
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 darkModeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-                // Update browser UI theme color to match navbar
-                if (themeColorMeta) {
-                    themeColorMeta.setAttribute('content', isDark ? '#0f172a' : '#ffffff');
-                }
             }
             
             updateToggleIcon();
