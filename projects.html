@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Ronit Bhatia</title>
+    <meta name="description" content="Featured Projects - Software Engineer & ML Enthusiast">
+    <meta name="author" content="Ronit Bhatia">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.0.4">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16,18 22,12 16,6"></polyline>
+                        <polyline points="8,6 2,12 8,18"></polyline>
+                    </svg>
+                </div>
+                <span class="nav-brand-text">Ronit Bhatia</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link active">projects</a>
+                <a href="experience.html" class="nav-link">experience</a>
+                <a href="education.html" class="nav-link">education</a>
+                <a href="initiative-impact.html" class="nav-link">initiative & impact</a>
+                <a href="skills.html" class="nav-link">skills</a>
+            </div>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt" style="padding-top: 10rem;">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Featured Projects</h2>
+            
+            <div class="projects-grid">
+
+                <!-- UnclogAI Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">UnclogAI: AI-Driven Workflow Intelligence Platform</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/unclogAI" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <div class="card-tags">
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">LangGraph</span>
+                            <span class="tag">Large Language Models (LLM)</span>
+                            <span class="tag">Workflow Automation</span>
+                            <span class="tag">Graph Analytics</span>
+                            <span class="tag">Predictive Analytics</span>
+                            <span class="tag">Natural Language Processing (NLP)</span>
+                            <span class="tag">Data Visualization</span>
+                        </div>
+
+                        <p class="card-description">
+                            UnclogAI is an enterprise-grade workflow intelligence platform that leverages graph-based process analytics and agentic AI orchestration to surface hidden dependencies, detect operational bottlenecks, and provide actionable insights that prevent project delays. The platform transforms raw task data into structured workflows, applies network theory for bottleneck detection, and uses open-source LLMs to generate strategic recommendations for resource optimization and risk mitigation.
+                        </p>
+
+                        <div id="more-unclogai" class="more-content">
+                            <p class="card-description">
+                                <strong>Advanced Workflow Intelligence:</strong> Built a comprehensive data ingestion system that normalizes multi-format task exports (CSV, JSON, free-form text) into structured workflow data. Implemented sophisticated graph construction algorithms using NetworkX to model task dependencies, resource allocation, and critical path analysis. The system identifies systemic bottlenecks through network centrality metrics, dependency depth analysis, and workload distribution patterns.
+                            </p>
+                            <p class="card-description">
+                                <strong>AI-Powered Operational Analytics:</strong> Integrated TinyLlama-1.1B-Chat via Hugging Face Transformers for local LLM inference, eliminating API dependencies while maintaining enterprise-grade performance. Developed intelligent recommendation engines that analyze workflow patterns to suggest task reallocation strategies, workload balancing solutions, and escalation pathways. The system generates executive-ready Markdown reports with predictive risk forecasting and actionable remediation strategies.
+                            </p>
+                            <p class="card-description">
+                                <strong>Enterprise-Ready Architecture:</strong> Architected a production-grade solution using LangGraph for agentic workflow orchestration, SQLite for persistent data storage, and Gradio for interactive web interfaces. The platform supports real-time workflow analysis, interactive visualization dashboards, and comprehensive export capabilities. Designed for scalability with potential SaaS integration into enterprise project management tools like Jira, Asana, and Slack, demonstrating practical application of AI/ML in business process automation and operational efficiency optimization.
+                            </p>
+                        </div>
+
+                        <button id="btn-unclogai" class="btn-outline" onclick="toggleReadMore('unclogai')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- VoyageLog – Travel Journal Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">VoyageLog: Interactive Travel Journal & Map</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/voyagelog" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="card-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">RESTful API</span>
+                            <span class="tag">SQLAlchemy ORM</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">CI/CD</span>
+                        </div>
+
+                        <p class="card-description">
+                            VoyageLog is a lightweight travel-journal web app that lets users record trips, upload memories, and see everything on an interactive map without any manual coordinate entry.
+                        </p>
+
+                        <div id="more-voyagelog" class="more-content">
+                            <p class="card-description">
+                                Built with Flask and SQLite, the back-end auto-geocodes any place name via OpenStreetMap Nominatim, drops the exact pin on a Leaflet map, and stores photos in a local uploads folder. A dark, glass-morphism UI keeps the experience modern and distraction-free.
+                            </p>
+                            <p class="card-description">
+                                The entire codebase was iteratively created with <strong>Kimi K2</strong>, Moonshot AI's open-source trillion-parameter LLM.  
+                                I provided high-level prompts ("build a Flask travel journal with interactive map, photo uploads, auto-geocoding…"), refined the generated code, debugged edge cases, and polished the UI to reach this functional prototype.
+                            </p>
+                            <p class="card-description">
+                                Ideal for hackathons, portfolio demos, or privacy-first journaling, VoyageLog showcases end-to-end web development: RESTful routing, ORM mapping, file handling, geospatial visualization, and responsive design in under 400 lines of code.
+                            </p>
+                        </div>
+
+                        <button id="btn-voyagelog" class="btn-outline" onclick="toggleReadMore('voyagelog')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Startup Planner Agent Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Startup Planner Agent: AI-Powered Strategic Planning Tool</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/startup-planner-agent" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <div class="card-tags">
+                            <span class="tag">LLM</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">Ollama</span>
+                            <span class="tag">Startup Planning</span>
+                        </div>
+
+                        <p class="card-description">
+                            Startup Planner Agent is a locally hosted AI application that uses open-source language models to generate structured startup strategies. Users input a product idea and receive a complete business plan including parsed objectives, market analysis, SWOT insights, and MVP development plans. All of this is achieved without needing an API key or cloud access.
+                        </p>
+
+                        <div id="more-startupplanner" class="more-content">
+                            <p class="card-description">
+                                The app uses a multi-agent architecture where each module focuses on a different aspect of startup validation: the idea parser extracts key business dimensions, a research agent returns competitor and trend data, the SWOT agent formulates strategic assessments, and the MVP agent proposes tech stacks and timelines. Each step is powered by a local instance of LLaMA 3 through Ollama.
+                            </p>
+                            <p class="card-description">
+                                Built entirely with Streamlit, the app provides an interactive frontend that supports user input, expandable result views, and export options in both JSON and TXT. This design ensures complete offline usability which is ideal for demos, hackathons, or privacy-sensitive environments. The project showcases strong integration of local LLMs, agentic design, and UI/UX for AI tooling.
+                            </p>
+                        </div>
+
+                        <button id="btn-startupplanner" class="btn-outline" onclick="toggleReadMore('startupplanner')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ExcellenSight Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">ExcellenSight: AI-Powered ChatGPT Feedback Analyzer</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/ExcellenSight" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Neural Networks</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">Python</span>
+                        </div>
+
+                        <p class="card-description">
+                            ExcellenSight is a robust, end-to-end natural language processing system designed to extract actionable insights from extensive user feedback on ChatGPT. At its core is a custom neural network model developed from scratch, intentionally avoiding any reliance on pre-trained architectures. This multi-task network consists of a shared encoder with two task-specific heads: one for classifying feedback into five well-defined trend categories (such as pain points or praise), and another for summarizing key messages into coherent, sentence-level insights. This combination enables nuanced understanding of public sentiment toward ChatGPT.
+                        </p>
+
+                        <div id="more-excellensight" class="more-content">
+                            <p class="card-description">
+                                The pipeline begins by ingesting thousands of raw user comments and applying thorough data preprocessing techniques. It then trains the neural model on these cleaned datasets while monitoring classification accuracy and summarization quality. ExcellenSight automatically compiles professional-grade reports that include not only text-based trend summaries but also rich visualizations such as training loss graphs and frequency bar charts. These reports are generated in both Markdown and HTML, allowing for flexible sharing and integration.
+                            </p>
+                            <p class="card-description">
+                                To enhance usability, the platform is deployed as a Streamlit application that supports real-time interaction. Users can upload new datasets, inspect categorized reviews, and explore generated insights dynamically through the app interface. The entire system is engineered to be highly scalable, capable of processing tens of thousands of reviews for large-scale sentiment analysis. ExcellenSight stands out for its ability to transform raw textual feedback into data-driven insights that can inform UX design, marketing, and product improvements.
+                            </p>
+                        </div>
+
+                        <button id="btn-excellensight" class="btn-outline" onclick="toggleReadMore('excellensight')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Link Analysis – Capstone Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Capstone Project: Link Analysis & Fraud Detection Strategy</h3>
+                            </div>
+        
+                        </div>
+                        <div class="card-tags">
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Financial Modeling</span>
+                            <span class="tag">Risk Management</span>
+                            <span class="tag">Competitive Analysis</span>
+                            <span class="tag">Cost-Benefit Analysis</span>
+                        </div>
+
+                        <p class="card-description">
+                            Fraud in insurance is constantly evolving, and companies often struggle to stay ahead of sophisticated fraud rings. Partnering with a Fortune 500 insurance company, my team and I tackled a capstone project focused on the evolving challenge of fraud detection. The central question was whether the company should build its own link analysis capabilities to detect fraud networks or partner with a third-party solution. Our work explored how fraud rings form, how analytics could reveal hidden connections, and what strategy would drive the most long-term value.
+                        </p>
+
+                        <div id="more-link-analysis" class="more-content">
+                            <p class="card-description">
+                                I led the competitive analysis team, driving the evaluation of external vendors and internal development options. I conducted a SWOT analysis, built a vendor ranking framework, and engaged with solution providers to assess differentiators. To ensure a data-driven approach, I also established KPIs for benchmarking and performed a break-even analysis that compared the costs and benefits of in-house development against third-party adoption.
+                            </p>
+                            <p class="card-description">
+                                The results of my team's analysis directly informed our final recommendations. Our insights highlighted where external vendors offered strong advantages and where internal solutions could provide flexibility and scalability. These findings were presented in an executive-level pitch deck, giving senior leaders a clear, actionable roadmap. By leading this workstream, I delivered strategic impact and contributed to a project that addressed one of the insurance industry's most pressing challenges.
+                            </p>
+                        </div>
+
+                        <button id="btn-link-analysis" class="btn-outline" onclick="toggleReadMore('link-analysis')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Taskify Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Taskify: AI-Powered Task-to-Team Member Matching System</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/Taskify" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Transformers</span>
+                            <span class="tag">ML</span>
+                            <span class="tag">Recommendation Systems</span>
+                            <span class="tag">Streamlit</span>
+                        </div>
+
+                        <p class="card-description">
+                            Taskify is a sophisticated AI-driven recommendation engine that automates the assignment of organizational tasks to the most suitable team members. It leverages a custom Transformer-based neural network that integrates both semantic information (from task descriptions) and structured features (from team member profiles) to predict compatibility with high precision. The architecture is designed with a hybrid attention mechanism that enables contextual understanding of both the task and the team landscape.
+                        </p>
+
+                        <div id="more-taskify" class="more-content">
+                            <p class="card-description">
+                                To simulate real-world diversity, the training dataset consists of over 40,000 synthetic examples representing task-member pairs from different departments, roles, and expertise levels. The model is trained as a binary classifier that outputs a compatibility score, helping prioritize task allocation based on predicted effectiveness. The inclusion of cross-attention layers ensures that relational nuances between task requirements and individual qualifications are well captured.
+                            </p>
+                            <p class="card-description">
+                                Validation is an integral part of Taskify's workflow, featuring a full suite of evaluation metrics such as accuracy, precision, recall, F1-score, and confusion matrices. These tools help monitor performance across various organizational settings. For usability, Taskify includes a local Streamlit interface that allows real-time input of task descriptions and displays the top recommended team members, complete with their fit scores. This functionality makes the model directly actionable in a project management setting. Taskify's adaptability, depth of inference, and real-time deployment capabilities make it an impactful tool for enhancing collaboration and efficiency in team-based environments.
+                            </p>
+                        </div>
+
+                        <button id="btn-taskify" class="btn-outline" onclick="toggleReadMore('taskify')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- GDELT Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">GDELT Monitoring System: LLM-Powered Global Macro Investment Engine</h3>
+                            </div>
+                            <a href="https://github.com/ronitbhatia/GDELT-Monitoring-system" class="btn-secondary" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">LLMs</span>
+                            <span class="tag">Financial Analysis</span>
+                            <span class="tag">Vector DB</span>
+                            <span class="tag">NLP</span>
+                        </div>
+
+                        <p class="card-description">
+                            This project simulates the decision-making workflow of a portfolio manager at a Global Macro Hedge Fund, using a fully local LLM (Large Language Model) to generate investment strategies based on real-time global news. Built around the GDELT database, the system scrapes live geopolitical event data, processes and cleans it, stores it in a vector database, and uses prompt-engineered LLM reasoning to recommend country-level long or short financial positions.
+                        </p>
+
+                        <div id="more-gdelt" class="more-content">
+                            <p class="card-description">
+                                The architecture includes dedicated Python modules for scraping data from the GDELT website, transforming it for NLP pipelines, and embedding text data into a Chroma vector database. Exploratory analysis and vector visualizations are performed using PCA and t-SNE. The investment decision engine uses a locally hosted LLaMA 3.2B model through Ollama, enabling privacy-preserving inference completely offline. By using prompt engineering and text embeddings, the LLM summarizes recent geopolitical trends and recommends trade actions at the country level.
+                            </p>
+                            <p class="card-description">
+                                The entire pipeline can be executed end-to-end locally via Python scripts, and is structured for modular testing and scalability. This project highlights a unique blend of real-world data aggregation, machine learning infrastructure, and financial analysis powered by AI, showcasing the application of generative models in global finance and investment research.
+                            </p>
+                        </div>
+
+                        <button id="btn-gdelt" class="btn-outline" onclick="toggleReadMore('gdelt')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rock-Paper-Scissors Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Rock-Paper-Scissors Recognition on ESP32S3</h3>
+                            </div>
+                            <span class="btn-secondary disabled">
+                                Demo Not Available
+                            </span>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">ESP32</span>
+                            <span class="tag">MicroPython</span>
+                        </div>
+
+                        <p class="card-description">
+                            This project demonstrates a proof-of-concept vision-based rock-paper-scissors game designed to run on the <strong>ESP32S3 Sense</strong> microcontroller. As part of a systems integration pitch for a next-generation interactive game device, I developed a CNN-based hand gesture classifier to recognize rock, paper, and scissors signs from a camera feed using only onboard hardware and Python/MicroPython.
+                        </p>
+
+                        <div id="more-rps" class="more-content">
+                            <p class="card-description">
+                                The project focused solely on recognizing the hand gestures, not implementing the full game logic. The ESP32S3 served as both the image acquisition and inference engine. All training data was collected using the onboard camera, cleaned and augmented, and later used to train a compact <strong>convolutional neural network</strong> tuned for resource-constrained environments.
+                            </p>
+                            <p class="card-description">
+                                Images were captured at <strong>96x96 resolution</strong> and resampled to <strong>32x32 bitmaps</strong> to reduce memory usage. The pre-processing pipeline involved basic image transformations and was kept lightweight to match the ESP32's limited capabilities. Techniques like edge detection and thresholding were considered but avoided where possible due to compute constraints.
+                            </p>
+                            <p class="card-description">
+                                To improve generalization, I gathered several hundred clean images per class directly from the ESP camera, using a custom socket server/client setup. I then applied augmentation and trained the CNN on a laptop. The final model achieved <span class="badge bg-success">56% classification accuracy</span> when deployed back onto the ESP device using MicroPython.
+                            </p>
+                            <p class="card-description">
+                                Key takeaways included navigating embedded deployment constraints, applying image processing creatively, and validating the use of affordable microcontrollers in real-world vision tasks. This project served as a technical feasibility test and proof of execution for future gesture-based consumer products.
+                            </p>
+                        </div>
+
+                        <button id="btn-rps" class="btn-outline" onclick="toggleReadMore('rps')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- L-Store Project -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">L-Store: Lineage-Based Database Storage Engine</h3>
+                            </div>
+                            <span class="btn-secondary disabled">
+                                Demo Not Available
+                            </span>
+                        </div>
+                        
+                        <div class="card-tags">
+                            <span class="tag">Database Systems</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Storage Engine</span>
+                            <span class="tag">ACID</span>
+                        </div>
+
+                        <p class="card-description">
+                            This project demonstrates the implementation of a comprehensive <strong>relational database storage engine</strong> based on the L-Store architecture, designed to bridge the gap between transactional and analytical workloads. <strong>I served as the project lead</strong> for our team and built a complete database system from scratch using Python, implementing novel <strong>lineage-based storage</strong> with columnar data organization and update-friendly architecture.
+                        </p>
+
+                        <div id="more-lstore" class="more-content">
+                            <p class="card-description">
+                                The project was structured across three progressive milestones, each building upon the previous implementation. <strong>Milestone 1</strong> established the foundational single-threaded, in-memory database with columnar storage, implementing base and tail page architecture where original records (base pages) are kept separate from updates (tail pages). This design eliminates the need for immediate in-place updates while maintaining query performance through clever indirection mechanisms.
+                            </p>
+                            <p class="card-description">
+                                <strong>Milestone 2</strong> introduced durability and advanced data management by implementing a complete <strong>bufferpool system</strong> with LRU page replacement, disk persistence, and a sophisticated background merge process. The merge operation consolidates tail records with base pages in a contention-free manner using Tail-Page Sequence Numbers (TPS) for lineage tracking. Additionally, I implemented comprehensive <strong>secondary indexing</strong> capabilities using hash tables and B-trees for accelerated query processing.
+                            </p>
+                            <p class="card-description">
+                                <strong>Milestone 3</strong> completed the system with full <strong>ACID transaction support</strong> and multi-threaded concurrency control. I implemented strict two-phase locking (2PL) with no-wait deadlock prevention, allowing multiple transactions to execute concurrently while maintaining serializability. The system handles transaction atomicity through proper rollback mechanisms and isolation through record-level locking managed by a centralized lock manager.
+                            </p>
+                            <p class="card-description">
+                                Key technical achievements include implementing a <strong>columnar storage engine</strong> with 4KB page granularity, developing a sophisticated page directory for RID-to-page mapping, creating a background merge thread that operates without blocking foreground transactions, and building a complete concurrency control system supporting multi-statement transactions. The final implementation achieved high performance with support for complex analytical queries while maintaining transactional consistency.
+                            </p>
+                            <p class="card-description">
+                                This project provided deep insights into database internals, storage optimization strategies, and the challenges of building production-grade database systems. The L-Store architecture demonstrates how modern databases can efficiently handle both <span class="badge bg-success">write-intensive</span> and <span class="badge bg-info">read-intensive</span> workloads within a single unified engine.
+                            </p>
+                        </div>
+
+                        <button id="btn-lstore" class="btn-outline" onclick="toggleReadMore('lstore')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:roncy.bhatia@gmail.com" class="footer-link" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)" title="Click to copy email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://github.com/ronitbhatia" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Ronit Bhatia. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior and active section highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.querySelector('.navbar');
+
+            const getNavOffset = () => (navbar ? navbar.offsetHeight : 0) + 20;
+
+            const applyScrollPadding = () => {
+                document.documentElement.style.scrollPaddingTop = getNavOffset() + 'px';
+            };
+            applyScrollPadding();
+            window.addEventListener('resize', applyScrollPadding);
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const targetPosition = target.offsetTop - getNavOffset();
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Enhanced Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        if (entry.target.classList.contains('card')) {
+                            const cards = entry.target.parentElement.querySelectorAll('.card');
+                            cards.forEach((card, index) => {
+                                card.style.setProperty('--stagger-index', index);
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 150);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-fade-in, .scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Dark mode functionality
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            function updateToggleIcon() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                darkModeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+            
+            updateToggleIcon();
+            
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateToggleIcon();
+                
+                document.body.style.transition = 'background 0.3s ease, color 0.3s ease';
+                setTimeout(() => {
+                    document.body.style.transition = '';
+                }, 300);
+            });
+            
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    updateToggleIcon();
+                }
+            });
+
+            // Custom cursor functionality
+            const cursor = document.querySelector('.custom-cursor');
+            
+            if (cursor) {
+                let mouseX = 0;
+                let mouseY = 0;
+                let cursorX = 0;
+                let cursorY = 0;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                function animateCursor() {
+                    const ease = 0.15;
+                    cursorX += (mouseX - cursorX) * ease;
+                    cursorY += (mouseY - cursorY) * ease;
+                    
+                    cursor.style.left = cursorX + 'px';
+                    cursor.style.top = cursorY + 'px';
+                    
+                    requestAnimationFrame(animateCursor);
+                }
+                
+                animateCursor();
+                
+                const hoverElements = document.querySelectorAll('a, button, .card, .skill-card, .tag, .btn-primary, .btn-outline, .btn-secondary');
+                
+                hoverElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        cursor.classList.add('hover');
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('hover');
+                    });
+                });
+                
+                document.addEventListener('mousedown', () => {
+                    cursor.classList.add('click');
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    cursor.classList.remove('click');
+                });
+                
+                document.addEventListener('mouseleave', () => {
+                    cursor.style.opacity = '0';
+                });
+                
+                document.addEventListener('mouseenter', () => {
+                    cursor.style.opacity = '0.8';
+                });
+            }
+        });
+
+        function toggleReadMore(id) {
+            const moreContent = document.getElementById(`more-${id}`);
+            const button = document.getElementById(`btn-${id}`);
+            
+            if (moreContent && button) {
+                if (moreContent.classList.contains('show')) {
+                    moreContent.classList.remove('show');
+                    button.textContent = 'Read More';
+                } else {
+                    moreContent.classList.add('show');
+                    button.textContent = 'Read Less';
+                }
+            }
+        }
+
+        function copyEmailToClipboard(email, event) {
+            event.preventDefault();
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyNotification('Email copied to clipboard!');
+                } else {
+                    navigator.clipboard.writeText(email).then(() => {
+                        showCopyNotification('Email copied to clipboard!');
+                    }).catch(() => {
+                        showCopyNotification('Failed to copy email');
+                    });
+                }
+            } catch (err) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyNotification('Email copied to clipboard!');
+                }).catch(() => {
+                    showCopyNotification('Failed to copy email');
+                });
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        function showCopyNotification(message) {
+            const existingNotification = document.querySelector('.copy-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--accent-primary);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                backdrop-filter: blur(10px);
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+

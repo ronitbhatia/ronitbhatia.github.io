@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Ronit Bhatia</title>
+    <meta name="description" content="Professional Experience - Software Engineer & ML Enthusiast">
+    <meta name="author" content="Ronit Bhatia">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.0.4">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16,18 22,12 16,6"></polyline>
+                        <polyline points="8,6 2,12 8,18"></polyline>
+                    </svg>
+                </div>
+                <span class="nav-brand-text">Ronit Bhatia</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="experience.html" class="nav-link active">experience</a>
+                <a href="education.html" class="nav-link">education</a>
+                <a href="initiative-impact.html" class="nav-link">initiative & impact</a>
+                <a href="skills.html" class="nav-link">skills</a>
+            </div>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+        <!-- Experience Section -->
+    <section id="experience" class="section section-bg" style="padding-top: 10rem;">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Professional Experience</h2>
+            
+            <div class="experience-grid">
+                <!-- QAlienAI -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">QAlienAI</h3>
+                                <h4 class="card-subtitle">Machine Learning Engineer Intern</h4>
+                            </div>
+                            <span class="btn-secondary">Oct 2025 – Present</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            Leading development of AI systems that evaluate marketing content for FTC and FDA compliance using LLMs, semantic similarity, and rule-based checks. Building multimodal classifiers and unified OCR/ASR pipelines to support platform-wide content intelligence.
+                        </p>
+
+                        <div id="more-qalienai" class="more-content">
+                            <p class="card-description">
+                                Leading development of AI systems that evaluate marketing content for FTC and FDA compliance using LLMs, semantic similarity, and rule-based checks. Working with Claude 3.5 Sonnet and Gemini 2.5 Pro to deliver accurate, interpretable assessments. Building multimodal classifiers that distinguish user-generated from professional content.
+                            </p>
+                            <p class="card-description">
+                                Developing multimodal content analysis capabilities using image, video, and audio processing through AWS Bedrock and Gemini Vision. Building a unified OCR and ASR pipeline with Gemini Vision and AssemblyAI for reliable text extraction across images, audio, and video. Implementing confidence scoring, fallback logic, and error handling for robust performance.
+                            </p>
+                            <p class="card-description">
+                                Implementing semantic search with pgvector to retrieve regulatory guidance, generating embeddings, and tuning similarity search. Creating a brand compliance analyzer powered by multiple LLM providers that produces structured evaluations of tone, vocabulary, layout, and visual identity with confidence scoring.
+                            </p>
+                            <p class="card-description">
+                                Engineering end-to-end AI pipelines using Supabase Edge Functions, TypeScript, and Deno. Managing async workflows, job queues, and result aggregation for a scalable multi-tenant SaaS platform.
+                            </p>
+                        </div>
+
+                        <button id="btn-qalienai" class="btn-outline" onclick="toggleReadMore('qalienai')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gallox Semiconductors -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Gallox Semiconductors</h3>
+                                <h4 class="card-subtitle">Software Engineer Intern</h4>
+                            </div>
+                            <span class="btn-secondary">Nov 2024 – Jan 2025</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            Built smart automation tools to test semiconductor power devices, helping engineers save time and get more accurate results. My work made it easier to spot issues early and sped up the overall testing process in the lab.
+                        </p>
+
+                        <div id="more-gallox" class="more-content">
+                            <p class="card-description">
+                                Architected comprehensive automation frameworks for semiconductor power device testing, streamlining characterization workflow for high-voltage MOSFETs and IGBTs. Built sophisticated real-time data visualization dashboard with multi-threaded data acquisition and automated anomaly detection, reducing manual debugging time by 40%.
+                            </p>
+                            <p class="card-description">
+                                Developed robust testing protocols and quality assurance systems that improved device characterization accuracy and significantly reduced testing cycle times. Implemented advanced data processing algorithms to handle large-scale semiconductor datasets efficiently.
+                            </p>
+                        </div>
+
+                        <button id="btn-gallox" class="btn-outline" onclick="toggleReadMore('gallox')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cornell CALS -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Cornell CALS</h3>
+                                <h4 class="card-subtitle">Student Research Assistant</h4>
+                            </div>
+                            <span class="btn-secondary">Aug 2024 – Dec 2024</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            Explored how machine learning can help tackle climate change by analyzing greenhouse gas emissions from different crops. Built efficient tools to clean and process large amounts of geospatial data for sustainable agriculture strategies.
+                        </p>
+
+                        <div id="more-cornell" class="more-content">
+                            <p class="card-description">
+                                Engineered sophisticated ML pipelines to analyze large-scale agricultural GHG emission datasets, implementing advanced k-means clustering algorithms with custom distance metrics. Developed comprehensive Python-based ETL workflows using Pandas, NumPy, and GeoPandas to process and standardize geospatial crop emissions data from multiple sources.
+                            </p>
+                            <p class="card-description">
+                                Conducted extensive data analysis to identify patterns in agricultural emissions and developed predictive models for sustainable farming practices. Collaborated with research teams to validate findings and contribute to climate change mitigation strategies through data-driven insights.
+                            </p>
+                        </div>
+
+                        <button id="btn-cornell" class="btn-outline" onclick="toggleReadMore('cornell')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ColentAI -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">ColentAI</h3>
+                                <h4 class="card-subtitle">Software Developer Intern</h4>
+                            </div>
+                            <span class="btn-secondary">Jan 2024 – Mar 2024</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            Worked on making generative AI models smarter and faster by fine-tuning how they learn. Built reliable pipelines to pull in diverse data from APIs which helped improve the quality of training datasets.
+                        </p>
+
+                        <div id="more-colentai" class="more-content">
+                            <p class="card-description">
+                                Optimized large language model performance through systematic hyperparameter tuning and advanced fine-tuning techniques. Conducted extensive API research and integration work, developing robust data acquisition pipelines.
+                            </p>
+                            <p class="card-description">
+                                Built sophisticated automated skill taxonomy generator leveraging advanced NLP techniques including TF-IDF vectorization, NER, and BERT embeddings for semantic similarity analysis, achieving 92% classification accuracy.
+                            </p>
+                        </div>
+
+                        <button id="btn-colentai" class="btn-outline" onclick="toggleReadMore('colentai')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cardinality-AI -->
+                <div class="card animate-fade-in">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Cardinality-AI</h3>
+                                <h4 class="card-subtitle">Data Analyst Intern</h4>
+                            </div>
+                            <span class="btn-secondary">June 2021 – Sept 2021</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            Worked on designing and building smart data pipelines to prepare large, structured datasets for machine learning. Used SQL to clean and organize the data efficiently and engineered new features to help models make better predictions.
+                        </p>
+
+                        <div id="more-cardinality" class="more-content">
+                            <p class="card-description">
+                                Architected and implemented robust data ingestion and transformation pipelines using advanced SQL techniques including window functions, CTEs, and stored procedures to efficiently process large-scale structured datasets.
+                            </p>
+                            <p class="card-description">
+                                Leveraged MATLAB's advanced analytics capabilities to conduct sophisticated pattern recognition analysis using signal processing techniques, Fourier transforms, and spectral analysis for data-driven policy recommendations.
+                            </p>
+                        </div>
+
+                        <button id="btn-cardinality" class="btn-outline" onclick="toggleReadMore('cardinality')">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:roncy.bhatia@gmail.com" class="footer-link" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)" title="Click to copy email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://github.com/ronitbhatia" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Ronit Bhatia. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior and active section highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.querySelector('.navbar');
+
+            const getNavOffset = () => (navbar ? navbar.offsetHeight : 0) + 20;
+
+            const applyScrollPadding = () => {
+                document.documentElement.style.scrollPaddingTop = getNavOffset() + 'px';
+            };
+            applyScrollPadding();
+            window.addEventListener('resize', applyScrollPadding);
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const targetPosition = target.offsetTop - getNavOffset();
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Enhanced Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        if (entry.target.classList.contains('card')) {
+                            const cards = entry.target.parentElement.querySelectorAll('.card');
+                            cards.forEach((card, index) => {
+                                card.style.setProperty('--stagger-index', index);
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 150);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-fade-in, .scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Dark mode functionality
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            function updateToggleIcon() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                darkModeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+            
+            updateToggleIcon();
+            
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateToggleIcon();
+                
+                document.body.style.transition = 'background 0.3s ease, color 0.3s ease';
+                setTimeout(() => {
+                    document.body.style.transition = '';
+                }, 300);
+            });
+            
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    updateToggleIcon();
+                }
+            });
+
+            // Custom cursor functionality
+            const cursor = document.querySelector('.custom-cursor');
+            
+            if (cursor) {
+                let mouseX = 0;
+                let mouseY = 0;
+                let cursorX = 0;
+                let cursorY = 0;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                function animateCursor() {
+                    const ease = 0.15;
+                    cursorX += (mouseX - cursorX) * ease;
+                    cursorY += (mouseY - cursorY) * ease;
+                    
+                    cursor.style.left = cursorX + 'px';
+                    cursor.style.top = cursorY + 'px';
+                    
+                    requestAnimationFrame(animateCursor);
+                }
+                
+                animateCursor();
+                
+                const hoverElements = document.querySelectorAll('a, button, .card, .skill-card, .tag, .btn-primary, .btn-outline, .btn-secondary');
+                
+                hoverElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        cursor.classList.add('hover');
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('hover');
+                    });
+                });
+                
+                document.addEventListener('mousedown', () => {
+                    cursor.classList.add('click');
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    cursor.classList.remove('click');
+                });
+                
+                document.addEventListener('mouseleave', () => {
+                    cursor.style.opacity = '0';
+                });
+                
+                document.addEventListener('mouseenter', () => {
+                    cursor.style.opacity = '0.8';
+                });
+            }
+        });
+
+        function toggleReadMore(id) {
+            const moreContent = document.getElementById(`more-${id}`);
+            const button = document.getElementById(`btn-${id}`);
+            
+            if (moreContent && button) {
+                if (moreContent.classList.contains('show')) {
+                    moreContent.classList.remove('show');
+                    button.textContent = 'Read More';
+                } else {
+                    moreContent.classList.add('show');
+                    button.textContent = 'Read Less';
+                }
+            }
+        }
+
+        function copyEmailToClipboard(email, event) {
+            event.preventDefault();
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyNotification('Email copied to clipboard!');
+                } else {
+                    navigator.clipboard.writeText(email).then(() => {
+                        showCopyNotification('Email copied to clipboard!');
+                    }).catch(() => {
+                        showCopyNotification('Failed to copy email');
+                    });
+                }
+            } catch (err) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyNotification('Email copied to clipboard!');
+                }).catch(() => {
+                    showCopyNotification('Failed to copy email');
+                });
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        function showCopyNotification(message) {
+            const existingNotification = document.querySelector('.copy-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--accent-primary);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                backdrop-filter: blur(10px);
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronit Bhatia | Portfolio</title>
+    <meta name="description" content="Software Engineer & ML Enthusiast - Building impactful solutions through thoughtful engineering">
+    <meta name="author" content="Ronit Bhatia">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.0.4">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16,18 22,12 16,6"></polyline>
+                        <polyline points="8,6 2,12 8,18"></polyline>
+                    </svg>
+                </div>
+                <span class="nav-brand-text">Ronit Bhatia</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link active">about</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="experience.html" class="nav-link">experience</a>
+                <a href="education.html" class="nav-link">education</a>
+                <a href="initiative-impact.html" class="nav-link">initiative & impact</a>
+                <a href="skills.html" class="nav-link">skills</a>
+            </div>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi There,
+                        <br>
+                        <span class="hero-gradient-text">I'm Ronit</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        <span>I am into</span> <span class="typing-text"></span>
+                    </p>
+                    
+                    <p class="hero-description">
+                        I build software systems that create real impact, combining deep technical skills with a practical mindset. I enjoy working where software meets creativity, turning ambitious ideas into clear, useful products through thoughtful engineering.
+                    </p>
+                    
+                    <div class="hero-links">
+                        <a href="mailto:roncy.bhatia@gmail.com" class="hero-link email" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            roncy.bhatia@gmail.com
+                        </a>
+                        <a href="https://github.com/ronitbhatia" target="_blank" class="hero-link github">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" class="hero-link linkedin">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+
+                    <a href="Resume.pdf" download class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Resume
+                    </a>
+                </div>
+
+                <div class="hero-image">
+                    <div class="avatar-container">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-inner">
+                                <img src="avatar.png" alt="Ronit Avatar" class="avatar-image">
+                            </div>
+                        </div>
+                        <div class="wave-emoji">👋</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6,9 12,15 18,9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-bg">
+        <div class="container">
+                            <div class="about-content animate-fade-in scroll-reveal">
+                <div class="about-image">
+                    <img src="IMG_5623.jpeg" alt="Ronit Bhatia" class="about-photo">
+                </div>
+                
+                <div>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">About Me</h2>
+                    <div class="about-text">
+                        <p style="margin-bottom: 1.5rem;">
+                            I turn complex problems into elegant code, and complex code into real-world impact. My approach combines deep technical execution with strategic thinking, building systems that don't just work, but work intelligently.
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            What gets me excited is translating ambitious ideas into engineering solutions that actually matter. Whether I'm developing neural networks, building data pipelines, or fine-tuning AI models, I bring both analytical thinking and creative problem-solving to every challenge. I believe the best work happens when you push technical boundaries while staying grounded in practical reality.
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            My engineering philosophy is simple: understand the bigger picture, then master the details. This perspective, shaped by my engineering management background, helps me build solutions that are both technically sound and strategically valuable. I'm drawn to challenges that require thinking differently, turning messy problems into clean, impactful solutions through thoughtful engineering.                        
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:roncy.bhatia@gmail.com" class="footer-link" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)" title="Click to copy email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://github.com/ronitbhatia" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" class="footer-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Ronit Bhatia. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior and active section highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.querySelector('.navbar');
+
+            const getNavOffset = () => (navbar ? navbar.offsetHeight : 0) + 20; // add small breathing room
+
+            // Keep scroll padding in sync with real navbar height
+            const applyScrollPadding = () => {
+                document.documentElement.style.scrollPaddingTop = getNavOffset() + 'px';
+            };
+            applyScrollPadding();
+            window.addEventListener('resize', applyScrollPadding);
+
+            // Enhanced smooth scrolling using dynamic offset
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const targetPosition = target.offsetTop - getNavOffset();
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Active section highlighting
+            const sections = document.querySelectorAll('section[id]');
+            
+            function updateActiveNavLink() {
+                const scrollPos = window.scrollY + getNavOffset();
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        // Remove active class from all nav links
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        
+                        // Add active class to corresponding nav link
+                        const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }
+
+            // Update on scroll
+            window.addEventListener('scroll', updateActiveNavLink);
+            
+            // Initial call
+            updateActiveNavLink();
+
+            // Enhanced typing animation
+            const texts = [
+                "Software Development",
+                "Machine Learning Engineering", 
+                "Data Analysis",
+                "Product Management",
+                "Web Development",
+                "Business Analysis",
+                "AI & Neural Networks",
+                "Full-Stack Development"
+            ];
+            
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingElement = document.querySelector('.typing-text');
+            
+            const typeWriter = () => {
+                const currentText = texts[textIndex];
+                
+                if (!isDeleting) {
+                    if (charIndex < currentText.length) {
+                        if (typingElement) {
+                            typingElement.textContent = currentText.substring(0, charIndex + 1);
+                        }
+                        charIndex++;
+                        setTimeout(typeWriter, 100);
+                    } else {
+                        setTimeout(() => {
+                            isDeleting = true;
+                            typeWriter();
+                        }, 2000);
+                    }
+                } else {
+                    if (charIndex > 0) {
+                        if (typingElement) {
+                            typingElement.textContent = currentText.substring(0, charIndex - 1);
+                        }
+                        charIndex--;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % texts.length;
+                        setTimeout(typeWriter, 500);
+                    }
+                }
+            };
+            
+            typeWriter();
+
+            // Enhanced Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Add staggered animation for cards
+                        if (entry.target.classList.contains('card')) {
+                            const cards = entry.target.parentElement.querySelectorAll('.card');
+                            cards.forEach((card, index) => {
+                                card.style.setProperty('--stagger-index', index);
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 150);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animation elements
+            document.querySelectorAll('.animate-fade-in, .scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Create animated dots
+            const createDots = () => {
+                const hero = document.querySelector('.hero');
+                const dotsContainer = document.createElement('div');
+                dotsContainer.className = 'animated-dots';
+                
+                for (let i = 0; i < 20; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dot.style.left = `${Math.random() * 100}%`;
+                    dot.style.top = `${Math.random() * 100}%`;
+                    dot.style.animationDelay = `${Math.random() * 6}s`;
+                    dotsContainer.appendChild(dot);
+                }
+                
+                hero.appendChild(dotsContainer);
+            };
+
+            createDots();
+
+            // Dark mode functionality
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme preference or default to system preference
+            const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Update toggle button state
+            function updateToggleIcon() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                darkModeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+            
+            updateToggleIcon();
+            
+            // Toggle dark mode
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateToggleIcon();
+                
+                // Add smooth transition effect
+                document.body.style.transition = 'background 0.3s ease, color 0.3s ease';
+                setTimeout(() => {
+                    document.body.style.transition = '';
+                }, 300);
+            });
+            
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    updateToggleIcon();
+                }
+            });
+
+            // Custom cursor functionality
+            const cursor = document.querySelector('.custom-cursor');
+            
+            if (cursor) {
+                let mouseX = 0;
+                let mouseY = 0;
+                let cursorX = 0;
+                let cursorY = 0;
+                
+                // Update mouse position
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                // Smooth cursor animation
+                function animateCursor() {
+                    const ease = 0.15;
+                    cursorX += (mouseX - cursorX) * ease;
+                    cursorY += (mouseY - cursorY) * ease;
+                    
+                    cursor.style.left = cursorX + 'px';
+                    cursor.style.top = cursorY + 'px';
+                    
+                    requestAnimationFrame(animateCursor);
+                }
+                
+                animateCursor();
+                
+                // Hover effects
+                const hoverElements = document.querySelectorAll('a, button, .card, .skill-card, .tag, .btn-primary, .btn-outline, .btn-secondary');
+                
+                hoverElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        cursor.classList.add('hover');
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('hover');
+                    });
+                });
+                
+                // Click effect
+                document.addEventListener('mousedown', () => {
+                    cursor.classList.add('click');
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    cursor.classList.remove('click');
+                });
+                
+                // Hide cursor when leaving window
+                document.addEventListener('mouseleave', () => {
+                    cursor.style.opacity = '0';
+                });
+                
+                document.addEventListener('mouseenter', () => {
+                    cursor.style.opacity = '0.8';
+                });
+            }
+        });
+
+        function toggleReadMore(id) {
+            const moreContent = document.getElementById(`more-${id}`);
+            const button = document.getElementById(`btn-${id}`);
+            
+            if (moreContent && button) {
+                if (moreContent.classList.contains('show')) {
+                    moreContent.classList.remove('show');
+                    button.textContent = 'Read More';
+                } else {
+                    moreContent.classList.add('show');
+                    button.textContent = 'Read Less';
+                }
+            }
+        }
+
+        // Email clipboard copy functionality
+        function copyEmailToClipboard(email, event) {
+            event.preventDefault();
+            
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyNotification('Email copied to clipboard!');
+                } else {
+                    // Fallback for modern browsers
+                    navigator.clipboard.writeText(email).then(() => {
+                        showCopyNotification('Email copied to clipboard!');
+                    }).catch(() => {
+                        showCopyNotification('Failed to copy email');
+                    });
+                }
+            } catch (err) {
+                // Modern clipboard API fallback
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyNotification('Email copied to clipboard!');
+                }).catch(() => {
+                    showCopyNotification('Failed to copy email');
+                });
+            }
+            
+            // Clean up
+            document.body.removeChild(textarea);
+        }
+
+        // Show copy notification
+        function showCopyNotification(message) {
+            // Remove existing notification if any
+            const existingNotification = document.querySelector('.copy-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--accent-primary);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                backdrop-filter: blur(10px);
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
