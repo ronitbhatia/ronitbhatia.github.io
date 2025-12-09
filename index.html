@@ -10,15 +10,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.0.4">
+    <link rel="stylesheet" href="style.css?v=2.0.0">
+    <script src="search.js"></script>
+    <script>
+        // Fix for local file serving - handle directory listing issue
+        // IMPORTANT: When deployed to GitHub Pages, "/" automatically serves index.html
+        // This script only helps with local testing
+        (function() {
+            // Immediately check if we're seeing a directory listing
+            // This runs before DOMContentLoaded to catch the issue early
+            if (document.body === null || (document.body && document.body.children.length === 0 && document.title === 'Index of /')) {
+                // We're seeing a directory listing - redirect to index.html
+                if (window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+                    const currentFile = window.location.href.split('/').pop();
+                    if (!currentFile || currentFile === '' || (!currentFile.includes('.html') && !currentFile.includes('index'))) {
+                        window.location.replace('index.html');
+                        return;
+                    }
+                }
+            }
+            
+            // Convert "/" links to "index.html" for local compatibility
+            // This ensures links work locally, but when deployed, GitHub Pages handles "/" correctly
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            if (!isGitHubPages) {
+                // Only convert for local testing
+                document.addEventListener('DOMContentLoaded', function() {
+                    const rootLinks = document.querySelectorAll('a[href="/"], a[href="/#about"]');
+                    rootLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href === '/') {
+                            link.setAttribute('href', 'index.html');
+                        } else if (href === '/#about') {
+                            link.setAttribute('href', 'index.html#about');
+                        }
+                    });
+                });
+            }
+        })();
+        
+        // Apply theme immediately to prevent flash of wrong theme
+        (function() {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const savedTheme = localStorage.getItem('theme');
+            const theme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            // Only set body theme if body exists (it might not be loaded yet)
+            if (document.body) {
+                document.body.setAttribute('data-theme', theme);
+            }
+        })();
+    </script>
 </head>
 <body>
+    <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
-
+    <div class="custom-cursor-dot"></div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-brand">
+            <a href="/" class="nav-brand">
                 <div class="nav-logo">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="16,18 22,12 16,6"></polyline>
@@ -28,7 +79,7 @@
                 <span class="nav-brand-text">Ronit Bhatia</span>
             </a>
             <div class="nav-links">
-                <a href="index.html#about" class="nav-link active">about</a>
+                <a href="#about" class="nav-link active">about</a>
                 <a href="projects.html" class="nav-link">projects</a>
                 <a href="experience.html" class="nav-link">experience</a>
                 <a href="education.html" class="nav-link">education</a>
@@ -36,8 +87,9 @@
                 <a href="skills.html" class="nav-link">skills</a>
             </div>
             
-            <!-- Dark Mode Toggle -->
-            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <div class="nav-right">
+                <!-- Dark Mode Toggle -->
+                <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -52,28 +104,56 @@
                 <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
-            </button>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#about" class="mobile-nav-link">about</a>
+            <a href="projects.html" class="mobile-nav-link">projects</a>
+            <a href="experience.html" class="mobile-nav-link">experience</a>
+            <a href="education.html" class="mobile-nav-link">education</a>
+            <a href="initiative-impact.html" class="mobile-nav-link">initiative & impact</a>
+            <a href="skills.html" class="mobile-nav-link">skills</a>
+        </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Search Engine Hero Section -->
+    <section id="home" class="hero-search">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Hi There,
-                        <br>
-                        <span class="hero-gradient-text">I'm Ronit</span>
+            <div class="search-hero-content">
+                <div class="search-brand">
+                    <h1 class="search-logo">
+                        <span class="search-logo-text">Ronit</span>
+                        <span class="search-logo-accent">Amar</span>
+                        <span class="search-logo-text">Bhatia</span>
                     </h1>
-                    <p class="hero-subtitle">
+                    <p class="search-tagline">
                         <span>I am into</span> <span class="typing-text"></span>
                     </p>
-                    
-                    <p class="hero-description">
-                        I build software systems that create real impact, combining deep technical skills with a practical mindset. I enjoy working where software meets creativity, turning ambitious ideas into clear, useful products through thoughtful engineering.
-                    </p>
-                    
+                </div>
+                
+                <div class="hero-personal-info">
+                    <div class="hero-avatar-section">
+                        <div class="avatar-container">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-inner">
+                                    <img src="avatar.png" alt="Ronit Avatar" class="avatar-image">
+                                </div>
+                            </div>
+                            <div class="wave-emoji">👋</div>
+                        </div>
+                    </div>
                     <div class="hero-links">
                         <a href="mailto:roncy.bhatia@gmail.com" class="hero-link email" onclick="copyEmailToClipboard('roncy.bhatia@gmail.com', event)">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -97,7 +177,6 @@
                             LinkedIn
                         </a>
                     </div>
-
                     <a href="Resume.pdf" download class="btn-primary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -106,25 +185,71 @@
                         </svg>
                         Download Resume
                     </a>
+                    <p class="search-subtitle">Search to discover my work, experience, and skills</p>
+                </div>
+                
+                <div id="search-container" class="search-container">
+                    <div class="search-box-wrapper">
+                        <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder="Search for projects, skills, experience, or anything about me..."
+                            autocomplete="off"
+                            spellcheck="false"
+                        />
+                    </div>
+                    <div id="search-results" class="search-results"></div>
                 </div>
 
-                <div class="hero-image">
-                    <div class="avatar-container">
-                        <div class="avatar-wrapper">
-                            <div class="avatar-inner">
-                                <img src="avatar.png" alt="Ronit Avatar" class="avatar-image">
-                            </div>
-                        </div>
-                        <div class="wave-emoji">👋</div>
+                <div class="search-suggestions">
+                    <p class="suggestions-label">Try searching for:</p>
+                    <div class="suggestion-chips">
+                        <button class="suggestion-chip" onclick="document.getElementById('search-input').value='machine learning'; document.getElementById('search-input').dispatchEvent(new Event('input'));">Machine Learning</button>
+                        <button class="suggestion-chip" onclick="document.getElementById('search-input').value='projects'; document.getElementById('search-input').dispatchEvent(new Event('input'));">Projects</button>
+                        <button class="suggestion-chip" onclick="document.getElementById('search-input').value='python'; document.getElementById('search-input').dispatchEvent(new Event('input'));">Python</button>
+                        <button class="suggestion-chip" onclick="document.getElementById('search-input').value='experience'; document.getElementById('search-input').dispatchEvent(new Event('input'));">Experience</button>
+                        <button class="suggestion-chip" onclick="document.getElementById('search-input').value='AI'; document.getElementById('search-input').dispatchEvent(new Event('input'));">AI</button>
+                        <button class="suggestion-chip" onclick="document.getElementById('search-input').value='skills'; document.getElementById('search-input').dispatchEvent(new Event('input'));">Skills</button>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="scroll-indicator">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6,9 12,15 18,9"></polyline>
-            </svg>
+                <div class="quick-links">
+                    <a href="#about" class="quick-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        About Me
+                    </a>
+                    <a href="projects.html" class="quick-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                        Projects
+                    </a>
+                    <a href="experience.html" class="quick-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        Experience
+                    </a>
+                    <a href="skills.html" class="quick-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        Skills
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -182,8 +307,226 @@
     </footer>
 
     <script>
+        // Convert root URLs to index.html for production deployment
+        // This script runs on all pages to ensure "/" links work both locally and when deployed
+        (function() {
+            // Only convert if we're NOT on GitHub Pages (detected by hostname)
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const isLocalFile = window.location.protocol === 'file:';
+            
+            // For local testing, convert "/" to "index.html"
+            // For GitHub Pages, keep "/" as it automatically serves index.html
+            if (!isGitHubPages || isLocalFile) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Convert brand/logo links
+                    const homeLinks = document.querySelectorAll('a[href="/"], a.nav-brand[href="/"]');
+                    homeLinks.forEach(link => {
+                        if (link.getAttribute('href') === '/') {
+                            link.setAttribute('href', 'index.html');
+                        }
+                    });
+                    
+                    // Convert about links
+                    const aboutLinks = document.querySelectorAll('a[href="/#about"]');
+                    aboutLinks.forEach(link => {
+                        link.setAttribute('href', 'index.html#about');
+                    });
+                });
+            }
+        })();
+
+        // Mobile Menu Toggle
+        (function() {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const body = document.body;
+            
+            if (!mobileMenuToggle || !mobileMenu) return;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            body.appendChild(overlay);
+            
+            function toggleMobileMenu() {
+                const isOpen = mobileMenu.classList.contains('open');
+                
+                if (isOpen) {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuToggle.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                } else {
+                    mobileMenu.classList.add('open');
+                    mobileMenuToggle.classList.add('active');
+                    overlay.classList.add('active');
+                    body.style.overflow = 'hidden';
+                }
+            }
+            
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', toggleMobileMenu);
+            
+            // Close menu when clicking a link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuToggle.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                    toggleMobileMenu();
+                }
+            });
+        })();
+
+        // Custom Cursor - Lightweight and Smooth
+        (function() {
+            // Disable on touch devices for better performance
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                return;
+            }
+            
+            const cursor = document.querySelector('.custom-cursor');
+            const cursorDot = document.querySelector('.custom-cursor-dot');
+            
+            if (!cursor || !cursorDot) return;
+            
+            let mouseX = 0;
+            let mouseY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+            let dotX = 0;
+            let dotY = 0;
+            
+            // Smooth animation using requestAnimationFrame for performance
+            function animateCursor() {
+                // Smooth cursor movement with easing
+                cursorX += (mouseX - cursorX) * 0.15;
+                cursorY += (mouseY - cursorY) * 0.15;
+                
+                // Dot follows more closely
+                dotX += (mouseX - dotX) * 0.5;
+                dotY += (mouseY - dotY) * 0.5;
+                
+                // Use transform for better performance (GPU accelerated)
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+                cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+                
+                requestAnimationFrame(animateCursor);
+            }
+            
+            // Initialize cursor position
+            cursor.style.opacity = '1';
+            cursorDot.style.opacity = '1';
+            
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            }, { passive: true });
+            
+            // Hide cursor when mouse leaves window
+            document.addEventListener('mouseleave', () => {
+                cursor.style.opacity = '0';
+                cursorDot.style.opacity = '0';
+            }, { passive: true });
+            
+            document.addEventListener('mouseenter', () => {
+                cursor.style.opacity = '1';
+                cursorDot.style.opacity = '1';
+            }, { passive: true });
+            
+            // Hover effects on interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [role="button"], [tabindex], .nav-link, .quick-link, .hero-link, .footer-link, .suggestion-chip, .card, .tag');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                }, { passive: true });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                }, { passive: true });
+            });
+            
+            // Click effect
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('click');
+            }, { passive: true });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('click');
+            }, { passive: true });
+            
+            // Start animation
+            animateCursor();
+        })();
+
         // Smooth scroll behavior and active section highlighting
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle hash navigation on page load (enhanced) - but always remove hash from URL
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const scrollToHash = () => {
+                    const section = document.getElementById(hash);
+                    if (section) {
+                        const navbar = document.querySelector('.navbar');
+                        const offset = navbar ? navbar.offsetHeight + 20 : 100;
+                        const targetPosition = section.offsetTop - offset;
+                        window.scrollTo({
+                            top: Math.max(0, targetPosition),
+                            behavior: 'smooth'
+                        });
+                        // Remove hash from URL after scrolling
+                        setTimeout(() => {
+                            if (window.location.hash) {
+                                window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                            }
+                        }, 100);
+                        return true;
+                    }
+                    return false;
+                };
+                
+                // Try multiple times to ensure section is loaded
+                if (!scrollToHash()) {
+                    setTimeout(() => {
+                        if (!scrollToHash()) {
+                            setTimeout(scrollToHash, 500);
+                        }
+                    }, 200);
+                } else {
+                    // Remove hash immediately if section found
+                    window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                }
+            }
+            
+            // Always ensure URL doesn't have hash - remove it if it appears
+            if (window.location.hash) {
+                window.history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+            
+            // Listen for hash changes and remove hash immediately
+            window.addEventListener('hashchange', function() {
+                if (window.location.hash) {
+                    window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                }
+            });
+            
+            // Also use global hash handler if available
+            if (typeof window.handleHashNavigation === 'function') {
+                window.handleHashNavigation();
+            }
+            
             const links = document.querySelectorAll('a[href^="#"]');
             const navLinks = document.querySelectorAll('.nav-link');
             const navbar = document.querySelector('.navbar');
@@ -197,19 +540,49 @@
             applyScrollPadding();
             window.addEventListener('resize', applyScrollPadding);
 
-            // Enhanced smooth scrolling using dynamic offset
+            // Enhanced smooth scrolling using dynamic offset with better easing
+            // Always remove hash from URL - never show #about in URL
             links.forEach(link => {
                 link.addEventListener('click', (e) => {
                     const href = link.getAttribute('href');
                     if (href && href.startsWith('#')) {
                         e.preventDefault();
+                        // Remove any existing hash from URL immediately
+                        if (window.location.hash) {
+                            window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                        }
                         const target = document.querySelector(href);
                         if (target) {
                             const targetPosition = target.offsetTop - getNavOffset();
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
+                            // Use requestAnimationFrame for smoother scrolling
+                            const startPosition = window.pageYOffset;
+                            const distance = targetPosition - startPosition;
+                            const duration = Math.min(Math.abs(distance) * 0.5, 1000); // Max 1 second
+                            let start = null;
+                            
+                            function smoothScrollStep(timestamp) {
+                                if (!start) start = timestamp;
+                                const progress = timestamp - start;
+                                const progressRatio = Math.min(progress / duration, 1);
+                                
+                                // Easing function for smooth acceleration/deceleration
+                                const ease = progressRatio < 0.5
+                                    ? 2 * progressRatio * progressRatio
+                                    : 1 - Math.pow(-2 * progressRatio + 2, 2) / 2;
+                                
+                                window.scrollTo(0, startPosition + distance * ease);
+                                
+                                if (progress < duration) {
+                                    requestAnimationFrame(smoothScrollStep);
+                                } else {
+                                    // Ensure hash is removed after scrolling completes
+                                    if (window.location.hash) {
+                                        window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                                    }
+                                }
+                            }
+                            
+                            requestAnimationFrame(smoothScrollStep);
                         }
                     }
                 });
@@ -327,7 +700,10 @@
 
             // Create animated dots
             const createDots = () => {
-                const hero = document.querySelector('.hero');
+                const hero = document.querySelector('.hero-search');
+                if (!hero) {
+                    return;
+                }
                 const dotsContainer = document.createElement('div');
                 dotsContainer.className = 'animated-dots';
                 
@@ -345,35 +721,78 @@
 
             createDots();
 
-            // Dark mode functionality
+            // Dark mode functionality - Simple approach like other pages
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
             
-            // Check for saved theme preference or default to system preference
             const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', currentTheme);
+            if (document.body) {
+                document.body.setAttribute('data-theme', currentTheme);
+            }
             
-            // Update toggle button state
+            // Apply theme to homepage-specific sections
+            const heroSearch = document.querySelector('.hero-search');
+            const aboutSection = document.querySelector('#about');
+            if (heroSearch) {
+                heroSearch.setAttribute('data-theme', currentTheme);
+            }
+            if (aboutSection) {
+                aboutSection.setAttribute('data-theme', currentTheme);
+            }
+            
             function updateToggleIcon() {
+                if (!darkModeToggle) return;
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 darkModeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
             }
             
             updateToggleIcon();
             
-            // Toggle dark mode
+            // Toggle dark mode - simple approach like other pages
             darkModeToggle.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 
+                // Set theme on html and body (like other pages)
                 document.documentElement.setAttribute('data-theme', newTheme);
+                if (document.body) {
+                    document.body.setAttribute('data-theme', newTheme);
+                }
                 localStorage.setItem('theme', newTheme);
+                
+                // Apply theme to homepage-specific sections
+                if (heroSearch) {
+                    heroSearch.setAttribute('data-theme', newTheme);
+                    heroSearch.style.removeProperty('background');
+                    heroSearch.style.removeProperty('color');
+                }
+                if (aboutSection) {
+                    aboutSection.setAttribute('data-theme', newTheme);
+                    aboutSection.style.removeProperty('background');
+                    aboutSection.style.removeProperty('color');
+                    aboutSection.style.removeProperty('backdrop-filter');
+                    aboutSection.style.removeProperty('-webkit-backdrop-filter');
+                }
+                
                 updateToggleIcon();
                 
                 // Add smooth transition effect
-                document.body.style.transition = 'background 0.3s ease, color 0.3s ease';
+                const bodyEl = document.body;
+                if (heroSearch) {
+                    heroSearch.style.transition = 'background 0.3s ease, color 0.3s ease';
+                }
+                if (bodyEl) {
+                    bodyEl.style.transition = 'background 0.3s ease, color 0.3s ease';
+                }
+                if (aboutSection) {
+                    aboutSection.style.transition = 'background 0.3s ease, color 0.3s ease';
+                }
+                
                 setTimeout(() => {
-                    document.body.style.transition = '';
+                    if (heroSearch) heroSearch.style.transition = '';
+                    if (bodyEl) bodyEl.style.transition = '';
+                    if (aboutSection) aboutSection.style.transition = '';
                 }, 300);
             });
             
@@ -382,70 +801,28 @@
                 if (!localStorage.getItem('theme')) {
                     const newTheme = e.matches ? 'dark' : 'light';
                     document.documentElement.setAttribute('data-theme', newTheme);
+                    if (document.body) {
+                        document.body.setAttribute('data-theme', newTheme);
+                    }
+                    if (heroSearch) {
+                        heroSearch.setAttribute('data-theme', newTheme);
+                    }
+                    if (aboutSection) {
+                        aboutSection.setAttribute('data-theme', newTheme);
+                    }
+                    updateToggleIcon();
+                }
+            });
+            
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    window.applyTheme(newTheme);
                     updateToggleIcon();
                 }
             });
 
-            // Custom cursor functionality
-            const cursor = document.querySelector('.custom-cursor');
-            
-            if (cursor) {
-                let mouseX = 0;
-                let mouseY = 0;
-                let cursorX = 0;
-                let cursorY = 0;
-                
-                // Update mouse position
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                });
-                
-                // Smooth cursor animation
-                function animateCursor() {
-                    const ease = 0.15;
-                    cursorX += (mouseX - cursorX) * ease;
-                    cursorY += (mouseY - cursorY) * ease;
-                    
-                    cursor.style.left = cursorX + 'px';
-                    cursor.style.top = cursorY + 'px';
-                    
-                    requestAnimationFrame(animateCursor);
-                }
-                
-                animateCursor();
-                
-                // Hover effects
-                const hoverElements = document.querySelectorAll('a, button, .card, .skill-card, .tag, .btn-primary, .btn-outline, .btn-secondary');
-                
-                hoverElements.forEach(element => {
-                    element.addEventListener('mouseenter', () => {
-                        cursor.classList.add('hover');
-                    });
-                    
-                    element.addEventListener('mouseleave', () => {
-                        cursor.classList.remove('hover');
-                    });
-                });
-                
-                // Click effect
-                document.addEventListener('mousedown', () => {
-                    cursor.classList.add('click');
-                });
-                
-                document.addEventListener('mouseup', () => {
-                    cursor.classList.remove('click');
-                });
-                
-                // Hide cursor when leaving window
-                document.addEventListener('mouseleave', () => {
-                    cursor.style.opacity = '0';
-                });
-                
-                document.addEventListener('mouseenter', () => {
-                    cursor.style.opacity = '0.8';
-                });
-            }
         });
 
         function toggleReadMore(id) {
@@ -552,3 +929,4 @@
     </script>
 </body>
 </html>
+

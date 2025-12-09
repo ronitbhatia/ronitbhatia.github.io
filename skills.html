@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="style.css?v=1.0.4">
 </head>
 <body>
+    <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -36,8 +38,9 @@
                 <a href="skills.html" class="nav-link active">skills</a>
             </div>
             
-            <!-- Dark Mode Toggle -->
-            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <div class="nav-right">
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -52,9 +55,29 @@
                 <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
-            </button>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="index.html#about" class="mobile-nav-link">about</a>
+            <a href="projects.html" class="mobile-nav-link">projects</a>
+            <a href="experience.html" class="mobile-nav-link">experience</a>
+            <a href="education.html" class="mobile-nav-link">education</a>
+            <a href="initiative-impact.html" class="mobile-nav-link">initiative & impact</a>
+            <a href="skills.html" class="mobile-nav-link active">skills</a>
+        </div>
+    </div>
 
         <!-- Skills Section -->
     <section id="skills" class="section section-alt" style="padding-top: 10rem;">
@@ -63,7 +86,7 @@
             
             <div class="skills-grid">
                 <!-- Programming Languages -->
-                <div class="skill-card animate-fade-in">
+                <div id="programming" class="skill-card animate-fade-in">
                     <div class="skill-icon programming">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="16,18 22,12 16,6"></polyline>
@@ -86,7 +109,7 @@
                 </div>
 
                 <!-- ML & AI -->
-                <div class="skill-card animate-fade-in">
+                <div id="ml" class="skill-card animate-fade-in">
                     <div class="skill-icon ml">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="4" width="16" height="16" rx="2"></rect>
@@ -121,7 +144,7 @@
                 </div>
 
                 <!-- Tools & DevOps -->
-                <div class="skill-card animate-fade-in">
+                <div id="tools" class="skill-card animate-fade-in">
                     <div class="skill-icon tools">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
@@ -142,7 +165,7 @@
                 </div>
 
                 <!-- Cloud Platforms -->
-                <div class="skill-card animate-fade-in">
+                <div id="cloud" class="skill-card animate-fade-in">
                     <div class="skill-icon cloud">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
@@ -185,8 +208,177 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        (function() {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const body = document.body;
+            
+            if (!mobileMenuToggle || !mobileMenu) return;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            body.appendChild(overlay);
+            
+            function toggleMobileMenu() {
+                const isOpen = mobileMenu.classList.contains('open');
+                
+                if (isOpen) {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuToggle.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                } else {
+                    mobileMenu.classList.add('open');
+                    mobileMenuToggle.classList.add('active');
+                    overlay.classList.add('active');
+                    body.style.overflow = 'hidden';
+                }
+            }
+            
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', toggleMobileMenu);
+            
+            // Close menu when clicking a link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuToggle.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                    toggleMobileMenu();
+                }
+            });
+        })();
+
+        // Custom Cursor - Lightweight and Smooth
+        (function() {
+            // Disable on touch devices for better performance
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                return;
+            }
+            
+            const cursor = document.querySelector('.custom-cursor');
+            const cursorDot = document.querySelector('.custom-cursor-dot');
+            
+            if (!cursor || !cursorDot) return;
+            
+            let mouseX = 0;
+            let mouseY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+            let dotX = 0;
+            let dotY = 0;
+            
+            // Smooth animation using requestAnimationFrame for performance
+            function animateCursor() {
+                // Smooth cursor movement with easing
+                cursorX += (mouseX - cursorX) * 0.15;
+                cursorY += (mouseY - cursorY) * 0.15;
+                
+                // Dot follows more closely
+                dotX += (mouseX - dotX) * 0.5;
+                dotY += (mouseY - dotY) * 0.5;
+                
+                // Use transform for better performance (GPU accelerated)
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+                cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+                
+                requestAnimationFrame(animateCursor);
+            }
+            
+            // Initialize cursor position
+            cursor.style.opacity = '1';
+            cursorDot.style.opacity = '1';
+            
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            }, { passive: true });
+            
+            // Hide cursor when mouse leaves window
+            document.addEventListener('mouseleave', () => {
+                cursor.style.opacity = '0';
+                cursorDot.style.opacity = '0';
+            }, { passive: true });
+            
+            document.addEventListener('mouseenter', () => {
+                cursor.style.opacity = '1';
+                cursorDot.style.opacity = '1';
+            }, { passive: true });
+            
+            // Hover effects on interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [role="button"], [tabindex], .nav-link, .quick-link, .hero-link, .footer-link, .suggestion-chip, .card, .tag');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                }, { passive: true });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                }, { passive: true });
+            });
+            
+            // Click effect
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('click');
+            }, { passive: true });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('click');
+            }, { passive: true });
+            
+            // Start animation
+            animateCursor();
+        })();
+
         // Smooth scroll behavior and active section highlighting
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle hash navigation on page load (enhanced)
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const scrollToHash = () => {
+                    const section = document.getElementById(hash);
+                    if (section) {
+                        const navbar = document.querySelector('.navbar');
+                        const offset = navbar ? navbar.offsetHeight + 20 : 100;
+                        const targetPosition = section.offsetTop - offset;
+                        window.scrollTo({
+                            top: Math.max(0, targetPosition),
+                            behavior: 'smooth'
+                        });
+                        return true;
+                    }
+                    return false;
+                };
+                
+                // Try multiple times to ensure section is loaded
+                if (!scrollToHash()) {
+                    setTimeout(() => {
+                        if (!scrollToHash()) {
+                            setTimeout(scrollToHash, 500);
+                        }
+                    }, 200);
+                }
+            }
+            
+            // Also use global hash handler if available
+            if (typeof window.handleHashNavigation === 'function') {
+                window.handleHashNavigation();
+            }
+            
             const links = document.querySelectorAll('a[href^="#"]');
             const navLinks = document.querySelectorAll('.nav-link');
             const navbar = document.querySelector('.navbar');
@@ -280,61 +472,6 @@
                 }
             });
 
-            // Custom cursor functionality
-            const cursor = document.querySelector('.custom-cursor');
-            
-            if (cursor) {
-                let mouseX = 0;
-                let mouseY = 0;
-                let cursorX = 0;
-                let cursorY = 0;
-                
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                });
-                
-                function animateCursor() {
-                    const ease = 0.15;
-                    cursorX += (mouseX - cursorX) * ease;
-                    cursorY += (mouseY - cursorY) * ease;
-                    
-                    cursor.style.left = cursorX + 'px';
-                    cursor.style.top = cursorY + 'px';
-                    
-                    requestAnimationFrame(animateCursor);
-                }
-                
-                animateCursor();
-                
-                const hoverElements = document.querySelectorAll('a, button, .card, .skill-card, .tag, .btn-primary, .btn-outline, .btn-secondary');
-                
-                hoverElements.forEach(element => {
-                    element.addEventListener('mouseenter', () => {
-                        cursor.classList.add('hover');
-                    });
-                    
-                    element.addEventListener('mouseleave', () => {
-                        cursor.classList.remove('hover');
-                    });
-                });
-                
-                document.addEventListener('mousedown', () => {
-                    cursor.classList.add('click');
-                });
-                
-                document.addEventListener('mouseup', () => {
-                    cursor.classList.remove('click');
-                });
-                
-                document.addEventListener('mouseleave', () => {
-                    cursor.style.opacity = '0';
-                });
-                
-                document.addEventListener('mouseenter', () => {
-                    cursor.style.opacity = '0.8';
-                });
-            }
         });
 
         function toggleReadMore(id) {
