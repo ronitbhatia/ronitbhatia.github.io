@@ -32,7 +32,7 @@ const searchIndex = [
             'ai ml', 'artificial intelligence', 'machine learning', 'deep learning', 'neural networks',
             'python', 'data science', 'data engineering', 'etl', 'data pipeline'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'unclogai', 
         title: 'UnclogAI: AI-Driven Workflow Intelligence Platform', 
         description: 'Enterprise-grade workflow intelligence platform with graph-based process analytics' 
@@ -50,7 +50,7 @@ const searchIndex = [
             'ci cd', 'continuous integration', 'continuous deployment', 'devops', 'deployment',
             'backend', 'backend development', 'server side', 'server-side', 'api development'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'voyagelog', 
         title: 'VoyageLog: Interactive Travel Journal & Map', 
         description: 'Lightweight travel-journal web app with interactive map and photo uploads' 
@@ -66,7 +66,7 @@ const searchIndex = [
             'competitive analysis', 'product development', 'go to market', 'gtm', 'business model',
             'multi agent', 'agentic', 'agent architecture', 'llm application', 'generative ai'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'startupplanner', 
         title: 'Startup Planner Agent: AI-Powered Strategic Planning Tool', 
         description: 'Locally hosted AI application using open-source language models to generate structured startup strategies' 
@@ -84,7 +84,7 @@ const searchIndex = [
             'bert', 'embeddings', 'word embeddings', 'feature extraction', 'text processing',
             'machine learning', 'ml', 'ai', 'artificial intelligence', 'data science'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'excellensight', 
         title: 'ExcellenSight: AI-Powered ChatGPT Feedback Analyzer', 
         description: 'End-to-end NLP system with custom neural network to extract insights from ChatGPT user feedback' 
@@ -102,7 +102,7 @@ const searchIndex = [
             'swot', 'cost benefit analysis', 'cba', 'break even', 'vendor evaluation',
             'data analysis', 'business intelligence', 'bi', 'analytics', 'decision making'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'link-analysis', 
         title: 'Capstone Project: Link Analysis & Fraud Detection Strategy', 
         description: 'Fraud detection strategy project for Fortune 500 insurance company' 
@@ -120,7 +120,7 @@ const searchIndex = [
             'binary classifier', 'feature engineering', 'embeddings', 'semantic similarity',
             'project management', 'team management', 'resource allocation', 'workforce optimization'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'taskify', 
         title: 'Taskify: AI-Powered Task-to-Team Member Matching System', 
         description: 'AI-driven recommendation engine using Transformer-based neural network for task assignment' 
@@ -140,7 +140,7 @@ const searchIndex = [
             'ollama', 'local llm', 'privacy', 'offline', 'on premise', 'on-premise',
             'python', 'data science', 'financial modeling', 'trading', 'investment research'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'gdelt', 
         title: 'GDELT Monitoring System: LLM-Powered Global Macro Investment Engine', 
         description: 'LLM-powered system for generating investment strategies based on real-time global news' 
@@ -158,7 +158,7 @@ const searchIndex = [
             'machine learning', 'ml', 'ai', 'artificial intelligence', 'on device ai',
             'tensorflow lite', 'tflite', 'model optimization', 'quantization', 'model compression'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'rps', 
         title: 'Rock-Paper-Scissors Recognition on ESP32S3', 
         description: 'Computer vision project for gesture recognition on embedded hardware' 
@@ -177,7 +177,7 @@ const searchIndex = [
             'merge', 'background merge', 'tail page', 'base page', 'rid', 'record id',
             'python', 'database systems', 'systems programming', 'low level', 'performance'
         ], 
-        page: 'projects.html', 
+        page: '/projects', 
         section: 'lstore', 
         title: 'L-Store: Lineage-Based Database Storage Engine', 
         description: 'Lineage-based database storage engine implementation' 
@@ -201,7 +201,7 @@ const searchIndex = [
             'saas', 'software as a service', 'multi tenant', 'multi-tenant', 'scalable',
             'job queue', 'workflow', 'pipeline', 'ai pipeline', 'ml pipeline'
         ], 
-        page: 'experience.html', 
+        page: '/experience', 
         section: 'qalienai', 
         title: 'QAlienAI - Machine Learning Engineer Intern', 
         description: 'Leading AI systems for marketing content compliance evaluation' 
@@ -220,7 +220,7 @@ const searchIndex = [
             'lab', 'laboratory', 'research lab', 'testing lab', 'quality assurance', 'qa',
             'python', 'automation scripting', 'data acquisition', 'instrumentation', 'measurement'
         ], 
-        page: 'experience.html', 
+        page: '/experience', 
         section: 'gallox', 
         title: 'Gallox Semiconductors - Software Engineer Intern', 
         description: 'Built automation tools for semiconductor power device testing' 
@@ -241,7 +241,7 @@ const searchIndex = [
             'k-means', 'kmeans', 'clustering', 'machine learning', 'ml', 'unsupervised learning',
             'geopandas', 'pandas', 'numpy', 'python', 'data analysis', 'statistical analysis'
         ], 
-        page: 'experience.html', 
+        page: '/experience', 
         section: 'cornell', 
         title: 'Cornell CALS - Student Research Assistant', 
         description: 'ML pipelines for analyzing agricultural GHG emission datasets' 
@@ -263,7 +263,7 @@ const searchIndex = [
             'semantic similarity', 'similarity analysis', 'classification', 'text classification',
             'python', 'machine learning', 'ml', 'ai', 'artificial intelligence'
         ], 
-        page: 'experience.html', 
+        page: '/experience', 
         section: 'colentai', 
         title: 'ColentAI - Software Developer Intern', 
         description: 'Optimized LLM performance through hyperparameter tuning and fine-tuning techniques' 
@@ -283,7 +283,7 @@ const searchIndex = [
             'data ingestion', 'data transformation', 'data modeling', 'data engineering',
             'python', 'data science', 'machine learning', 'ml', 'predictive modeling'
         ], 
-        page: 'experience.html', 
+        page: '/experience', 
         section: 'cardinality', 
         title: 'Cardinality-AI - Data Analyst Intern', 
         description: 'Designed and built data pipelines using SQL and MATLAB for machine learning' 
@@ -300,7 +300,7 @@ const searchIndex = [
             'academic', 'academics', 'studies', 'coursework', 'curriculum', 'program',
             'undergraduate', 'undergrad', 'student', 'alumni', 'graduate', 'alumnus'
         ], 
-        page: 'education.html', 
+        page: '/education', 
         section: 'cornell', 
         title: 'Cornell University', 
         description: 'Bachelor of Science in Engineering Management and Operations Research' 
@@ -313,7 +313,7 @@ const searchIndex = [
             'relevant coursework', 'key courses', 'major courses', 'core courses', 'electives',
             'education', 'academic', 'learning', 'training', 'knowledge', 'skills learned'
         ], 
-        page: 'education.html', 
+        page: '/education', 
         section: 'coursework', 
         title: 'Key Coursework', 
         description: 'Relevant coursework and academic studies' 
@@ -335,7 +335,7 @@ const searchIndex = [
             'programming', 'coding', 'software development', 'development', 'software engineering',
             'programming languages', 'languages', 'tech stack', 'technology stack'
         ], 
-        page: 'skills.html', 
+        page: '/skills', 
         section: 'programming', 
         title: 'Programming Languages', 
         description: 'Python, C/C++, SQL, Go, JavaScript, HTML, CSS, and more' 
@@ -363,7 +363,7 @@ const searchIndex = [
             'computer vision', 'cv', 'image processing', 'image recognition', 'vision',
             'reinforcement learning', 'rl', 'supervised learning', 'unsupervised learning'
         ], 
-        page: 'skills.html', 
+        page: '/skills', 
         section: 'ml', 
         title: 'ML & AI', 
         description: 'Machine learning frameworks and AI tools' 
@@ -385,7 +385,7 @@ const searchIndex = [
             'automation', 'build automation', 'test automation', 'deployment automation',
             'linux', 'unix', 'command line', 'cli', 'bash', 'shell scripting'
         ], 
-        page: 'skills.html', 
+        page: '/skills', 
         section: 'tools', 
         title: 'Tools & DevOps', 
         description: 'Development tools and DevOps practices' 
@@ -408,7 +408,7 @@ const searchIndex = [
             'cloud run', 'serverless containers', 'container service', 'serverless compute',
             'cloud architecture', 'distributed systems', 'scalable systems', 'microservices'
         ], 
-        page: 'skills.html', 
+        page: '/skills', 
         section: 'cloud', 
         title: 'Cloud Platforms', 
         description: 'AWS and GCP cloud services and platforms' 
@@ -424,7 +424,7 @@ const searchIndex = [
             'social', 'social responsibility', 'corporate social responsibility', 'csr',
             'contribution', 'contributions', 'giving back', 'philanthropy', 'charity'
         ], 
-        page: 'initiative-impact.html', 
+        page: '/initiative-impact', 
         section: 'initiative', 
         title: 'Initiative & Impact', 
         description: 'Leadership initiatives and community impact' 
@@ -921,11 +921,16 @@ function getPageType(page) {
     const types = {
         '/': 'Home',
         'index.html': 'Home', // Keep for backwards compatibility
-        'projects.html': 'Project',
-        'experience.html': 'Experience',
-        'education.html': 'Education',
-        'skills.html': 'Skill',
-        'initiative-impact.html': 'Initiative'
+        '/projects': 'Project',
+        'projects.html': 'Project', // Keep for backwards compatibility
+        '/experience': 'Experience',
+        'experience.html': 'Experience', // Keep for backwards compatibility
+        '/education': 'Education',
+        'education.html': 'Education', // Keep for backwards compatibility
+        '/skills': 'Skill',
+        'skills.html': 'Skill', // Keep for backwards compatibility
+        '/initiative-impact': 'Initiative',
+        'initiative-impact.html': 'Initiative' // Keep for backwards compatibility
     };
     return types[page] || 'Page';
 }
@@ -981,13 +986,32 @@ window.navigateToResult = function(result) {
         return;
     }
     
-    // Get current page
+    // Get current page - normalize to clean URLs
     const pathname = window.location.pathname;
-    const currentPage = pathname === '/' || pathname.endsWith('/') ? '/' : pathname.split('/').pop() || '/';
+    let currentPage = pathname === '/' || pathname.endsWith('/') ? '/' : pathname.split('/').pop() || '/';
+    // Normalize: remove .html extension and handle index.html
+    if (currentPage === 'index.html' || currentPage === 'index') {
+        currentPage = '/';
+    } else if (currentPage.endsWith('.html')) {
+        currentPage = '/' + currentPage.replace('.html', '');
+    } else if (currentPage && currentPage !== '/') {
+        currentPage = '/' + currentPage;
+    }
+    
     const targetPage = result.page;
-    const isSamePage = targetPage === currentPage || 
-                      (targetPage === '/' && (currentPage === '' || currentPage === '/' || currentPage === 'index.html')) ||
-                      (targetPage === 'index.html' && (currentPage === '' || currentPage === '/' || currentPage === 'index.html'));
+    // Normalize target page
+    let normalizedTarget = targetPage;
+    if (normalizedTarget === 'index.html' || normalizedTarget === 'index') {
+        normalizedTarget = '/';
+    } else if (normalizedTarget.endsWith('.html')) {
+        normalizedTarget = '/' + normalizedTarget.replace('.html', '');
+    } else if (normalizedTarget && !normalizedTarget.startsWith('/')) {
+        normalizedTarget = '/' + normalizedTarget;
+    }
+    
+    const isSamePage = normalizedTarget === currentPage || 
+                      (normalizedTarget === '/' && (currentPage === '' || currentPage === '/' || currentPage === 'index.html' || currentPage === 'index')) ||
+                      (targetPage === 'index.html' && (currentPage === '' || currentPage === '/' || currentPage === 'index.html' || currentPage === 'index'));
     
     if (isSamePage) {
         // Same page, scroll to section immediately

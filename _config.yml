@@ -1,0 +1,11 @@
+# GitHub Pages Configuration
+# This enables clean URLs (e.g., /education instead of /education.html)
+
+permalink: pretty
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .git
+  - .DS_Store
+
