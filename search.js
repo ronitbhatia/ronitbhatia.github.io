@@ -183,6 +183,20 @@ const searchIndex = [
         description: 'Lineage-based database storage engine implementation' 
     },
     
+    // Experience Page - General entry for page-level searches
+    { 
+        keywords: [
+            'experience', 'experiences', 'work experience', 'work history', 'employment', 'employment history',
+            'career', 'career history', 'professional experience', 'professional background', 'work background',
+            'jobs', 'job', 'positions', 'position', 'roles', 'role', 'internships', 'internship', 'intern',
+            'work', 'working', 'employment', 'employed', 'professional', 'professionals'
+        ], 
+        page: '/experience', 
+        section: null, 
+        title: 'Experience', 
+        description: 'Work experience, internships, and professional background' 
+    },
+    
     // QAlienAI Experience
     { 
         keywords: [
