@@ -30,11 +30,11 @@
                 }
             }
             
-            // Convert "/" links to "index.html" for local compatibility
-            // This ensures links work locally, but when deployed, GitHub Pages handles "/" correctly
-            const isGitHubPages = window.location.hostname.includes('github.io');
-            if (!isGitHubPages) {
-                // Only convert for local testing
+            // Convert "/" links to "index.html" ONLY for local file protocol testing
+            // On GitHub Pages, "/" automatically serves index.html, so we keep "/" links
+            const isLocalFile = window.location.protocol === 'file:';
+            if (isLocalFile) {
+                // Only convert for local file:// protocol testing
                 document.addEventListener('DOMContentLoaded', function() {
                     const rootLinks = document.querySelectorAll('a[href="/"], a[href="/#about"]');
                     rootLinks.forEach(link => {
@@ -307,16 +307,15 @@
     </footer>
 
     <script>
-        // Convert root URLs to index.html for production deployment
-        // This script runs on all pages to ensure "/" links work both locally and when deployed
+        // Convert root URLs to index.html ONLY for local file protocol testing
+        // On GitHub Pages, "/" automatically serves index.html, so we keep "/" links
         (function() {
-            // Only convert if we're NOT on GitHub Pages (detected by hostname)
-            const isGitHubPages = window.location.hostname.includes('github.io');
+            // Only convert if we're using file:// protocol (local testing)
             const isLocalFile = window.location.protocol === 'file:';
             
-            // For local testing, convert "/" to "index.html"
-            // For GitHub Pages, keep "/" as it automatically serves index.html
-            if (!isGitHubPages || isLocalFile) {
+            // For local file testing only, convert "/" to "index.html"
+            // On GitHub Pages (or any web server), keep "/" as it works correctly
+            if (isLocalFile) {
                 document.addEventListener('DOMContentLoaded', function() {
                     // Convert brand/logo links
                     const homeLinks = document.querySelectorAll('a[href="/"], a.nav-brand[href="/"]');
