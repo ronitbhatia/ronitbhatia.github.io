@@ -17,24 +17,24 @@
         // IMPORTANT: When deployed to GitHub Pages, "/" automatically serves index.html
         // This script only helps with local testing
         (function() {
-            // Immediately check if we're seeing a directory listing
-            // This runs before DOMContentLoaded to catch the issue early
-            if (document.body === null || (document.body && document.body.children.length === 0 && document.title === 'Index of /')) {
-                // We're seeing a directory listing - redirect to index.html
-                if (window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
-                    const currentFile = window.location.href.split('/').pop();
-                    if (!currentFile || currentFile === '' || (!currentFile.includes('.html') && !currentFile.includes('index'))) {
-                        window.location.replace('index.html');
-                        return;
-                    }
-                }
-            }
-            
-            // Convert "/" links to "index.html" ONLY for local file protocol testing
-            // On GitHub Pages, "/" automatically serves index.html, so we keep "/" links
+            // Only run on local file protocol, not on GitHub Pages
             const isLocalFile = window.location.protocol === 'file:';
-            if (isLocalFile) {
-                // Only convert for local file:// protocol testing
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            
+            if (isLocalFile || isLocalhost) {
+                // Check if we're seeing a directory listing (only on local)
+                if (document.readyState === 'loading' || document.body === null) {
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if (document.body && document.body.children.length === 0 && document.title === 'Index of /') {
+                            if (window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+                                window.location.replace('index.html');
+                                return;
+                            }
+                        }
+                    });
+                }
+                
+                // Convert "/" links to "index.html" for local compatibility
                 document.addEventListener('DOMContentLoaded', function() {
                     const rootLinks = document.querySelectorAll('a[href="/"], a[href="/#about"]');
                     rootLinks.forEach(link => {
