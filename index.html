@@ -7,6 +7,21 @@
     <meta name="description" content="Software Engineer & ML Enthusiast - Building impactful solutions through thoughtful engineering">
     <meta name="author" content="Ronit Bhatia">
     
+    <script>
+        // Redirect index.html to root URL on GitHub Pages
+        // This ensures the URL always shows as ronitbhatia.github.io/ not ronitbhatia.github.io/index.html
+        (function() {
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const pathname = window.location.pathname;
+            
+            // If we're on GitHub Pages and the URL contains index.html, redirect to root
+            if (isGitHubPages && (pathname.includes('index.html') || pathname.endsWith('/index.html'))) {
+                const newUrl = window.location.origin + '/' + (window.location.search || '') + (window.location.hash || '');
+                window.location.replace(newUrl);
+                return;
+            }
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
