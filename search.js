@@ -289,6 +289,19 @@ const searchIndex = [
         description: 'Designed and built data pipelines using SQL and MATLAB for machine learning' 
     },
     
+    // Education Page - General entry for page-level searches
+    { 
+        keywords: [
+            'education', 'educational', 'academic background', 'academics', 'university', 'college', 
+            'degree', 'degrees', 'school', 'schooling', 'studies', 'academic studies', 'learning',
+            'qualifications', 'credentials', 'academic credentials', 'educational background'
+        ], 
+        page: '/education', 
+        section: null, 
+        title: 'Education', 
+        description: 'Academic background, university education, and coursework' 
+    },
+    
     // Education - Cornell
     { 
         keywords: [
@@ -317,6 +330,21 @@ const searchIndex = [
         section: 'coursework', 
         title: 'Key Coursework', 
         description: 'Relevant coursework and academic studies' 
+    },
+    
+    // Skills Page - General entry for page-level searches
+    { 
+        keywords: [
+            'skills', 'skill', 'technical skills', 'technologies', 'technology', 'tech', 'tech stack',
+            'technology stack', 'tools', 'tool', 'frameworks', 'framework', 'languages', 'language',
+            'programming languages', 'programming skills', 'technical expertise', 'expertise',
+            'competencies', 'competency', 'capabilities', 'capability', 'proficiencies', 'proficiency',
+            'abilities', 'ability', 'know-how', 'knowledge', 'technical knowledge'
+        ], 
+        page: '/skills', 
+        section: null, 
+        title: 'Skills', 
+        description: 'Technical skills, programming languages, frameworks, and tools' 
     },
     
     // Skills - Programming Languages
@@ -627,10 +655,10 @@ function performSearch(query) {
     
     // Page type mapping for intent filtering
     const pageTypeMap = {
-        'projects': 'projects.html',
-        'skills': 'skills.html',
-        'experience': 'experience.html',
-        'education': 'education.html',
+        'projects': '/projects',
+        'skills': '/skills',
+        'experience': '/experience',
+        'education': '/education',
         'about': '/'
     };
     
@@ -988,14 +1016,17 @@ window.navigateToResult = function(result) {
     
     // Get current page - normalize to clean URLs
     const pathname = window.location.pathname;
-    let currentPage = pathname === '/' || pathname.endsWith('/') ? '/' : pathname.split('/').pop() || '/';
+    const pathNoSlash = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+    let currentPage = '/';
+    if (pathNoSlash && pathNoSlash !== '/') {
+        const lastSegment = pathNoSlash.split('/').filter(Boolean).pop();
+        currentPage = lastSegment ? '/' + lastSegment : '/';
+    }
     // Normalize: remove .html extension and handle index.html
-    if (currentPage === 'index.html' || currentPage === 'index') {
+    if (currentPage === '/index.html' || currentPage === '/index' || currentPage === 'index.html' || currentPage === 'index') {
         currentPage = '/';
     } else if (currentPage.endsWith('.html')) {
-        currentPage = '/' + currentPage.replace('.html', '');
-    } else if (currentPage && currentPage !== '/') {
-        currentPage = '/' + currentPage;
+        currentPage = '/' + currentPage.replace('.html', '').replace(/^\//, '');
     }
     
     const targetPage = result.page;
@@ -1011,7 +1042,7 @@ window.navigateToResult = function(result) {
     
     const isSamePage = normalizedTarget === currentPage || 
                       (normalizedTarget === '/' && (currentPage === '' || currentPage === '/' || currentPage === 'index.html' || currentPage === 'index')) ||
-                      (targetPage === 'index.html' && (currentPage === '' || currentPage === '/' || currentPage === 'index.html' || currentPage === 'index'));
+                      (normalizedTarget === '/index' || normalizedTarget === '/index.html');
     
     if (isSamePage) {
         // Same page, scroll to section immediately
@@ -1047,10 +1078,9 @@ window.navigateToResult = function(result) {
     } else {
         // Different page, navigate without hash for homepage (about section)
         // Never add #about to URL - always use root URL for homepage
-        if (targetPage === '/' && result.section === 'about') {
+        if (normalizedTarget === '/' && result.section === 'about') {
             // Check if we're already on the homepage
-            const currentPage = window.location.pathname === '/' || window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
-            if (currentPage) {
+            if (currentPage === '/') {
                 // Already on homepage, just scroll to about section
                 const aboutSection = document.getElementById('about');
                 if (aboutSection) {
@@ -1067,9 +1097,13 @@ window.navigateToResult = function(result) {
             }
         } else if (result.section) {
             // Navigate to the page with hash (for other pages)
-            window.location.href = `${targetPage}#${result.section}`;
+            // Ensure targetPage starts with / for clean URLs
+            const cleanTarget = normalizedTarget.startsWith('/') ? normalizedTarget : '/' + normalizedTarget.replace('.html', '');
+            window.location.href = `${cleanTarget}#${result.section}`;
         } else {
-            window.location.href = targetPage;
+            // Ensure targetPage starts with / for clean URLs
+            const cleanTarget = normalizedTarget.startsWith('/') ? normalizedTarget : '/' + normalizedTarget.replace('.html', '');
+            window.location.href = cleanTarget;
         }
     }
 }
