@@ -2588,16 +2588,19 @@ html[data-theme="light"] #about .about-content p {
   visibility: hidden;
   pointer-events: none;
   display: none; /* Hidden by default */
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Only transition on fade-out, not fade-in for instant coverage */
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Show overlay when transitioning */
+/* Show overlay when transitioning - instant appearance */
 .page-transition-overlay.active {
   display: block; /* Show overlay */
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  /* No transition delay on show - instant coverage */
+  transition: none;
 }
 
 /* Respect reduced motion preferences */

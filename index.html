@@ -495,16 +495,37 @@
             const overlay = document.getElementById('page-transition-overlay');
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             
-            // Fade out overlay on page load
+            // Ensure overlay is ready and matches current theme
+            if (overlay) {
+                // Set overlay background to match current theme immediately
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 
+                                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                overlay.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary');
+            }
+            
+            // Fade out overlay on page load - wait for content to be ready
             window.addEventListener('load', function() {
                 if (overlay) {
-                    overlay.classList.remove('active');
-                    // Remove overlay from DOM after transition completes
+                    // Small delay to ensure content is rendered
                     setTimeout(() => {
-                        if (overlay) {
-                            overlay.style.display = 'none';
-                        }
-                    }, prefersReducedMotion ? 100 : 400);
+                        overlay.classList.remove('active');
+                        // Re-enable transition for fade-out
+                        overlay.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                        // Remove overlay from DOM after transition completes
+                        setTimeout(() => {
+                            if (overlay) {
+                                overlay.style.display = 'none';
+                            }
+                        }, prefersReducedMotion ? 50 : 300);
+                    }, 50);
+                }
+            });
+            
+            // Also handle DOMContentLoaded as a fallback
+            document.addEventListener('DOMContentLoaded', function() {
+                if (overlay && overlay.classList.contains('active')) {
+                    // If overlay is still active, it means we just navigated
+                    // Keep it visible until load event fires
                 }
             });
             
@@ -555,15 +576,21 @@
                     e.preventDefault();
                     
                     if (overlay) {
+                        // Update overlay background to match current theme
+                        overlay.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary');
+                        
+                        // Show overlay instantly (no transition)
                         overlay.style.display = 'block';
-                        // Force reflow
-                        void overlay.offsetHeight;
+                        overlay.style.transition = 'none';
+                        overlay.style.opacity = '1';
+                        overlay.style.visibility = 'visible';
+                        overlay.style.pointerEvents = 'auto';
                         overlay.classList.add('active');
                         
-                        // Navigate after a short delay
-                        setTimeout(() => {
+                        // Navigate immediately - overlay is already covering
+                        requestAnimationFrame(() => {
                             window.location.href = href;
-                        }, prefersReducedMotion ? 50 : 200);
+                        });
                     } else {
                         window.location.href = href;
                     }
