@@ -70,9 +70,13 @@
             const savedTheme = localStorage.getItem('theme');
             const theme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
-            // Only set body theme if body exists (it might not be loaded yet)
+            
+            // Set background color immediately to prevent white flash
+            const bgColor = theme === 'dark' ? '#0f172a' : '#fafbfc';
+            document.documentElement.style.backgroundColor = bgColor;
             if (document.body) {
                 document.body.setAttribute('data-theme', theme);
+                document.body.style.backgroundColor = bgColor;
             }
         })();
     </script>
@@ -969,21 +973,29 @@
                 attributeFilter: ['data-theme']
             });
             
-            // Fade out overlay smoothly on page load
+            // Start with overlay active to prevent white flash, then fade out smoothly
+            overlay.classList.add('active');
+            
+            // Fade out overlay smoothly after page is fully loaded
             const fadeOutOverlay = () => {
-                overlay.classList.remove('active');
-                overlay.classList.add('exiting');
-                setTimeout(() => {
-                    overlay.classList.remove('exiting');
-                }, 300);
+                // Wait a bit to ensure page content is rendered
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        overlay.classList.remove('active');
+                        overlay.classList.add('exiting');
+                        setTimeout(() => {
+                            overlay.classList.remove('exiting');
+                        }, 250);
+                    });
+                });
             };
             
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    requestAnimationFrame(fadeOutOverlay);
-                });
+            if (document.readyState === 'complete') {
+                fadeOutOverlay();
+            } else if (document.readyState === 'loading') {
+                window.addEventListener('load', fadeOutOverlay);
             } else {
-                requestAnimationFrame(fadeOutOverlay);
+                fadeOutOverlay();
             }
             
             // Intercept internal navigation clicks

@@ -282,11 +282,13 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 120px;
   -webkit-overflow-scrolling: touch;
+  background-color: var(--bg-primary);
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
   background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-middle) 30%, var(--bg-gradient-end) 100%);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;

@@ -7,6 +7,24 @@
     <meta name="description" content="Initiative & Impact - Software Engineer & ML Enthusiast">
     <meta name="author" content="Ronit Bhatia">
     
+    <script>
+        // Apply theme immediately to prevent flash of wrong theme
+        (function() {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const savedTheme = localStorage.getItem('theme');
+            const theme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Set background color immediately to prevent white flash
+            const bgColor = theme === 'dark' ? '#0f172a' : '#fafbfc';
+            document.documentElement.style.backgroundColor = bgColor;
+            if (document.body) {
+                document.body.setAttribute('data-theme', theme);
+                document.body.style.backgroundColor = bgColor;
+            }
+        })();
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -701,21 +719,29 @@
                 attributeFilter: ['data-theme']
             });
             
-            // Fade out overlay smoothly on page load
+            // Start with overlay active to prevent white flash, then fade out smoothly
+            overlay.classList.add('active');
+            
+            // Fade out overlay smoothly after page is fully loaded
             const fadeOutOverlay = () => {
-                overlay.classList.remove('active');
-                overlay.classList.add('exiting');
-                setTimeout(() => {
-                    overlay.classList.remove('exiting');
-                }, 300);
+                // Wait a bit to ensure page content is rendered
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        overlay.classList.remove('active');
+                        overlay.classList.add('exiting');
+                        setTimeout(() => {
+                            overlay.classList.remove('exiting');
+                        }, 250);
+                    });
+                });
             };
             
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    requestAnimationFrame(fadeOutOverlay);
-                });
+            if (document.readyState === 'complete') {
+                fadeOutOverlay();
+            } else if (document.readyState === 'loading') {
+                window.addEventListener('load', fadeOutOverlay);
             } else {
-                requestAnimationFrame(fadeOutOverlay);
+                fadeOutOverlay();
             }
             
             // Intercept internal navigation clicks
