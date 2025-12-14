@@ -638,24 +638,39 @@
             const overlay = document.getElementById('page-transition-overlay');
             if (!overlay) return;
             
-            // Match overlay background to current theme
+            // Match overlay background to current theme immediately
             const updateOverlayTheme = () => {
-                overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || '#fafbfc';
+                const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim();
+                overlay.style.background = bgColor || (document.documentElement.getAttribute('data-theme') === 'dark' ? '#0f172a' : '#fafbfc');
             };
+            
+            // Set theme immediately on page load
             updateOverlayTheme();
             
-            // Ensure overlay starts hidden and fade out smoothly if needed
-            overlay.classList.remove('active', 'exiting');
+            // Listen for theme changes
+            const observer = new MutationObserver(() => {
+                updateOverlayTheme();
+            });
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['data-theme']
+            });
+            
+            // Fade out overlay smoothly on page load
+            const fadeOutOverlay = () => {
+                overlay.classList.remove('active');
+                overlay.classList.add('exiting');
+                setTimeout(() => {
+                    overlay.classList.remove('exiting');
+                }, 300);
+            };
+            
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
-                    requestAnimationFrame(() => {
-                        overlay.classList.remove('active');
-                    });
+                    requestAnimationFrame(fadeOutOverlay);
                 });
             } else {
-                requestAnimationFrame(() => {
-                    overlay.classList.remove('active');
-                });
+                requestAnimationFrame(fadeOutOverlay);
             }
             
             // Intercept internal navigation clicks
@@ -676,18 +691,19 @@
                         
                         e.preventDefault();
                         
-                        // Update overlay theme before showing
+                        // Update overlay theme and show instantly (no transition delay)
                         updateOverlayTheme();
-                        
-                        // Show overlay
+                        overlay.style.transition = 'none';
                         overlay.classList.remove('exiting');
                         overlay.classList.add('active');
                         
-                        // Navigate after brief delay
+                        // Re-enable transition after showing
                         requestAnimationFrame(() => {
+                            overlay.style.transition = '';
+                            // Navigate after brief delay to ensure overlay is visible
                             setTimeout(() => {
                                 window.location.href = link.href;
-                            }, 150);
+                            }, 100);
                         });
                     }
                 } catch (err) {

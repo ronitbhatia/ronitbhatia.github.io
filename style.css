@@ -2582,22 +2582,28 @@ html[data-theme="light"] #about .about-content p {
   z-index: 9999;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity;
+  visibility: hidden;
 }
 
 .page-transition-overlay.active {
   opacity: 1;
   pointer-events: all;
+  visibility: visible;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-transition-overlay.exiting {
   opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .page-transition-overlay {
+  .page-transition-overlay,
+  .page-transition-overlay.active,
+  .page-transition-overlay.exiting {
     transition: opacity 0.01ms !important;
   }
 }

@@ -1125,13 +1125,16 @@ window.navigateToResult = function(result) {
         // Trigger page transition overlay if available
         const overlay = document.getElementById('page-transition-overlay');
         if (overlay) {
-            overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || '#fafbfc';
+            const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim();
+            overlay.style.background = bgColor || (document.documentElement.getAttribute('data-theme') === 'dark' ? '#0f172a' : '#fafbfc');
+            overlay.style.transition = 'none';
             overlay.classList.remove('exiting');
             overlay.classList.add('active');
             requestAnimationFrame(() => {
+                overlay.style.transition = '';
                 setTimeout(() => {
                     window.location.href = targetUrl;
-                }, 150);
+                }, 100);
             });
         } else {
             window.location.href = targetUrl;
