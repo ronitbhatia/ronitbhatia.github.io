@@ -1533,6 +1533,18 @@ html[data-theme="light"] #about .about-content p {
   background: var(--skill-tag-bg-hover);
 }
 
+/* Force blue skill tags in light mode */
+html[data-theme="light"] .skill-tag,
+[data-theme="light"] .skill-tag {
+  background: rgba(59, 130, 246, 0.9) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+html[data-theme="light"] .skill-tag:hover,
+[data-theme="light"] .skill-tag:hover {
+  background: rgba(59, 130, 246, 1) !important;
+}
+
 
 
 /* Footer */
