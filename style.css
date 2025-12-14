@@ -38,8 +38,8 @@
   
   --tag-bg: rgba(241, 245, 249, 0.8);
   --tag-bg-hover: rgba(241, 245, 249, 1);
-  --skill-tag-bg: rgba(30, 41, 59, 0.9);
-  --skill-tag-bg-hover: rgba(30, 41, 59, 1);
+  --skill-tag-bg: rgba(59, 130, 246, 0.9);
+  --skill-tag-bg-hover: rgba(59, 130, 246, 1);
 }
 
 /* Dark mode CSS variables - apply to html element */
@@ -112,8 +112,8 @@ html[data-theme="light"],
   
   --tag-bg: rgba(241, 245, 249, 0.8);
   --tag-bg-hover: rgba(241, 245, 249, 1);
-  --skill-tag-bg: rgba(30, 41, 59, 0.9);
-  --skill-tag-bg-hover: rgba(30, 41, 59, 1);
+  --skill-tag-bg: rgba(59, 130, 246, 0.9);
+  --skill-tag-bg-hover: rgba(59, 130, 246, 1);
 }
 
 /* Reset and base styles */
@@ -2568,78 +2568,5 @@ html[data-theme="light"] #about .about-content p {
   .hero-search .hero-link {
     width: 100%;
     justify-content: center;
-  }
-}
-
-/* ============================================
-   PAGE TRANSITIONS
-   ============================================ */
-
-/* Page transition overlay - covers entire viewport during transitions */
-.page-transition-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-primary);
-  z-index: 99998;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  display: none; /* Hidden by default */
-  /* Only transition on fade-out, not fade-in for instant coverage */
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Show overlay when transitioning - instant appearance */
-.page-transition-overlay.active {
-  display: block; /* Show overlay */
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  /* No transition delay on show - instant coverage */
-  transition: none;
-}
-
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .page-transition-overlay {
-    transition: opacity 0.1s ease,
-                visibility 0.1s ease;
-  }
-}
-
-/* Fade in animation for page content on load */
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Apply subtle fade-in to main content on page load */
-main, .hero, .hero-search, .content-section, .section {
-  animation: fadeInPage 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Disable animation for reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  main, .hero, .hero-search, .content-section, .section {
-    animation: none;
-  }
-  
-  @keyframes fadeInPage {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
   }
 }
