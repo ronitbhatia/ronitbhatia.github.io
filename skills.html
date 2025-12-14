@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=1.0.4">
-  </head>
-  <body>
+</head>
+<body>
     <!-- Page Transition Overlay -->
     <div class="page-transition-overlay" id="page-transition-overlay"></div>
     
@@ -347,116 +347,6 @@
             animateCursor();
         })();
 
-        // ============================================
-        // PAGE TRANSITION SYSTEM
-        // ============================================
-        (function() {
-            const overlay = document.getElementById('page-transition-overlay');
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            // Ensure overlay is ready and matches current theme
-            if (overlay) {
-                // Set overlay background to match current theme immediately
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 
-                                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                overlay.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary');
-            }
-            
-            // Fade out overlay on page load - wait for content to be ready
-            window.addEventListener('load', function() {
-                if (overlay) {
-                    // Small delay to ensure content is rendered
-                    setTimeout(() => {
-                        overlay.classList.remove('active');
-                        // Re-enable transition for fade-out
-                        overlay.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-                        // Remove overlay from DOM after transition completes
-                        setTimeout(() => {
-                            if (overlay) {
-                                overlay.style.display = 'none';
-                            }
-                        }, prefersReducedMotion ? 50 : 300);
-                    }, 50);
-                }
-            });
-            
-            // Also handle DOMContentLoaded as a fallback
-            document.addEventListener('DOMContentLoaded', function() {
-                if (overlay && overlay.classList.contains('active')) {
-                    // If overlay is still active, it means we just navigated
-                    // Keep it visible until load event fires
-                }
-            });
-            
-            // Intercept internal navigation clicks
-            document.addEventListener('click', function(e) {
-                const link = e.target.closest('a[href]');
-                if (!link || !link.href) return;
-                
-                const href = link.getAttribute('href');
-                
-                // Skip if it's not an internal page navigation
-                if (!href || 
-                    href.includes('#') || 
-                    link.target || 
-                    href.startsWith('javascript:') || 
-                    href.startsWith('mailto:') || 
-                    href.startsWith('tel:') ||
-                    href.startsWith('http://') || 
-                    href.startsWith('https://')) {
-                    return;
-                }
-                
-                // Check if it's navigating to a different page
-                const currentPath = window.location.pathname;
-                let targetPath = href;
-                
-                // Handle relative paths
-                if (href.startsWith('/')) {
-                    targetPath = href;
-                } else {
-                    // Relative path - resolve it
-                    const base = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-                    targetPath = base + href;
-                }
-                
-                // Normalize paths (remove trailing slashes, handle index.html)
-                const normalizePath = (path) => {
-                    let normalized = path.replace(/\/index\.html$/, '/').replace(/\/$/, '/');
-                    if (normalized === '/') return '/';
-                    return normalized.replace(/\/$/, '');
-                };
-                
-                const normalizedCurrent = normalizePath(currentPath);
-                const normalizedTarget = normalizePath(targetPath);
-                
-                // Only trigger transition if navigating to a different page
-                if (normalizedCurrent !== normalizedTarget && normalizedTarget !== '/#about') {
-                    e.preventDefault();
-                    
-                    if (overlay) {
-                        // Update overlay background to match current theme
-                        overlay.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary');
-                        
-                        // Show overlay instantly (no transition)
-                        overlay.style.display = 'block';
-                        overlay.style.transition = 'none';
-                        overlay.style.opacity = '1';
-                        overlay.style.visibility = 'visible';
-                        overlay.style.pointerEvents = 'auto';
-                        overlay.classList.add('active');
-                        
-                        // Navigate immediately - overlay is already covering
-                        requestAnimationFrame(() => {
-                            window.location.href = href;
-                        });
-                    } else {
-                        window.location.href = href;
-                    }
-                }
-            }, true); // Use capture phase to intercept early
-        })();
-
         // Smooth scroll behavior and active section highlighting
         document.addEventListener('DOMContentLoaded', function() {
             // Handle hash navigation on page load (enhanced)
@@ -677,6 +567,71 @@
                 }, 300);
             }, 3000);
         }
+    </script>
+    
+    <!-- Page Transition Animation -->
+    <script>
+        (function() {
+            const overlay = document.getElementById('page-transition-overlay');
+            if (!overlay) return;
+            
+            // Match overlay background to current theme
+            const updateOverlayTheme = () => {
+                overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || '#fafbfc';
+            };
+            updateOverlayTheme();
+            
+            // Ensure overlay starts hidden and fade out smoothly if needed
+            overlay.classList.remove('active', 'exiting');
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    requestAnimationFrame(() => {
+                        overlay.classList.remove('active');
+                    });
+                });
+            } else {
+                requestAnimationFrame(() => {
+                    overlay.classList.remove('active');
+                });
+            }
+            
+            // Intercept internal navigation clicks
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link || !link.href) return;
+                
+                try {
+                    const url = new URL(link.href, window.location.origin);
+                    const currentUrl = new URL(window.location.href);
+                    
+                    // Only intercept same-origin navigation
+                    if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
+                        // Skip if it's a hash-only change
+                        if (url.pathname === currentUrl.pathname && url.hash !== currentUrl.hash) {
+                            return;
+                        }
+                        
+                        e.preventDefault();
+                        
+                        // Update overlay theme before showing
+                        updateOverlayTheme();
+                        
+                        // Show overlay
+                        overlay.classList.remove('exiting');
+                        overlay.classList.add('active');
+                        
+                        // Navigate after brief delay
+                        requestAnimationFrame(() => {
+                            setTimeout(() => {
+                                window.location.href = link.href;
+                            }, 150);
+                        });
+                    }
+                } catch (err) {
+                    // Invalid URL, let browser handle it
+                }
+            }, { passive: true });
+        })();
     </script>
 </body>
 </html>

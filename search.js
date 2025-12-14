@@ -1092,6 +1092,7 @@ window.navigateToResult = function(result) {
     } else {
         // Different page, navigate without hash for homepage (about section)
         // Never add #about to URL - always use root URL for homepage
+        let targetUrl;
         if (normalizedTarget === '/' && result.section === 'about') {
             // Check if we're already on the homepage
             if (currentPage === '/') {
@@ -1105,19 +1106,35 @@ window.navigateToResult = function(result) {
                         behavior: 'smooth'
                     });
                 }
+                return;
             } else {
                 // Navigate to homepage without hash
-                window.location.href = '/';
+                targetUrl = '/';
             }
         } else if (result.section) {
             // Navigate to the page with hash (for other pages)
             // Ensure targetPage starts with / for clean URLs
             const cleanTarget = normalizedTarget.startsWith('/') ? normalizedTarget : '/' + normalizedTarget.replace('.html', '');
-            window.location.href = `${cleanTarget}#${result.section}`;
+            targetUrl = `${cleanTarget}#${result.section}`;
         } else {
             // Ensure targetPage starts with / for clean URLs
             const cleanTarget = normalizedTarget.startsWith('/') ? normalizedTarget : '/' + normalizedTarget.replace('.html', '');
-            window.location.href = cleanTarget;
+            targetUrl = cleanTarget;
+        }
+        
+        // Trigger page transition overlay if available
+        const overlay = document.getElementById('page-transition-overlay');
+        if (overlay) {
+            overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || '#fafbfc';
+            overlay.classList.remove('exiting');
+            overlay.classList.add('active');
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 150);
+            });
+        } else {
+            window.location.href = targetUrl;
         }
     }
 }
