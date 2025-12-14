@@ -38,8 +38,8 @@
   
   --tag-bg: rgba(241, 245, 249, 0.8);
   --tag-bg-hover: rgba(241, 245, 249, 1);
-  --skill-tag-bg: rgba(30, 41, 59, 0.9);
-  --skill-tag-bg-hover: rgba(30, 41, 59, 1);
+  --skill-tag-bg: rgba(59, 130, 246, 0.9);
+  --skill-tag-bg-hover: rgba(59, 130, 246, 1);
 }
 
 /* Dark mode CSS variables - apply to html element */
@@ -112,8 +112,8 @@ html[data-theme="light"],
   
   --tag-bg: rgba(241, 245, 249, 0.8);
   --tag-bg-hover: rgba(241, 245, 249, 1);
-  --skill-tag-bg: rgba(30, 41, 59, 0.9);
-  --skill-tag-bg-hover: rgba(30, 41, 59, 1);
+  --skill-tag-bg: rgba(59, 130, 246, 0.9);
+  --skill-tag-bg-hover: rgba(59, 130, 246, 1);
 }
 
 /* Reset and base styles */
