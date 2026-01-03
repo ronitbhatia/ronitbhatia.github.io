@@ -7,33 +7,12 @@
     <meta name="description" content="Professional Experience - Software Engineer & ML Enthusiast">
     <meta name="author" content="Ronit Bhatia">
     
-    <script>
-        // Apply theme immediately to prevent flash of wrong theme
-        (function() {
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            const savedTheme = localStorage.getItem('theme');
-            const theme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-            
-            // Set background color immediately to prevent white flash
-            const bgColor = theme === 'dark' ? '#0f172a' : '#fafbfc';
-            document.documentElement.style.backgroundColor = bgColor;
-            if (document.body) {
-                document.body.setAttribute('data-theme', theme);
-                document.body.style.backgroundColor = bgColor;
-            }
-        })();
-    </script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=1.0.4">
 </head>
 <body>
-    <!-- Page Transition Overlay -->
-    <div class="page-transition-overlay" id="page-transition-overlay"></div>
-    
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-dot"></div>
@@ -51,12 +30,12 @@
                 <span class="nav-brand-text">Ronit Bhatia</span>
             </a>
             <div class="nav-links">
-                <a href="/#about" class="nav-link">about</a>
-                <a href="/projects" class="nav-link">projects</a>
-                <a href="/experience" class="nav-link active">experience</a>
-                <a href="/education" class="nav-link">education</a>
-                <a href="/initiative-impact" class="nav-link">initiative & impact</a>
-                <a href="/skills" class="nav-link">skills</a>
+                <a href="/#about" class="nav-link">About</a>
+                <a href="/projects" class="nav-link">Projects</a>
+                <a href="/experience" class="nav-link active">Experience</a>
+                <a href="/education" class="nav-link">Education</a>
+                <a href="/initiative-impact" class="nav-link">Initiative & Impact</a>
+                <a href="/skills" class="nav-link">Skills</a>
             </div>
             
             <div class="nav-right">
@@ -91,12 +70,12 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="mobile-menu">
         <div class="mobile-menu-content">
-            <a href="/#about" class="mobile-nav-link">about</a>
-            <a href="/projects" class="mobile-nav-link">projects</a>
-            <a href="/experience" class="mobile-nav-link active">experience</a>
-            <a href="/education" class="mobile-nav-link">education</a>
-            <a href="/initiative-impact" class="mobile-nav-link">initiative & impact</a>
-            <a href="/skills" class="mobile-nav-link">skills</a>
+            <a href="/#about" class="mobile-nav-link">About</a>
+            <a href="/projects" class="mobile-nav-link">Projects</a>
+            <a href="/experience" class="mobile-nav-link active">Experience</a>
+            <a href="/education" class="mobile-nav-link">Education</a>
+            <a href="/initiative-impact" class="mobile-nav-link">Initiative & Impact</a>
+            <a href="/skills" class="mobile-nav-link">Skills</a>
         </div>
     </div>
 
@@ -648,95 +627,6 @@
                 }, 300);
             }, 3000);
         }
-    </script>
-    
-    <!-- Page Transition Animation -->
-    <script>
-        (function() {
-            const overlay = document.getElementById('page-transition-overlay');
-            if (!overlay) return;
-            
-            // Match overlay background to current theme immediately
-            const updateOverlayTheme = () => {
-                const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim();
-                overlay.style.background = bgColor || (document.documentElement.getAttribute('data-theme') === 'dark' ? '#0f172a' : '#fafbfc');
-            };
-            
-            // Set theme immediately on page load
-            updateOverlayTheme();
-            
-            // Listen for theme changes
-            const observer = new MutationObserver(() => {
-                updateOverlayTheme();
-            });
-            observer.observe(document.documentElement, {
-                attributes: true,
-                attributeFilter: ['data-theme']
-            });
-            
-            // Start with overlay active to prevent white flash, then fade out smoothly
-            overlay.classList.add('active');
-            
-            // Fade out overlay smoothly after page is fully loaded
-            const fadeOutOverlay = () => {
-                // Wait a bit to ensure page content is rendered
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        overlay.classList.remove('active');
-                        overlay.classList.add('exiting');
-                        setTimeout(() => {
-                            overlay.classList.remove('exiting');
-                        }, 250);
-                    });
-                });
-            };
-            
-            if (document.readyState === 'complete') {
-                fadeOutOverlay();
-            } else if (document.readyState === 'loading') {
-                window.addEventListener('load', fadeOutOverlay);
-            } else {
-                fadeOutOverlay();
-            }
-            
-            // Intercept internal navigation clicks
-            document.addEventListener('click', (e) => {
-                const link = e.target.closest('a');
-                if (!link || !link.href) return;
-                
-                try {
-                    const url = new URL(link.href, window.location.origin);
-                    const currentUrl = new URL(window.location.href);
-                    
-                    // Only intercept same-origin navigation
-                    if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
-                        // Skip if it's a hash-only change
-                        if (url.pathname === currentUrl.pathname && url.hash !== currentUrl.hash) {
-                            return;
-                        }
-                        
-                        e.preventDefault();
-                        
-                        // Update overlay theme and show instantly (no transition delay)
-                        updateOverlayTheme();
-                        overlay.style.transition = 'none';
-                        overlay.classList.remove('exiting');
-                        overlay.classList.add('active');
-                        
-                        // Re-enable transition after showing
-                        requestAnimationFrame(() => {
-                            overlay.style.transition = '';
-                            // Navigate after brief delay to ensure overlay is visible
-                            setTimeout(() => {
-                                window.location.href = link.href;
-                            }, 100);
-                        });
-                    }
-                } catch (err) {
-                    // Invalid URL, let browser handle it
-                }
-            }, { passive: true });
-        })();
     </script>
 </body>
 </html>

@@ -1092,7 +1092,6 @@ window.navigateToResult = function(result) {
     } else {
         // Different page, navigate without hash for homepage (about section)
         // Never add #about to URL - always use root URL for homepage
-        let targetUrl;
         if (normalizedTarget === '/' && result.section === 'about') {
             // Check if we're already on the homepage
             if (currentPage === '/') {
@@ -1106,38 +1105,19 @@ window.navigateToResult = function(result) {
                         behavior: 'smooth'
                     });
                 }
-                return;
             } else {
                 // Navigate to homepage without hash
-                targetUrl = '/';
+                window.location.href = '/';
             }
         } else if (result.section) {
             // Navigate to the page with hash (for other pages)
             // Ensure targetPage starts with / for clean URLs
             const cleanTarget = normalizedTarget.startsWith('/') ? normalizedTarget : '/' + normalizedTarget.replace('.html', '');
-            targetUrl = `${cleanTarget}#${result.section}`;
+            window.location.href = `${cleanTarget}#${result.section}`;
         } else {
             // Ensure targetPage starts with / for clean URLs
             const cleanTarget = normalizedTarget.startsWith('/') ? normalizedTarget : '/' + normalizedTarget.replace('.html', '');
-            targetUrl = cleanTarget;
-        }
-        
-        // Trigger page transition overlay if available
-        const overlay = document.getElementById('page-transition-overlay');
-        if (overlay) {
-            const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim();
-            overlay.style.background = bgColor || (document.documentElement.getAttribute('data-theme') === 'dark' ? '#0f172a' : '#fafbfc');
-            overlay.style.transition = 'none';
-            overlay.classList.remove('exiting');
-            overlay.classList.add('active');
-            requestAnimationFrame(() => {
-                overlay.style.transition = '';
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 100);
-            });
-        } else {
-            window.location.href = targetUrl;
+            window.location.href = cleanTarget;
         }
     }
 }
