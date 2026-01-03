@@ -792,7 +792,7 @@ function performSearch(query) {
     return results.slice(0, maxResults);
 }
 
-// Initialize search functionality
+// Initialize search functionality with enhanced features
 function initSearch() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
@@ -801,14 +801,61 @@ function initSearch() {
     if (!searchInput || !searchResults) return;
     
     let searchTimeout;
+    let searchHistory = loadSearchHistory();
+    let currentSuggestionIndex = -1;
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // "/" key to focus search (when not in an input)
+        if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+            e.preventDefault();
+            searchInput.focus();
+            searchInput.select();
+        }
+        
+        // "Escape" key to close search results
+        if (e.key === 'Escape') {
+            searchResults.classList.remove('active');
+            searchInput.blur();
+        }
+        
+        // Arrow keys for navigation
+        if (searchResults.classList.contains('active')) {
+            const resultItems = searchResults.querySelectorAll('.search-result-item[data-result], .search-history-item, .search-suggestion-item');
+            
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                currentSuggestionIndex = Math.min(currentSuggestionIndex + 1, resultItems.length - 1);
+                highlightSuggestion(resultItems, currentSuggestionIndex);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                currentSuggestionIndex = Math.max(currentSuggestionIndex - 1, -1);
+                if (currentSuggestionIndex === -1) {
+                    resultItems.forEach(item => item.classList.remove('highlighted'));
+                } else {
+                    highlightSuggestion(resultItems, currentSuggestionIndex);
+                }
+            } else if (e.key === 'Enter' && currentSuggestionIndex >= 0 && resultItems[currentSuggestionIndex]) {
+                e.preventDefault();
+                resultItems[currentSuggestionIndex].click();
+            }
+        }
+    });
     
     searchInput.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
         const query = e.target.value.trim();
+        currentSuggestionIndex = -1;
         
         if (query.length === 0) {
-            searchResults.innerHTML = '';
-            searchResults.classList.remove('active');
+            // Show search history when input is empty
+            displaySearchHistory(searchHistory);
+            return;
+        }
+        
+        if (query.length < 2) {
+            // Show autocomplete suggestions for short queries
+            displayAutocompleteSuggestions(query);
             return;
         }
         
@@ -816,12 +863,16 @@ function initSearch() {
         searchTimeout = setTimeout(() => {
             const results = performSearch(query);
             displaySearchResults(results, query);
-        }, 100);
+        }, 150);
     });
     
     searchInput.addEventListener('focus', () => {
         const query = searchInput.value.trim();
-        if (query.length > 0) {
+        if (query.length === 0) {
+            displaySearchHistory(searchHistory);
+        } else if (query.length < 2) {
+            displayAutocompleteSuggestions(query);
+        } else {
             const results = performSearch(query);
             displaySearchResults(results, query);
         }
@@ -836,9 +887,13 @@ function initSearch() {
     
     // Handle Enter key
     searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && currentSuggestionIndex === -1) {
             const query = searchInput.value.trim();
             if (query.length > 0) {
+                // Save to history
+                saveToSearchHistory(query);
+                searchHistory = loadSearchHistory();
+                
                 const results = performSearch(query);
                 if (results.length > 0) {
                     navigateToResult(results[0]);
@@ -846,6 +901,160 @@ function initSearch() {
             }
         }
     });
+}
+
+// Highlight suggestion based on index
+function highlightSuggestion(items, index) {
+    items.forEach((item, i) => {
+        if (i === index) {
+            item.classList.add('highlighted');
+            item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        } else {
+            item.classList.remove('highlighted');
+        }
+    });
+}
+
+// Search history management
+function loadSearchHistory() {
+    try {
+        const history = localStorage.getItem('searchHistory');
+        return history ? JSON.parse(history) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveToSearchHistory(query) {
+    if (!query || query.trim().length === 0) return;
+    
+    try {
+        let history = loadSearchHistory();
+        // Remove if already exists
+        history = history.filter(item => item.toLowerCase() !== query.toLowerCase());
+        // Add to beginning
+        history.unshift(query);
+        // Keep only last 10 searches
+        history = history.slice(0, 10);
+        localStorage.setItem('searchHistory', JSON.stringify(history));
+    } catch (e) {
+        console.error('Failed to save search history:', e);
+    }
+}
+
+function clearSearchHistory() {
+    try {
+        localStorage.removeItem('searchHistory');
+        displaySearchHistory([]);
+    } catch (e) {
+        console.error('Failed to clear search history:', e);
+    }
+}
+
+// Display search history
+function displaySearchHistory(history) {
+    const searchResults = document.getElementById('search-results');
+    if (!searchResults) return;
+    
+    if (history.length === 0) {
+        searchResults.innerHTML = `
+            <div class="search-info-message">
+                <p><strong>💡 Quick tip:</strong> Press <kbd>/</kbd> to search, <kbd>Esc</kbd> to close</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Try: "python", "projects", "experience", "AI", etc.</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+        return;
+    }
+    
+    let html = `
+        <div class="search-history-header">
+            <span>Recent Searches</span>
+            <button class="clear-history-btn" onclick="clearSearchHistory()">Clear</button>
+        </div>
+    `;
+    
+    history.forEach(query => {
+        html += `
+            <div class="search-history-item" onclick="fillSearchQuery('${query.replace(/'/g, "\\'")}')" role="button" tabindex="0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span>${query}</span>
+            </div>
+        `;
+    });
+    
+    searchResults.innerHTML = html;
+    searchResults.classList.add('active');
+}
+
+// Fill search query from history
+window.fillSearchQuery = function(query) {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.value = query;
+        searchInput.focus();
+        // Trigger search
+        const results = performSearch(query);
+        displaySearchResults(results, query);
+    }
+}
+
+// Generate autocomplete suggestions
+function getAutocompleteSuggestions(query) {
+    const suggestions = [
+        // Common searches
+        'projects', 'experience', 'education', 'skills', 'about',
+        // Technologies
+        'python', 'machine learning', 'AI', 'javascript', 'sql', 'aws', 'docker',
+        'flask', 'pytorch', 'tensorflow', 'langchain',
+        // Specific projects
+        'unclogai', 'voyagelog', 'excellensight', 'startup planner',
+        // Companies
+        'qalienai', 'gallox', 'cornell', 'colentai', 'cardinality',
+        // Topics
+        'llm', 'nlp', 'computer vision', 'deep learning', 'cloud', 'devops',
+        'database', 'web development', 'automation', 'api'
+    ];
+    
+    if (!query || query.length === 0) return [];
+    
+    const queryLower = query.toLowerCase();
+    return suggestions
+        .filter(s => s.toLowerCase().startsWith(queryLower) || s.toLowerCase().includes(queryLower))
+        .slice(0, 8);
+}
+
+// Display autocomplete suggestions
+function displayAutocompleteSuggestions(query) {
+    const searchResults = document.getElementById('search-results');
+    if (!searchResults) return;
+    
+    const suggestions = getAutocompleteSuggestions(query);
+    
+    if (suggestions.length === 0) {
+        displaySearchHistory(loadSearchHistory());
+        return;
+    }
+    
+    let html = '<div class="search-suggestions-header">Suggestions</div>';
+    
+    suggestions.forEach(suggestion => {
+        html += `
+            <div class="search-suggestion-item" onclick="fillSearchQuery('${suggestion.replace(/'/g, "\\'")}')" role="button" tabindex="0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span>${highlightMatch(suggestion, query)}</span>
+            </div>
+        `;
+    });
+    
+    searchResults.innerHTML = html;
+    searchResults.classList.add('active');
 }
 
 // Display search results with enhanced formatting

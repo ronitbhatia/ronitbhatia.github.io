@@ -5,7 +5,7 @@ Personal portfolio website showcasing projects, experience, education, and skill
 ## Features
 
 - **Interactive Timeline**: Comprehensive career journey with clickable milestones
-- **Search Engine Interface**: Google-like search functionality to discover content
+- **Enhanced Search**: Fuzzy search with keyboard shortcuts, search history, and autocomplete
 - **Dark Mode**: Smooth dark/light theme toggle
 - **Custom Cursor**: Lightweight, smooth custom cursor (desktop only)
 - **Mobile Responsive**: Hamburger menu for mobile navigation
@@ -121,6 +121,95 @@ To add a new timeline item, use this template:
 - 💻 Development: Code brackets
 - 🏆 Achievement: Star/trophy
 - 👥 Leadership: People/group
+
+---
+
+## 🔍 Enhanced Search & Navigation
+
+### Overview
+Advanced search system with keyboard shortcuts, search history, and intelligent autocomplete for fast and efficient content discovery.
+
+### Key Features
+
+#### ⌨️ Keyboard Shortcuts
+- **`/` key** - Focus search from anywhere on the page
+- **`Esc` key** - Close search results
+- **`↑` `↓` arrows** - Navigate through results and suggestions
+- **`Enter`** - Select highlighted result
+- Full keyboard-only navigation support
+
+#### 📚 Search History
+- **Auto-saves** last 10 searches in localStorage
+- **Quick access** to recent searches
+- **Click** any history item to re-run that search
+- **Clear button** to remove all history
+- **Persistent** across browser sessions
+
+#### 🔍 Autocomplete Suggestions
+- **Smart suggestions** after typing 1 character
+- **35+ curated suggestions** including:
+  - Common pages (projects, experience, education, skills)
+  - Technologies (python, AI, javascript, docker, aws)
+  - Specific projects (unclogai, voyagelog, excellensight)
+  - Companies (qalienai, gallox, cornell, colentai)
+  - Topics (llm, nlp, computer vision, deep learning, cloud)
+- **Highlighted matches** - typed text highlighted
+- **Click to fill** - clicking fills search and runs query
+
+#### 🎯 Fuzzy Search
+- **Typo-tolerant** matching using Levenshtein distance algorithm
+- Handles spelling mistakes (e.g., "pythn" → finds "Python")
+- **Multi-word queries** with intelligent ranking
+- **Context-aware** category detection
+- **Weighted scoring** for title, description, and keyword matches
+
+### Visual Features
+
+- **Keyboard hints** with styled `<kbd>` tags (shows `/` and `Esc` shortcuts)
+- **Clock icon** for history items
+- **Search icon** for autocomplete suggestions
+- **Smooth animations** - fade in, slide right on hover
+- **Highlighted navigation** - blue left border for keyboard selection
+- **Professional styling** that matches existing design system
+- **Dark mode compatible**
+
+### Usage Examples
+
+**Quick Search Workflow:**
+1. Press `/` anywhere on page
+2. Type "pyth"
+3. See "python" suggestion
+4. Click or press Enter
+5. View all Python-related results
+
+**History Workflow:**
+1. Focus search (click or `/`)
+2. See recent search "machine learning"
+3. Click it to instantly see ML results again
+
+**Keyboard-Only Workflow:**
+1. Press `/`
+2. Type "proj"
+3. Press `↓` to highlight first suggestion
+4. Press Enter to navigate
+
+### Technical Details
+
+**Files Modified:**
+- `search.js` - Core search logic with history and autocomplete
+- `style.css` - UI styling for new components
+
+**LocalStorage:**
+- Key: `searchHistory`
+- Format: JSON array of strings
+- Size: ~1KB (10 searches)
+- Persistence: Permanent until cleared
+
+**Performance:**
+- Debouncing: 150ms delay for search
+- Max Results: 8-12 based on context
+- Fuzzy Matching: Optimized Levenshtein algorithm
+- Minimal DOM reflows
 
 ---
 
