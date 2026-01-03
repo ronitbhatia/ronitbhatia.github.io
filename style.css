@@ -1753,17 +1753,78 @@ body {
 }
 
 .more-content {
-  display: none;
-  margin-top: var(--space-6);
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transform: translateY(10px);
-  transition: all var(--duration-base) var(--ease-out);
+  transform: translateY(-10px);
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease-out 0.1s,
+              transform 0.4s ease-out 0.1s;
+  margin-top: 0;
 }
 
 .more-content.show {
-  display: block;
+  max-height: 2000px; /* Large enough for content */
   opacity: 1;
   transform: translateY(0);
+  margin-top: var(--space-6);
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease-out,
+              transform 0.4s ease-out,
+              margin-top 0.4s ease-out;
+}
+
+/* Card expansion effect */
+.card.expanded {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-primary-light) 100%);
+  transition: all var(--duration-base) var(--ease-spring);
+}
+
+/* Read More button enhancement */
+.btn-outline {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: 0;
+}
+
+.btn-outline:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.btn-outline span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon rotation animation */
+.btn-outline svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline.active svg {
+  transform: rotate(180deg);
 }
 
 /* ============================================

@@ -127,7 +127,10 @@
                         </div>
 
                         <button id="btn-ai-hackathon" class="btn-outline" onclick="toggleReadMore('ai-hackathon')">
-                            Read More
+                            <span>Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -166,7 +169,10 @@
                         </div>
 
                         <button id="btn-ambassador" class="btn-outline" onclick="toggleReadMore('ambassador')">
-                            Read More
+                            <span>Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -205,7 +211,10 @@
                         </div>
 
                         <button id="btn-pm-club" class="btn-outline" onclick="toggleReadMore('pm-club')">
-                            Read More
+                            <span>Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -243,7 +252,10 @@
                         </div>
 
                         <button id="btn-consulting" class="btn-outline" onclick="toggleReadMore('consulting')">
-                            Read More
+                            <span>Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -281,7 +293,10 @@
                         </div>
 
                         <button id="btn-talent-hackathon" class="btn-outline" onclick="toggleReadMore('talent-hackathon')">
-                            Read More
+                            <span>Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -585,14 +600,58 @@
         function toggleReadMore(id) {
             const moreContent = document.getElementById(`more-${id}`);
             const button = document.getElementById(`btn-${id}`);
+            const card = moreContent ? moreContent.closest('.card') : null;
             
             if (moreContent && button) {
-                if (moreContent.classList.contains('show')) {
-                    moreContent.classList.remove('show');
-                    button.textContent = 'Read More';
-                } else {
+                const isExpanding = !moreContent.classList.contains('show');
+                const buttonText = button.querySelector('span');
+                
+                if (isExpanding) {
+                    // Close all other expanded cards first (accordion behavior)
+                    document.querySelectorAll('.more-content.show').forEach(content => {
+                        if (content !== moreContent) {
+                            const otherButton = content.parentElement.querySelector('.btn-outline');
+                            const otherCard = content.closest('.card');
+                            content.classList.remove('show');
+                            if (otherButton) {
+                                const otherButtonText = otherButton.querySelector('span');
+                                if (otherButtonText) otherButtonText.textContent = 'Read More';
+                                otherButton.classList.remove('active');
+                            }
+                            if (otherCard) {
+                                otherCard.classList.remove('expanded');
+                            }
+                        }
+                    });
+                    
+                    // Expand this card
                     moreContent.classList.add('show');
-                    button.textContent = 'Read Less';
+                    if (buttonText) buttonText.textContent = 'Read Less';
+                    button.classList.add('active');
+                    if (card) {
+                        card.classList.add('expanded');
+                    }
+                    
+                    // Smooth scroll to card after a short delay for animation
+                    setTimeout(() => {
+                        if (card) {
+                            const navbar = document.querySelector('.navbar');
+                            const offset = navbar ? navbar.offsetHeight + 20 : 100;
+                            const cardTop = card.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({
+                                top: cardTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 100);
+                } else {
+                    // Collapse this card
+                    moreContent.classList.remove('show');
+                    if (buttonText) buttonText.textContent = 'Read More';
+                    button.classList.remove('active');
+                    if (card) {
+                        card.classList.remove('expanded');
+                    }
                 }
             }
         }
