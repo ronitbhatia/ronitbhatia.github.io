@@ -1318,12 +1318,14 @@ body {
 
 /* ============================================
    INTERACTIVE TIMELINE/JOURNEY SECTION
+   HORIZONTAL SCROLLING TIMELINE
    ============================================ */
 
 .journey-section {
   margin-top: var(--space-32);
   padding-top: var(--space-16);
   border-top: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .journey-title {
@@ -1342,47 +1344,92 @@ body {
   text-align: center;
   color: var(--color-text-tertiary);
   font-size: var(--text-lg);
-  margin-bottom: var(--space-20);
+  margin-bottom: var(--space-12);
   font-weight: 500;
 }
 
+/* Horizontal scroll container */
 .timeline-container {
   position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: var(--space-8) 0;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: var(--space-8) var(--space-4) var(--space-16);
+  margin: 0 -var(--space-8);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-border);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
+.timeline-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  margin: 0 var(--space-8);
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Create an inner wrapper for horizontal layout */
+.timeline-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+/* Horizontal timeline line - hidden since we use cards */
 .timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, 
-    var(--color-primary) 0%, 
-    var(--color-accent) 100%);
-  transform: translateX(-50%);
-  opacity: 0.3;
-  z-index: 0;
+  display: none;
 }
 
 .timeline-item {
   position: relative;
   display: flex;
-  margin-bottom: var(--space-16);
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 320px;
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.6s ease-out forwards;
+  transform: translateX(30px);
+  animation: fadeInRight 0.6s ease-out forwards;
 }
 
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) { animation-delay: 0.4s; }
-.timeline-item:nth-child(5) { animation-delay: 0.5s; }
-.timeline-item:nth-child(6) { animation-delay: 0.6s; }
+.timeline-item:nth-child(2) { animation-delay: 0.1s; }
+.timeline-item:nth-child(3) { animation-delay: 0.15s; }
+.timeline-item:nth-child(4) { animation-delay: 0.2s; }
+.timeline-item:nth-child(5) { animation-delay: 0.25s; }
+.timeline-item:nth-child(6) { animation-delay: 0.3s; }
+.timeline-item:nth-child(7) { animation-delay: 0.35s; }
+.timeline-item:nth-child(8) { animation-delay: 0.4s; }
+.timeline-item:nth-child(9) { animation-delay: 0.45s; }
+.timeline-item:nth-child(10) { animation-delay: 0.5s; }
+.timeline-item:nth-child(11) { animation-delay: 0.55s; }
+.timeline-item:nth-child(12) { animation-delay: 0.6s; }
+.timeline-item:nth-child(13) { animation-delay: 0.65s; }
+.timeline-item:nth-child(14) { animation-delay: 0.7s; }
 
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Keep fadeInUp for other uses */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -1390,25 +1437,13 @@ body {
   }
 }
 
-/* Alternate left/right positioning */
-.timeline-item:nth-child(odd) {
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.timeline-item:nth-child(even) {
-  flex-direction: row-reverse;
-  justify-content: flex-start;
-}
-
 .timeline-marker {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: var(--space-6);
 }
 
 .timeline-icon {
@@ -1431,62 +1466,44 @@ body {
 }
 
 .timeline-content {
-  flex: 0 0 calc(50% - 60px);
+  width: 100%;
   background: var(--color-surface);
-  padding: var(--space-8);
+  padding: var(--space-6);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-md);
   border: 2px solid var(--color-border);
   transition: all var(--duration-base) var(--ease-spring);
   position: relative;
   cursor: pointer;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Add visual indicator that items are clickable */
+/* Arrow pointing up from content to marker */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 12px 12px 12px;
+  border-color: transparent transparent var(--color-border) transparent;
+}
+
 .timeline-content::after {
   content: '→';
   position: absolute;
   bottom: var(--space-4);
-  right: var(--space-6);
-  font-size: var(--text-xl);
+  right: var(--space-4);
+  font-size: var(--text-lg);
   color: var(--color-primary);
   opacity: 0;
   transition: all var(--duration-base) var(--ease-out);
   transform: translateX(-10px);
-}
-
-/* Position content left/right of center */
-.timeline-item:nth-child(odd) .timeline-content {
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-  margin-right: 0;
-  margin-left: auto;
-}
-
-.timeline-content::before {
-  content: '';
-  position: absolute;
-  top: 28px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-/* Arrow pointing right (for left-side content) */
-.timeline-item:nth-child(odd) .timeline-content::before {
-  right: -12px;
-  border-width: 12px 0 12px 12px;
-  border-color: transparent transparent transparent var(--color-border);
-}
-
-/* Arrow pointing left (for right-side content) */
-.timeline-item:nth-child(even) .timeline-content::before {
-  left: -12px;
-  border-width: 12px 12px 12px 0;
-  border-color: transparent var(--color-border) transparent transparent;
 }
 
 .timeline-content:hover {
@@ -1506,43 +1523,46 @@ body {
 
 .timeline-year {
   display: inline-block;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: 700;
   color: white;
   background: var(--gradient-primary);
-  padding: var(--space-1) var(--space-4);
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   letter-spacing: 0.05em;
+  align-self: flex-start;
 }
 
 .timeline-heading {
-  font-size: var(--text-xl);
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   line-height: 1.3;
 }
 
 .timeline-description {
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: var(--space-4);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
+  flex-grow: 1;
 }
 
 .timeline-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-top: auto;
 }
 
 .timeline-tag {
   background: var(--color-primary-light);
   color: var(--color-primary);
-  padding: var(--space-1) var(--space-3);
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-full);
-  font-size: var(--text-xs);
+  font-size: 0.65rem;
   font-weight: 600;
   transition: all var(--duration-fast) var(--ease-out);
 }
@@ -1576,6 +1596,21 @@ body {
 
 .timeline-content.timeline-expanded {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scroll hint indicators */
+.journey-section::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 60px;
+  height: 200px;
+  transform: translateY(-50%);
+  background: linear-gradient(to left, var(--color-surface) 0%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 5;
 }
 
 /* ============================================
@@ -2078,25 +2113,27 @@ body {
     align-items: flex-start;
   }
   
-  /* Timeline Mobile Styles */
-  .timeline-line {
-    left: 20px;
+  /* Timeline Mobile Styles - Horizontal Scroll */
+  .journey-section {
+    margin-left: calc(-1 * var(--space-6));
+    margin-right: calc(-1 * var(--space-6));
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+  
+  .timeline-container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    gap: var(--space-4);
   }
   
   .timeline-item {
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    padding-left: 60px;
-  }
-  
-  .timeline-marker {
-    left: 20px;
-    transform: translateX(0);
+    width: 260px;
   }
   
   .timeline-icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
   
   .timeline-icon svg {
@@ -2105,13 +2142,12 @@ body {
   }
   
   .timeline-content {
-    flex: 1;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    padding: var(--space-5);
+    min-height: 240px;
   }
   
-  .timeline-content::before {
-    display: none;
+  .timeline-line {
+    top: 80px;
   }
   
   .journey-title {
@@ -2120,6 +2156,7 @@ body {
   
   .journey-subtitle {
     font-size: var(--text-base);
+    padding: 0 var(--space-4);
   }
 }
 
@@ -2157,5 +2194,32 @@ body {
   
   .search-input {
     font-size: var(--text-base);
+  }
+  
+  /* Timeline extra small screens */
+  .timeline-item {
+    width: 220px;
+  }
+  
+  .timeline-content {
+    padding: var(--space-4);
+    min-height: 220px;
+  }
+  
+  .timeline-heading {
+    font-size: var(--text-sm);
+  }
+  
+  .timeline-description {
+    font-size: var(--text-xs);
+  }
+  
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .timeline-line {
+    top: 70px;
   }
 }
