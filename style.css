@@ -628,9 +628,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Left-align headings on all pages except home/About */
-#projects .section-title,
 #education .section-title,
-#skills .section-title,
 #initiative-impact .section-title,
 .experience-page-title {
   text-align: left;
@@ -2243,6 +2241,26 @@ h1, h2, h3, h4, h5, h6,
   margin-top: 0;
 }
 
+.education-page .tag {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.education-page .tag:hover {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+#projects .tag {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+#projects .tag:hover {
+  background: var(--gradient-primary);
+  color: white;
+}
+
 /* Education page mobile */
 @media (max-width: 768px) {
   .education-timeline {
@@ -2291,6 +2309,153 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .education-page .card::after {
+    left: calc(3px - var(--space-8));
+  }
+}
+
+/* ============================================
+   INITIATIVE & IMPACT – SEQUENCE TIMELINE
+   (Progression layout, no date implication)
+   ============================================ */
+
+.initiative-impact-page-header {
+  margin-bottom: var(--space-16);
+  text-align: left;
+}
+
+.initiative-impact-page-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.initiative-impact-timeline {
+  position: relative;
+  padding-left: var(--space-12);
+}
+
+.initiative-impact-timeline-rail {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-border);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.initiative-impact-page .initiative-impact-entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.initiative-impact-page .initiative-impact-entries .card {
+  position: relative;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  transform: none;
+}
+
+.initiative-impact-page .initiative-impact-entries .card::before {
+  content: none;
+}
+
+.initiative-impact-page .initiative-impact-entries .card:hover {
+  transform: none;
+  box-shadow: none;
+  border: none;
+}
+
+.initiative-impact-page .initiative-impact-entries .card::after {
+  content: '';
+  position: absolute;
+  left: calc(5px - var(--space-12));
+  top: 0.5em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  opacity: 0.8;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.initiative-impact-page .initiative-impact-entries .card:first-child::after {
+  background: var(--color-text-tertiary);
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  left: calc(5px - var(--space-12));
+  transform: translateX(-50%);
+}
+
+.initiative-impact-page .initiative-impact-entries .card-content {
+  padding: 0;
+}
+
+.initiative-impact-page .initiative-impact-entries .card-header {
+  margin-bottom: var(--space-6);
+}
+
+.initiative-impact-page .initiative-impact-entries .card-title {
+  margin-bottom: var(--space-2);
+}
+
+.initiative-impact-page .initiative-impact-entries .card-description {
+  color: var(--color-text-secondary);
+  line-height: var(--line-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.initiative-impact-page .initiative-impact-entries .more-content .card-description {
+  margin-bottom: var(--space-4);
+}
+
+.initiative-impact-page .initiative-impact-entries .more-content .card-description:last-child {
+  margin-bottom: 0;
+}
+
+.initiative-impact-page .initiative-impact-entries .btn-outline {
+  margin-top: var(--space-4);
+}
+
+.initiative-impact-page .tag {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.initiative-impact-page .tag:hover {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+/* Initiative & Impact mobile */
+@media (max-width: 768px) {
+  .initiative-impact-timeline {
+    padding-left: var(--space-10);
+  }
+
+  .initiative-impact-timeline-rail {
+    left: 3px;
+  }
+
+  .initiative-impact-page .initiative-impact-entries .card::after {
+    left: calc(3px - var(--space-10));
+  }
+}
+
+@media (max-width: 480px) {
+  .initiative-impact-timeline {
+    padding-left: var(--space-8);
+  }
+
+  .initiative-impact-page .initiative-impact-entries .card::after {
     left: calc(3px - var(--space-8));
   }
 }
@@ -2365,7 +2530,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .skill-tag {
-  background: var(--color-primary);
+  background: var(--gradient-primary);
   color: white;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
@@ -2375,6 +2540,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .skill-tag:hover {
+  background: var(--gradient-primary);
+  color: white;
   transform: translateY(-1px) scale(1.05);
   box-shadow: var(--shadow-sm);
 }
