@@ -1962,7 +1962,7 @@ h1, h2, h3, h4, h5, h6,
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--color-text-muted);
+  background: var(--color-primary);
   transform: translateX(-50%);
   z-index: 2;
   pointer-events: none;
@@ -2011,23 +2011,24 @@ h1, h2, h3, h4, h5, h6,
   grid-column: 2;
   grid-row: 1;
   align-self: flex-start;
-  background: var(--glass-bg);
-  backdrop-filter: var(--blur-md);
-  -webkit-backdrop-filter: var(--blur-md);
-  color: var(--color-text-tertiary);
-  border: var(--border-width) solid var(--color-border);
+  background: var(--color-primary);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: white;
+  border: none;
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
   font-weight: 500;
-  box-shadow: none;
+  box-shadow: var(--shadow-sm);
   white-space: nowrap;
 }
 
 .experience-page .card-header .btn-secondary:hover {
-  background: var(--color-surface-hover);
-  color: var(--color-text-secondary);
-  border-color: var(--color-border-hover);
-  box-shadow: none;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.1);
 }
 
 .experience-page .card-description {
