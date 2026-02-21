@@ -1904,16 +1904,12 @@ h1, h2, h3, h4, h5, h6,
 .experience-page-title {
   font-size: var(--text-5xl);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-primary);
   margin: 0 0 var(--space-2);
   letter-spacing: -0.03em;
   line-height: var(--line-tight);
   background: none;
   -webkit-text-fill-color: unset;
-}
-
-[data-theme="dark"] .experience-page-title {
-  color: var(--color-text-primary);
 }
 
 .experience-timeline {
@@ -1973,7 +1969,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .experience-page .card:first-child::after {
-  background: var(--color-text-primary);
+  background: var(--color-primary);
   width: 12px;
   height: 12px;
   left: calc(5px - var(--space-12));
@@ -2007,7 +2003,7 @@ h1, h2, h3, h4, h5, h6,
   grid-row: 1;
   font-size: var(--text-xl);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-primary);
   margin: 0;
 }
 
