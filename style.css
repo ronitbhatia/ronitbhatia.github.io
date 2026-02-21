@@ -384,8 +384,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .nav-link.active {
-  color: var(--color-primary);
-  background: var(--color-primary-light);
+  color: white;
+  background: var(--gradient-primary);
   font-weight: 600;
 }
 
@@ -551,8 +551,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .mobile-nav-link.active {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
+  background: var(--gradient-primary);
+  color: white;
   font-weight: 600;
 }
 
