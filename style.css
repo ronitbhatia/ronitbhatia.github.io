@@ -627,6 +627,16 @@ h1, h2, h3, h4, h5, h6,
   gap: var(--space-4);
 }
 
+/* Left-align headings on all pages except home/About */
+#projects .section-title,
+#education .section-title,
+#skills .section-title,
+#initiative-impact .section-title,
+.experience-page-title {
+  text-align: left;
+  justify-content: flex-start;
+}
+
 /* ============================================
    HERO SECTION
    ============================================ */
