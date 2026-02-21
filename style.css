@@ -1904,7 +1904,10 @@ h1, h2, h3, h4, h5, h6,
 .experience-page-title {
   font-size: var(--text-5xl);
   font-weight: 700;
-  color: var(--color-primary);
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0 0 var(--space-2);
   letter-spacing: -0.03em;
   line-height: var(--line-tight);
@@ -1962,14 +1965,14 @@ h1, h2, h3, h4, h5, h6,
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--gradient-primary);
   transform: translateX(-50%);
   z-index: 2;
   pointer-events: none;
 }
 
 .experience-page .card:first-child::after {
-  background: var(--color-primary);
+  background: var(--gradient-primary);
   width: 12px;
   height: 12px;
   left: calc(5px - var(--space-12));
@@ -2003,7 +2006,10 @@ h1, h2, h3, h4, h5, h6,
   grid-row: 1;
   font-size: var(--text-xl);
   font-weight: 700;
-  color: var(--color-primary);
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
 }
 
@@ -2011,7 +2017,7 @@ h1, h2, h3, h4, h5, h6,
   grid-column: 2;
   grid-row: 1;
   align-self: flex-start;
-  background: var(--color-primary);
+  background: var(--gradient-primary);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   color: white;
@@ -2024,7 +2030,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .experience-page .card-header .btn-secondary:hover {
-  background: var(--color-primary);
+  background: var(--gradient-primary);
   color: white;
   border: none;
   box-shadow: var(--shadow-md);
@@ -2202,7 +2208,10 @@ h1, h2, h3, h4, h5, h6,
   grid-column: 1;
   grid-row: 1;
   margin: 0;
-  color: var(--color-primary);
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .education-page .card-header .btn-secondary {
