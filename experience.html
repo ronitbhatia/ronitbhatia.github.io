@@ -7,12 +7,20 @@
     <meta name="description" content="Professional Experience - Software Engineer & ML Enthusiast">
     <meta name="author" content="Ronit Bhatia">
     
+    <script>
+        (function() {
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+            var saved = localStorage.getItem('theme');
+            var theme = saved || (prefersDark.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.0.4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0.0">
 </head>
-<body>
+<body class="page-enter">
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-dot"></div>
@@ -40,7 +48,7 @@
             
             <div class="nav-right">
                 <!-- Dark Mode Toggle -->
-                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -80,11 +88,53 @@
     </div>
 
         <!-- Experience Section -->
-    <section id="experience" class="section section-bg" style="padding-top: 10rem;">
+    <section id="experience" class="section section-bg experience-page" style="padding-top: 10rem;">
         <div class="container">
-            <h2 class="section-title scroll-reveal">Professional Experience</h2>
+            <header class="experience-page-header">
+                <h2 class="experience-page-title scroll-reveal">Professional Experience</h2>
+            </header>
             
-            <div class="experience-grid">
+            <div class="experience-timeline">
+                <div class="experience-timeline-rail" aria-hidden="true"></div>
+                <div class="experience-grid">
+
+                <!-- Y Meadows -->
+<div id="ymeadows" class="card animate-fade-in">
+    <div class="card-content">
+        <div class="card-header">
+            <div>
+                <h3 class="card-title">Y Meadows</h3>
+                <h4 class="card-subtitle">Technical Implementation Engineer Intern</h4>
+            </div>
+            <span class="btn-secondary">Jan 2026 – Present</span>
+        </div>
+        
+        <p class="card-description">
+            Working across onboarding, integrations, and deployment readiness to help customers move from kickoff to production smoothly. Partnering closely with product and engineering to turn requirements into stable, repeatable implementations.
+        </p>
+
+        <div id="more-ymeadows" class="more-content">
+            <p class="card-description">
+                Owned configuration and validation of end-to-end customer onboarding workflows across internal systems and third-party integrations. Verified data mappings, permissions, and environment setup, and ran system and integration checks to ensure customers entered UAT fully prepared and deployments were reliable.
+            </p>
+            <p class="card-description">
+                Collaborated with product managers and engineers to break down customer requirements into clear technical tasks. Tracked dependencies in JIRA and aligned implementation work with customer context in Salesforce, identifying risks early and helping reduce time-to-go-live by roughly 20 percent.
+            </p>
+            <p class="card-description">
+                Maintained onboarding documentation, configuration checklists, and internal runbooks to keep implementations consistent and easy to hand off. Improved configuration tooling and templates to reduce manual errors, streamline deployments, and make ongoing support easier for downstream teams.
+            </p>
+        </div>
+
+        <button id="btn-ymeadows" class="btn-outline" onclick="toggleReadMore('ymeadows')">
+            <span>Read More</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </button>
+    </div>
+</div>
+
+
                 <!-- QAlienAI -->
                 <div id="qalienai" class="card animate-fade-in">
                     <div class="card-content">
@@ -97,21 +147,21 @@
                         </div>
                         
                         <p class="card-description">
-                            Leading development of AI systems that evaluate marketing content for FTC and FDA compliance using LLMs, semantic similarity, and rule-based checks. Building multimodal classifiers and unified OCR/ASR pipelines to support platform-wide content intelligence.
+                            Led development of AI systems that evaluate marketing content for FTC and FDA compliance using LLMs, semantic similarity, and rule-based checks. Built multimodal classifiers and unified OCR/ASR pipelines to support platform-wide content intelligence.
                         </p>
 
                         <div id="more-qalienai" class="more-content">
                             <p class="card-description">
-                                Leading development of AI systems that evaluate marketing content for FTC and FDA compliance using LLMs, semantic similarity, and rule-based checks. Working with Claude 3.5 Sonnet and Gemini 2.5 Pro to deliver accurate, interpretable assessments. Building multimodal classifiers that distinguish user-generated from professional content.
+                                Led development of AI systems that evaluate marketing content for FTC and FDA compliance using LLMs, semantic similarity, and rule-based checks. Worked with Claude 3.5 Sonnet and Gemini 2.5 Pro to deliver accurate, interpretable assessments. Built multimodal classifiers that distinguish user-generated from professional content.
                             </p>
                             <p class="card-description">
-                                Developing multimodal content analysis capabilities using image, video, and audio processing through AWS Bedrock and Gemini Vision. Building a unified OCR and ASR pipeline with Gemini Vision and AssemblyAI for reliable text extraction across images, audio, and video. Implementing confidence scoring, fallback logic, and error handling for robust performance.
+                                Developed multimodal content analysis capabilities using image, video, and audio processing through AWS Bedrock and Gemini Vision. Built a unified OCR and ASR pipeline with Gemini Vision and AssemblyAI for reliable text extraction across images, audio, and video. Implemented confidence scoring, fallback logic, and error handling for robust performance.
                             </p>
                             <p class="card-description">
-                                Implementing semantic search with pgvector to retrieve regulatory guidance, generating embeddings, and tuning similarity search. Creating a brand compliance analyzer powered by multiple LLM providers that produces structured evaluations of tone, vocabulary, layout, and visual identity with confidence scoring.
+                                Implemented semantic search with pgvector to retrieve regulatory guidance, generating embeddings, and tuning similarity search. Created a brand compliance analyzer powered by multiple LLM providers that produces structured evaluations of tone, vocabulary, layout, and visual identity with confidence scoring.
                             </p>
                             <p class="card-description">
-                                Engineering end-to-end AI pipelines using Supabase Edge Functions, TypeScript, and Deno. Managing async workflows, job queues, and result aggregation for a scalable multi-tenant SaaS platform.
+                                Engineered end-to-end AI pipelines using Supabase Edge Functions, TypeScript, and Deno. Managed async workflows, job queues, and result aggregation for a scalable multi-tenant SaaS platform.
                             </p>
                         </div>
 
@@ -254,6 +304,7 @@
                             </svg>
                         </button>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -512,6 +563,13 @@
 
             document.querySelectorAll('.animate-fade-in, .scroll-reveal').forEach(el => {
                 observer.observe(el);
+            });
+
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    document.body.classList.remove('page-enter');
+                    document.body.classList.add('page-enter-ready');
+                });
             });
 
             // Dark mode functionality

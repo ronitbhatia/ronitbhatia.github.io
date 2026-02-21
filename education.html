@@ -7,12 +7,20 @@
     <meta name="description" content="Education - Software Engineer & ML Enthusiast">
     <meta name="author" content="Ronit Bhatia">
     
+    <script>
+        (function() {
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+            var saved = localStorage.getItem('theme');
+            var theme = saved || (prefersDark.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.0.4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0.0">
 </head>
-<body>
+<body class="page-enter">
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-dot"></div>
@@ -40,7 +48,7 @@
             
             <div class="nav-right">
                 <!-- Dark Mode Toggle -->
-                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -400,6 +408,13 @@
 
             document.querySelectorAll('.animate-fade-in, .scroll-reveal').forEach(el => {
                 observer.observe(el);
+            });
+
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    document.body.classList.remove('page-enter');
+                    document.body.classList.add('page-enter-ready');
+                });
             });
 
             // Dark mode functionality

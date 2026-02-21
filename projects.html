@@ -7,12 +7,20 @@
     <meta name="description" content="Featured Projects - Software Engineer & ML Enthusiast">
     <meta name="author" content="Ronit Bhatia">
     
+    <script>
+        (function() {
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+            var saved = localStorage.getItem('theme');
+            var theme = saved || (prefersDark.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.0.4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0.0">
 </head>
-<body>
+<body class="page-enter">
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-dot"></div>
@@ -39,7 +47,7 @@
             
             <div class="nav-right">
                 <!-- Dark Mode Toggle -->
-                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -85,6 +93,65 @@
             
             <div class="projects-grid">
 
+                <!-- LensCraft Project -->
+<div id="lenscraft" class="card animate-fade-in">
+    <div class="card-content">
+        <div class="card-header">
+            <div>
+                <h3 class="card-title">LensCraft: Adaptive Personal Finance Interface</h3>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="https://lenscraft-fawn.vercel.app/" class="btn-secondary" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Live Demo
+                </a>
+                <a href="https://github.com/ronitbhatia/lenscraft" class="btn-secondary" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="card-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Generative AI</span>
+            <span class="tag">Fintech</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Zustand</span>
+        </div>
+
+        <p class="card-description">
+            LensCraft is a personal finance app where the interface adapts to how you think. Instead of a single fixed dashboard, the app infers your intent from natural-language prompts and switches between three views: Narrative (timelines, story, event chips), Constraint (runway, risk, safety), and Optimizer (scenario comparison, sensitivity). A deterministic TypeScript finance engine performs all calculations; AI is used only for layout selection and grounded explanations. Each view includes lens-specific AI insights.
+        </p>
+
+        <div id="more-lenscraft" class="more-content">
+            <p class="card-description">
+                <strong>Adaptive Interface Architecture:</strong> Built a mental-model inference engine using 40+ weighted regex patterns and exponential smoothing to map user prompts to narrative, constraint, or optimizer lenses. The deterministic prompt parser extracts scenario overrides (rent changes, spending cuts, debt payments) and comparison intents from natural language. A component registry renders the appropriate UI—StorySummary and TimelineCashflow for timelines, SafetyBufferGauge and RedZoneMonthsList for risk, DeltaCards and ScenarioCompare for tradeoffs.
+            </p>
+            <p class="card-description">
+                <strong>Determinism-First Design:</strong> Implemented a pure TypeScript finance engine that computes 12-month projections, risk metrics, and scenario deltas without any LLM involvement. Integrated Google Gemini and Tambo Cloud for AI features—assumption extraction for vague prompts (with explicit user confirmation), and grounded insight generation that references only computed values. All AI outputs are validated with Zod schemas and fall back to deterministic templates on failure, ensuring no invented numbers ever reach the user.
+            </p>
+            <p class="card-description">
+                <strong>Production-Ready Full-Stack:</strong> Architected with Next.js 14 App Router, Zustand for state management, and server-side API routes for plan-ui, extract-intent, and explain endpoints. Deployed on Vercel with optional environment configuration for Tambo and Gemini. Includes 6 user profiles, 12 scenario templates, and a guided 8-step demo. "Why this view?" exposes inference scores and signals for transparency. Demonstrates practical application of AI in fintech with a clear separation between deterministic computation and AI-driven interpretation.
+            </p>
+        </div>
+
+        <button id="btn-lenscraft" class="btn-outline" onclick="toggleReadMore('lenscraft')">
+            <span>Read More</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </button>
+    </div>
+</div>
+                
                 <!-- UnclogAI Project -->
                 <div id="unclogai" class="card animate-fade-in">
                     <div class="card-content">
@@ -754,6 +821,13 @@
 
             document.querySelectorAll('.animate-fade-in, .scroll-reveal').forEach(el => {
                 observer.observe(el);
+            });
+
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    document.body.classList.remove('page-enter');
+                    document.body.classList.add('page-enter-ready');
+                });
             });
 
             // Dark mode functionality
