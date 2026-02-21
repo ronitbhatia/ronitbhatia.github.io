@@ -2100,6 +2100,185 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ============================================
+   EDUCATION PAGE – TIMELINE LAYOUT
+   (Same structure as Experience, colors preserved)
+   ============================================ */
+
+.education-page-header {
+  margin-bottom: var(--space-16);
+  text-align: left;
+}
+
+.education-page-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.education-timeline {
+  position: relative;
+  padding-left: var(--space-12);
+}
+
+.education-timeline-rail {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-border);
+  pointer-events: none;
+}
+
+.education-page .education-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.education-page .card {
+  position: relative;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  transform: none;
+}
+
+.education-page .card::before,
+.education-page .card::after {
+  content: none;
+}
+
+.education-page .card:hover {
+  transform: none;
+  box-shadow: none;
+  border: none;
+}
+
+.education-page .card::after {
+  content: '';
+  position: absolute;
+  left: calc(5px - var(--space-12));
+  top: 0.5em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.education-page .card:first-child::after {
+  background: var(--color-primary);
+  width: 12px;
+  height: 12px;
+  left: calc(5px - var(--space-12));
+  transform: translateX(-50%);
+}
+
+.education-page .card-content {
+  padding: 0;
+}
+
+.education-page .card-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  gap: var(--space-2) var(--space-6);
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+}
+
+/* Use display: contents so card-header children participate in grid */
+.education-page .card-header > div {
+  display: contents;
+}
+
+.education-page .card-subtitle {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.education-page .card-header .btn-secondary {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: flex-start;
+}
+
+.education-page .card-title {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+}
+
+.education-page .card-header > div > p {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
+.education-page .card-content > div {
+  margin-top: 0;
+}
+
+/* Education page mobile */
+@media (max-width: 768px) {
+  .education-timeline {
+    padding-left: var(--space-10);
+  }
+
+  .education-page .card-header {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+  }
+
+  .education-page .card-subtitle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .education-page .card-header .btn-secondary {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: flex-start;
+  }
+
+  .education-page .card-title {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .education-page .card-header > div > p {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .education-timeline-rail {
+    left: 3px;
+  }
+
+  .education-page .card::after {
+    left: calc(3px - var(--space-10));
+  }
+}
+
+@media (max-width: 480px) {
+  .education-timeline {
+    padding-left: var(--space-8);
+  }
+
+  .education-page .card::after {
+    left: calc(3px - var(--space-8));
+  }
+}
+
+/* ============================================
    SKILLS
    ============================================ */
 
