@@ -1911,8 +1911,6 @@ h1, h2, h3, h4, h5, h6,
   margin: 0 0 var(--space-2);
   letter-spacing: -0.03em;
   line-height: var(--line-tight);
-  background: none;
-  -webkit-text-fill-color: unset;
 }
 
 .experience-timeline {
