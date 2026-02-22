@@ -2484,7 +2484,11 @@ h1, h2, h3, h4, h5, h6,
 .skills-page-title {
   font-size: var(--text-6xl);
   font-weight: 700;
-  color: var(--color-text-primary);
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   margin: 0;
   letter-spacing: -0.03em;
   line-height: var(--line-tight);
