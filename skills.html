@@ -88,19 +88,27 @@
     </div>
 
         <!-- Skills Section -->
-    <section id="skills" class="section section-alt" style="padding-top: 10rem;">
+    <section id="skills" class="section section-alt skills-page" style="padding-top: 10rem;">
         <div class="container">
-            <h2 class="section-title scroll-reveal">Technical Skills</h2>
+            <header class="skills-page-header">
+                <div class="skills-page-header-left">
+                    <h2 class="skills-page-title scroll-reveal">Technical Skills</h2>
+                </div>
+                <div class="skills-page-header-right"></div>
+            </header>
             
-            <div class="skills-grid">
+            <div class="skills-grid skills-page-grid">
                 <!-- Programming Languages -->
-                <div id="programming" class="skill-card animate-fade-in">
+                <div id="programming" class="skill-card animate-fade-in" data-index="01">
+                    <span class="skill-card-numeral" aria-hidden="true">01</span>
+                    <div class="skill-card-inner">
                     <div class="skill-icon programming">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="16,18 22,12 16,6"></polyline>
                             <polyline points="8,6 2,12 8,18"></polyline>
                         </svg>
                     </div>
+                    <span class="skill-category-label">SKILL CATEGORY</span>
                     <h3 class="skill-title">Programming</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
@@ -114,10 +122,13 @@
                         <span class="skill-tag">Lisp</span>
                         <span class="skill-tag">Prolog</span>
                     </div>
+                    </div>
                 </div>
 
                 <!-- ML & AI -->
-                <div id="ml" class="skill-card animate-fade-in">
+                <div id="ml" class="skill-card animate-fade-in" data-index="02">
+                    <span class="skill-card-numeral" aria-hidden="true">02</span>
+                    <div class="skill-card-inner">
                     <div class="skill-icon ml">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="4" width="16" height="16" rx="2"></rect>
@@ -132,6 +143,7 @@
                             <line x1="1" y1="14" x2="4" y2="14"></line>
                         </svg>
                     </div>
+                    <span class="skill-category-label">SKILL CATEGORY</span>
                     <h3 class="skill-title">ML & AI</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">TensorFlow</span>
@@ -149,10 +161,13 @@
                         <span class="skill-tag">Kimi AI</span>
                         <span class="skill-tag">Kiro</span>
                     </div>
+                    </div>
                 </div>
 
                 <!-- Tools & DevOps -->
-                <div id="tools" class="skill-card animate-fade-in">
+                <div id="tools" class="skill-card animate-fade-in" data-index="03">
+                    <span class="skill-card-numeral" aria-hidden="true">03</span>
+                    <div class="skill-card-inner">
                     <div class="skill-icon tools">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
@@ -160,6 +175,7 @@
                             <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                         </svg>
                     </div>
+                    <span class="skill-category-label">SKILL CATEGORY</span>
                     <h3 class="skill-title">Tools & DevOps</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
@@ -170,22 +186,39 @@
                         <span class="skill-tag">JIRA</span>
                         <span class="skill-tag">PowerBI</span>
                     </div>
+                    </div>
                 </div>
 
                 <!-- Cloud Platforms -->
-                <div id="cloud" class="skill-card animate-fade-in">
+                <div id="cloud" class="skill-card animate-fade-in" data-index="04">
+                    <span class="skill-card-numeral" aria-hidden="true">04</span>
+                    <div class="skill-card-inner">
                     <div class="skill-icon cloud">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                         </svg>
                     </div>
+                    <span class="skill-category-label">SKILL CATEGORY</span>
                     <h3 class="skill-title">Cloud</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">AWS (S3, EC2, Lambda, SageMaker, RDS, DynamoDB)</span>
                         <span class="skill-tag">GCP (BigQuery, Vertex AI, Cloud Run)</span>
                     </div>
+                    </div>
                 </div>
             </div>
+
+            <aside class="skills-philosophy" aria-label="Design philosophy">
+                <div class="skills-philosophy-card">
+                    <span class="skills-philosophy-label">LEARNING PHILOSOPHY</span>
+                    <blockquote class="skills-philosophy-quote" id="philosophy-quote"></blockquote>
+                    <div class="skills-philosophy-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                </div>
+            </aside>
         </div>
     </section>
 <!-- Footer -->
@@ -436,6 +469,15 @@
                                 }, index * 150);
                             });
                         }
+                        if (entry.target.classList.contains('skill-card')) {
+                            const cards = entry.target.parentElement.querySelectorAll('.skill-card');
+                            cards.forEach((card, index) => {
+                                card.style.setProperty('--stagger-index', index);
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 100);
+                            });
+                        }
                     }
                 });
             }, observerOptions);
@@ -486,6 +528,51 @@
                     updateToggleIcon();
                 }
             });
+
+            // Design Philosophy – 7 philosophies, rotate by day (Mon–Sun), update at local midnight
+            (function() {
+                const philosophies = [
+                    { title: 'Build from first principles, then choose tradeoffs deliberately.', body: 'I start by understanding the system at its simplest form before adding complexity. Clear tradeoffs matter more than clever solutions, and every decision should have a reason that survives scrutiny over time.', kicker: 'Reason beats novelty.' },
+                    { title: 'Read the system deeply before trying to fix it.', body: 'Most bugs reveal themselves when you slow down and actually read the code and data flows. I debug methodically, forming hypotheses, testing them, and letting evidence guide the next step.', kicker: 'Observe before acting.' },
+                    { title: 'Design for reliability, not just correctness.', body: 'Software is only valuable when it behaves predictably under real conditions. I think about failure modes, monitoring, and recovery as part of building, not as afterthoughts.', kicker: 'Resilience is a feature.' },
+                    { title: 'Clarity in communication is an engineering responsibility.', body: 'Good systems are easier to reason about when ideas are written clearly and shared early. I treat documentation and explanations as tools that reduce future complexity.', kicker: 'Make thinking visible.' },
+                    { title: 'Craft matters, even when no one is watching.', body: 'I refactor, test, and simplify because future engineers include my future self. Clean structure compounds over time and makes speed possible later.', kicker: 'Quality scales.' },
+                    { title: 'Build what matters, not just what is interesting.', body: 'Good engineering starts with understanding the user, the constraint, and the outcome we are trying to change. I prioritize work that moves real metrics and solves real problems, even when the solution is simple.', kicker: 'Impact over elegance.' },
+                    { title: 'Raise the bar while helping others reach it.', body: 'Strong teams are built through trust, patience, and shared standards. I value mentorship, humility, and creating space for others to do their best work.', kicker: 'Excellence is collective.' }
+                ];
+                const quoteEl = document.getElementById('philosophy-quote');
+                if (!quoteEl) return;
+
+                function getDayIndex() {
+                    return (new Date().getDay() + 6) % 7;
+                }
+
+                function escapeHtml(s) {
+                    const div = document.createElement('div');
+                    div.textContent = s;
+                    return div.innerHTML;
+                }
+
+                function updatePhilosophy() {
+                    const p = philosophies[getDayIndex()];
+                    quoteEl.innerHTML = '"' + escapeHtml(p.title) + '<br><br>' + escapeHtml(p.body) + '<br><br>- ' + escapeHtml(p.kicker) + '"';
+                }
+
+                function scheduleNextMidnight() {
+                    const now = new Date();
+                    const midnight = new Date(now);
+                    midnight.setDate(midnight.getDate() + 1);
+                    midnight.setHours(0, 0, 0, 0);
+                    const msUntil = midnight - now;
+                    setTimeout(function() {
+                        updatePhilosophy();
+                        scheduleNextMidnight();
+                    }, msUntil);
+                }
+
+                updatePhilosophy();
+                scheduleNextMidnight();
+            })();
 
         });
 
