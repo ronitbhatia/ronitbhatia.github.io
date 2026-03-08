@@ -19,6 +19,16 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        mac: {
+          bg: "hsl(var(--mac-bg))",
+          window: "hsl(var(--mac-window-bg))",
+          chrome: "hsl(var(--mac-window-chrome))",
+          border: "hsl(var(--mac-border))",
+          dark: "hsl(var(--mac-dark))",
+          blue: "hsl(var(--mac-blue))",
+          "blue-light": "hsl(var(--mac-blue-light))",
+          "blue-dark": "hsl(var(--mac-blue-dark))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
