@@ -19,6 +19,16 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        mac: {
+          bg: "hsl(var(--mac-bg))",
+          window: "hsl(var(--mac-window-bg))",
+          chrome: "hsl(var(--mac-window-chrome))",
+          border: "hsl(var(--mac-border))",
+          dark: "hsl(var(--mac-dark))",
+          blue: "hsl(var(--mac-blue))",
+          "blue-light": "hsl(var(--mac-blue-light))",
+          "blue-dark": "hsl(var(--mac-blue-dark))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -62,6 +72,11 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        retro: ["VT323", "monospace"],
+        body: ["Inter", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
       },
       keyframes: {
         "accordion-down": {
