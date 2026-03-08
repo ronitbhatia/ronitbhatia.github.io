@@ -73,6 +73,11 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        retro: ["VT323", "monospace"],
+        body: ["Inter", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
+      },
       keyframes: {
         "accordion-down": {
           from: {
