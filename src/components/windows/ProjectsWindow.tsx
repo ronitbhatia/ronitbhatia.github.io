@@ -166,7 +166,6 @@ const ProjectsWindow: React.FC = () => {
                 }`}
                 style={{
                   borderColor: selected === p.id ? "hsl(var(--mac-blue))" : "hsl(var(--mac-border))",
-                  ringColor: "hsl(var(--mac-blue))",
                   background: "hsl(0 0% 98%)",
                   boxShadow: selected === p.id ? "0 2px 12px rgba(59,130,246,0.15)" : "0 1px 4px rgba(0,0,0,0.08)",
                 }}
