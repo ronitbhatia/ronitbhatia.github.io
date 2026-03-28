@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="hsl(207 89% 54%)"/>
+  <rect x="4" y="4" width="24" height="18" rx="2" fill="hsl(0 0% 98%)" stroke="hsl(0 0% 75%)" stroke-width="1"/>
+  <text x="16" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="hsl(207 89% 36%)">R</text>
+  <rect x="6" y="6" width="6" height="2" rx="0.5" fill="hsl(0 0% 85%)"/>
+</svg>

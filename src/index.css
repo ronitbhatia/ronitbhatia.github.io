@@ -48,18 +48,19 @@
     --radius: 0px;
 
     /* === Mac Window Shadow === */
-    --window-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
-    --window-shadow-focused: 0 12px 48px rgba(0,0,0,0.32), 0 4px 16px rgba(0,0,0,0.18);
+    --window-shadow: 0 10px 40px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+    --window-shadow-focused: 0 16px 56px rgba(0,0,0,0.28), 0 6px 20px rgba(0,0,0,0.14), 0 0 0 1px hsl(var(--mac-blue) / 0.15);
 
     /* === Glass Effect === */
     --glass-bg: rgba(245, 245, 247, 0.72);
     --glass-border: rgba(255, 255, 255, 0.55);
     --glass-blur: blur(20px);
 
-    /* === Typography === */
+    /* === Typography (SF Pro on Apple, fallback elsewhere) === */
+    --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
     --font-retro: 'VT323', monospace;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+    --font-body: var(--font-system);
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "IBM Plex Mono", monospace;
 
     /* Sidebar vars */
     --sidebar-background: 0 0% 88%;
@@ -70,6 +71,80 @@
     --sidebar-accent-foreground: 0 0% 8%;
     --sidebar-border: 0 0% 72%;
     --sidebar-ring: 207 89% 54%;
+    --window-card-bg: 0 0% 98%;
+    /* About window (theme-aware) */
+    --about-tag-bg: 0 0% 94%;
+    --about-tag-fg: 0 0% 8%;
+    --about-tag-border: 0 0% 55%;
+    --about-section-label: 0 0% 40%;
+    --about-section-label-opacity: 1;
+    --about-btn-muted-bg: 0 0% 97%;
+    --about-btn-muted-fg: 0 0% 8%;
+    --about-btn-gh-bg: 0 0% 12%;
+    --about-btn-gh-fg: 0 0% 100%;
+    --about-divider: 0 0% 75%;
+    --about-photo-bg: 0 0% 92%;
+    --window-chrome-bg: 0 0% 88%;
+    --window-input-bg: 0 0% 97%;
+    --window-input-bg-alt: 0 0% 94%;
+    --window-sidebar-bg: 0 0% 90%;
+    /* Hierarchy & spacing (System Settings–style) */
+    --section-padding: 20px;
+    --content-padding: 16px;
+  }
+
+  /* Dark mode */
+  html.dark,
+  .dark {
+    --window-card-bg: 220 10% 16%;
+    --about-tag-bg: 220 10% 22%;
+    --about-tag-fg: 0 0% 92%;
+    --about-tag-border: 220 8% 35%;
+    --about-section-label: 0 0% 78%;
+    --about-section-label-opacity: 1;
+    --about-btn-muted-bg: 220 10% 24%;
+    --about-btn-muted-fg: 0 0% 94%;
+    --about-btn-gh-bg: 220 10% 30%;
+    --about-btn-gh-fg: 0 0% 100%;
+    --about-divider: 220 8% 30%;
+    --about-photo-bg: 220 10% 20%;
+    --window-chrome-bg: 220 10% 18%;
+    --window-input-bg: 220 10% 18%;
+    --window-input-bg-alt: 220 10% 22%;
+    --window-sidebar-bg: 220 10% 20%;
+    --mac-bg: 220 12% 14%;
+    --mac-stripe-light: 220 12% 18%;
+    --mac-stripe-dark: 220 12% 12%;
+    --mac-window-bg: 220 10% 12%;
+    --mac-window-chrome: 220 10% 18%;
+    --mac-titlebar: 220 10% 22%;
+    --mac-titlebar-active: 207 30% 28%;
+    --mac-border: 220 8% 28%;
+    --mac-dark: 0 0% 96%;
+    --mac-menu: 220 10% 14%;
+    --mac-blue: 207 89% 58%;
+    --mac-blue-light: 207 89% 70%;
+    --mac-blue-dark: 207 89% 65%;
+    --background: 220 12% 14%;
+    --foreground: 0 0% 96%;
+    --card: 220 10% 14%;
+    --card-foreground: 0 0% 96%;
+    --popover: 220 10% 14%;
+    --popover-foreground: 0 0% 96%;
+    --secondary: 220 10% 22%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 220 10% 22%;
+    --muted-foreground: 0 0% 72%;
+    --accent: 207 92% 62%;
+    --accent-foreground: 0 0% 100%;
+    --border: 220 10% 32%;
+    --input: 220 10% 20%;
+    --ring: 207 92% 62%;
+    --glass-bg: rgba(30, 32, 40, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    /* Slightly warmer/cooler accents for less dull feel */
+    --mac-blue: 207 92% 62%;
+    --mac-blue-light: 207 92% 72%;
   }
 }
 
@@ -88,15 +163,20 @@
 
   body {
     background-color: hsl(var(--background));
+    transition: background-color 0.25s ease;
+  }
+
+  input, textarea, [contenteditable="true"] {
+    cursor: text;
   }
 }
 
 @layer components {
-  /* Mac Window Chrome */
+  /* Mac Window Chrome – modern rounded corners */
   .mac-window {
     background: hsl(var(--mac-window-bg));
     border: 1.5px solid hsl(var(--mac-border));
-    border-radius: 6px;
+    border-radius: 14px;
     box-shadow: var(--window-shadow);
     overflow: hidden;
     position: absolute;
@@ -106,18 +186,36 @@
   }
 
   .mac-window.focused {
-    box-shadow: var(--window-shadow-focused);
+    box-shadow: var(--window-shadow-focused), 0 0 40px -8px hsl(var(--mac-blue) / 0.45), 0 0 0 1px hsl(var(--mac-blue) / 0.2);
     z-index: 50 !important;
   }
 
+  html.dark .mac-window {
+    border-color: hsl(220 10% 36%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+  html.dark .mac-window.focused {
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 48px -8px hsl(207 92% 62% / 0.35);
+  }
+
+  /* Menu bar: active window name pulse */
+  .mac-menubar-active-window {
+    font-weight: 600;
+    color: hsl(var(--mac-dark));
+    animation: menubar-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes menubar-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  /* Title bar – blur + vibrancy (unified with toolbar) */
   .mac-titlebar {
-    background: linear-gradient(
-      to bottom,
-      hsl(0 0% 92%),
-      hsl(0 0% 78%)
-    );
-    border-bottom: 1.5px solid hsl(var(--mac-border));
-    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid hsl(var(--mac-border) / 0.6);
+    padding: 0 12px;
     height: 28px;
     display: flex;
     align-items: center;
@@ -125,14 +223,26 @@
     user-select: none;
     cursor: default;
     flex-shrink: 0;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
   }
 
   .mac-titlebar.active {
-    background: linear-gradient(
-      to bottom,
-      hsl(210 15% 86%),
-      hsl(210 15% 68%)
-    );
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+  }
+
+  html.dark .mac-titlebar {
+    background: rgba(45, 48, 58, 0.65);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;
+  }
+  html.dark .mac-titlebar.active {
+    background: rgba(50, 55, 70, 0.7);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
   }
 
   .mac-titlebar-title {
@@ -156,14 +266,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: filter 0.1s;
+    transition: filter 0.15s ease, transform 0.15s ease;
   }
 
   .mac-btn:hover {
-    filter: brightness(0.88);
+    filter: brightness(0.92);
+    transform: scale(1.08);
+  }
+  .mac-btn:active {
+    transform: scale(0.96);
   }
 
   .mac-btn-close { background: #ff5f57; border-color: #e0443e; }
+  .mac-btn-close:hover { filter: brightness(0.92) saturate(1.1); }
   .mac-btn-minimize { background: #febc2e; border-color: #d4a017; }
   .mac-btn-maximize { background: #28c840; border-color: #1aab29; }
 
@@ -204,135 +319,915 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
+    color: hsl(var(--mac-dark));
+  }
+
+  /* Liquid glass window toolbar (modern) */
+  .liquid-glass-toolbar {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+
+  .liquid-glass-icon {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: hsl(var(--mac-dark));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   }
 
   /* Retro font */
   .font-retro { font-family: var(--font-retro); }
   .font-mono-retro { font-family: var(--font-mono); }
 
-  /* Inset scrollbar (Mac style) */
+  /* Unified scrollbar (blue thumb, rounded track) */
   .mac-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
-  .mac-scroll::-webkit-scrollbar-track { background: hsl(0 0% 88%); border-left: 1px solid hsl(var(--mac-border)); }
-  .mac-scroll::-webkit-scrollbar-thumb { background: hsl(0 0% 65%); border-radius: 4px; border: 2px solid hsl(0 0% 88%); }
-  .mac-scroll::-webkit-scrollbar-thumb:hover { background: hsl(0 0% 50%); }
+  .mac-scroll::-webkit-scrollbar-track { background: hsl(var(--mac-border) / 0.2); border-radius: 6px; margin: 2px; }
+  .mac-scroll::-webkit-scrollbar-thumb { background: hsl(var(--mac-blue) / 0.55); border-radius: 6px; }
+  .mac-scroll::-webkit-scrollbar-thumb:hover { background: hsl(var(--mac-blue) / 0.8); }
 
-  /* Desktop icon */
+  /* Desktop icon – larger, simple highlight (no liquid glass) */
   .desktop-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 8px;
-    border-radius: 4px;
+    gap: 6px;
+    padding: 10px 8px;
+    border-radius: 8px;
     cursor: pointer;
     user-select: none;
-    transition: background 0.1s;
-    width: 80px;
+    width: 100px;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   }
 
   .desktop-icon:hover {
-    background: rgba(100, 160, 230, 0.18);
+    background: rgba(100, 160, 230, 0.16);
+    border-color: rgba(129, 140, 248, 0.6);
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+  }
+  html.dark .desktop-icon:hover {
+    background: rgba(59, 130, 246, 0.18);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
   }
 
   .desktop-icon.selected {
-    background: rgba(100, 160, 230, 0.32);
+    background: rgba(147, 197, 253, 0.35);
+    border-color: hsl(var(--mac-blue));
   }
 
   .desktop-icon span {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
     font-family: var(--font-body);
     color: hsl(var(--mac-dark));
     text-align: center;
-    line-height: 1.3;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    line-height: 1.35;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.9);
   }
 
-  /* Menu bar */
+  /* Menu bar – blur + vibrancy (modern translucent) */
   .mac-menubar {
-    height: 24px;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+    height: 28px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 2px 12px rgba(0,0,0,0.06);
     display: flex;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 10px;
     gap: 2px;
     z-index: 100;
     position: relative;
+    color: hsl(var(--mac-dark));
   }
 
   .mac-menubar-item {
-    padding: 2px 8px;
-    font-size: 12px;
+    padding: 4px 10px;
+    font-size: 13px;
     font-family: var(--font-body);
     font-weight: 500;
     color: hsl(var(--mac-dark));
-    border-radius: 3px;
+    border-radius: 6px;
     cursor: default;
-    transition: background 0.1s;
+    transition: background 0.15s ease, color 0.15s ease;
   }
 
   .mac-menubar-item:hover {
-    background: hsl(var(--mac-blue));
-    color: white;
+    background: hsl(var(--mac-blue) / 0.18);
+    color: hsl(var(--mac-blue));
+    border-radius: 6px;
+    box-shadow: 0 1px 3px hsl(var(--mac-blue) / 0.15);
+  }
+  html.dark .mac-menubar-item:hover {
+    background: hsl(var(--mac-blue) / 0.25);
+    box-shadow: 0 0 12px -2px hsl(var(--mac-blue) / 0.3);
   }
 
-  /* Window content area */
+  .mac-menubar-status {
+    color: hsl(var(--mac-dark));
+  }
+
+  /* Window content area – consistent spacing */
   .window-content {
     flex: 1;
     overflow: auto;
     min-height: 0;
   }
+  .window-content-section {
+    padding: var(--section-padding);
+  }
+  .window-content-section > * + * {
+    margin-top: var(--content-padding);
+  }
 
-  /* Dock */
+  /* Dock – pill shape + strong blur + vibrancy */
   .mac-dock {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 6px 12px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 26px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.7);
+    gap: 8px;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .mac-dock::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 40px;
+    margin-top: 4px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, transparent 100%);
+    border-radius: 50%;
+    filter: blur(4px);
+    pointer-events: none;
   }
 
   .dock-item {
     width: 48px;
     height: 48px;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.15s ease, filter 0.1s;
+    transition: transform 0.2s ease, filter 0.15s;
     position: relative;
   }
 
   .dock-item:hover {
-    transform: scale(1.25) translateY(-6px);
+    transform: scale(1.38) translateY(-12px);
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  }
+  html.dark .dock-item:hover {
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4)) brightness(1.08);
   }
 
   .dock-item .dock-tooltip {
     position: absolute;
-    bottom: 115%;
+    bottom: 120%;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(8px);
     color: white;
-    font-size: 10px;
-    padding: 3px 7px;
-    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 8px;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s;
+    transition: opacity 0.15s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .dock-item:hover .dock-tooltip {
     opacity: 1;
+  }
+
+  /* Dark mode overrides for glass & chrome */
+  html.dark .liquid-glass-toolbar {
+    background: rgba(30, 32, 40, 0.6);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  }
+  html.dark .liquid-glass-icon {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: hsl(var(--mac-dark));
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  /* Logos/icons in dark mode – ensure SVGs and emoji are visible */
+  html.dark [class*="liquid-glass-icon"] svg,
+  html.dark .dock-item {
+    color: inherit;
+  }
+  html.dark .mac-menubar {
+    background: rgba(30, 30, 30, 0.4);
+    backdrop-filter: blur(32px) saturate(150%);
+    -webkit-backdrop-filter: blur(32px) saturate(150%);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    color: hsl(var(--foreground));
+  }
+  html.dark .mac-menubar-active-window {
+    color: hsl(var(--foreground));
+  }
+  html.dark .mac-menubar-status {
+    color: hsl(var(--foreground));
+  }
+  html.dark .mac-dock {
+    background: rgba(30, 30, 32, 0.45);
+    backdrop-filter: blur(32px) saturate(150%);
+    -webkit-backdrop-filter: blur(32px) saturate(150%);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  html.dark .mac-dock::after {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, transparent 100%);
+  }
+  /* No stripe/extra bg in dark mode – windows use solid background only */
+  html.dark .mac-stripe-bg {
+    background-image: none;
+  }
+  html.dark .desktop-icon {
+    background: transparent;
+    border-color: transparent;
+  }
+  html.dark .desktop-icon:hover {
+    background: rgba(59, 130, 246, 0.32);
+    border-color: hsl(var(--mac-blue));
+  }
+  html.dark .desktop-icon.selected {
+    background: rgba(37, 99, 235, 0.5);
+    border-color: hsl(var(--mac-blue-light));
+  }
+  html.dark .desktop-icon span {
+    color: #f9fafb;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  }
+  html.dark .desktop-root {
+    background-image: none !important;
+    background-color: hsl(var(--background));
+    position: relative;
+  }
+  /* When animated gradient is used, restore it and hide stripe overlay */
+  html.dark .desktop-root.desktop-dark-bg {
+    background-image: linear-gradient(180deg, #0f172a 0%, #020617 33%, #000 50%, #020617 66%, #0f172a 100%) !important;
+    background-color: transparent !important;
+    background-size: 100% 200% !important;
+    background-position: 0% 0% !important;
+    animation: desktop-dark-gradient-drift 28s linear infinite;
+  }
+  html.dark .desktop-root.desktop-dark-bg::before {
+    display: none;
+  }
+  /* Dark mode textured background – clearly visible horizontal stripe (only when not using gradient) */
+  html.dark .desktop-root::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.18) 2px,
+      rgba(255, 255, 255, 0.18) 4px
+    );
+    background-size: 100% 4px;
+  }
+  html.dark .desktop-root > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* Assistant uses fixed positioning; desktop-root > * above would override it and break layout. */
+  html.dark .desktop-root > .desktop-assistant-backdrop,
+  html.dark .desktop-root > .desktop-assistant-panel {
+    position: fixed !important;
+  }
+  html.dark .desktop-root > .desktop-assistant-backdrop {
+    z-index: 99980 !important;
+  }
+  html.dark .desktop-root > .desktop-assistant-panel {
+    z-index: 99990 !important;
+    inset: 0 !important;
+  }
+  html.dark .mac-scroll::-webkit-scrollbar-track {
+    background: hsl(220 10% 18%);
+    border-radius: 4px;
+  }
+  html.dark .mac-scroll::-webkit-scrollbar-thumb {
+    background: hsl(var(--mac-blue) / 0.45);
+    border-radius: 4px;
+  }
+  html.dark .mac-scroll::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--mac-blue) / 0.65);
+  }
+
+  /* Window toolbar – blur + vibrancy (unified with title bar) */
+  .window-chrome-bar {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    color: hsl(var(--mac-dark));
+    border-bottom: 1px solid hsl(var(--mac-border) / 0.5);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+  }
+  html.dark .window-chrome-bar {
+    background: rgba(40, 42, 52, 0.6);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset;
+  }
+
+  /* Segmented control – pill-shaped grouped buttons (macOS style) */
+  .mac-segmented-control {
+    display: inline-flex;
+    border-radius: 9999px;
+    padding: 2px;
+    background: hsl(var(--mac-border) / 0.25);
+    border: 1px solid hsl(var(--mac-border) / 0.5);
+    gap: 0;
+  }
+  .mac-segmented-control-item {
+    padding: 4px 12px;
+    font-size: 12px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: hsl(var(--mac-dark));
+    background: transparent;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .mac-segmented-control-item:first-child {
+    border-radius: 9999px 0 0 9999px;
+  }
+  .mac-segmented-control-item:last-child {
+    border-radius: 0 9999px 9999px 0;
+  }
+  .mac-segmented-control-item:hover:not(.mac-segmented-control-item-active) {
+    background: hsl(var(--mac-border) / 0.2);
+  }
+  .mac-segmented-control-item-active {
+    background: hsl(var(--mac-window-bg));
+    color: hsl(var(--mac-dark));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  html.dark .mac-segmented-control {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  html.dark .mac-segmented-control-item-active {
+    background: hsl(220 12% 22%);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+
+  .window-card-bg {
+    background: hsl(var(--window-card-bg));
+  }
+
+  .window-sidebar-bg {
+    background: hsl(var(--window-sidebar-bg));
+  }
+
+  .window-input-bg {
+    background: hsl(var(--window-input-bg));
+  }
+
+  .window-input-bg-alt {
+    background: hsl(var(--window-input-bg-alt));
+  }
+
+  .project-list-row:hover {
+    background: hsl(var(--window-input-bg-alt));
+  }
+  .project-list-row-selected {
+    background: hsl(var(--mac-blue) / 0.15);
+  }
+
+  /* Project card header (pastel strip): dark mode needs dark text for readability */
+  html.dark .project-card-header .project-card-name {
+    color: hsl(0 0% 12%) !important;
+  }
+
+  /* Theme-aware section labels (Contact, Bio, etc.) used across windows */
+  .window-section-label {
+    color: hsl(var(--about-section-label));
+    opacity: var(--about-section-label-opacity);
+  }
+
+  /* Contact window: meta text (email, timestamp) and link values – readable in both themes */
+  .contact-meta,
+  .contact-value {
+    color: hsl(var(--muted-foreground));
+  }
+  html.dark .contact-meta,
+  html.dark .contact-value {
+    color: hsl(0 0% 82%);
+    opacity: 1;
+  }
+
+  /* Skills window – category cards (2x2 grid inspiration) */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 540px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .skill-category-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    background-image: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+  }
+  .skill-category-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+  html.dark .skill-category-card {
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    background-image: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  }
+  html.dark .skill-category-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.4);
+  }
+
+  .skill-card-number {
+    font-size: 2.5rem;
+    line-height: 1;
+    opacity: 0.07;
+    color: hsl(var(--mac-dark));
+    font-family: var(--font-mono);
+  }
+  html.dark .skill-card-number {
+    opacity: 0.06;
+    color: hsl(0 0% 100%);
+  }
+
+  .skill-card-category-label {
+    color: hsl(var(--about-section-label));
+    opacity: var(--about-section-label-opacity);
+  }
+
+  .skill-card-icon {
+    background: hsl(247 50% 92%);
+  }
+  .skill-card-icon--programming { background: hsl(247 50% 92%); }
+  .skill-card-icon--ml { background: hsl(142 45% 92%); }
+  .skill-card-icon--tools { background: hsl(267 45% 92%); }
+  .skill-card-icon--cloud { background: hsl(25 70% 94%); }
+  html.dark .skill-card-icon--programming { background: hsl(247 35% 22%); }
+  html.dark .skill-card-icon--ml { background: hsl(142 35% 20%); }
+  html.dark .skill-card-icon--tools { background: hsl(267 35% 22%); }
+  html.dark .skill-card-icon--cloud { background: hsl(25 50% 22%); }
+
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    background: hsl(247 45% 92%);
+    color: hsl(247 55% 28%);
+    border: 1px solid hsl(247 40% 82%);
+  }
+  html.dark .skill-tag {
+    background: hsl(247 35% 22%);
+    color: hsl(247 75% 88%);
+    border-color: hsl(247 30% 32%);
+  }
+
+  .skills-philosophy-text {
+    color: hsl(var(--mac-dark));
+  }
+
+  /* About window – rolling carousel */
+  .about-carousel {
+    min-height: 1.25rem;
+  }
+  .about-carousel-item {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .about-timeline-subcopy {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--about-section-label));
+    opacity: 0.5;
+  }
+
+  /* About timeline – minimal legend (dot + label) */
+  .about-timeline-legend-minimal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--about-section-label));
+    opacity: 0.72;
+  }
+  .about-timeline-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .about-timeline-legend-item::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px hsl(0 0% 0% / 0.06);
+  }
+  .about-timeline-legend-item--experience::before {
+    background: hsl(220 82% 52%);
+  }
+  .about-timeline-legend-item--initiative::before {
+    background: hsl(285 72% 54%);
+  }
+  .about-timeline-legend-item--education-start::before {
+    background: hsl(165 58% 40%);
+  }
+  .about-timeline-legend-item--education-graduation::before {
+    background: hsl(36 92% 48%);
+  }
+
+  html.dark .about-timeline-legend-item--experience::before {
+    background: hsl(220 95% 65%);
+    box-shadow: 0 0 12px hsl(220 95% 65% / 0.55);
+  }
+  html.dark .about-timeline-legend-item--initiative::before {
+    background: hsl(288 85% 68%);
+    box-shadow: 0 0 12px hsl(288 85% 68% / 0.5);
+  }
+  html.dark .about-timeline-legend-item--education-start::before {
+    background: hsl(165 70% 52%);
+    box-shadow: 0 0 12px hsl(165 70% 52% / 0.5);
+  }
+  html.dark .about-timeline-legend-item--education-graduation::before {
+    background: hsl(38 96% 58%);
+    box-shadow: 0 0 12px hsl(38 96% 58% / 0.52);
+  }
+
+  /* About window – horizontal scroll timeline */
+  .about-timeline-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.125rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0.35rem 0 0.75rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  .about-timeline-horizontal::-webkit-scrollbar {
+    height: 5px;
+  }
+  .about-timeline-horizontal::-webkit-scrollbar-track {
+    background: hsl(var(--mac-border) / 0.25);
+    border-radius: 3px;
+  }
+  .about-timeline-horizontal::-webkit-scrollbar-thumb {
+    background: hsl(var(--mac-blue) / 0.45);
+    border-radius: 3px;
+  }
+  .about-timeline-horizontal::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--mac-blue) / 0.75);
+  }
+
+  .about-timeline-card {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center bottom;
+  }
+  .about-timeline-card:hover {
+    transform: translateY(-6px);
+  }
+
+  /* Lane tokens — brighter in dark mode so cards match the legend */
+  .about-timeline-card--lane-experience {
+    --tl-accent: hsl(220 82% 52%);
+    --tl-wash: hsl(220 82% 52% / 0.14);
+    --tl-glow: hsl(220 82% 52% / 0.42);
+  }
+  .about-timeline-card--lane-initiative {
+    --tl-accent: hsl(285 72% 54%);
+    --tl-wash: hsl(285 72% 54% / 0.14);
+    --tl-glow: hsl(285 72% 54% / 0.42);
+  }
+  .about-timeline-card--lane-education-start {
+    --tl-accent: hsl(165 58% 40%);
+    --tl-wash: hsl(165 58% 40% / 0.15);
+    --tl-glow: hsl(165 58% 40% / 0.4);
+  }
+  .about-timeline-card--lane-education-graduation {
+    --tl-accent: hsl(36 92% 48%);
+    --tl-wash: hsl(36 92% 48% / 0.15);
+    --tl-glow: hsl(36 92% 48% / 0.44);
+  }
+
+  html.dark .about-timeline-card--lane-experience {
+    --tl-accent: hsl(220 95% 65%);
+    --tl-wash: hsl(220 95% 65% / 0.28);
+    --tl-glow: hsl(220 95% 65% / 0.55);
+  }
+  html.dark .about-timeline-card--lane-initiative {
+    --tl-accent: hsl(288 85% 68%);
+    --tl-wash: hsl(288 85% 68% / 0.26);
+    --tl-glow: hsl(288 85% 68% / 0.52);
+  }
+  html.dark .about-timeline-card--lane-education-start {
+    --tl-accent: hsl(165 70% 52%);
+    --tl-wash: hsl(165 70% 52% / 0.26);
+    --tl-glow: hsl(165 70% 52% / 0.5);
+  }
+  html.dark .about-timeline-card--lane-education-graduation {
+    --tl-accent: hsl(38 96% 58%);
+    --tl-wash: hsl(38 96% 58% / 0.26);
+    --tl-glow: hsl(38 96% 58% / 0.52);
+  }
+
+  .about-timeline-card-btn {
+    position: relative;
+    display: block;
+    min-width: 300px;
+    max-width: 340px;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 1.125rem;
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+    background: transparent;
+    transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow:
+      0 0 0 1px hsl(var(--mac-border)),
+      0 0 28px -8px color-mix(in hsl, var(--tl-accent) 22%, transparent),
+      0 12px 36px -14px hsl(0 0% 0% / 0.2);
+  }
+  .about-timeline-card-btn:focus {
+    outline: none;
+  }
+  .about-timeline-card-btn:focus-visible {
+    outline: 2px solid var(--tl-accent);
+    outline-offset: 3px;
+  }
+
+  /* Dark: lane-colored border + glow so each card matches its legend dot */
+  html.dark .about-timeline-card .about-timeline-card-btn {
+    box-shadow:
+      0 0 0 1px color-mix(in hsl, var(--tl-accent) 55%, hsl(0 0% 100% / 0.06)),
+      0 0 0 1px color-mix(in hsl, var(--tl-accent) 28%, transparent),
+      0 0 48px -6px color-mix(in hsl, var(--tl-accent) 38%, transparent),
+      0 18px 50px -16px hsl(0 0% 0% / 0.72);
+  }
+
+  .about-timeline-card-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 9px;
+    background: var(--tl-accent);
+    border-radius: 1.125rem 0 0 1.125rem;
+    z-index: 0;
+    box-shadow: 4px 0 24px color-mix(in hsl, var(--tl-accent) 55%, transparent);
+  }
+
+  html.dark .about-timeline-card-btn::before {
+    width: 11px;
+    box-shadow:
+      4px 0 28px color-mix(in hsl, var(--tl-accent) 70%, transparent),
+      0 0 20px color-mix(in hsl, var(--tl-accent) 45%, transparent);
+  }
+
+  /* Top accent strip — reads instantly per lane */
+  .about-timeline-card-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--tl-accent) 0%,
+      color-mix(in hsl, var(--tl-accent) 55%, hsl(var(--window-card-bg))) 72%,
+      transparent 100%
+    );
+    border-radius: 1.125rem 1.125rem 0 0;
+    z-index: 0;
+    opacity: 0.95;
+  }
+
+  html.dark .about-timeline-card-btn::after {
+    height: 5px;
+    opacity: 1;
+    box-shadow: 0 0 24px color-mix(in hsl, var(--tl-accent) 50%, transparent);
+  }
+
+  .about-timeline-card-body {
+    position: relative;
+    z-index: 1;
+    padding: 1.35rem 1.35rem 1.4rem 1.65rem;
+    background: linear-gradient(
+      125deg,
+      var(--tl-wash) 0%,
+      color-mix(in hsl, var(--tl-wash) 35%, hsl(var(--window-card-bg))) 38%,
+      hsl(var(--window-card-bg)) 72%
+    );
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-timeline-lane-title {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--tl-accent);
+    margin-bottom: 0.85rem;
+    line-height: 1.2;
+    text-shadow: 0 0 28px color-mix(in hsl, var(--tl-accent) 35%, transparent);
+  }
+  html.dark .about-timeline-lane-title {
+    text-shadow:
+      0 0 32px color-mix(in hsl, var(--tl-accent) 55%, transparent),
+      0 0 12px color-mix(in hsl, var(--tl-accent) 30%, transparent);
+  }
+
+  .about-timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: hsl(var(--mac-dark));
+    opacity: 0.45;
+    margin: 0 0 0.65rem 0;
+  }
+
+  .about-timeline-heading {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: hsl(var(--mac-dark));
+    margin: 0 0 0.6rem 0;
+  }
+
+  .about-timeline-desc {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: hsl(var(--mac-dark));
+    opacity: 0.78;
+    margin: 0 0 1rem 0;
+    flex: 1;
+  }
+
+  .about-timeline-tags-line {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(var(--mac-dark));
+    opacity: 0.38;
+    margin: 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid color-mix(in hsl, var(--tl-accent) 28%, hsl(var(--mac-border)));
+    line-height: 1.45;
+  }
+  html.dark .about-timeline-tags-line {
+    opacity: 0.5;
+    border-top-color: color-mix(in hsl, var(--tl-accent) 42%, hsl(0 0% 100% / 0.08));
+  }
+
+  .about-timeline-card:hover .about-timeline-card-btn {
+    box-shadow:
+      0 0 0 1px hsl(var(--mac-border)),
+      0 0 0 1px color-mix(in hsl, var(--tl-accent) 65%, transparent),
+      0 0 36px -6px color-mix(in hsl, var(--tl-accent) 35%, transparent),
+      0 20px 50px -16px var(--tl-glow),
+      0 24px 56px -20px hsl(0 0% 0% / 0.18);
+    transform: translateY(-1px);
+  }
+  html.dark .about-timeline-card:hover .about-timeline-card-btn {
+    box-shadow:
+      0 0 0 1px color-mix(in hsl, var(--tl-accent) 70%, hsl(0 0% 100% / 0.1)),
+      0 0 0 1px color-mix(in hsl, var(--tl-accent) 45%, transparent),
+      0 0 56px -4px color-mix(in hsl, var(--tl-accent) 48%, transparent),
+      0 0 48px -8px var(--tl-glow),
+      0 24px 56px -16px hsl(0 0% 0% / 0.55);
+  }
+
+  /* About contact buttons – hover lift */
+  .about-contact-btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .about-contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  /* About photo – soft shadow */
+  .about-photo-wrap {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
+  }
+
+  /* Contact success toast – glow */
+  .contact-success-toast {
+    box-shadow: 0 0 24px hsl(142 72% 50% / 0.25), 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .contact-success-animate {
+    animation: contact-success-in 0.4s ease-out;
+  }
+  .contact-success-checkmark {
+    animation: contact-check-pop 0.5s ease-out 0.1s both;
+  }
+  @keyframes contact-success-in {
+    from { opacity: 0; transform: scale(0.9) translateY(-8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes contact-check-pop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  /* Contact form inputs – focus ring */
+  .contact-input-focus:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--mac-blue) / 0.5);
+  }
+
+  /* Button/link press-in */
+  button {
+    transition: transform 0.1s ease;
+  }
+  button:active:not(:disabled),
+  .btn-press:active {
+    transform: scale(0.98);
+  }
+  a.cta-primary { transition: opacity 0.15s ease, transform 0.1s ease; }
+  a.cta-primary:hover { opacity: 0.92; }
+  a.cta-primary:active { transform: scale(0.98); }
+
+  /* Interactive elements – default pointer cursor */
+  a, button:not(:disabled), [role="button"], .dock-item, .desktop-icon, .mac-btn, [tabindex]:not([tabindex="-1"]):not([disabled]) {
+    cursor: pointer;
+  }
+  /* Focus ring – visible for accessibility */
+  a:focus-visible, button:focus-visible, [role="button"]:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--mac-blue) / 0.6);
+  }
+  .mac-btn:focus-visible { border-radius: 50%; }
+
+  /* Section headings – tighter weight */
+  .about-section-label,
+  .window-section-label {
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+  /* Blockquote / note style */
+  .retro-note {
+    border-left: 4px solid hsl(var(--mac-blue));
+    background: hsl(var(--mac-blue) / 0.08);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    color: hsl(var(--mac-dark));
+  }
+  html.dark .retro-note {
+    background: hsl(var(--mac-blue) / 0.12);
   }
 
   /* Pixel border (retro inset) */
@@ -354,6 +1249,82 @@
     font-weight: 500;
   }
 
+  html.dark .mac-tag {
+    background: hsl(207 60% 22%);
+    color: hsl(207 89% 82%);
+    border-color: hsl(207 50% 35%);
+  }
+
+  /* Project status badges – pill style, theme-aware */
+  .status-badge {
+    border-radius: 9999px;
+    padding: 2px 10px;
+  }
+  .status-badge.status-live {
+    background: hsl(142 72% 93%);
+    color: hsl(142 72% 30%);
+  }
+  .status-badge.status-wip {
+    background: hsl(40 95% 94%);
+    color: hsl(40 95% 35%);
+  }
+  .status-badge.status-open-source {
+    background: hsl(207 89% 94%);
+    color: hsl(207 89% 35%);
+  }
+  html.dark .status-badge.status-live {
+    background: hsl(142 50% 22%);
+    color: hsl(142 70% 75%);
+  }
+  html.dark .status-badge.status-wip {
+    background: hsl(40 60% 22%);
+    color: hsl(40 90% 78%);
+  }
+  html.dark .status-badge.status-open-source {
+    background: hsl(207 50% 22%);
+    color: hsl(207 89% 78%);
+  }
+  /* Project card hover – scale + shadow + accent */
+  .project-card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .project-card-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px hsl(var(--mac-blue) / 0.25);
+  }
+  /* Featured project (e.g. Quivlo): glow and “New” badge */
+  .project-card-featured {
+    box-shadow: 0 2px 12px rgba(59,130,246,0.12), 0 0 0 1px hsl(var(--mac-blue) / 0.2);
+  }
+  .project-card-featured:hover {
+    box-shadow: 0 12px 32px rgba(59,130,246,0.2), 0 0 24px -4px hsl(var(--mac-blue) / 0.35), 0 0 0 1px hsl(var(--mac-blue) / 0.4);
+  }
+  html.dark .project-card-featured {
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3), 0 0 0 1px hsl(var(--mac-blue) / 0.25);
+  }
+  html.dark .project-card-featured:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 32px -4px hsl(var(--mac-blue) / 0.4), 0 0 0 1px hsl(var(--mac-blue) / 0.5);
+  }
+  .project-card-new-badge {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, hsl(var(--mac-blue)), hsl(207 89% 42%));
+    color: white;
+    box-shadow: 0 2px 8px hsl(var(--mac-blue) / 0.4);
+    animation: project-badge-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes project-badge-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.92; transform: scale(1.03); }
+  }
+
   /* Boot screen */
   .boot-screen {
     position: fixed;
@@ -365,6 +1336,21 @@
     z-index: 9999;
     flex-direction: column;
     gap: 24px;
+  }
+  .boot-progress-wrap {
+    box-shadow: 0 0 16px hsl(142 72% 45% / 0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+    border-radius: 6px;
+  }
+  .boot-logo-pulse {
+    animation: boot-logo-pulse 2s ease-in-out infinite;
+  }
+  @keyframes boot-logo-pulse {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(255,255,255,0.15)); }
+    50% { filter: drop-shadow(0 0 14px rgba(255,255,255,0.25)); }
+  }
+  .boot-scanline-moving {
+    animation: scanline 6s linear infinite;
+    pointer-events: none;
   }
 
   /* Section divider retro style */
@@ -442,5 +1428,17 @@
   @keyframes scanline {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100vh); }
+  }
+
+  /* Dark mode desktop: animated gradient background (seamless loop) */
+  @keyframes desktop-dark-gradient-drift {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+  }
+  .desktop-dark-bg {
+    background-image: linear-gradient(180deg, #0f172a 0%, #020617 33%, #000 50%, #020617 66%, #0f172a 100%);
+    background-size: 100% 200%;
+    background-position: 0% 0%;
+    animation: desktop-dark-gradient-drift 28s linear infinite;
   }
 }

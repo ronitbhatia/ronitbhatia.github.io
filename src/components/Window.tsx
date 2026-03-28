@@ -9,6 +9,7 @@ interface WindowProps {
   initialSize?: { width: number; height: number };
   zIndex: number;
   isMinimized?: boolean;
+  isFocused?: boolean;
   onClose: () => void;
   onMinimize: () => void;
   onFocus: () => void;
@@ -23,6 +24,7 @@ const Window: React.FC<WindowProps> = ({
   initialSize = { width: 560, height: 420 },
   zIndex,
   isMinimized = false,
+  isFocused = false,
   onClose,
   onMinimize,
   onFocus,
@@ -91,7 +93,7 @@ const Window: React.FC<WindowProps> = ({
     <AnimatePresence>
       <motion.div
         key={id}
-        className="mac-window"
+        className={`mac-window${isFocused ? " focused" : ""}`}
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.88, y: 10 }}

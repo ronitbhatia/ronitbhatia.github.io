@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface MenuBarProps {
+  /** Title of the frontmost open window (from Desktop). */
   activeWindow: string | null;
-  onMenuAction?: (menu: string, item: string) => void;
 }
 
-const MenuBar: React.FC<MenuBarProps> = ({ activeWindow, onMenuAction }) => {
+const MenuBar: React.FC<MenuBarProps> = ({ activeWindow }) => {
+  const { theme, toggleTheme } = useTheme();
   const [time, setTime] = useState("");
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const update = () => {
@@ -25,87 +26,39 @@ const MenuBar: React.FC<MenuBarProps> = ({ activeWindow, onMenuAction }) => {
     return () => clearInterval(id);
   }, []);
 
-  const menus = [
-    {
-      label: "🍎",
-      items: ["About This Portfolio", "---", "Preferences…", "---", "Sleep", "Restart…"],
-    },
-    {
-      label: "File",
-      items: ["New Window", "Open…", "Close Window", "---", "Save", "Print…"],
-    },
-    {
-      label: "Edit",
-      items: ["Undo", "Redo", "---", "Cut", "Copy", "Paste"],
-    },
-    {
-      label: "View",
-      items: ["as Icons", "as List", "as Columns", "---", "Show Toolbar", "Hide Status Bar"],
-    },
-    {
-      label: "Go",
-      items: ["About", "Projects", "Experience", "Skills", "Contact", "---", "Home Folder"],
-    },
-    {
-      label: "Window",
-      items: ["Minimize", "Zoom", "---", "Bring All to Front"],
-    },
-    {
-      label: "Help",
-      items: ["Search…", "---", "Portfolio Help", "Contact Developer"],
-    },
-  ];
-
   return (
-    <div className="mac-menubar select-none" onMouseLeave={() => setOpenMenu(null)}>
-      {menus.map((menu) => (
-        <div
-          key={menu.label}
-          className="relative"
-          onMouseEnter={() => openMenu && setOpenMenu(menu.label)}
+    <div className="mac-menubar select-none">
+      <span
+        className={`text-xs font-medium px-2 min-w-0 flex-1 truncate ${activeWindow ? "mac-menubar-active-window" : ""}`}
+        style={{ fontFamily: "var(--font-mono)" }}
+        title={activeWindow ?? undefined}
+        aria-live="polite"
+      >
+        {activeWindow ?? "Desktop"}
+      </span>
+
+      <div className="ml-auto flex items-center gap-3 pr-2 flex-shrink-0">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="mac-menubar-item flex items-center justify-center w-7 h-7 rounded-md p-0"
+          title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
         >
-          <button
-            className="mac-menubar-item"
-            onMouseDown={() => setOpenMenu(openMenu === menu.label ? null : menu.label)}
-          >
-            {menu.label}
-          </button>
-
-          {openMenu === menu.label && (
-            <div
-              className="absolute top-full left-0 glass-panel rounded shadow-xl border border-white/40 py-1 min-w-[180px] z-[200]"
-              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.22)" }}
-            >
-              {menu.items.map((item, i) =>
-                item === "---" ? (
-                  <div key={i} className="my-1 mx-2 border-t border-gray-300/60" />
-                ) : (
-                  <button
-                    key={item}
-                    className="w-full text-left px-4 py-1 text-xs font-medium hover:bg-blue-500 hover:text-white transition-colors"
-                    style={{ fontFamily: "var(--font-body)" }}
-                    onClick={() => {
-                      onMenuAction?.(menu.label, item);
-                      setOpenMenu(null);
-                    }}
-                  >
-                    {item}
-                  </button>
-                )
-              )}
-            </div>
+          {theme === "dark" ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
           )}
-        </div>
-      ))}
-
-      {/* Right side: clock & status */}
-      <div className="ml-auto flex items-center gap-3 pr-2">
-        <span className="text-xs font-medium opacity-60" style={{ fontFamily: "var(--font-mono)" }}>
-          {activeWindow || "Finder"}
-        </span>
-        <div className="w-px h-3 bg-current opacity-20" />
+        </button>
+        <div className="w-px h-3 bg-current opacity-30" />
         <span
-          className="text-xs font-semibold tabular-nums"
+          className="mac-menubar-status text-xs font-semibold tabular-nums"
           style={{ fontFamily: "var(--font-body)", minWidth: "65px", textAlign: "right" }}
         >
           {time}

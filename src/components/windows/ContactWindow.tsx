@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 const ContactWindow: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
   const [composing, setComposing] = useState(false);
+  const EMAIL = "roncy.bhatia@gmail.com";
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,29 +15,44 @@ const ContactWindow: React.FC = () => {
     setComposing(false);
   };
 
-  const contacts = [
-    { icon: "📧", label: "Email", value: "alex@example.com", href: "mailto:alex@example.com" },
-    { icon: "💼", label: "LinkedIn", value: "linkedin.com/in/alexchen", href: "https://linkedin.com" },
-    { icon: "🐙", label: "GitHub", value: "github.com/alexchen", href: "https://github.com" },
-    { icon: "🐦", label: "Twitter", value: "@alexchen_dev", href: "https://twitter.com" },
+  const contacts: { label: string; value: string; href: string; download?: string }[] = [
+    { label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+    { label: "LinkedIn", value: "linkedin.com/in/ronit-bhatia", href: "https://www.linkedin.com/in/ronit-bhatia/" },
+    { label: "GitHub", value: "github.com/ronitbhatia", href: "https://github.com/ronitbhatia" },
+    { label: "Resume", value: "Download Resume", href: "/resume.pdf", download: "resume.pdf" },
   ];
 
+  const handleEmailClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      toast({ title: "Email copied", description: `${EMAIL} copied to clipboard.` });
+    } catch {
+      toast({
+        title: "Could not copy email",
+        description: "Opening your mail app anyway.",
+        variant: "destructive",
+      });
+    }
+    const mailto = `mailto:${EMAIL}`;
+    window.location.href = mailto;
+    window.open(mailto, "_self");
+  };
+
   return (
-    <div className="flex h-full">
-      {/* Sidebar – Address Book / Mail sidebar */}
+    <div className="flex h-full contact-window">
+      {/* Sidebar - Address Book / Mail sidebar */}
       <div
-        className="w-44 flex-shrink-0 border-r flex flex-col"
-        style={{
-          background: "hsl(0 0% 90%)",
-          borderColor: "hsl(var(--mac-border))",
-        }}
+        className="w-44 flex-shrink-0 border-r flex flex-col window-sidebar-bg"
+        style={{ borderColor: "hsl(var(--mac-border))" }}
       >
         {/* Mailboxes header */}
         <div
-          className="px-3 py-2.5 border-b text-xs font-bold uppercase tracking-widest opacity-40"
+          className="px-3 py-2.5 border-b text-xs font-bold uppercase tracking-widest window-section-label"
           style={{
             fontFamily: "var(--font-mono)",
             borderColor: "hsl(var(--mac-border))",
+            opacity: 0.8,
           }}
         >
           Mailboxes
@@ -43,9 +60,9 @@ const ContactWindow: React.FC = () => {
 
         {/* Folders */}
         {[
-          { icon: "📥", label: "Inbox", count: 3, active: !composing },
-          { icon: "📤", label: "Sent", count: 0, active: false },
-          { icon: "✏️", label: "Compose", count: null, active: composing },
+          { label: "Inbox", count: 3, active: !composing },
+          { label: "Sent", count: 0, active: false },
+          { label: "Compose", count: null, active: composing },
         ].map((item) => (
           <button
             key={item.label}
@@ -57,7 +74,6 @@ const ContactWindow: React.FC = () => {
             }}
             onClick={() => setComposing(item.label === "Compose")}
           >
-            <span>{item.icon}</span>
             <span className="text-xs font-medium flex-1">{item.label}</span>
             {item.count !== null && item.count > 0 && (
               <span
@@ -78,8 +94,8 @@ const ContactWindow: React.FC = () => {
 
         {/* Contact links */}
         <div
-          className="px-3 py-1.5 text-xs font-bold uppercase tracking-widest opacity-40"
-          style={{ fontFamily: "var(--font-mono)" }}
+          className="px-3 py-1.5 text-xs font-bold uppercase tracking-widest window-section-label"
+          style={{ fontFamily: "var(--font-mono)", opacity: 0.8 }}
         >
           Social
         </div>
@@ -87,15 +103,15 @@ const ContactWindow: React.FC = () => {
           <a
             key={c.label}
             href={c.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 text-xs transition-colors hover:bg-blue-100 rounded mx-1"
+            download={c.download}
+            target={c.href.startsWith("http") ? "_blank" : undefined}
+            rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs transition-colors hover:opacity-80 rounded mx-1"
             style={{
               fontFamily: "var(--font-body)",
               color: "hsl(var(--mac-dark))",
             }}
           >
-            <span>{c.icon}</span>
             <span>{c.label}</span>
           </a>
         ))}
@@ -104,43 +120,34 @@ const ContactWindow: React.FC = () => {
       {/* Main panel */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Compose toolbar */}
-        <div
-          className="flex items-center gap-2 px-4 py-2 border-b"
-          style={{
-            background: "hsl(var(--mac-window-chrome))",
-            borderColor: "hsl(var(--mac-border))",
-          }}
-        >
+        <div className="flex items-center gap-2 px-4 py-2 border-b window-chrome-bar" style={{ borderColor: "hsl(var(--mac-border))" }}>
           <button
             className="text-xs px-3 py-1.5 rounded border font-medium transition-colors"
             style={{
-              background: composing ? "hsl(var(--mac-blue))" : "hsl(0 0% 94%)",
+              background: composing ? "hsl(var(--mac-blue))" : "hsl(var(--window-input-bg-alt))",
               color: composing ? "white" : "hsl(var(--mac-dark))",
               borderColor: "hsl(var(--mac-border))",
               fontFamily: "var(--font-body)",
             }}
             onClick={() => setComposing(!composing)}
           >
-            ✏️ New Message
+            New Message
           </button>
           <span
-            className="text-xs opacity-50"
-            style={{ fontFamily: "var(--font-mono)" }}
+            className="window-section-label text-xs"
+            style={{ fontFamily: "var(--font-mono)", opacity: 0.85 }}
           >
-            {composing ? "Composing new message..." : "Inbox – Open for opportunities!"}
+            {composing ? "Composing new message..." : "Inbox - Open for opportunities!"}
           </span>
         </div>
 
         <div className="flex-1 overflow-y-auto mac-scroll">
           {composing ? (
             /* Compose form */
-            <form onSubmit={handleSend} className="p-4 space-y-3">
+            <form onSubmit={handleSend} className="p-6 space-y-4">
               <div
-                className="rounded-lg border overflow-hidden"
-                style={{
-                  background: "hsl(0 0% 99%)",
-                  borderColor: "hsl(var(--mac-border))",
-                }}
+                className="rounded-lg border overflow-hidden window-input-bg"
+                style={{ borderColor: "hsl(var(--mac-border))" }}
               >
                 {/* Email-style header fields */}
                 {[
@@ -161,7 +168,7 @@ const ContactWindow: React.FC = () => {
                     </span>
                     <input
                       type={field.type}
-                      className="flex-1 px-2 py-2 text-xs outline-none bg-transparent"
+                      className="contact-input-focus flex-1 px-2 py-2 text-xs outline-none bg-transparent rounded-sm transition-shadow"
                       style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))" }}
                       placeholder={field.placeholder}
                       value={field.value}
@@ -173,7 +180,7 @@ const ContactWindow: React.FC = () => {
 
                 {/* Message body */}
                 <textarea
-                  className="w-full px-4 py-3 text-xs outline-none resize-none bg-transparent"
+                  className="contact-input-focus w-full px-4 py-3 text-xs outline-none resize-none bg-transparent rounded-sm transition-shadow"
                   style={{
                     fontFamily: "var(--font-body)",
                     color: "hsl(var(--mac-dark))",
@@ -193,7 +200,7 @@ const ContactWindow: React.FC = () => {
                   style={{
                     borderColor: "hsl(var(--mac-border))",
                     fontFamily: "var(--font-body)",
-                    background: "hsl(0 0% 94%)",
+                    background: "hsl(var(--window-input-bg-alt))",
                     color: "hsl(var(--mac-dark))",
                   }}
                   onClick={() => setComposing(false)}
@@ -210,54 +217,52 @@ const ContactWindow: React.FC = () => {
                     boxShadow: "0 2px 8px hsl(207 89% 54% / 0.35)",
                   }}
                 >
-                  📤 Send Message
+                  Send Message
                 </button>
               </div>
 
               {sent && (
-                <div
-                  className="text-xs text-center py-2 px-3 rounded-lg font-medium"
-                  style={{
-                    background: "hsl(142 72% 93%)",
-                    color: "hsl(142 72% 30%)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  ✓ Message sent! I'll get back to you soon.
+                <div className="contact-success-toast flex items-center gap-3 py-3 px-4 rounded-xl border border-green-200/60 shadow-lg contact-success-animate" style={{ background: "hsl(142 72% 93%)", color: "hsl(142 72% 30%)", fontFamily: "var(--font-body)" }}>
+                  <div className="contact-success-checkmark flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold" style={{ background: "hsl(142 72% 40%)", color: "white" }}>
+                    ✓
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Message sent!</p>
+                    <p className="text-xs opacity-90">I'll get back to you soon.</p>
+                  </div>
                 </div>
               )}
             </form>
           ) : (
             /* Inbox view */
-            <div className="p-4">
+            <div className="p-6">
               {/* Welcome email */}
               <div
-                className="rounded-lg border mb-4 overflow-hidden"
+                className="rounded-lg border mb-4 overflow-hidden window-input-bg"
                 style={{
-                  background: "hsl(0 0% 99%)",
                   borderColor: "hsl(var(--mac-border))",
                   boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
                 }}
               >
                 <div
-                  className="flex items-center gap-3 px-4 py-3 border-b"
-                  style={{ borderColor: "hsl(var(--mac-border))", background: "hsl(0 0% 97%)" }}
+                  className="flex items-center gap-3 px-4 py-3 border-b window-input-bg"
+                  style={{ borderColor: "hsl(var(--mac-border))" }}
                 >
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-lg"
-                    style={{ background: "hsl(207 89% 92%)" }}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                    style={{ background: "hsl(207 89% 92%)", color: "hsl(var(--mac-dark))" }}
                   >
-                    👋
+                    R
                   </div>
                   <div>
                     <div
                       className="text-xs font-semibold"
                       style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))" }}
                     >
-                      Alex Chen
+                      Ronit Bhatia
                     </div>
-                    <div className="text-xs opacity-50" style={{ fontFamily: "var(--font-mono)" }}>
-                      alex@example.com • Just now
+                    <div className="contact-meta text-xs" style={{ fontFamily: "var(--font-mono)" }}>
+                      roncy.bhatia@gmail.com | Just now
                     </div>
                   </div>
                 </div>
@@ -272,24 +277,21 @@ const ContactWindow: React.FC = () => {
                     className="text-xs leading-relaxed opacity-70 mb-4"
                     style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))" }}
                   >
-                    I'm always interested in exciting projects, challenging problems, and great teams.
-                    Whether you're hiring, have a freelance project, or just want to chat about
-                    tech — my inbox is open. Click "New Message" to reach out!
+                    Software Engineer & ML Enthusiast, building impactful solutions through thoughtful engineering.
+                    Open to opportunities. Click "New Message" to reach out or use the links below!
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     {contacts.map((c) => (
                       <a
                         key={c.label}
                         href={c.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 p-2.5 rounded-lg border transition-colors hover:bg-blue-50"
-                        style={{
-                          borderColor: "hsl(var(--mac-border))",
-                          background: "hsl(0 0% 97%)",
-                        }}
+                        download={c.download}
+                        target={c.href.startsWith("http") || c.href.startsWith("mailto") ? "_blank" : undefined}
+                        rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        onClick={c.label === "Email" ? handleEmailClick : undefined}
+                        className="flex items-center gap-2.5 p-2.5 rounded-lg border transition-colors hover:opacity-90 window-input-bg"
+                        style={{ borderColor: "hsl(var(--mac-border))" }}
                       >
-                        <span className="text-base">{c.icon}</span>
                         <div>
                           <div
                             className="text-xs font-semibold"
@@ -298,7 +300,7 @@ const ContactWindow: React.FC = () => {
                             {c.label}
                           </div>
                           <div
-                            className="text-xs opacity-50"
+                            className="contact-value text-xs"
                             style={{ fontFamily: "var(--font-mono)", fontSize: "10px" }}
                           >
                             {c.value}

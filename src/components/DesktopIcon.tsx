@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 
 interface DesktopIconProps {
   label: string;
-  icon: string;
+  icon?: string;
+  imageLight?: string;
+  imageDark?: string;
+  externalUrl?: string;
+  isDark?: boolean;
   onClick: () => void;
   isSelected?: boolean;
   onDoubleClick?: () => void;
@@ -12,24 +16,36 @@ interface DesktopIconProps {
 const DesktopIcon: React.FC<DesktopIconProps> = ({
   label,
   icon,
+  imageLight,
+  imageDark,
+  externalUrl,
+  isDark,
   onClick,
   isSelected,
   onDoubleClick,
 }) => {
+  const imageSrc = imageLight && imageDark ? (isDark ? imageDark : imageLight) : null;
+
   return (
     <motion.div
       className={`desktop-icon ${isSelected ? "selected" : ""}`}
       onClick={onClick}
-      onDoubleClick={onDoubleClick}
+      onDoubleClick={externalUrl ? () => window.open(externalUrl, "_blank", "noopener,noreferrer") : onDoubleClick}
       whileTap={{ scale: 0.92 }}
     >
       <div
-        className={`text-4xl transition-all duration-100 ${
-          isSelected ? "brightness-75" : ""
-        }`}
-        style={{ filter: isSelected ? "invert(0.15) sepia(1) hue-rotate(200deg) saturate(1.5)" : "none" }}
+        className={`transition-all duration-100 flex items-center justify-center ${
+          imageSrc ? "w-12 h-12" : "text-4xl"
+        } ${isSelected ? "brightness-75" : ""}`}
+        style={{
+          filter: isSelected && !imageSrc ? "invert(0.15) sepia(1) hue-rotate(200deg) saturate(1.5)" : "none",
+        }}
       >
-        {icon}
+        {imageSrc ? (
+          <img src={imageSrc} alt={label} className="w-full h-full object-contain" />
+        ) : (
+          icon
+        )}
       </div>
       <span
         className={`text-center text-xs leading-tight px-1 rounded ${

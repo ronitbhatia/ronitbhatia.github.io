@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <!-- Classic pointer arrow - black fill, white stroke for visibility on any background -->
+  <path fill="#000" stroke="#fff" stroke-width="1.5" d="M5 2l14 10-6 7-2-5-6-2z"/>
+</svg>

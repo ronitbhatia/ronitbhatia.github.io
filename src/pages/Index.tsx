@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import Desktop from "@/components/Desktop";
 
 const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
@@ -11,9 +12,10 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     "Initializing kernel...",
     "Loading device drivers...",
     "Mounting volumes...",
-    "Starting Alex.app...",
+    "Loading memories...",
+    "Mounting projects...",
+    "Starting Ronit Bhatia.app...",
     "Loading portfolio assets...",
-    "Compiling memories...",
     "Almost ready...",
   ];
 
@@ -56,7 +58,7 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
           exit={{ opacity: 0, scale: 1.04 }}
           transition={{ duration: 0.45, ease: "easeInOut" }}
         >
-          {/* Scanline effect */}
+          {/* Static scanline texture */}
           <div
             className="absolute inset-0 pointer-events-none overflow-hidden opacity-10"
             style={{
@@ -64,13 +66,18 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
                 "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.08) 2px, rgba(255,255,255,0.08) 4px)",
             }}
           />
+          {/* Moving CRT scanline */}
+          <div
+            className="boot-scanline-moving absolute left-0 right-0 h-px opacity-[0.06]"
+            style={{ background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.8), transparent)" }}
+          />
 
           {/* Happy Mac icon */}
           <motion.div
             initial={{ scale: 0.7, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, ease: "backOut" }}
-            className="flex flex-col items-center gap-2"
+            className="flex flex-col items-center gap-2 boot-logo-pulse"
           >
             {/* Retro Mac face */}
             <div
@@ -85,19 +92,17 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
             >
               {/* Screen */}
               <div
-                className="rounded-sm mb-2"
+                className="rounded-sm mb-2 flex items-center justify-center font-bold text-white"
                 style={{
                   width: 52,
                   height: 36,
                   background: "hsl(0 0% 12%)",
                   border: "2px solid hsl(0 0% 30%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "18px",
+                  fontSize: "16px",
+                  fontFamily: "var(--font-body)",
                 }}
               >
-                😊
+                R
               </div>
               {/* Floppy slot */}
               <div
@@ -147,9 +152,9 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
                 ))}
               </div>
 
-              {/* Progress bar */}
+              {/* Progress bar – glow */}
               <div
-                className="w-full rounded-sm overflow-hidden"
+                className="boot-progress-wrap w-full rounded-sm overflow-hidden"
                 style={{
                   height: 8,
                   background: "hsl(0 0% 18%)",
@@ -159,7 +164,8 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
                 <motion.div
                   className="h-full rounded-sm"
                   style={{
-                    background: "linear-gradient(90deg, hsl(142 72% 39%), hsl(142 72% 55%))",
+                    background: "linear-gradient(90deg, hsl(142 72% 35%), hsl(142 72% 50%), hsl(142 72% 58%))",
+                    boxShadow: "0 0 12px hsl(142 72% 45% / 0.4)",
                   }}
                   animate={{ width: `${progress}%` }}
                   transition={{ ease: "linear", duration: 0.25 }}
@@ -170,7 +176,7 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
                 className="text-xs opacity-40"
                 style={{ fontFamily: "var(--font-mono)", color: "white" }}
               >
-                {progress}% — Alex Chen OS v6.0
+                {progress}% — Ronit Bhatia OS v6.0
               </div>
             </motion.div>
           )}
@@ -180,26 +186,90 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
   );
 };
 
+const SITE_TITLE = "Ronit Bhatia | Portfolio";
+
 const Index: React.FC = () => {
+  const [showBootScreen, setShowBootScreen] = useState(false);
   const [booted, setBooted] = useState(false);
+
+  useEffect(() => {
+    document.title = SITE_TITLE;
+  }, []);
+
+  useEffect(() => {
+    const nav = navigator as Navigator & {
+      connection?: { effectiveType?: string; saveData?: boolean };
+    };
+    const connection = nav.connection;
+    const effectiveType = connection?.effectiveType ?? "";
+    const isSlowConnection =
+      Boolean(connection?.saveData) ||
+      effectiveType === "slow-2g" ||
+      effectiveType === "2g" ||
+      effectiveType === "3g";
+
+    if (isSlowConnection) {
+      setShowBootScreen(true);
+      return;
+    }
+    setBooted(true);
+  }, []);
+
+  /* Override Lovable/platform favicon – aggressive replacement with MutationObserver */
+  useEffect(() => {
+    const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="hsl(207 89% 54%)"/><rect x="4" y="4" width="24" height="18" rx="2" fill="hsl(0 0% 98%)" stroke="hsl(0 0% 75%)" stroke-width="1"/><text x="16" y="15" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="hsl(207 89% 36%)">R</text><rect x="6" y="6" width="6" height="2" rx="0.5" fill="hsl(0 0% 85%)"/></svg>`;
+    const dataUrl = "data:image/svg+xml," + encodeURIComponent(faviconSvg);
+
+    const applyFavicon = () => {
+      document.querySelectorAll('link[rel="icon"]').forEach((el) => el.remove());
+      const link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/svg+xml";
+      link.href = dataUrl;
+      document.head.appendChild(link);
+    };
+
+    applyFavicon();
+    const t1 = setTimeout(applyFavicon, 300);
+    const t2 = setTimeout(applyFavicon, 1000);
+    const t3 = setTimeout(applyFavicon, 2500);
+
+    const obs = new MutationObserver(() => {
+      const icons = document.querySelectorAll('link[rel="icon"]');
+      const hasForeign = Array.from(icons).some((el) => !(el as HTMLLinkElement).href?.includes("data:image"));
+      if (hasForeign) applyFavicon();
+    });
+    obs.observe(document.head, { childList: true, subtree: true });
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      obs.disconnect();
+    };
+  }, []);
 
   return (
     <div className="w-full h-screen overflow-hidden relative">
       <AnimatePresence>
-        {!booted && <BootScreen key="boot" onFinish={() => setBooted(true)} />}
+        {showBootScreen && !booted && (
+          <BootScreen key="boot" onFinish={() => setBooted(true)} />
+        )}
       </AnimatePresence>
 
       <AnimatePresence>
         {booted && (
-          <motion.div
-            key="desktop"
-            className="w-full h-full"
-            initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <Desktop />
-          </motion.div>
+          <ThemeProvider>
+            <motion.div
+              key="desktop"
+              className="w-full h-full"
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <Desktop />
+            </motion.div>
+          </ThemeProvider>
         )}
       </AnimatePresence>
     </div>
