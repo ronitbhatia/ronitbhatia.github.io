@@ -1,3 +1,6 @@
+# Publishes the Vite `dist/` output. In the repo: Settings → Pages → Build and deployment,
+# set Source to "GitHub Actions". If Source is "Deploy from branch" (e.g. / on main), GitHub
+# serves root index.html which points at /src/main.tsx — that never runs in the browser → blank page.
 name: Deploy to GitHub Pages
 
 on:
@@ -25,6 +28,12 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Ensure production index (not Vite dev entry)
+        run: |
+          if grep -q 'src/main.tsx' dist/index.html; then
+            echo "dist/index.html still references dev /src/main.tsx — build output is wrong."
+            exit 1
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
