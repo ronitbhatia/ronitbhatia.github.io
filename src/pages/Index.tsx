@@ -250,7 +250,7 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-hidden relative">
+    <div className="relative h-dvh min-h-dvh w-full overflow-hidden">
       <AnimatePresence>
         {showBootScreen && !booted && (
           <BootScreen key="boot" onFinish={() => setBooted(true)} />

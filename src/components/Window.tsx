@@ -10,6 +10,8 @@ interface WindowProps {
   zIndex: number;
   isMinimized?: boolean;
   isFocused?: boolean;
+  /** Phone / narrow: edge-to-edge sheet, no drag/resize */
+  isMobile?: boolean;
   onClose: () => void;
   onMinimize: () => void;
   onFocus: () => void;
@@ -25,6 +27,7 @@ const Window: React.FC<WindowProps> = ({
   zIndex,
   isMinimized = false,
   isFocused = false,
+  isMobile = false,
   onClose,
   onMinimize,
   onFocus,
@@ -39,6 +42,10 @@ const Window: React.FC<WindowProps> = ({
 
   const handleTitleMouseDown = useCallback(
     (e: React.MouseEvent) => {
+      if (isMobile) {
+        onFocus();
+        return;
+      }
       if ((e.target as HTMLElement).closest(".mac-btn")) return;
       e.preventDefault();
       onFocus();
@@ -60,11 +67,12 @@ const Window: React.FC<WindowProps> = ({
       window.addEventListener("mousemove", onMove);
       window.addEventListener("mouseup", onUp);
     },
-    [position, onFocus]
+    [position, onFocus, isMobile]
   );
 
   const handleResizeMouseDown = useCallback(
     (e: React.MouseEvent) => {
+      if (isMobile) return;
       e.preventDefault();
       e.stopPropagation();
       isResizing.current = true;
@@ -84,28 +92,42 @@ const Window: React.FC<WindowProps> = ({
       window.addEventListener("mousemove", onMove);
       window.addEventListener("mouseup", onUp);
     },
-    [size]
+    [size, isMobile]
   );
 
   if (isMinimized) return null;
+
+  const desktopStyle = {
+    left: position.x,
+    top: position.y,
+    width: size.width,
+    height: size.height,
+    zIndex,
+  } as const;
+
+  const mobileStyle = {
+    left: 0,
+    right: 0,
+    top: "var(--mac-mobile-window-top)",
+    width: "100%",
+    maxWidth: "100%",
+    height: "var(--mac-mobile-window-height)",
+    maxHeight: "var(--mac-mobile-window-height)",
+    zIndex,
+  } as const;
 
   return (
     <AnimatePresence>
       <motion.div
         key={id}
-        className={`mac-window${isFocused ? " focused" : ""}`}
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        className={`mac-window touch-manipulation${isFocused ? " focused" : ""}${isMobile ? " mac-window--mobile" : ""}`}
+        initial={{ opacity: 0, scale: isMobile ? 1 : 0.9, y: isMobile ? 8 : 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.88, y: 10 }}
+        exit={{ opacity: 0, scale: isMobile ? 1 : 0.88, y: isMobile ? 6 : 10 }}
         transition={{ duration: 0.18, ease: "easeOut" }}
-        style={{
-          left: position.x,
-          top: position.y,
-          width: size.width,
-          height: size.height,
-          zIndex,
-        }}
+        style={isMobile ? mobileStyle : desktopStyle}
         onMouseDown={onFocus}
+        onPointerDown={isMobile ? onFocus : undefined}
       >
         {/* Title Bar */}
         <div
@@ -137,14 +159,15 @@ const Window: React.FC<WindowProps> = ({
           {children}
         </div>
 
-        {/* Resize handle */}
-        <div
-          className="resize-handle"
-          onMouseDown={handleResizeMouseDown}
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M12 12L6 12M12 8L8 12M12 4L12 12' stroke='%23999' stroke-width='1'/%3E%3C/svg%3E")`,
-          }}
-        />
+        {!isMobile && (
+          <div
+            className="resize-handle"
+            onMouseDown={handleResizeMouseDown}
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M12 12L6 12M12 8L8 12M12 4L12 12' stroke='%23999' stroke-width='1'/%3E%3C/svg%3E")`,
+            }}
+          />
+        )}
       </motion.div>
     </AnimatePresence>
   );

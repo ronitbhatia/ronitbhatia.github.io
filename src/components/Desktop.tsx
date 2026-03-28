@@ -16,6 +16,7 @@ import ResumeWindow from "./windows/ResumeWindow";
 import DesktopAssistant, { AssistantLauncher } from "./DesktopAssistant";
 import wallpaper from "@/assets/desktop-wallpaper.png";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useIsMobile } from "@/hooks/useMediaQuery";
 
 interface WindowState {
   id: string;
@@ -92,6 +93,7 @@ const desktopIcons = [
 
 const Desktop: React.FC = () => {
   const { theme } = useTheme();
+  const isMobile = useIsMobile();
   const [windows, setWindows] = useState<WindowState[]>(initialWindows);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [maxZ, setMaxZ] = useState(BASE_Z + 10);
@@ -288,9 +290,9 @@ const Desktop: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.25, delay: justBooted ? 0.15 : 0 }}
       >
-        {/* Desktop icons – right column */}
+        {/* Desktop icons – hidden on small screens (dock + search cover navigation) */}
         <div
-          className="absolute top-4 right-4 flex flex-col gap-1"
+          className="absolute top-4 right-4 hidden flex-col gap-1 md:flex"
           onClick={(e) => e.stopPropagation()}
         >
           {desktopIcons.map((icon) => (
@@ -339,6 +341,7 @@ const Desktop: React.FC = () => {
                 zIndex={w.zIndex}
                 isMinimized={w.isMinimized}
                 isFocused={activeWindow?.id === w.id}
+                isMobile={isMobile}
                 onClose={() => closeWindow(w.id)}
                 onMinimize={() => minimizeWindow(w.id)}
                 onFocus={() => bringToFront(w.id)}
@@ -356,8 +359,14 @@ const Desktop: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* Minimized window badges */}
-        <div className="absolute bottom-20 left-4 flex flex-col gap-2">
+        {/* Minimized window badges — top strip on mobile so dock stays usable */}
+        <div
+          className={`absolute z-[40] flex gap-2 ${
+            isMobile
+              ? "left-2 right-2 top-[calc(44px+env(safe-area-inset-top,0px))] flex-row flex-wrap justify-center"
+              : "bottom-20 left-4 flex-col"
+          }`}
+        >
           {windows
             .filter((w) => w.isMinimized)
             .map((w) => (
@@ -395,6 +404,7 @@ const Desktop: React.FC = () => {
           activeWindowId={activeWindow?.id ?? null}
           lastOpenedFromDock={lastOpenedFromDock}
           onOpen={(id) => openWindow(id, true)}
+          isMobile={isMobile}
           leading={
             !assistantOpen ? (
               <AssistantLauncher onOpen={() => setAssistantOpen(true)} />

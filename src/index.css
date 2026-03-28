@@ -1442,3 +1442,80 @@
     animation: desktop-dark-gradient-drift 28s linear infinite;
   }
 }
+
+/* —— Mobile: safe areas, full-height windows, scrollable dock —— */
+@layer components {
+  :root {
+    --mac-mobile-window-top: calc(28px + env(safe-area-inset-top, 0px));
+    --mac-mobile-window-height: calc(100dvh - 28px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 172px);
+  }
+
+  @supports not (height: 100dvh) {
+    :root {
+      --mac-mobile-window-height: calc(100vh - 28px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 172px);
+    }
+  }
+
+  .desktop-root .window-content {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  .mac-window--mobile {
+    border-radius: 12px 12px 0 0;
+    border-left-width: 0;
+    border-right-width: 0;
+  }
+
+  .mac-window--mobile .mac-titlebar {
+    min-height: 44px;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    cursor: default;
+  }
+
+  .mac-window--mobile .mac-btn {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mac-dock--scroll {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      /* Below menubar (36px row + safe area + bottom padding) */
+      --mac-mobile-window-top: calc(40px + env(safe-area-inset-top, 0px));
+      --mac-mobile-window-height: calc(100dvh - 40px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 212px);
+    }
+
+    @supports not (height: 100dvh) {
+      :root {
+        --mac-mobile-window-height: calc(100vh - 40px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 212px);
+      }
+    }
+
+    .mac-menubar {
+      min-height: 36px;
+      height: auto;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+
+    .mac-menubar button.mac-menubar-item {
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  }
+}

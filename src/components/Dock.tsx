@@ -9,12 +9,22 @@ interface DockItemProps {
   isActive?: boolean;
   isBouncing?: boolean;
   gradient?: string;
+  compact?: boolean;
 }
 
-const DockItem: React.FC<DockItemProps> = ({ label, icon, onClick, isOpen, isActive, isBouncing, gradient }) => (
+const DockItem: React.FC<DockItemProps> = ({
+  label,
+  icon,
+  onClick,
+  isOpen,
+  isActive,
+  isBouncing,
+  gradient,
+  compact,
+}) => (
   <motion.div
-    className="dock-item relative flex flex-col items-center cursor-pointer"
-    whileHover={{ scale: 1.28, y: -8 }}
+    className="dock-item relative flex flex-col items-center cursor-pointer touch-manipulation"
+    whileHover={compact ? { scale: 1.06, y: -2 } : { scale: 1.28, y: -8 }}
     whileTap={{ scale: 0.88, y: 0 }}
     onClick={onClick}
     style={{ position: "relative" }}
@@ -36,7 +46,7 @@ const DockItem: React.FC<DockItemProps> = ({ label, icon, onClick, isOpen, isAct
       />
     )}
     <div
-      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-lg border border-white/50 relative z-10"
+      className={`${compact ? "h-10 w-10 rounded-[10px] text-xl" : "h-12 w-12 rounded-xl text-2xl"} flex items-center justify-center shadow-lg border border-white/50 relative z-10`}
       style={{
         background: gradient,
         boxShadow: "0 4px 14px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5)",
@@ -66,6 +76,7 @@ interface DockProps {
   onOpen: (id: string) => void;
   /** Renders to the left of the dock pill (e.g. search launcher) — keeps UI in the bottom chrome, not over windows. */
   leading?: React.ReactNode;
+  isMobile?: boolean;
 }
 
 const dockApps = [
@@ -79,39 +90,56 @@ const dockApps = [
   { id: "contact", label: "Contact", icon: "✉️", gradient: "linear-gradient(145deg, #fdba74, #f97316)" },
 ];
 
-const Dock: React.FC<DockProps> = ({ openWindows, activeWindowId, lastOpenedFromDock, onOpen, leading }) => {
+const Dock: React.FC<DockProps> = ({ openWindows, activeWindowId, lastOpenedFromDock, onOpen, leading, isMobile }) => {
+  const compact = Boolean(isMobile);
+
   return (
-    <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-3 pointer-events-none">
-      {/* Wrapper is only as wide as the dock so the dock stays centered; avatar sits to the left via absolute. */}
-      <div className="relative pointer-events-auto">
-        {leading ? (
+    <div
+      className={`pointer-events-none z-50 flex justify-center px-2 sm:px-3 ${
+        isMobile
+          ? "fixed inset-x-0 bottom-0 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1 flex-col items-stretch gap-2"
+          : "fixed bottom-6 left-0 right-0"
+      }`}
+    >
+      <div className={`relative pointer-events-auto ${isMobile ? "flex w-full max-w-[100vw] flex-col items-center gap-2" : ""}`}>
+        {leading && isMobile ? (
+          <div className="pointer-events-auto flex w-full justify-center px-1">{leading}</div>
+        ) : null}
+        {leading && !isMobile ? (
           <div className="pointer-events-auto absolute right-full top-1/2 mr-3 flex -translate-y-1/2 items-center">
             {leading}
           </div>
         ) : null}
-        <div className="mac-dock pointer-events-auto">
+        <div
+          className={`mac-dock pointer-events-auto ${isMobile ? "mac-dock--scroll max-w-[min(100vw-12px,calc(100vw-0.75rem))] overflow-x-auto overflow-y-visible py-2 [-webkit-overflow-scrolling:touch]" : ""}`}
+        >
           {dockApps.map((app) => (
             <DockItem
               key={app.id}
               label={app.label}
               icon={app.icon}
               gradient={app.gradient}
+              compact={compact}
               isOpen={openWindows.includes(app.id)}
               isActive={activeWindowId === app.id}
               isBouncing={lastOpenedFromDock === app.id}
               onClick={() => onOpen(app.id)}
             />
           ))}
-        <div className="w-px h-8 mx-0.5 flex-shrink-0" style={{ background: "rgba(255,255,255,0.35)" }} />
-        <DockItem
-          label="Trash"
-          icon="🗑️"
-          gradient="linear-gradient(145deg, #e2e8f0, #cbd5e1)"
-          isOpen={openWindows.includes("trash")}
-          isActive={activeWindowId === "trash"}
-          isBouncing={lastOpenedFromDock === "trash"}
-          onClick={() => onOpen("trash")}
-        />
+          <div
+            className={`mx-0.5 w-px flex-shrink-0 ${compact ? "h-7" : "h-8"}`}
+            style={{ background: "rgba(255,255,255,0.35)" }}
+          />
+          <DockItem
+            label="Trash"
+            icon="🗑️"
+            gradient="linear-gradient(145deg, #e2e8f0, #cbd5e1)"
+            compact={compact}
+            isOpen={openWindows.includes("trash")}
+            isActive={activeWindowId === "trash"}
+            isBouncing={lastOpenedFromDock === "trash"}
+            onClick={() => onOpen("trash")}
+          />
         </div>
       </div>
     </div>

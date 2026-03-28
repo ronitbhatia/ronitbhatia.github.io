@@ -7,6 +7,7 @@ import {
   type SearchTarget,
 } from "@/data/searchCatalog";
 import { performUnifiedSearch } from "@/data/siteSearchEngine";
+import { useIsMobile } from "@/hooks/useMediaQuery";
 
 interface DesktopAssistantProps {
   open: boolean;
@@ -17,22 +18,25 @@ interface DesktopAssistantProps {
 /** Sits in the dock row (see `Dock` `leading`) so it stays in the bottom chrome, not over the Home window. */
 export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex max-w-[min(96vw,360px)] items-center justify-center gap-2 sm:max-w-none sm:gap-2.5">
       <div
-        className="flex h-14 w-[min(46vw,220px)] flex-col justify-center gap-1.5 rounded-2xl border border-slate-200/80 bg-white/95 px-3.5 py-0 shadow-md backdrop-blur-sm dark:border-slate-700/80 dark:bg-slate-950/95 sm:h-16 sm:gap-2"
+        className="flex h-[52px] w-[min(52vw,200px)] flex-col justify-center gap-0.5 rounded-2xl border border-slate-200/80 bg-white/95 px-3 py-0 shadow-md backdrop-blur-sm dark:border-slate-700/80 dark:bg-slate-950/95 sm:h-16 sm:w-[min(46vw,220px)] sm:gap-2"
         style={{ boxShadow: "0 6px 28px rgba(0,0,0,0.12)" }}
       >
-        <p className="text-[12px] font-semibold leading-snug text-slate-900 dark:text-slate-50 sm:text-[13px]">
+        <p className="text-[11px] font-semibold leading-snug text-slate-900 dark:text-slate-50 sm:text-[13px]">
           Ronit&apos;s assistant
         </p>
-        <p className="text-[10px] leading-relaxed text-slate-600 dark:text-slate-400 sm:text-[11px]">
-          Tap to search · <kbd className="rounded bg-slate-200/80 px-1 py-px font-mono text-[9px] dark:bg-slate-800">⌘K</kbd>
+        <p className="text-[9px] leading-relaxed text-slate-600 dark:text-slate-400 sm:text-[11px]">
+          <span className="sm:hidden">Tap avatar to search</span>
+          <span className="hidden sm:inline">
+            Tap to search · <kbd className="rounded bg-slate-200/80 px-1 py-px font-mono text-[9px] dark:bg-slate-800">⌘K</kbd>
+          </span>
         </p>
       </div>
       <motion.button
         type="button"
         onClick={onOpen}
-        className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full shadow-lg ring-[3px] ring-white/90 dark:ring-slate-600/90 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-400/70 sm:h-16 sm:w-16"
+        className="relative h-[52px] w-[52px] shrink-0 overflow-hidden rounded-full shadow-lg ring-[3px] ring-white/90 dark:ring-slate-600/90 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-400/70 sm:h-16 sm:w-16"
         aria-label="Open Ronit's assistant search"
         whileTap={{ scale: 0.96 }}
       >
@@ -51,6 +55,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
   onOpenChange,
   onTarget,
 }) => {
+  const isMobile = useIsMobile();
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -154,7 +159,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
               role="dialog"
               aria-modal="true"
               aria-labelledby="assistant-search-label"
-              className="pointer-events-auto flex h-[min(85vh,720px)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_32px_100px_rgba(0,0,0,0.22)] dark:border-slate-700/80 dark:bg-slate-950 dark:shadow-[0_32px_100px_rgba(0,0,0,0.55)]"
+              className="pointer-events-auto flex h-[min(100dvh-2rem,720px)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_32px_100px_rgba(0,0,0,0.22)] dark:border-slate-700/80 dark:bg-slate-950 dark:shadow-[0_32px_100px_rgba(0,0,0,0.55)] sm:h-[min(85vh,720px)]"
               initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: 8 }}
@@ -281,9 +286,14 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
               </div>
 
               <div className="shrink-0 border-t border-slate-100 px-5 py-3 text-center text-xs text-slate-400 dark:border-slate-800">
-                <kbd className="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] dark:bg-slate-900">⌘K</kbd>{" "}
-                toggle · <kbd className="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] dark:bg-slate-900">esc</kbd>{" "}
-                close
+                {isMobile ? (
+                  <>Swipe backdrop or tap ✕ to close</>
+                ) : (
+                  <>
+                    <kbd className="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] dark:bg-slate-900">⌘K</kbd> toggle ·{" "}
+                    <kbd className="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] dark:bg-slate-900">esc</kbd> close
+                  </>
+                )}
               </div>
             </motion.div>
           </motion.div>
