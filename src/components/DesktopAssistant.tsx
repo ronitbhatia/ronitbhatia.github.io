@@ -24,7 +24,7 @@ export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
         style={{ boxShadow: "0 6px 28px rgba(0,0,0,0.12)" }}
       >
         <p className="text-[11px] font-semibold leading-snug text-slate-900 dark:text-slate-50 sm:text-[13px]">
-          RonitOS Navigator
+          CoPilot
         </p>
         <p className="text-[9px] leading-relaxed text-slate-600 dark:text-slate-400 sm:text-[11px]">
           <span className="sm:hidden">Tap avatar to search</span>
@@ -39,7 +39,7 @@ export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
         type="button"
         onClick={onOpen}
         className="relative h-[52px] w-[52px] shrink-0 overflow-hidden rounded-full shadow-lg ring-[3px] ring-white/90 dark:ring-slate-600/90 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-400/70 sm:h-16 sm:w-16"
-        aria-label="Open RonitOS Navigator search"
+        aria-label="Open CoPilot search"
         whileTap={{ scale: 0.96 }}
       >
         <img src="/avatar.png" alt="" className="h-full w-full object-cover" />
@@ -176,7 +176,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
                 />
                 <div className="min-w-0 flex-1">
                   <p id="assistant-search-label" className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                    RonitOS Navigator
+                    CoPilot
                   </p>
                   <p className="mt-0.5 text-[13px] text-slate-500 dark:text-slate-400">
                     Jump to a window or section — let&apos;s save the scavenger hunt for your real desktop.
