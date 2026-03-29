@@ -14,7 +14,7 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     "Mounting volumes...",
     "Loading memories...",
     "Mounting projects...",
-    "Starting Ronit Bhatia.app...",
+    "Starting Ronit Amar Bhatia.app...",
     "Loading portfolio assets...",
     "Almost ready...",
   ];
@@ -176,7 +176,7 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
                 className="text-xs opacity-40"
                 style={{ fontFamily: "var(--font-mono)", color: "white" }}
               >
-                {progress}% — Ronit Bhatia OS v6.0
+                {progress}% — Ronit Amar Bhatia OS v6.0
               </div>
             </motion.div>
           )}
@@ -186,7 +186,7 @@ const BootScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
   );
 };
 
-const SITE_TITLE = "Ronit Bhatia | Portfolio";
+const SITE_TITLE = "Ronit Amar Bhatia | Portfolio";
 
 const Index: React.FC = () => {
   const [showBootScreen, setShowBootScreen] = useState(false);

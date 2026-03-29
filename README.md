@@ -1,4 +1,4 @@
-# Ronit Bhatia — Retro OS Portfolio
+# Ronit Amar Bhatia — Retro OS Portfolio
 
 Interactive portfolio styled as a desktop OS: windows, dock, menu bar, and in-browser “assistant” search over site content.
 
@@ -45,4 +45,4 @@ In the GitHub repo: **Settings → Pages → Build and deployment**, set **Sourc
 
 ## License
 
-© Ronit Bhatia. All rights reserved.
+© Ronit Amar Bhatia. All rights reserved.

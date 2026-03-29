@@ -44,7 +44,7 @@ export const searchEntries: SearchEntry[] = [
     id: "home",
     keywords: ["home", "about", "me", "who am i", "bio", "summary"],
     title: "Home",
-    description: "Overview of Ronit Bhatia, software engineer & ML enthusiast.",
+    description: "Overview of Ronit Amar Bhatia, software engineer & ML enthusiast.",
     target: { type: "window", id: "home" },
     group: "About",
   },

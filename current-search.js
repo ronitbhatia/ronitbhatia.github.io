@@ -12,7 +12,7 @@ const searchIndex = [
         page: '/', 
         section: 'about', 
         title: 'About Me', 
-        description: 'Learn about Ronit Bhatia, software engineer and ML enthusiast' 
+        description: 'Learn about Ronit Amar Bhatia, software engineer and ML enthusiast' 
     },
     
     // UnclogAI Project - Extensive keywords
@@ -481,7 +481,7 @@ const searchIndex = [
         page: '/', 
         section: 'resume', 
         title: 'Download Resume', 
-        description: 'Download Ronit Bhatia\'s resume' 
+        description: 'Download Ronit Amar Bhatia\'s resume' 
     },
     
     // Contact

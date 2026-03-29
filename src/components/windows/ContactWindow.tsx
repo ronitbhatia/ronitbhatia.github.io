@@ -259,7 +259,7 @@ const ContactWindow: React.FC = () => {
                       className="text-xs font-semibold"
                       style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))" }}
                     >
-                      Ronit Bhatia
+                      Ronit Amar Bhatia
                     </div>
                     <div className="contact-meta text-xs" style={{ fontFamily: "var(--font-mono)" }}>
                       roncy.bhatia@gmail.com | Just now

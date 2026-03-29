@@ -94,7 +94,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavig
       >
         <span className="opacity-70">Home</span>
         <span className="opacity-50">/</span>
-        <span>Ronit Bhatia</span>
+        <span>Ronit Amar Bhatia</span>
         <span className="opacity-50">/</span>
         <span className="font-semibold">Home</span>
       </div>
@@ -115,7 +115,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavig
               >
                 <img
                   src="/IMG_5623.jpeg"
-                  alt="Ronit Bhatia"
+                  alt="Ronit Amar Bhatia"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -125,7 +125,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavig
                   className="text-2xl font-bold mb-0.5 tracking-tight"
                   style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))" }}
                 >
-                  Ronit Bhatia
+                  Ronit Amar Bhatia
                 </h1>
                 <div className="about-carousel overflow-hidden relative mb-2" style={{ fontFamily: "var(--font-mono)", minHeight: "1.25rem" }}>
                   {ROLLING_ITEMS.map((item, i) => (
