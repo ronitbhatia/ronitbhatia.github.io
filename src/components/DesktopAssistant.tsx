@@ -42,7 +42,7 @@ export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
         aria-label="Open CoPilot search"
         whileTap={{ scale: 0.96 }}
       >
-        <img src="/avatar.png" alt="" className="h-full w-full object-cover" />
+        <img src="/new-pic.png" alt="" className="h-full w-full object-cover" />
         <span
           className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-black/10 dark:ring-white/10"
           aria-hidden
@@ -170,7 +170,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
             >
               <div className="flex shrink-0 items-start gap-4 border-b border-slate-100 px-5 pb-4 pt-5 dark:border-slate-800">
                 <img
-                  src="/avatar.png"
+                  src="/new-pic.png"
                   alt=""
                   className="h-14 w-14 shrink-0 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10"
                 />

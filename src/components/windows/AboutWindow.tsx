@@ -114,7 +114,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavig
                 }}
               >
                 <img
-                  src="/IMG_5623.jpeg"
+                  src="/new-pic.png"
                   alt="Ronit Amar Bhatia"
                   className="w-full h-full object-cover"
                 />
