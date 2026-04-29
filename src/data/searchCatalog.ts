@@ -149,7 +149,7 @@ export const searchEntries: SearchEntry[] = [
   {
     id: "exp-y-meadows",
     keywords: ["y meadows", "meadows", "implementation", "onboarding", "integrations", "salesforce", "jira", "customer"],
-    title: "Y Meadows — Technical Implementation Engineer Intern",
+    title: "Y Meadows — Forward Deplpyed Engineer",
     description: "Jan 2026 – Present · Customer onboarding, integrations, deployment.",
     target: { type: "timeline", windowId: "experience", entryId: "y-meadows" },
     group: "Experience",

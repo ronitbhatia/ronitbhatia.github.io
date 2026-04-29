@@ -18,7 +18,7 @@ const experiences: Experience[] = [
   {
     id: "y-meadows",
     company: "Y Meadows",
-    role: "Technical Implementation Engineer Intern",
+    role: "Forward Deplpyed Engineer",
     period: "Jan 2026 – Present",
     location: "Remote",
     type: "Internship",

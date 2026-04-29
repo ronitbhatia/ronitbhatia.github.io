@@ -45,7 +45,7 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
     ],
     page: "/experience",
     section: "y-meadows",
-    title: "Y Meadows — Technical Implementation Engineer Intern",
+    title: "Y Meadows — Forward Deplpyed Engineer",
     description: "Jan 2026 – Present · Customer onboarding, integrations, deployment.",
   },
   {
