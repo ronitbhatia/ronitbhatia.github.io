@@ -165,17 +165,13 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div className="copilot-panel-titlebar">
-                <div className="mac-btn-group flex items-center gap-1.5 pointer-events-none">
-                  <span className="mac-btn mac-btn-close" />
-                  <span className="mac-btn mac-btn-minimize" />
-                  <span className="mac-btn mac-btn-maximize" />
-                </div>
+                <div className="copilot-panel-titlebar-spacer" aria-hidden />
                 <span className="copilot-panel-titlebar-label">CoPilot.app</span>
                 <button
                   type="button"
                   onClick={() => onOpenChange(false)}
                   className="copilot-panel-close"
-                  aria-label="Close"
+                  aria-label="Close CoPilot"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 6 6 18M6 6l12 12" />
