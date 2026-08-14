@@ -45,7 +45,7 @@
     --border: 0 0% 72%;
     --input: 0 0% 90%;
     --ring: 207 89% 54%;
-    --radius: 0px;
+    --radius: 8px;
 
     /* === Mac Window Shadow === */
     --window-shadow: 0 10px 40px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
@@ -182,11 +182,16 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    transition: box-shadow 0.15s ease;
+    transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
   }
 
   .mac-window.focused {
-    box-shadow: var(--window-shadow-focused), 0 0 40px -8px hsl(var(--mac-blue) / 0.45), 0 0 0 1px hsl(var(--mac-blue) / 0.2);
+    box-shadow:
+      var(--window-shadow-focused),
+      0 0 56px -6px hsl(var(--mac-blue) / 0.55),
+      0 0 0 1px hsl(var(--mac-blue) / 0.35),
+      inset 0 1px 0 hsl(0 0% 100% / 0.12);
+    border-color: hsl(var(--mac-blue) / 0.45);
     z-index: 50 !important;
   }
 
@@ -195,7 +200,12 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
   }
   html.dark .mac-window.focused {
-    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 48px -8px hsl(207 92% 62% / 0.35);
+    box-shadow:
+      0 16px 56px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.14),
+      0 0 64px -4px hsl(207 92% 62% / 0.48),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-color: hsl(207 92% 62% / 0.5);
   }
 
   /* Menu bar: active window name pulse */
@@ -266,15 +276,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: filter 0.15s ease, transform 0.15s ease;
+    position: relative;
+    transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
 
   .mac-btn:hover {
     filter: brightness(0.92);
-    transform: scale(1.08);
+    transform: scale(1.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   }
   .mac-btn:active {
-    transform: scale(0.96);
+    transform: scale(0.94);
   }
 
   .mac-btn-close { background: #ff5f57; border-color: #e0443e; }
@@ -291,11 +303,35 @@
     background: rgba(0,0,0,0.5);
     border-radius: 1px;
     opacity: 0;
-    transition: opacity 0.1s;
+    transition: opacity 0.12s ease;
+  }
+
+  .mac-btn-minimize::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 1.5px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+  }
+
+  .mac-btn-maximize::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 1px solid rgba(0,0,0,0.45);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.12s ease;
   }
 
   .mac-btn-group:hover .mac-btn-close::before,
-  .mac-btn-group:hover .mac-btn-close::after {
+  .mac-btn-group:hover .mac-btn-close::after,
+  .mac-btn-group:hover .mac-btn-minimize::before,
+  .mac-btn-group:hover .mac-btn-maximize::before {
     opacity: 1;
   }
 
@@ -976,7 +1012,7 @@
     display: block;
     min-width: 300px;
     max-width: 340px;
-    min-height: 100%;
+    min-height: 168px;
     padding: 0;
     margin: 0;
     border: none;
@@ -1068,6 +1104,62 @@
     flex-direction: column;
   }
 
+  .about-timeline-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .about-timeline-lane-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--tl-accent);
+    line-height: 1.2;
+    text-shadow: 0 0 28px color-mix(in hsl, var(--tl-accent) 35%, transparent);
+  }
+  html.dark .about-timeline-lane-badge {
+    text-shadow:
+      0 0 32px color-mix(in hsl, var(--tl-accent) 55%, transparent),
+      0 0 12px color-mix(in hsl, var(--tl-accent) 30%, transparent);
+  }
+
+  .about-timeline-now-badge {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: hsl(0 0% 100%);
+    background: linear-gradient(135deg, var(--tl-accent), color-mix(in hsl, var(--tl-accent) 70%, hsl(0 0% 0%)));
+    padding: 0.28rem 0.55rem;
+    border-radius: 9999px;
+    box-shadow:
+      0 0 0 1px color-mix(in hsl, var(--tl-accent) 40%, transparent),
+      0 0 20px color-mix(in hsl, var(--tl-accent) 45%, transparent);
+    animation: timeline-now-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes timeline-now-pulse {
+    0%, 100% { box-shadow: 0 0 0 1px color-mix(in hsl, var(--tl-accent) 40%, transparent), 0 0 16px color-mix(in hsl, var(--tl-accent) 35%, transparent); }
+    50% { box-shadow: 0 0 0 1px color-mix(in hsl, var(--tl-accent) 60%, transparent), 0 0 28px color-mix(in hsl, var(--tl-accent) 55%, transparent); }
+  }
+
+  .about-timeline-card-btn--pulse {
+    box-shadow:
+      0 0 0 2px var(--tl-accent),
+      0 0 40px -4px color-mix(in hsl, var(--tl-accent) 55%, transparent),
+      0 16px 48px -12px hsl(0 0% 0% / 0.25) !important;
+  }
+
   .about-timeline-lane-title {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
@@ -1097,20 +1189,20 @@
 
   .about-timeline-heading {
     font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.015em;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
     color: hsl(var(--mac-dark));
-    margin: 0 0 0.6rem 0;
+    margin: 0 0 0.55rem 0;
   }
 
   .about-timeline-desc {
     font-family: var(--font-body);
-    font-size: 0.75rem;
-    line-height: 1.55;
+    font-size: 0.8125rem;
+    line-height: 1.6;
     color: hsl(var(--mac-dark));
-    opacity: 0.78;
+    opacity: 0.72;
     margin: 0 0 1rem 0;
     flex: 1;
   }
@@ -1440,6 +1532,413 @@
     background-size: 100% 200%;
     background-position: 0% 0%;
     animation: desktop-dark-gradient-drift 28s linear infinite;
+  }
+
+  /* —— CoPilot assistant —— */
+  .desktop-assistant-backdrop {
+    background: rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .copilot-launcher-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    height: 52px;
+    width: min(52vw, 200px);
+    padding: 0 0.75rem;
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--mac-border) / 0.5);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.12);
+  }
+  html.dark .copilot-launcher-card {
+    background: rgba(22, 26, 36, 0.92);
+    border-color: hsl(220 10% 36% / 0.8);
+  }
+  @media (min-width: 640px) {
+    .copilot-launcher-card {
+      height: 4rem;
+      width: min(46vw, 220px);
+      gap: 0.35rem;
+    }
+  }
+
+  .copilot-launcher-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .copilot-launcher-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: hsl(var(--mac-blue));
+    box-shadow: 0 0 12px hsl(var(--mac-blue) / 0.7);
+    animation: copilot-dot-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes copilot-dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.65; transform: scale(0.88); }
+  }
+
+  .copilot-launcher-title {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: hsl(var(--mac-dark));
+    line-height: 1.2;
+  }
+  @media (min-width: 640px) {
+    .copilot-launcher-title { font-size: 13px; }
+  }
+
+  .copilot-launcher-sub {
+    font-size: 9px;
+    line-height: 1.4;
+    color: hsl(var(--muted-foreground));
+  }
+  @media (min-width: 640px) {
+    .copilot-launcher-sub { font-size: 11px; }
+  }
+
+  .copilot-launcher-avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 9999px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+  @media (min-width: 640px) {
+    .copilot-launcher-avatar { width: 4rem; height: 4rem; }
+  }
+
+  .copilot-launcher-avatar-ring {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.08),
+      0 0 0 3px rgba(255, 255, 255, 0.85),
+      0 0 24px hsl(var(--mac-blue) / 0.35);
+    animation: copilot-avatar-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes copilot-avatar-glow {
+    0%, 100% { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08), 0 0 0 3px rgba(255,255,255,0.85), 0 0 20px hsl(var(--mac-blue) / 0.3); }
+    50% { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08), 0 0 0 3px rgba(255,255,255,0.85), 0 0 32px hsl(var(--mac-blue) / 0.55); }
+  }
+
+  .copilot-kbd {
+    display: inline-block;
+    border-radius: 0.35rem;
+    background: hsl(var(--window-input-bg-alt));
+    border: 1px solid hsl(var(--mac-border) / 0.6);
+    padding: 0.1rem 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.65em;
+  }
+
+  .copilot-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 42rem;
+    height: min(100dvh - 2rem, 720px);
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1.5px solid hsl(var(--mac-border));
+    background: hsl(var(--mac-window-bg));
+    box-shadow:
+      0 32px 100px rgba(0, 0, 0, 0.28),
+      0 0 0 1px hsl(var(--mac-blue) / 0.12),
+      0 0 64px -8px hsl(var(--mac-blue) / 0.35);
+  }
+  html.dark .copilot-panel {
+    box-shadow:
+      0 32px 100px rgba(0, 0, 0, 0.55),
+      0 0 0 1px hsl(207 92% 62% / 0.2),
+      0 0 72px -6px hsl(207 92% 62% / 0.35);
+  }
+
+  .copilot-panel-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 12px;
+    height: 32px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid hsl(var(--mac-border) / 0.55);
+  }
+  html.dark .copilot-panel-titlebar {
+    background: rgba(45, 48, 58, 0.72);
+  }
+
+  .copilot-panel-titlebar-label {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: hsl(var(--mac-dark));
+    opacity: 0.75;
+  }
+
+  .copilot-panel-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    color: hsl(var(--muted-foreground));
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .copilot-panel-close:hover {
+    background: hsl(var(--window-input-bg-alt));
+    color: hsl(var(--mac-dark));
+  }
+
+  .copilot-panel-hero {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem 0.75rem;
+    background: linear-gradient(135deg, hsl(var(--mac-blue) / 0.12) 0%, transparent 55%);
+  }
+
+  .copilot-panel-hero-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .copilot-panel-hero-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px hsl(var(--mac-border) / 0.4);
+  }
+
+  .copilot-panel-hero-status {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 9999px;
+    background: #28c840;
+    border: 2px solid hsl(var(--mac-window-bg));
+    box-shadow: 0 0 10px rgba(40, 200, 64, 0.6);
+  }
+
+  .copilot-panel-hero-title {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: hsl(var(--mac-dark));
+    letter-spacing: -0.02em;
+  }
+
+  .copilot-panel-hero-sub {
+    margin-top: 0.2rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .copilot-panel-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 1.25rem 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.85rem;
+    border: 1px solid hsl(var(--mac-border) / 0.65);
+    background: hsl(var(--window-input-bg));
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .copilot-panel-search-wrap:focus-within {
+    border-color: hsl(var(--mac-blue) / 0.65);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.04),
+      0 0 0 3px hsl(var(--mac-blue) / 0.15);
+  }
+
+  .copilot-panel-search-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+    color: hsl(var(--mac-blue));
+  }
+
+  .copilot-panel-search-input {
+    min-width: 0;
+    flex: 1;
+    border: 0;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: hsl(var(--mac-dark));
+    outline: none;
+  }
+  .copilot-panel-search-input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .copilot-panel-shortcuts {
+    flex-shrink: 0;
+    padding: 0 1.25rem 0.85rem;
+  }
+
+  .copilot-panel-section-label {
+    margin-bottom: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .copilot-chip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+  @media (min-width: 640px) {
+    .copilot-chip-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .copilot-chip {
+    border-radius: 0.75rem;
+    border: 1px solid hsl(var(--mac-border) / 0.55);
+    background: hsl(var(--window-card-bg));
+    padding: 0.55rem 0.65rem;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: hsl(var(--mac-dark));
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .copilot-chip:hover {
+    border-color: hsl(var(--mac-blue) / 0.45);
+    background: hsl(var(--mac-blue) / 0.08);
+  }
+
+  .copilot-panel-results {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    border-top: 1px solid hsl(var(--mac-border) / 0.45);
+    padding: 0.85rem 1.25rem;
+  }
+
+  .copilot-panel-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 120px;
+    text-align: center;
+  }
+
+  .copilot-panel-empty-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: hsl(var(--mac-dark));
+  }
+
+  .copilot-panel-empty-sub {
+    font-size: 0.8125rem;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .copilot-panel-no-results {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9375rem;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .copilot-result-group {
+    margin-bottom: 1.25rem;
+  }
+  .copilot-result-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .copilot-result-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .copilot-result-row {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .copilot-result-bubble {
+    border-radius: 0.85rem;
+    border: 1px solid hsl(var(--mac-border) / 0.45);
+    background: hsl(var(--window-card-bg));
+    padding: 0.65rem 0.85rem;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .copilot-result-row--active .copilot-result-bubble {
+    background: hsl(var(--mac-blue));
+    border-color: hsl(var(--mac-blue-dark));
+    box-shadow: 0 4px 16px hsl(var(--mac-blue) / 0.35);
+  }
+
+  .copilot-result-title {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: hsl(var(--mac-dark));
+  }
+  .copilot-result-row--active .copilot-result-title {
+    color: hsl(0 0% 100%);
+  }
+
+  .copilot-result-desc {
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: hsl(var(--muted-foreground));
+  }
+  .copilot-result-row--active .copilot-result-desc {
+    color: hsl(0 0% 100% / 0.88);
+  }
+
+  .copilot-panel-footer {
+    flex-shrink: 0;
+    border-top: 1px solid hsl(var(--mac-border) / 0.45);
+    padding: 0.65rem 1.25rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: hsl(var(--muted-foreground));
   }
 }
 

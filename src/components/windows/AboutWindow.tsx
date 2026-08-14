@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { toast } from "@/hooks/use-toast";
 
 /** Carousel items from current portfolio (index.html typing animation) */
@@ -25,6 +26,51 @@ interface AboutWindowProps {
 /** Visual lane for the home timeline (distinct styling per lane). */
 type HomeTimelineLane = "experience" | "initiative" | "education-start" | "education-graduation";
 
+const TimelineLaneIcon: React.FC<{ lane: HomeTimelineLane; className?: string }> = ({ lane, className }) => {
+  const props = {
+    className,
+    width: 16,
+    height: 16,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+
+  switch (lane) {
+    case "experience":
+      return (
+        <svg {...props}>
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      );
+    case "initiative":
+      return (
+        <svg {...props}>
+          <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L6 21l2.3-7-6-4.6h7.6z" />
+        </svg>
+      );
+    case "education-start":
+      return (
+        <svg {...props}>
+          <circle cx="12" cy="12" r="10" />
+          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none" />
+        </svg>
+      );
+    case "education-graduation":
+      return (
+        <svg {...props}>
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+          <path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5" />
+        </svg>
+      );
+  }
+};
+
 const timelineItems: {
   year: string;
   heading: string;
@@ -32,8 +78,9 @@ const timelineItems: {
   tags: string[];
   target: { windowId: "experience" | "education" | "initiative-impact"; entryId: string };
   lane: HomeTimelineLane;
+  isCurrent?: boolean;
 }[] = [
-  { year: "Jan 2026 – Present", heading: "Forward Deplpyed Engineer @ Y Meadows", description: "Supporting customer onboarding from setup through production by validating integrations, aligning requirements with engineering, and improving deployment reliability.", tags: ["Customer Onboarding", "Integrations", "JIRA", "Salesforce"], target: { windowId: "experience", entryId: "y-meadows" }, lane: "experience" },
+  { year: "Jan 2026 – Present", heading: "Forward Deplpyed Engineer @ Y Meadows", description: "Supporting customer onboarding from setup through production by validating integrations, aligning requirements with engineering, and improving deployment reliability.", tags: ["Customer Onboarding", "Integrations", "JIRA", "Salesforce"], target: { windowId: "experience", entryId: "y-meadows" }, lane: "experience", isCurrent: true },
   { year: "Oct 2025 – Feb 2026", heading: "ML Engineer @ QAlienAI", description: "Led AI compliance systems using LLMs for FTC/FDA analysis. Built multimodal pipelines with Claude, Gemini, and pgvector.", tags: ["LLMs", "AWS Bedrock", "Multimodal AI"], target: { windowId: "experience", entryId: "qalienai" }, lane: "experience" },
   { year: "Aug 2025", heading: "AI Hackathon – Conference Buddy", description: "Built AI solution for healthcare sales teams to identify prospects and book meetings. Achieved finalist position.", tags: ["Product Management", "AI", "Hackathon"], target: { windowId: "initiative-impact", entryId: "ai-hackathon" }, lane: "initiative" },
   { year: "May 2025", heading: "Graduated from Cornell University", description: "Completed Master of Engineering in Engineering Management. Focus on AI, Product Management, and Data Analytics.", tags: ["Cornell", "MEng", "Graduation"], target: { windowId: "education", entryId: "cornell" }, lane: "education-graduation" },
@@ -59,6 +106,7 @@ const TIMELINE_LANE_LABEL: Record<HomeTimelineLane, string> = {
 
 const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavigate }) => {
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [pulseIndex, setPulseIndex] = useState<number | null>(null);
 
   const handleOpenEmail = async () => {
     try {
@@ -82,6 +130,14 @@ const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavig
     }, 2500);
     return () => clearInterval(id);
   }, []);
+
+  const handleTimelineClick = (index: number, target: (typeof timelineItems)[number]["target"]) => {
+    setPulseIndex(index);
+    window.setTimeout(() => {
+      onTimelineNavigate(target);
+      setPulseIndex(null);
+    }, 220);
+  };
 
   return (
     <div className="flex flex-col h-full about-window">
@@ -289,24 +345,40 @@ const AboutWindow: React.FC<AboutWindowProps> = ({ onOpenResume, onTimelineNavig
             </div>
             <div className="about-timeline-horizontal">
               {timelineItems.map((item, i) => (
-                <div
+                <motion.div
                   key={i}
                   className={`about-timeline-card about-timeline-card--lane-${item.lane} flex-shrink-0`}
+                  animate={
+                    pulseIndex === i
+                      ? { scale: [1, 0.97, 1.02, 1], y: [0, 2, -4, 0] }
+                      : { scale: 1, y: 0 }
+                  }
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <button
                     type="button"
-                    onClick={() => onTimelineNavigate(item.target)}
-                    className="about-timeline-card-btn group h-full w-full flex flex-col text-left"
+                    onClick={() => handleTimelineClick(i, item.target)}
+                    className={`about-timeline-card-btn group h-full w-full flex flex-col text-left${pulseIndex === i ? " about-timeline-card-btn--pulse" : ""}`}
                   >
                     <div className="about-timeline-card-body">
-                      <div className="about-timeline-lane-title">{TIMELINE_LANE_LABEL[item.lane]}</div>
+                      <div className="about-timeline-card-header">
+                        <div className="about-timeline-lane-badge">
+                          <TimelineLaneIcon lane={item.lane} />
+                          <span>{TIMELINE_LANE_LABEL[item.lane]}</span>
+                        </div>
+                        {item.isCurrent && (
+                          <span className="about-timeline-now-badge" aria-label="Current role">
+                            Now
+                          </span>
+                        )}
+                      </div>
                       <p className="about-timeline-date">{item.year}</p>
                       <h4 className="about-timeline-heading">{item.heading}</h4>
                       <p className="about-timeline-desc">{item.description}</p>
                       <p className="about-timeline-tags-line">{item.tags.join(" · ")}</p>
                     </div>
                   </button>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

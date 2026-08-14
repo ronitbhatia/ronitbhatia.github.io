@@ -7,7 +7,7 @@ interface MenuBarProps {
 }
 
 const MenuBar: React.FC<MenuBarProps> = ({ activeWindow }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, preference, toggleTheme } = useTheme();
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -42,8 +42,20 @@ const MenuBar: React.FC<MenuBarProps> = ({ activeWindow }) => {
           type="button"
           onClick={toggleTheme}
           className="mac-menubar-item flex items-center justify-center w-7 h-7 rounded-md p-0"
-          title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          title={
+            preference === "system"
+              ? `Using system (${theme}) — click to override`
+              : theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+          }
+          aria-label={
+            preference === "system"
+              ? `Appearance follows system (${theme})`
+              : theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+          }
         >
           {theme === "dark" ? (
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface WindowProps {
   id: string;
@@ -117,59 +117,59 @@ const Window: React.FC<WindowProps> = ({
   } as const;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key={id}
-        className={`mac-window touch-manipulation${isFocused ? " focused" : ""}${isMobile ? " mac-window--mobile" : ""}`}
-        initial={{ opacity: 0, scale: isMobile ? 1 : 0.9, y: isMobile ? 8 : 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: isMobile ? 1 : 0.88, y: isMobile ? 6 : 10 }}
-        transition={{ duration: 0.18, ease: "easeOut" }}
-        style={isMobile ? mobileStyle : desktopStyle}
-        onMouseDown={onFocus}
-        onPointerDown={isMobile ? onFocus : undefined}
-      >
-        {/* Title Bar */}
-        <div
-          className={`mac-titlebar active`}
-          onMouseDown={handleTitleMouseDown}
-        >
-          <div className="mac-btn-group flex items-center gap-1.5">
-            <button
-              className="mac-btn mac-btn-close"
-              onClick={(e) => { e.stopPropagation(); onClose(); }}
-              title="Close"
-            />
-            <button
-              className="mac-btn mac-btn-minimize"
-              onClick={(e) => { e.stopPropagation(); onMinimize(); }}
-              title="Minimize"
-            />
-            <button className="mac-btn mac-btn-maximize" title="Zoom" />
-          </div>
-          <div className="mac-titlebar-title flex items-center justify-center gap-1.5">
-            {icon && <span className="opacity-70">{icon}</span>}
-            <span>{title}</span>
-          </div>
-          <div style={{ width: 52 }} />
-        </div>
-
-        {/* Content */}
-        <div className="window-content mac-scroll">
-          {children}
-        </div>
-
-        {!isMobile && (
-          <div
-            className="resize-handle"
-            onMouseDown={handleResizeMouseDown}
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M12 12L6 12M12 8L8 12M12 4L12 12' stroke='%23999' stroke-width='1'/%3E%3C/svg%3E")`,
+    <motion.div
+      key={id}
+      layout={false}
+      className={`mac-window touch-manipulation${isFocused ? " focused" : ""}${isMobile ? " mac-window--mobile" : ""}`}
+      initial={{ opacity: 0, scale: isMobile ? 1 : 0.88, y: isMobile ? 12 : 28, filter: "blur(4px)" }}
+      animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+      exit={{ opacity: 0, scale: isMobile ? 1 : 0.9, y: isMobile ? 8 : 16, filter: "blur(2px)" }}
+      transition={{ type: "spring", stiffness: 420, damping: 32, mass: 0.85 }}
+      style={isMobile ? mobileStyle : desktopStyle}
+      onMouseDown={onFocus}
+      onPointerDown={isMobile ? onFocus : undefined}
+    >
+      {/* Title Bar */}
+      <div className="mac-titlebar active" onMouseDown={handleTitleMouseDown}>
+        <div className="mac-btn-group flex items-center gap-1.5">
+          <button
+            className="mac-btn mac-btn-close"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
             }}
+            title="Close"
           />
-        )}
-      </motion.div>
-    </AnimatePresence>
+          <button
+            className="mac-btn mac-btn-minimize"
+            onClick={(e) => {
+              e.stopPropagation();
+              onMinimize();
+            }}
+            title="Minimize"
+          />
+          <button className="mac-btn mac-btn-maximize" title="Zoom" />
+        </div>
+        <div className="mac-titlebar-title flex items-center justify-center gap-1.5">
+          {icon && <span className="opacity-70">{icon}</span>}
+          <span>{title}</span>
+        </div>
+        <div style={{ width: 52 }} />
+      </div>
+
+      {/* Content */}
+      <div className="window-content mac-scroll">{children}</div>
+
+      {!isMobile && (
+        <div
+          className="resize-handle"
+          onMouseDown={handleResizeMouseDown}
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M12 12L6 12M12 8L8 12M12 4L12 12' stroke='%23999' stroke-width='1'/%3E%3C/svg%3E")`,
+          }}
+        />
+      )}
+    </motion.div>
   );
 };
 

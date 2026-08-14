@@ -18,18 +18,16 @@ interface DesktopAssistantProps {
 /** Sits in the dock row (see `Dock` `leading`) so it stays in the bottom chrome, not over the Home window. */
 export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
   return (
-    <div className="flex max-w-[min(96vw,360px)] items-center justify-center gap-2 sm:max-w-none sm:gap-2.5">
-      <div
-        className="flex h-[52px] w-[min(52vw,200px)] flex-col justify-center gap-0.5 rounded-2xl border border-slate-200/80 bg-white/95 px-3 py-0 shadow-md backdrop-blur-sm dark:border-slate-700/80 dark:bg-slate-950/95 sm:h-16 sm:w-[min(46vw,220px)] sm:gap-2"
-        style={{ boxShadow: "0 6px 28px rgba(0,0,0,0.12)" }}
-      >
-        <p className="text-[11px] font-semibold leading-snug text-slate-900 dark:text-slate-50 sm:text-[13px]">
-          CoPilot
-        </p>
-        <p className="text-[9px] leading-relaxed text-slate-600 dark:text-slate-400 sm:text-[11px]">
+    <div className="copilot-launcher flex max-w-[min(96vw,360px)] items-center justify-center gap-2 sm:max-w-none sm:gap-2.5">
+      <div className="copilot-launcher-card">
+        <div className="copilot-launcher-card-header">
+          <span className="copilot-launcher-dot" aria-hidden />
+          <p className="copilot-launcher-title">CoPilot</p>
+        </div>
+        <p className="copilot-launcher-sub">
           <span className="sm:hidden">Tap avatar to search</span>
           <span className="hidden sm:inline">
-            <kbd className="rounded bg-slate-200/80 px-1 py-px font-mono text-[9px] dark:bg-slate-800">⌘K</kbd>
+            <kbd className="copilot-kbd">⌘K</kbd>
             {" · "}
             faster than folder archaeology
           </span>
@@ -38,15 +36,13 @@ export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
       <motion.button
         type="button"
         onClick={onOpen}
-        className="relative h-[52px] w-[52px] shrink-0 overflow-hidden rounded-full shadow-lg ring-[3px] ring-white/90 dark:ring-slate-600/90 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-400/70 sm:h-16 sm:w-16"
+        className="copilot-launcher-avatar"
         aria-label="Open CoPilot search"
-        whileTap={{ scale: 0.96 }}
+        whileHover={{ scale: 1.06, y: -2 }}
+        whileTap={{ scale: 0.94 }}
       >
         <img src="/avatar.png" alt="" className="h-full w-full object-cover" />
-        <span
-          className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-black/10 dark:ring-white/10"
-          aria-hidden
-        />
+        <span className="copilot-launcher-avatar-ring" aria-hidden />
       </motion.button>
     </div>
   );
@@ -139,7 +135,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
           <motion.button
             type="button"
             aria-label="Close search"
-            className="desktop-assistant-backdrop fixed inset-0 z-[99980] bg-black/45 backdrop-blur-sm cursor-default border-0 p-0"
+            className="desktop-assistant-backdrop fixed inset-0 z-[99980] cursor-default border-0 p-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -161,125 +157,118 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
               role="dialog"
               aria-modal="true"
               aria-labelledby="assistant-search-label"
-              className="pointer-events-auto flex h-[min(100dvh-2rem,720px)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_32px_100px_rgba(0,0,0,0.22)] dark:border-slate-700/80 dark:bg-slate-950 dark:shadow-[0_32px_100px_rgba(0,0,0,0.55)] sm:h-[min(85vh,720px)]"
-              initial={{ opacity: 0, scale: 0.97, y: 12 }}
+              className="copilot-panel pointer-events-auto"
+              initial={{ opacity: 0, scale: 0.92, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98, y: 8 }}
-              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, scale: 0.96, y: 12 }}
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex shrink-0 items-start gap-4 border-b border-slate-100 px-5 pb-4 pt-5 dark:border-slate-800">
-                <img
-                  src="/avatar.png"
-                  alt=""
-                  className="h-14 w-14 shrink-0 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10"
-                />
-                <div className="min-w-0 flex-1">
-                  <p id="assistant-search-label" className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                    CoPilot
-                  </p>
-                  <p className="mt-0.5 text-[13px] text-slate-500 dark:text-slate-400">
-                    Jump to a window or section — let&apos;s save the scavenger hunt for your real desktop.
-                  </p>
-                  <div className="mt-3 flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 dark:border-slate-700 dark:bg-slate-900/90">
-                    <svg
-                      className="h-5 w-5 shrink-0 text-slate-400 dark:text-slate-500"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <circle cx="11" cy="11" r="8" />
-                      <path d="m21 21-4.35-4.35" />
-                    </svg>
-                    <input
-                      autoFocus
-                      value={query}
-                      onChange={(e) => {
-                        setQuery(e.target.value);
-                        setActiveIndex(0);
-                      }}
-                      placeholder="Type to search…"
-                      className="min-w-0 flex-1 bg-transparent text-base text-slate-900 outline-none placeholder:text-slate-400 dark:text-slate-100 dark:placeholder:text-slate-500"
-                    />
-                  </div>
+              <div className="copilot-panel-titlebar">
+                <div className="mac-btn-group flex items-center gap-1.5 pointer-events-none">
+                  <span className="mac-btn mac-btn-close" />
+                  <span className="mac-btn mac-btn-minimize" />
+                  <span className="mac-btn mac-btn-maximize" />
                 </div>
+                <span className="copilot-panel-titlebar-label">CoPilot.app</span>
                 <button
                   type="button"
                   onClick={() => onOpenChange(false)}
-                  className="shrink-0 rounded-full p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                  className="copilot-panel-close"
                   aria-label="Close"
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 6 6 18M6 6l12 12" />
                   </svg>
                 </button>
               </div>
 
-              <div className="shrink-0 px-5 pb-4 pt-4">
-                <p className="mb-3 text-xs font-medium uppercase tracking-[0.08em] text-slate-500 dark:text-slate-500">
-                  Shortcuts
-                </p>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              <div className="copilot-panel-hero">
+                <div className="copilot-panel-hero-avatar-wrap">
+                  <img src="/avatar.png" alt="" className="copilot-panel-hero-avatar" />
+                  <span className="copilot-panel-hero-status" aria-hidden />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p id="assistant-search-label" className="copilot-panel-hero-title">
+                    CoPilot
+                  </p>
+                  <p className="copilot-panel-hero-sub">
+                    Your RonitOS navigator — jump to any window, section, or link.
+                  </p>
+                </div>
+              </div>
+
+              <div className="copilot-panel-search-wrap">
+                <svg className="copilot-panel-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input
+                  autoFocus
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setActiveIndex(0);
+                  }}
+                  placeholder="Ask CoPilot where to go…"
+                  className="copilot-panel-search-input"
+                />
+              </div>
+
+              <div className="copilot-panel-shortcuts">
+                <p className="copilot-panel-section-label">Quick picks</p>
+                <div className="copilot-chip-grid">
                   {quickPicks.map((s) => (
-                    <button
+                    <motion.button
                       key={s.label}
                       type="button"
                       onClick={() => applySuggestion(s.query ?? s.label)}
-                      className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-left text-[13px] font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800/80"
+                      className="copilot-chip"
+                      whileHover={{ scale: 1.03, y: -1 }}
+                      whileTap={{ scale: 0.97 }}
                     >
                       {s.label}
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               </div>
 
-              <div className="min-h-0 flex-1 overflow-y-auto mac-scroll border-t border-slate-100 px-5 py-4 dark:border-slate-800/90">
+              <div className="copilot-panel-results mac-scroll">
                 {!hasQuery && (
-                  <div className="flex h-full min-h-[120px] flex-col items-center justify-center gap-1 text-center">
-                    <p className="text-sm text-slate-600 dark:text-slate-400">Type above to see matches</p>
-                    <p className="text-xs text-slate-400 dark:text-slate-500">Or choose a shortcut to fill the search</p>
+                  <div className="copilot-panel-empty">
+                    <p className="copilot-panel-empty-title">Ready when you are</p>
+                    <p className="copilot-panel-empty-sub">Type above or tap a quick pick to navigate the desktop.</p>
                   </div>
                 )}
                 {hasQuery && grouped.length === 0 && (
-                  <p className="py-8 text-center text-[15px] text-slate-600 dark:text-slate-400">
+                  <p className="copilot-panel-no-results">
                     Nothing for{" "}
-                    <span className="font-mono font-medium text-slate-900 dark:text-slate-200">"{query.trim()}"</span>
+                    <span className="font-mono font-semibold">&quot;{query.trim()}&quot;</span>
                   </p>
                 )}
                 {hasQuery &&
                   grouped.map(([group, list]) => (
-                    <div key={group} className="mb-6 last:mb-0">
-                      <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
-                        {group}
-                      </div>
-                      <div className="flex flex-col gap-1">
+                    <div key={group} className="copilot-result-group">
+                      <div className="copilot-panel-section-label">{group}</div>
+                      <div className="copilot-result-list">
                         {list.map((entry) => {
                           const globalIndex = filtered.indexOf(entry);
                           const isActive = globalIndex === activeIndex;
                           return (
-                            <button
+                            <motion.button
                               key={entry.id}
                               type="button"
-                              className={`rounded-xl px-3 py-3 text-left transition ${
-                                isActive
-                                  ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950"
-                                  : "text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800/80"
-                              }`}
+                              className={`copilot-result-row${isActive ? " copilot-result-row--active" : ""}`}
                               onMouseEnter={() => setActiveIndex(globalIndex)}
                               onClick={() => handleClickEntry(entry)}
+                              layout
+                              whileHover={{ x: 2 }}
                             >
-                              <div className="text-[15px] font-semibold leading-snug">{entry.title}</div>
-                              <div
-                                className={`mt-1 text-[13px] leading-snug ${
-                                  isActive
-                                    ? "text-white/85 dark:text-slate-600"
-                                    : "text-slate-600 dark:text-slate-400"
-                                }`}
-                              >
-                                {entry.description}
+                              <div className="copilot-result-bubble">
+                                <div className="copilot-result-title">{entry.title}</div>
+                                <div className="copilot-result-desc">{entry.description}</div>
                               </div>
-                            </button>
+                            </motion.button>
                           );
                         })}
                       </div>
@@ -287,13 +276,15 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
                   ))}
               </div>
 
-              <div className="shrink-0 border-t border-slate-100 px-5 py-3 text-center text-xs text-slate-400 dark:border-slate-800">
+              <div className="copilot-panel-footer">
                 {isMobile ? (
-                  <>Swipe backdrop or tap ✕ to close</>
+                  <>Tap backdrop or ✕ to close</>
                 ) : (
                   <>
-                    <kbd className="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] dark:bg-slate-900">⌘K</kbd> toggle ·{" "}
-                    <kbd className="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] dark:bg-slate-900">esc</kbd> close
+                    <kbd className="copilot-kbd">⌘K</kbd> toggle ·{" "}
+                    <kbd className="copilot-kbd">↑↓</kbd> navigate ·{" "}
+                    <kbd className="copilot-kbd">↵</kbd> open ·{" "}
+                    <kbd className="copilot-kbd">esc</kbd> close
                   </>
                 )}
               </div>

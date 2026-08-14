@@ -146,7 +146,7 @@ const Desktop: React.FC = () => {
 
   const handleTimelineNavigate = useCallback(
     (target: TimelineJumpTarget) => {
-      openWindow(target.windowId);
+      openWindow(target.windowId, true);
       setTimelineFocus({
         windowId: target.windowId,
         entryId: target.entryId,
