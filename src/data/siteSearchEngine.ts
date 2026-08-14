@@ -42,11 +42,12 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
       "salesforce",
       "jira",
       "deployment",
+      "full time",
     ],
     page: "/experience",
     section: "y-meadows",
     title: "Y Meadows — Forward Deplpyed Engineer",
-    description: "Jan 2026 – Present · Customer onboarding, integrations, deployment.",
+    description: "Jan 2026 – Present · Full time · Customer onboarding, integrations, deployment.",
   },
   {
     keywords: [

@@ -21,7 +21,7 @@ const experiences: Experience[] = [
     role: "Forward Deplpyed Engineer",
     period: "Jan 2026 – Present",
     location: "Remote",
-    type: "Internship",
+    type: "Full Time",
     description:
       "Working across onboarding, integrations, and deployment readiness to help customers move from kickoff to production smoothly. Partnering closely with product and engineering to turn requirements into stable, repeatable implementations.",
     readMore: [
