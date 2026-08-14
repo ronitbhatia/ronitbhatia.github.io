@@ -56,6 +56,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
   const isMobile = useIsMobile();
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const filtered = useMemo(() => {
     const q = query.trim();
@@ -81,6 +82,7 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
     if (!open) {
       setQuery("");
       setActiveIndex(0);
+      setIsExpanded(false);
     }
   }, [open]);
 
@@ -157,26 +159,39 @@ const DesktopAssistant: React.FC<DesktopAssistantProps> = ({
               role="dialog"
               aria-modal="true"
               aria-labelledby="assistant-search-label"
-              className="copilot-panel pointer-events-auto"
+              className={`copilot-panel pointer-events-auto${isExpanded ? " copilot-panel--expanded" : ""}`}
               initial={{ opacity: 0, scale: 0.92, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ type: "spring", stiffness: 380, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="copilot-panel-titlebar">
-                <div className="copilot-panel-titlebar-spacer" aria-hidden />
-                <span className="copilot-panel-titlebar-label">CoPilot.app</span>
-                <button
-                  type="button"
-                  onClick={() => onOpenChange(false)}
-                  className="copilot-panel-close"
-                  aria-label="Close CoPilot"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 6 6 18M6 6l12 12" />
-                  </svg>
-                </button>
+              <div className="copilot-panel-titlebar mac-titlebar active">
+                <div className="mac-btn-group flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    className="mac-btn mac-btn-close"
+                    onClick={() => onOpenChange(false)}
+                    title="Close"
+                    aria-label="Close CoPilot"
+                  />
+                  <button
+                    type="button"
+                    className="mac-btn mac-btn-minimize"
+                    onClick={() => onOpenChange(false)}
+                    title="Minimize"
+                    aria-label="Minimize CoPilot"
+                  />
+                  <button
+                    type="button"
+                    className="mac-btn mac-btn-maximize"
+                    onClick={() => setIsExpanded((v) => !v)}
+                    title={isExpanded ? "Restore" : "Zoom"}
+                    aria-label={isExpanded ? "Restore CoPilot size" : "Zoom CoPilot"}
+                  />
+                </div>
+                <span className="copilot-panel-titlebar-label mac-titlebar-title">CoPilot.app</span>
+                <div style={{ width: 52 }} aria-hidden />
               </div>
 
               <div className="copilot-panel-hero">
