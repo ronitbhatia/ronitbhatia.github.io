@@ -18,7 +18,7 @@ interface DesktopAssistantProps {
 /** Sits in the dock row (see `Dock` `leading`) so it stays in the bottom chrome, not over the Home window. */
 export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
   return (
-    <div className="copilot-launcher flex max-w-[min(96vw,360px)] items-center justify-center gap-2 sm:max-w-none sm:gap-2.5">
+    <div className="copilot-launcher flex max-w-[min(96vw,360px)] items-center justify-center gap-2 overflow-visible sm:max-w-none sm:gap-2.5">
       <div className="copilot-launcher-card">
         <div className="copilot-launcher-card-header">
           <span className="copilot-launcher-dot" aria-hidden />
@@ -41,7 +41,9 @@ export function AssistantLauncher({ onOpen }: { onOpen: () => void }) {
         whileHover={{ scale: 1.06, y: -2 }}
         whileTap={{ scale: 0.94 }}
       >
-        <img src="/avatar.png" alt="" className="h-full w-full object-cover" />
+        <span className="copilot-launcher-avatar-photo">
+          <img src="/avatar.png" alt="" className="h-full w-full object-cover" />
+        </span>
         <span className="copilot-launcher-avatar-ring" aria-hidden />
       </motion.button>
     </div>

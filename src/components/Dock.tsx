@@ -138,7 +138,7 @@ const Dock: React.FC<DockProps> = ({
       className={`pointer-events-none z-50 ${
         isMobile
           ? "fixed inset-x-0 bottom-0 flex flex-col items-stretch gap-2 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1"
-          : "fixed bottom-5 left-0 right-0 px-3"
+          : "fixed bottom-5 left-0 right-0 overflow-visible px-3 py-2"
       }`}
     >
       {isMobile ? (
@@ -149,8 +149,8 @@ const Dock: React.FC<DockProps> = ({
           </div>
         </div>
       ) : (
-        <div className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-end gap-x-2">
-          <div className="pointer-events-auto flex justify-end overflow-hidden pr-0.5">
+        <div className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-2">
+          <div className="pointer-events-auto flex items-center justify-end overflow-visible py-1 pr-1">
             {leading}
           </div>
           <div className="mac-dock mac-dock--fit pointer-events-auto justify-self-center max-w-[min(100%,calc(100vw-2rem))] overflow-x-auto overflow-y-visible">

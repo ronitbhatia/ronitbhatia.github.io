@@ -404,6 +404,7 @@ const Desktop: React.FC = () => {
 
       {/* Dock */}
       <motion.div
+        className="overflow-visible"
         initial={justBooted ? { opacity: 0, y: 8 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.25, delay: justBooted ? 0.2 : 0 }}
