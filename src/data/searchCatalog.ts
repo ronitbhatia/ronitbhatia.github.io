@@ -9,7 +9,7 @@ import {
   normalizeSearchInput,
 } from "./searchQueryUtils";
 
-export type TimelineWindowId = "experience" | "education" | "initiative-impact";
+export type TimelineWindowId = "experience" | "education" | "initiative-impact" | "product-lab";
 
 export type SearchTarget =
   | { type: "window"; id: string }
@@ -32,6 +32,7 @@ export interface SearchEntry {
     | "Education"
     | "Skills"
     | "Initiative & Impact"
+    | "Product Lab"
     | "Contact"
     | "Links"
     | "Other";
@@ -79,6 +80,22 @@ export const searchEntries: SearchEntry[] = [
     description: "Leadership, hackathons, and community impact.",
     target: { type: "window", id: "initiative-impact" },
     group: "Initiative & Impact",
+  },
+  {
+    id: "product-lab",
+    keywords: [
+      "product lab",
+      "product thinking",
+      "case study",
+      "redesign",
+      "speculative",
+      "product design",
+      "prd",
+    ],
+    title: "Product Lab",
+    description: "Archive of product thinking: redesigns and speculative concepts.",
+    target: { type: "window", id: "product-lab" },
+    group: "Product Lab",
   },
   {
     id: "skills",
@@ -193,6 +210,40 @@ export const searchEntries: SearchEntry[] = [
     description: "June 2021 – Sept 2021 · Data pipelines, SQL.",
     target: { type: "timeline", windowId: "experience", entryId: "cardinality-ai" },
     group: "Experience",
+  },
+
+  /* Product Lab */
+  {
+    id: "lab-select-all-buses",
+    keywords: ["captcha", "select all buses", "bot", "passkey", "handshake", "accessibility"],
+    title: "Select All Buses: CAPTCHA redesign",
+    description: "Stop making humans do machine work.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "select-all-buses" },
+    group: "Product Lab",
+  },
+  {
+    id: "lab-the-last-phone",
+    keywords: ["patagonia", "phone", "repair", "the last phone", "worn in", "sustainability"],
+    title: "The Last Phone: Patagonia smartphone",
+    description: "Speculative: a phone designed to be kept.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "the-last-phone" },
+    group: "Product Lab",
+  },
+  {
+    id: "lab-still-waiting",
+    keywords: ["waiting room", "clinic", "queue", "healthcare", "still waiting", "eta"],
+    title: "Still Waiting: clinic queue redesign",
+    description: "The pain is not the wait. The pain is not knowing.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "still-waiting" },
+    group: "Product Lab",
+  },
+  {
+    id: "lab-commons-map",
+    keywords: ["wikipedia", "maps", "commons", "navigation", "sponsored pins", "local knowledge"],
+    title: "Commons Map: Wikipedia maps",
+    description: "Speculative: navigation as a commons, no ads.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "commons-map" },
+    group: "Product Lab",
   },
 
   /* Education */
@@ -345,7 +396,7 @@ export function filterSearchEntries(query: string): SearchEntry[] {
 /** Quick-pick chips: label + optional preset query (empty = use label as query). */
 export const suggestedSearches: { label: string; query?: string }[] = [
   { label: "Y Meadows role", query: "y meadows" },
-  { label: "QAlienAI / ML", query: "qalienai" },
+  { label: "Product Lab", query: "product lab" },
   { label: "Projects", query: "projects" },
   { label: "Cornell degree", query: "cornell" },
   { label: "Skills & tools", query: "skills" },

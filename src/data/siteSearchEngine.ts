@@ -96,6 +96,25 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
     title: "Quivlo: iOS Knowledge-Capture & Flashcard Intelligence",
     description: "Native iOS app with on-device NLP/ML for flashcards; App Store release.",
   },
+  {
+    keywords: [
+      "product lab",
+      "product thinking",
+      "case study",
+      "redesign",
+      "speculative",
+      "captcha",
+      "patagonia phone",
+      "waiting room",
+      "wikipedia maps",
+      "commons map",
+      "the last phone",
+    ],
+    page: "/product-lab",
+    section: null,
+    title: "Product Lab",
+    description: "Archive of product thinking: redesigns and speculative concepts.",
+  },
 ];
 
 const ALL_INDEX: SiteIndexItem[] = [...siteSearchIndex, ...EXTRA_SITE_ITEMS];
@@ -197,6 +216,7 @@ function detectSearchIntent(query: string): { category: string | null; confidenc
     resume: ["resume", "cv", "curriculum vitae", "pdf", "download"],
     contact: ["contact", "email", "reach", "message", "hire"],
     initiative: ["initiative", "impact", "leadership", "volunteer", "community", "hackathon"],
+    "product-lab": ["product lab", "product thinking", "case study", "redesign", "speculative", "prd"],
   };
 
   const intent = { category: null as string | null, confidence: 0 };
@@ -238,6 +258,7 @@ const INTENT_PAGE_MAP: Record<string, string> = {
   resume: "/",
   contact: "/",
   initiative: "/initiative-impact",
+  "product-lab": "/product-lab",
 };
 
 function scoreItemForVariant(
@@ -389,6 +410,8 @@ function groupForPage(page: string): SearchEntry["group"] {
       return "Skills";
     case "/initiative-impact":
       return "Initiative & Impact";
+    case "/product-lab":
+      return "Product Lab";
     default:
       return "Other";
   }
@@ -467,6 +490,23 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
 
   if (page === "/initiative-impact") {
     return { type: "window", id: "initiative-impact" };
+  }
+
+  if (page === "/product-lab") {
+    const PRODUCT_LAB_SECTIONS: Record<string, string> = {
+      "select-all-buses": "select-all-buses",
+      "the-last-phone": "the-last-phone",
+      "still-waiting": "still-waiting",
+      "commons-map": "commons-map",
+    };
+    if (section && PRODUCT_LAB_SECTIONS[section]) {
+      return {
+        type: "timeline",
+        windowId: "product-lab",
+        entryId: PRODUCT_LAB_SECTIONS[section],
+      };
+    }
+    return { type: "window", id: "product-lab" };
   }
 
   return { type: "window", id: "home" };

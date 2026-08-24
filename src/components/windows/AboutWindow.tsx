@@ -19,7 +19,7 @@ const EMAIL = "roncy.bhatia@gmail.com";
 interface AboutWindowProps {
   onOpenResume: () => void;
   onTimelineNavigate: (
-    target: { windowId: "experience" | "education" | "initiative-impact"; entryId: string }
+    target: { windowId: "experience" | "education" | "initiative-impact" | "product-lab"; entryId: string }
   ) => void;
 }
 
@@ -76,11 +76,12 @@ const timelineItems: {
   heading: string;
   description: string;
   tags: string[];
-  target: { windowId: "experience" | "education" | "initiative-impact"; entryId: string };
+  target: { windowId: "experience" | "education" | "initiative-impact" | "product-lab"; entryId: string };
   lane: HomeTimelineLane;
   isCurrent?: boolean;
 }[] = [
   { year: "Jan 2026 – Present", heading: "Forward Deplpyed Engineer @ Y Meadows", description: "Supporting customer onboarding from setup through production by validating integrations, aligning requirements with engineering, and improving deployment reliability.", tags: ["Customer Onboarding", "Integrations", "JIRA", "Salesforce"], target: { windowId: "experience", entryId: "y-meadows" }, lane: "experience", isCurrent: true },
+  { year: "2026", heading: "Product Lab: case studies", description: "Archive of product thinking: CAPTCHA, a Patagonia phone, clinic waiting rooms, and Wikipedia maps.", tags: ["Product Thinking", "Redesign", "Speculative"], target: { windowId: "product-lab", entryId: "select-all-buses" }, lane: "initiative" },
   { year: "Oct 2025 – Feb 2026", heading: "ML Engineer @ QAlienAI", description: "Led AI compliance systems using LLMs for FTC/FDA analysis. Built multimodal pipelines with Claude, Gemini, and pgvector.", tags: ["LLMs", "AWS Bedrock", "Multimodal AI"], target: { windowId: "experience", entryId: "qalienai" }, lane: "experience" },
   { year: "Aug 2025", heading: "AI Hackathon – Conference Buddy", description: "Built AI solution for healthcare sales teams to identify prospects and book meetings. Achieved finalist position.", tags: ["Product Management", "AI", "Hackathon"], target: { windowId: "initiative-impact", entryId: "ai-hackathon" }, lane: "initiative" },
   { year: "May 2025", heading: "Graduated from Cornell University", description: "Completed Master of Engineering in Engineering Management. Focus on AI, Product Management, and Data Analytics.", tags: ["Cornell", "MEng", "Graduation"], target: { windowId: "education", entryId: "cornell" }, lane: "education-graduation" },

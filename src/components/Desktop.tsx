@@ -9,6 +9,7 @@ import ProjectsWindow from "./windows/ProjectsWindow";
 import ExperienceWindow from "./windows/ExperienceWindow";
 import EducationWindow from "./windows/EducationWindow";
 import InitiativeImpactWindow from "./windows/InitiativeImpactWindow";
+import ProductLabWindow from "./windows/ProductLabWindow";
 import SkillsWindow from "./windows/SkillsWindow";
 import ContactWindow from "./windows/ContactWindow";
 import TrashWindow from "./windows/TrashWindow";
@@ -30,7 +31,7 @@ interface WindowState {
 }
 
 type TimelineJumpTarget = {
-  windowId: "experience" | "education" | "initiative-impact";
+  windowId: "experience" | "education" | "initiative-impact" | "product-lab";
   entryId: string;
 };
 
@@ -50,6 +51,7 @@ function getDefaultWindowLayout(): WindowState[] {
     { id: "experience", title: "Experience", icon: "💼", isOpen: false, isMinimized: false, zIndex: BASE_Z + 2, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
     { id: "resume", title: "Resume", icon: "📄", isOpen: false, isMinimized: false, zIndex: BASE_Z + 1, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
     { id: "projects", title: "Projects", icon: "📁", isOpen: false, isMinimized: false, zIndex: BASE_Z + 1, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
+    { id: "product-lab", title: "Product Lab", icon: "💡", isOpen: false, isMinimized: false, zIndex: BASE_Z + 1, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
     { id: "initiative-impact", title: "Initiative & Impact", icon: "🌟", isOpen: false, isMinimized: false, zIndex: BASE_Z + 4, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
     { id: "education", title: "Education", icon: "🎓", isOpen: false, isMinimized: false, zIndex: BASE_Z + 3, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
     { id: "skills", title: "Skills", icon: "🧩", isOpen: false, isMinimized: false, zIndex: BASE_Z + 6, position: { x: winX, y: winY }, size: { width: winW, height: winH } },
@@ -84,6 +86,7 @@ const desktopIcons = [
   { id: "experience", label: "Experience", icon: "💼" },
   { id: "resume", label: "Resume", icon: "📄" },
   { id: "projects", label: "Projects", icon: "📁" },
+  { id: "product-lab", label: "Product Lab", icon: "💡" },
   { id: "initiative-impact", label: "Initiative & Impact", icon: "🌟" },
   { id: "education", label: "Education", icon: "🎓" },
   { id: "skills", label: "Skills", icon: "🧩" },
@@ -101,7 +104,7 @@ const Desktop: React.FC = () => {
   const [justBooted, setJustBooted] = useState(true);
   const [assistantOpen, setAssistantOpen] = useState(false);
   const [timelineFocus, setTimelineFocus] = useState<{
-    windowId: "experience" | "education" | "initiative-impact";
+    windowId: "experience" | "education" | "initiative-impact" | "product-lab";
     entryId: string;
     token: number;
   } | null>(null);
@@ -179,6 +182,12 @@ const Desktop: React.FC = () => {
       <InitiativeImpactWindow
         focusEntryId={timelineFocus?.windowId === "initiative-impact" ? timelineFocus.entryId : null}
         focusToken={timelineFocus?.windowId === "initiative-impact" ? timelineFocus.token : undefined}
+      />
+    ),
+    "product-lab": (
+      <ProductLabWindow
+        focusEntryId={timelineFocus?.windowId === "product-lab" ? timelineFocus.entryId : null}
+        focusToken={timelineFocus?.windowId === "product-lab" ? timelineFocus.token : undefined}
       />
     ),
     skills: (
@@ -290,9 +299,9 @@ const Desktop: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.25, delay: justBooted ? 0.15 : 0 }}
       >
-        {/* Desktop icons – hidden on small screens (dock + search cover navigation) */}
+        {/* Desktop icons – fill the right column first, overflow left only if needed */}
         <div
-          className="absolute top-4 right-4 hidden flex-col gap-1 md:flex"
+          className="desktop-icons-rail absolute top-4 right-3 bottom-28 hidden md:flex"
           onClick={(e) => e.stopPropagation()}
         >
           {desktopIcons.map((icon) => (
