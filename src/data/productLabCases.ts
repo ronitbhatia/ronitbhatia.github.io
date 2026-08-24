@@ -1,6 +1,7 @@
 /**
  * Product Lab case studies: product thinking archive.
  * Images live in /public/product-lab/<id>/ (cover.png + 01-03.png).
+ * Order: most recent work first.
  */
 
 export type ProductLabType = "redesign" | "speculative";
@@ -32,45 +33,134 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
-    id: "select-all-buses",
-    title: "Select All Buses",
-    type: "redesign",
-    subject: "CAPTCHA and bot-proofing on the web",
-    oneLiner: "Stop making humans do machine work to prove they are not machines.",
+    id: "glyph-home",
+    title: "Glyph Home",
+    type: "speculative",
+    subject: "What if Nothing built an AI assistant device?",
+    oneLiner:
+      "Smart speakers are common in homes, but trust remains low because users cannot easily see when the device is listening or how their data is used. Glyph Home proposes a voice-first assistant that uses Glyph state feedback and transparent hardware to make behavior visible without relying on a screen.",
     period: "2026",
     problem:
-      "CAPTCHA is the web's citizenship test, and it is designed for bots. Users click nine blurry tiles of traffic lights while a company decides if they deserve to log in. Accessibility is an afterthought. Time is stolen from the person who already paid with their attention.",
+      "The trust gap shows up in daily behavior: users mute speakers, limit what they ask, or unplug devices entirely. Without clear listening indicators and understandable data boundaries, even useful assistants feel like opaque boxes rather than household tools.",
     insight:
-      "We inverted the burden of proof. The site does not know if you are human, so you do unpaid visual labor until a model is satisfied. Trust should be a handshake, not a puzzle. CAPTCHA should be the last resort, not the front door.",
+      "Nothing already uses Glyph to show device state without a full display. The same pattern applies to AI assistants: voice for responses, dot matrix for status. Visible hardware design can reinforce clearer privacy behavior, especially when paired with explicit listening indicators.",
     principles: [
-      "Assume the user is human until the system has a reason not to",
-      "Passkeys and device trust beat picture grids for almost everyone",
-      "If a challenge is required, it must be completable with a screen reader in under 10 seconds",
-      "Never train your model on unpaid user labor without saying so",
-      "Failure should explain the next step, not reload nine new tiles",
+      "Voice is the primary interface; visual feedback supports state, not content feeds",
+      "Internal components are visible by design to signal transparency",
+      "Listening state must be obvious through a dedicated indicator and physical mute",
+      "Idle behavior should feel useful and human, not promotional",
+      "Local actions run on device; cloud is used only for requested tasks",
     ],
     concept:
-      "Human Handshake. Returning devices pass silently with passkey plus device attestation. First-time or risky sessions get one accessible question (a short spoken phrase or a single obvious photo) with an immediate audio and text alternative. Puzzle grids exist only as a third fallback, with a visible reason and a human review path.",
+      "Glyph Home is a compact transparent puck for desk or shelf use. Users ask questions by voice and receive spoken answers plus Glyph states such as listening, thinking, and complete. The product ships without a screen or camera by default. Setup happens through Nothing OS on phone, with a hardware mute switch and visible red indicator when the microphone is active.",
     tradeoffs:
-      "Silent trust is weaker against sophisticated bot farms than endless puzzles. Device attestation can exclude shared computers, older phones, and privacy-first browsers. Accessibility-first challenges are easier to farm than 4x4 object grids. Some security teams will not accept a product that makes friction optional.",
-    tags: ["Redesign", "Trust", "Accessibility", "Auth", "Web"],
-    color: "hsl(207 89% 42%)",
+      "Complex answers that need maps, lists, or images still depend on phone screens. Expression-only feedback may feel limited compared with chat apps. Transparent materials can age visually over time. The category is crowded with Apple, Amazon, and phone-native assistants. A playful form factor may reduce credibility in enterprise or care settings where trust is critical.",
+    tags: ["Speculative", "Nothing", "AI", "Hardware", "Glyph", "Voice"],
+    color: "hsl(32 95% 44%)",
     cover: {
-      src: base("select-all-buses", "cover.png"),
-      caption: "Hero: Select All Buses, the web's worst job interview.",
+      src: base("glyph-home", "cover.png"),
+      caption: "Glyph Home hero: voice-first assistant with dot-matrix feedback.",
     },
     gallery: [
       {
-        src: base("select-all-buses", "01.png"),
-        caption: "Today: unpaid visual labor to enter a site you already use.",
+        src: base("glyph-home", "01.png"),
+        caption: "Exploded view of shell, mic ring, PCB, and base components.",
       },
       {
-        src: base("select-all-buses", "02.png"),
-        caption: "Handshake: passkey, then you are in. No grid.",
+        src: base("glyph-home", "02.png"),
+        caption: "State system: idle, listening, thinking, and complete.",
       },
       {
-        src: base("select-all-buses", "03.png"),
-        caption: "Fallback that a screen reader can finish in seconds.",
+        src: base("glyph-home", "03.png"),
+        caption: "Unboxing and phone pairing flow in Nothing design language.",
+      },
+    ],
+  },
+  {
+    id: "commons-map",
+    title: "Commons Map",
+    type: "speculative",
+    subject: "What if Wikipedia made maps?",
+    oneLiner:
+      "Consumer maps often prioritize paid placement over useful local information, which weakens user trust at the moment of navigation. Commons Map applies Wikipedia's editorial model to places, so ranking is driven by citations and community maintenance rather than sponsorship.",
+    period: "2026",
+    problem:
+      "The impact is practical, not abstract. Travelers miss reliable restroom and safety information, hikers get outdated trail access, and local businesses with better service can lose visibility to paid listings. When ranking follows revenue, users stop trusting the map for decisions that matter.",
+    insight:
+      "Wikipedia shows that community-maintained knowledge can scale with high trust when governance is clear. Mapping still relies heavily on ad-driven ranking. The opportunity is not only better routing, but a map layer where placement is earned through citations and editorial process rather than payment.",
+    principles: [
+      "No sponsored pins in discovery or ranking",
+      "Every place supports discussion, citations, and revision history",
+      "Offline access is required for low-connectivity and outdoor use cases",
+      "Contributors are attributed with transparent edit history",
+      "Safety and accessibility data are first-class map layers",
+    ],
+    concept:
+      "Commons Map combines open routing data with a Wikipedia-style place layer. Each location includes sourced details, edit history, and dispute workflows. Dedicated layers cover restrooms, night safety, closures, and accessibility constraints. City editors maintain local accuracy using the same revert-and-discuss model used on Wikipedia.",
+    tradeoffs:
+      "Removing ads requires sustainable funding through grants, institutions, or donations. Map vandalism can create immediate safety risk compared with encyclopedia edits. Local editor bias can affect coverage quality. Data depth will vary by region, and replacing commercial traffic intelligence is costly. A strict no-ads promise is difficult to maintain at global scale.",
+    tags: ["Speculative", "Wikipedia", "Maps", "Commons", "Trust"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("commons-map", "cover.png"),
+      caption: "Commons Map hero: navigation without paid placement.",
+    },
+    gallery: [
+      {
+        src: base("commons-map", "01.png"),
+        caption: "Current model: paid placement can dominate local discovery.",
+      },
+      {
+        src: base("commons-map", "02.png"),
+        caption: "Place page with citations, discussion, and revision controls.",
+      },
+      {
+        src: base("commons-map", "03.png"),
+        caption: "Safety, restroom, and accessibility layers enabled together.",
+      },
+    ],
+  },
+  {
+    id: "still-waiting",
+    title: "Still Waiting",
+    type: "redesign",
+    subject: "Redesign: the clinic waiting room",
+    oneLiner:
+      "Patients experience the most friction in waiting rooms when queue status is unclear and they cannot plan around delay. Care Queue treats waiting as a service surface with live stage updates, realistic time ranges, and optional status sharing for family members.",
+    period: "2026",
+    problem:
+      "That uncertainty creates operational drag. Front desks field repeated status questions, patients miss names when called once, and families wait without updates. The result is lower satisfaction scores, avoidable no-shows, and cascading lateness across the rest of a patient's day.",
+    insight:
+      "Patients tolerate wait time better when progress is visible. The core pain is uncertainty, not duration alone. Treating waiting as an operational product surface, not dead time, can improve satisfaction without changing clinical capacity on day one.",
+    principles: [
+      "Show current stage: checked in, with nurse, with doctor, imaging, checkout",
+      "Provide realistic time ranges instead of optimistic fixed estimates",
+      "Allow one trusted contact to follow queue status remotely",
+      "Support brief away time without losing queue position",
+      "Communicate delays early with specific updated ranges",
+    ],
+    concept:
+      "Care Queue gives each patient a live status card on phone or kiosk with stage, position, and expected range. A share link lets a family member monitor progress outside the clinic. Optional walk radius sends a return notification when the patient should come back. Messaging stays factual and avoids gamified delay language.",
+    tradeoffs:
+      "Transparent delay data can affect public reviews during peak load. Shared links introduce privacy risk on shared devices. Walk notifications fail without reliable mobile connectivity. Staff may adjust ranges to manage perception. Some clinicians may resist making delay visible to patients.",
+    tags: ["Redesign", "Healthcare", "Operations", "Service Design"],
+    color: "hsl(207 89% 42%)",
+    cover: {
+      src: base("still-waiting", "cover.png"),
+      caption: "Still Waiting hero: uncertainty as the primary patient pain point.",
+    },
+    gallery: [
+      {
+        src: base("still-waiting", "01.png"),
+        caption: "Current state: static room with limited status visibility.",
+      },
+      {
+        src: base("still-waiting", "02.png"),
+        caption: "Care Queue card with stage, range, and family share option.",
+      },
+      {
+        src: base("still-waiting", "03.png"),
+        caption: "Walk radius flow with return notification before appointment slot.",
       },
     ],
   },
@@ -79,170 +169,86 @@ export const productLabCases: ProductLabCase[] = [
     title: "The Last Phone",
     type: "speculative",
     subject: "What if Patagonia made a smartphone?",
-    oneLiner: "A phone designed to be kept, repaired, and worn in, not replaced.",
+    oneLiner:
+      "Smartphones are designed around short upgrade cycles, which increases e-waste and makes long-term ownership difficult. Worn In applies Patagonia's repair-first philosophy to a modular phone built for years of use, with replaceable parts and stable long-term software support.",
     period: "2026",
     problem:
-      "Phones are sold as identity and discarded as trash. Eighteen-month upgrade cycles, sealed batteries, software that slows on purpose. The object in your pocket is optimized for the next purchase, not the next decade.",
+      "Failure points are predictable: battery degradation, cracked screens, and camera issues often trigger full replacement because repair paths are limited. Software support windows shorten effective device life, and trade-in programs reinforce upgrade behavior instead of retention.",
     insight:
-      "Patagonia's product philosophy is anti-consumption: repair, reuse, refuse the upgrade. Applied to a phone, that would invert the entire category. The status object would not be the newest model. It would be the one that still works, still gets parts, and still looks better after five years of scuffs.",
+      "Patagonia's core product philosophy favors durability, repair, and reduced unnecessary consumption. Applied to phones, the value proposition shifts from newest model status to reliable long-term utility. That creates a differentiated position in a category optimized for annual upgrades.",
     principles: [
-      "Ten-year hardware support is a feature, not a press release",
-      "Every high-failure part (battery, screen, camera) is user-replaceable with one tool",
-      "Software should get quieter over time, not louder with ads and AI nags",
-      "Worn materials beat glossy glass: leather, recycled aluminum, visible stitching",
-      "The upgrade path is a module, not a new identity",
+      "Commit to long hardware support as a product requirement, not marketing language",
+      "Make high-failure parts user-replaceable with standard tools",
+      "Prioritize stability updates over feature churn in mature devices",
+      "Use durable materials that age well with normal use",
+      "Offer modular upgrades instead of full device replacement",
     ],
     concept:
-      "Worn In. A thick, repairable phone with a stitched sleeve, a pop-out battery, and a camera module you can swap. OS updates are security and battery, not a new home screen. A lifetime repair desk, not a trade-in funnel. You buy it once. You keep it because it is yours, not because it is current.",
+      "Worn In is a repair-first phone with replaceable battery, screen, and camera module. Software updates focus on security, performance, and battery health. A lifetime repair program replaces trade-in incentives. The product is positioned as a long-term tool that improves in reliability over time rather than forcing yearly replacement.",
     tradeoffs:
-      "A 10-year phone destroys the upgrade revenue most manufacturers depend on. Repairability adds bulk, which fashion buyers may reject. Camera modules will lag flagship sensors. Carriers and app stores fight long OS support. Patagonia's outdoor brand may not transfer to consumer electronics without looking like a costume.",
+      "Long lifecycle design conflicts with hardware upgrade revenue models. Repairability adds size and assembly complexity. Modular camera performance may trail flagship integrated systems. Carrier and platform partners may resist extended OS commitments. Brand transfer from apparel to consumer electronics requires careful positioning.",
     tags: ["Speculative", "Patagonia", "Hardware", "Repair", "Sustainability"],
     color: "hsl(32 95% 44%)",
     cover: {
       src: base("the-last-phone", "cover.png"),
-      caption: "Worn In: a Patagonia phone that looks better after five years.",
+      caption: "Worn In hero: a phone designed to stay in use for years.",
     },
     gallery: [
       {
         src: base("the-last-phone", "01.png"),
-        caption: "One tool, pop-out battery, no glue.",
+        caption: "Tool-less battery and modular component access.",
       },
       {
         src: base("the-last-phone", "02.png"),
-        caption: "Repair desk as the hero, not a trade-in kiosk.",
+        caption: "Repair desk as core service touchpoint.",
       },
       {
         src: base("the-last-phone", "03.png"),
-        caption: "Quiet OS: security updates, no carnival of badges.",
+        caption: "Stable OS update policy focused on security and performance.",
       },
     ],
   },
   {
-    id: "still-waiting",
-    title: "Still Waiting",
+    id: "select-all-buses",
+    title: "Select All Buses",
     type: "redesign",
-    subject: "The clinic waiting room",
-    oneLiner: "The pain is not the wait. The pain is not knowing.",
+    subject: "Redesign: web bot verification (CAPTCHA)",
+    oneLiner:
+      "CAPTCHA creates avoidable friction at login and checkout, especially for users on assistive technology, while still failing against advanced bots. Human Handshake shifts verification to passkey trust by default and uses accessible challenges only when session risk requires escalation.",
     period: "2026",
     problem:
-      "The most common healthcare interface is a silent room, a clipboard, and a 40-minute unknown. You cannot leave. You cannot plan. A name is barked once. Families sit in a second city with no signal. Anxiety fills the gap that information should have occupied.",
+      "The cost lands on product and support teams. Conversion drops at account recovery, accessibility complaints increase, and security teams compensate by adding more puzzles. Over time, the default gate punishes real users more than it stops sophisticated automation.",
     insight:
-      "Clinics treat waiting as leftover time, not a designed product. Patients will tolerate delay if they can see the shape of it. Uncertainty, not duration, is what makes people furious and late for the rest of their day.",
+      "Most sessions can be trusted using device signals and modern authentication before showing a challenge. CAPTCHA should be a last-resort control, not the default gate. Shifting verification effort from users to the platform improves both security posture and completion rate when designed with clear fallback logic.",
     principles: [
-      "Name the stage: checked in, with nurse, with doctor, imaging, checkout",
-      "Give an honest range, not a fake 5-minute promise",
-      "Let one family member follow along from outside the building",
-      "Tell people what they can do now (bathroom, form, walk) without losing their place",
-      "Never bury bad news in a polite delay. If the doctor is running 50 minutes, say 50 minutes",
+      "Default to trusted session flow for known devices and passkey users",
+      "Use risk-based escalation instead of universal puzzle challenges",
+      "Ensure any required challenge is accessible within 10 seconds",
+      "Disclose when user input contributes to model training",
+      "Provide actionable recovery when verification fails",
     ],
     concept:
-      "Care Queue. A single live card (text or kiosk) that shows your place, the current stage, and a range. Share-link for a family member. Optional walk radius: leave for coffee and get a ping when you should return. No gamified 'you saved 2 minutes' copy. Just the truth of the queue.",
+      "Human Handshake uses passkeys and device attestation for routine access. High-risk sessions receive one accessible verification step with audio and text alternatives. Image-grid CAPTCHA appears only as a final fallback, with explicit reason codes and a human review path for repeated failure.",
     tradeoffs:
-      "Honest ETAs can make a packed clinic look worse on Google reviews. Share-links create privacy risk if a phone is borrowed. Walk-radius pings fail in dead zones and for patients without phones. Staff may game the board to keep ranges pretty. Some clinicians will resist a product that makes their delay visible.",
-    tags: ["Redesign", "Healthcare", "Operations", "Anxiety", "Service Design"],
+      "Silent trust is weaker against coordinated bot farms than constant puzzles. Device attestation can exclude shared devices, older hardware, and privacy-focused browsers. Accessible challenges may be easier to automate than complex image tasks. Security stakeholders may resist reducing visible friction.",
+    tags: ["Redesign", "Trust", "Accessibility", "Auth", "Web"],
     color: "hsl(207 89% 42%)",
     cover: {
-      src: base("still-waiting", "cover.png"),
-      caption: "Hero: Still Waiting. The pain is not knowing.",
+      src: base("select-all-buses", "cover.png"),
+      caption: "Select All Buses hero: reframing web verification as a trust product.",
     },
     gallery: [
       {
-        src: base("still-waiting", "01.png"),
-        caption: "Today: a silent room and a number that never moves.",
+        src: base("select-all-buses", "01.png"),
+        caption: "Current flow: high-friction visual challenge at entry points.",
       },
       {
-        src: base("still-waiting", "02.png"),
-        caption: "Care Queue: stage, range, share with family.",
+        src: base("select-all-buses", "02.png"),
+        caption: "Trusted path with passkey and no puzzle step.",
       },
       {
-        src: base("still-waiting", "03.png"),
-        caption: "Walk radius: leave, get pinged, keep your place.",
-      },
-    ],
-  },
-  {
-    id: "commons-map",
-    title: "Commons Map",
-    type: "speculative",
-    subject: "What if Wikipedia made Google Maps?",
-    oneLiner: "Navigation as a commons: local knowledge, no sponsored pins.",
-    period: "2026",
-    problem:
-      "Maps are optimized for advertisers. The pin that rises is the one that paid. Gas, food, and 'places of interest' are a marketplace wearing a compass. Travelers looking for a quiet restroom, a safe night walk, or the actual trailhead get a mall instead.",
-    insight:
-      "Wikipedia proved a commons can beat a corporation when trust is the product. Maps still run on the opposite model: attention sold to the highest bidder. The missing product is not better routing. It is a layer of knowledge nobody can buy to the top.",
-    principles: [
-      "No sponsored pins. Ever. Placement is earned by citations and local edits",
-      "Every place has a talk page: what is true, what changed, who disagrees",
-      "Offline-first for trails, transit strikes, and neighborhoods with bad signal",
-      "Contributors are named, not ghosted into an algorithm",
-      "Safety and access (lighting, steps, restrooms) are first-class layers, not buried reviews",
-    ],
-    concept:
-      "Commons Map. Open routing on public data, with a Wikipedia-style layer for places: sourced, disputable, revertible. A restroom layer, a night-safety layer, a 'this closed last Tuesday' layer. No ads. Editors in the city own the page the way they own an article. You navigate with a commons, not a storefront.",
-    tradeoffs:
-      "No ad revenue means grants, cities, or donations, all fragile. Vandalism on a live map is more dangerous than on an encyclopedia (a fake road, a fake clinic). Local editors can encode bias. Coverage will be rich in Berlin and thin in rural counties. Google-quality traffic data is expensive to replace. 'No ads' is a product promise that is hard to keep at global scale.",
-    tags: ["Speculative", "Wikipedia", "Maps", "Commons", "Trust"],
-    color: "hsl(32 95% 44%)",
-    cover: {
-      src: base("commons-map", "cover.png"),
-      caption: "A map with no pins to sell.",
-    },
-    gallery: [
-      {
-        src: base("commons-map", "01.png"),
-        caption: "Today: the highest pin paid for the ranking.",
-      },
-      {
-        src: base("commons-map", "02.png"),
-        caption: "Talk page on a place: cited, disputed, revertible.",
-      },
-      {
-        src: base("commons-map", "03.png"),
-        caption: "Safety and restrooms as first-class layers.",
-      },
-    ],
-  },
-  {
-    id: "glyph-home",
-    title: "Glyph Home",
-    type: "speculative",
-    subject: "What if Nothing built an AI assistant device?",
-    oneLiner: "A voice-first helper with a face made of dots, not a screen full of ads.",
-    period: "2026",
-    problem:
-      "Smart speakers are black cylinders that listen all day and show nothing except a ring of light. They feel like surveillance furniture. The assistant inside is helpful sometimes, but the object on your shelf has no personality, no transparency, and no trust.",
-    insight:
-      "Nothing already solved expressive hardware with Glyph: emotion without a display, honesty through visible internals. An AI assistant does not need another glass rectangle. It needs a face you can read, a body you can see through, and a brand promise that the device is not pretending to be invisible.",
-    principles: [
-      "Voice first. The primary UI is sound and a dot-matrix face, not a feed",
-      "Show the guts: PCB, mic array, and heat sink are part of the design, not hidden",
-      "One red record dot. When it listens, you know. No ambient always-on ambiguity",
-      "Playful by default: idle animations, not upsell cards",
-      "Local tasks stay local. Cloud is for what you ask, not for background profiling",
-    ],
-    concept:
-      "Glyph Home. A small transparent puck for the desk or kitchen shelf. Ask it anything; it answers with voice and a Glyph expression (listening, thinking, joking, done). No screen. No camera by default. A physical mute switch and a visible red LED when the mic is hot. Nothing OS pairs it to your phone for setup; after that it is an object with character, not a portal to a store.",
-    tradeoffs:
-      "Without a screen, rich answers (maps, lists, photos) still need your phone. Glyph expressions can feel limited compared to ChatGPT apps. Transparent plastic yellows over years. Nothing would compete with Apple HomePod, Amazon Echo, and every phone assistant already in pocket. A playful device may read as toy in enterprise or elder-care contexts where trust matters most.",
-    tags: ["Speculative", "Nothing", "AI", "Hardware", "Glyph", "Voice"],
-    color: "hsl(32 95% 44%)",
-    cover: {
-      src: base("glyph-home", "cover.png"),
-      caption: "Glyph Home: an AI assistant with a dot-matrix soul.",
-    },
-    gallery: [
-      {
-        src: base("glyph-home", "01.png"),
-        caption: "Exploded view: shell, mic ring, PCB, and base — nothing hidden.",
-      },
-      {
-        src: base("glyph-home", "02.png"),
-        caption: "Glyph expressions: idle, listening, thinking, done.",
-      },
-      {
-        src: base("glyph-home", "03.png"),
-        caption: "Nothing-style packaging and phone pairing setup.",
+        src: base("select-all-buses", "03.png"),
+        caption: "Accessible fallback designed for screen reader completion.",
       },
     ],
   },

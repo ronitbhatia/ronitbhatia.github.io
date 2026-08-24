@@ -2081,6 +2081,14 @@
     background: hsl(var(--window-input-bg) / 0.55);
   }
 
+  .product-lab-summary-section p {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: hsl(var(--mac-dark));
+    margin: 0;
+  }
+
   .product-lab-one-liner {
     font-family: var(--font-body);
     font-size: 0.9375rem;

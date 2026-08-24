@@ -80,7 +80,10 @@ const ProductLabWindow: React.FC<ProductLabWindowProps> = ({
 
   const renderCaseBody = (entry: ProductLabCase) => (
     <div className="product-lab-case-body">
-      <p className="product-lab-one-liner">{entry.oneLiner}</p>
+      <section className="product-lab-section product-lab-summary-section">
+        <h4>Summary</h4>
+        <p>{entry.oneLiner}</p>
+      </section>
 
       <section className="product-lab-section">
         <h4>Problem</h4>
@@ -195,8 +198,8 @@ const ProductLabWindow: React.FC<ProductLabWindowProps> = ({
           className="text-xs mb-5"
           style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))", opacity: 0.7 }}
         >
-          Five cards. Two redesigns, three speculative concepts. Same bar every time: provocative title,
-          clear pain, principles, concrete concept, honest tradeoffs.
+          Five case studies: two redesigns and three speculative concepts. Each follows the same
+          structure: problem, insight, principles, concept, and tradeoffs.
         </p>
 
         <div className="product-lab-grid">
