@@ -245,6 +245,14 @@ export const searchEntries: SearchEntry[] = [
     target: { type: "timeline", windowId: "product-lab", entryId: "commons-map" },
     group: "Product Lab",
   },
+  {
+    id: "lab-glyph-home",
+    keywords: ["nothing", "glyph home", "ai assistant", "smart speaker", "glyph", "voice", "carl pei"],
+    title: "Glyph Home: Nothing AI assistant",
+    description: "Speculative: voice-first AI with a dot-matrix face.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "glyph-home" },
+    group: "Product Lab",
+  },
 
   /* Education */
   {

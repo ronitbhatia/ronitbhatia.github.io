@@ -109,6 +109,8 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
       "wikipedia maps",
       "commons map",
       "the last phone",
+      "nothing",
+      "glyph home",
     ],
     page: "/product-lab",
     section: null,
@@ -498,6 +500,7 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
       "the-last-phone": "the-last-phone",
       "still-waiting": "still-waiting",
       "commons-map": "commons-map",
+      "glyph-home": "glyph-home",
     };
     if (section && PRODUCT_LAB_SECTIONS[section]) {
       return {

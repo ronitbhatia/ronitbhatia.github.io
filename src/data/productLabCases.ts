@@ -203,6 +203,49 @@ export const productLabCases: ProductLabCase[] = [
       },
     ],
   },
+  {
+    id: "glyph-home",
+    title: "Glyph Home",
+    type: "speculative",
+    subject: "What if Nothing built an AI assistant device?",
+    oneLiner: "A voice-first helper with a face made of dots, not a screen full of ads.",
+    period: "2026",
+    problem:
+      "Smart speakers are black cylinders that listen all day and show nothing except a ring of light. They feel like surveillance furniture. The assistant inside is helpful sometimes, but the object on your shelf has no personality, no transparency, and no trust.",
+    insight:
+      "Nothing already solved expressive hardware with Glyph: emotion without a display, honesty through visible internals. An AI assistant does not need another glass rectangle. It needs a face you can read, a body you can see through, and a brand promise that the device is not pretending to be invisible.",
+    principles: [
+      "Voice first. The primary UI is sound and a dot-matrix face, not a feed",
+      "Show the guts: PCB, mic array, and heat sink are part of the design, not hidden",
+      "One red record dot. When it listens, you know. No ambient always-on ambiguity",
+      "Playful by default: idle animations, not upsell cards",
+      "Local tasks stay local. Cloud is for what you ask, not for background profiling",
+    ],
+    concept:
+      "Glyph Home. A small transparent puck for the desk or kitchen shelf. Ask it anything; it answers with voice and a Glyph expression (listening, thinking, joking, done). No screen. No camera by default. A physical mute switch and a visible red LED when the mic is hot. Nothing OS pairs it to your phone for setup; after that it is an object with character, not a portal to a store.",
+    tradeoffs:
+      "Without a screen, rich answers (maps, lists, photos) still need your phone. Glyph expressions can feel limited compared to ChatGPT apps. Transparent plastic yellows over years. Nothing would compete with Apple HomePod, Amazon Echo, and every phone assistant already in pocket. A playful device may read as toy in enterprise or elder-care contexts where trust matters most.",
+    tags: ["Speculative", "Nothing", "AI", "Hardware", "Glyph", "Voice"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("glyph-home", "cover.png"),
+      caption: "Glyph Home: an AI assistant with a dot-matrix soul.",
+    },
+    gallery: [
+      {
+        src: base("glyph-home", "01.png"),
+        caption: "Exploded view: shell, mic ring, PCB, and base — nothing hidden.",
+      },
+      {
+        src: base("glyph-home", "02.png"),
+        caption: "Glyph expressions: idle, listening, thinking, done.",
+      },
+      {
+        src: base("glyph-home", "03.png"),
+        caption: "Nothing-style packaging and phone pairing setup.",
+      },
+    ],
+  },
 ];
 
 export function getProductLabCase(id: string): ProductLabCase | undefined {

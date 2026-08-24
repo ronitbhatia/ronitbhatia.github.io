@@ -195,7 +195,7 @@ const ProductLabWindow: React.FC<ProductLabWindowProps> = ({
           className="text-xs mb-5"
           style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))", opacity: 0.7 }}
         >
-          Four cards. Two redesigns, two speculative concepts. Same bar every time: provocative title,
+          Five cards. Two redesigns, three speculative concepts. Same bar every time: provocative title,
           clear pain, principles, concrete concept, honest tradeoffs.
         </p>
 
