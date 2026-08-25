@@ -51,6 +51,34 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
   },
   {
     keywords: [
+      "treadwell",
+      "gemma",
+      "gemma 4",
+      "litert",
+      "litert-lm",
+      "accessibility",
+      "blind",
+      "low vision",
+      "blv",
+      "hazard",
+      "navigation",
+      "on-device",
+      "offline",
+      "deepmind",
+      "hackathon",
+      "wearable",
+      "computer vision",
+      "swift",
+      "swiftui",
+    ],
+    page: "/projects",
+    section: "treadwell",
+    title: "Treadwell: On-Device Hazard Navigation with Gemma 4",
+    description:
+      "Offline hazard alerts for BLV users. Gemma 4 via LiteRT-LM on-device. Silence is the default.",
+  },
+  {
+    keywords: [
       "lenscraft",
       "lens craft",
       "personal finance",
@@ -434,6 +462,7 @@ const PROJECT_SECTION_TO_ID: Record<string, number> = {
   lstore: 10,
   lenscraft: 1,
   quivlo: 11,
+  treadwell: 12,
 };
 
 const EXPERIENCE_SECTION_TO_ENTRY: Record<string, string> = {

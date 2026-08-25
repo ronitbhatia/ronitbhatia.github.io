@@ -17,6 +17,32 @@ const QUIVLO_APP_STORE = "https://apps.apple.com/us/app/quivlo/id6759634487";
 
 const projects: Project[] = [
   {
+    id: 12,
+    name: "Treadwell: On-Device Hazard Navigation with Gemma 4",
+    description:
+      "Offline, real-time hazard-aware navigation for blind and low-vision users. A live camera frame is classified on-device by Gemma 4 E2B via LiteRT-LM. The system speaks a short alert only when a genuine path hazard is detected. Silence is the default. Solo build for the Google DeepMind x UK AI Agents Lab Hackathon (Track 2: Best Use of Gemma). Inference never leaves the laptop. No cloud API calls, no Gemini, no Google AI Studio, and no GenAI SDK path.",
+    readMore: [
+      "Problem and Product Contract: Indoor navigation tools can describe a route, but they often miss what changed in the physical path, such as a chair in a walkway, an unexpected staircase, or an open door. Cloud vision adds network dependence, latency, and privacy cost for a live camera feed. Treadwell explores local perception with minimal speech: a constrained hazard vocabulary, path relevance checks, and warnings of five words or fewer. If nothing relevant is in the walking path, it stays silent.",
+      "Local Inference Architecture: Built an end-to-end loop of camera to local Gemma inference to constrained hazard decision to short spoken warning. Gemma 4 runs on a Mac through LiteRT-LM Engine and Conversation interfaces with constrained JSON output so the model cannot narrate the room. Technical controls include outdoor and home vocabularies, confidence gating, and duplicate-alert suppression. For the hackathon demo, an iPhone is only the camera and speaker over a local Bonjour link. The 2.4 GB model stays on the Mac.",
+      "Wearable Direction and Honest Limits: Treadwell is not meant to remain a phone app. The long-term product is a wearable camera on glasses, a chest mount, or a cane using the same Gemma contract. Current limits include approximate distance buckets instead of measured depth, starter hazard lists, multi-second latency per frame, and no formal study with blind and low-vision users yet. It is not a replacement for a white cane, guide dog, or mobility training. Next: wearable camera integration, lower latency, stronger hazard and path detection, and user testing that shapes which alerts earn speech.",
+    ],
+    stack: [
+      "Gemma 4",
+      "LiteRT-LM",
+      "On-Device ML",
+      "Swift",
+      "SwiftUI",
+      "Computer Vision",
+      "Accessibility",
+      "Bonjour",
+    ],
+    github: "https://github.com/ronitbhatia/treadwell",
+    demo: "https://www.youtube.com/shorts/dB9ZgbTzMFU",
+    demoLabel: "Demo",
+    color: "hsl(142 72% 93%)",
+    status: "Open Source",
+  },
+  {
     id: 11,
     name: "Quivlo: iOS Knowledge-Capture & Flashcard Intelligence",
     description:

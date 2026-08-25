@@ -51,10 +51,30 @@ export const searchEntries: SearchEntry[] = [
   },
   {
     id: "projects",
-    keywords: ["project", "projects", "portfolio", "work", "unclogai", "voyagelog", "lenscraft", "startup planner", "taskify", "gdelt"],
+    keywords: ["project", "projects", "portfolio", "work", "treadwell", "quivlo", "unclogai", "voyagelog", "lenscraft", "startup planner", "taskify", "gdelt"],
     title: "Projects",
-    description: "All featured projects, from LensCraft to UnclogAI.",
+    description: "All featured projects, from Treadwell to UnclogAI.",
     target: { type: "window", id: "projects" },
+    group: "Projects",
+  },
+  {
+    id: "project-treadwell",
+    keywords: [
+      "treadwell",
+      "gemma",
+      "gemma 4",
+      "litert",
+      "accessibility",
+      "blind",
+      "low vision",
+      "hazard navigation",
+      "on-device",
+      "deepmind",
+      "wearable",
+    ],
+    title: "Treadwell: On-Device Hazard Navigation",
+    description: "Offline Gemma 4 hazard alerts for BLV users. Silence is the default.",
+    target: { type: "project", projectId: 12 },
     group: "Projects",
   },
   {
@@ -99,7 +119,7 @@ export const searchEntries: SearchEntry[] = [
   },
   {
     id: "skills",
-    keywords: ["skills", "skill", "python", "go", "sql", "javascript", "aws", "gcp", "llm", "ml", "ai", "tools"],
+    keywords: ["skills", "skill", "python", "go", "sql", "javascript", "swift", "swiftui", "aws", "gcp", "llm", "ml", "ai", "gemma", "litert", "tools"],
     title: "Skills",
     description: "Technical skills, languages, ML & tools.",
     target: { type: "window", id: "skills" },
@@ -290,6 +310,25 @@ export const searchEntries: SearchEntry[] = [
   },
 
   /* Initiative & Impact */
+  {
+    id: "init-treadwell",
+    keywords: [
+      "treadwell",
+      "gemma",
+      "deepmind",
+      "uk ai agents",
+      "accessibility",
+      "blind",
+      "low vision",
+      "hazard",
+      "on-device",
+      "hackathon",
+    ],
+    title: "Treadwell @ DeepMind x UK AI Agents Lab",
+    description: "Aug 2026 · Solo on-device Gemma 4 hazard navigation for BLV users.",
+    target: { type: "timeline", windowId: "initiative-impact", entryId: "treadwell" },
+    group: "Initiative & Impact",
+  },
   {
     id: "init-ai-hackathon",
     keywords: ["conference buddy", "ai hackathon", "healthcare sales", "hackathon finalist"],

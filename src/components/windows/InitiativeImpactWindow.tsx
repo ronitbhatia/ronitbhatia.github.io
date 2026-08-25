@@ -27,6 +27,13 @@ const iconSvgProps = {
 /** Meaningful line icons per initiative (not generic letters). */
 function InitiativeEntryIcon({ id }: { id: string }) {
   switch (id) {
+    case "treadwell":
+      return (
+        <svg {...iconSvgProps}>
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      );
     case "ai-hackathon":
       return (
         <svg {...iconSvgProps}>
@@ -80,6 +87,21 @@ function InitiativeEntryIcon({ id }: { id: string }) {
 }
 
 const initiatives: Initiative[] = [
+  {
+    id: "treadwell",
+    title: "Builder: Treadwell @ DeepMind x UK AI Agents Lab",
+    period: "Aug 2026",
+    description:
+      "Solo build of Treadwell, offline real-time hazard navigation for blind and low-vision users using on-device Gemma 4 via LiteRT-LM. Track 2: Best Use of Gemma. Silence is the default.",
+    more: [
+      "Local Perception Contract: Designed a constrained hazard vocabulary and five-word alert rule so speech earns attention instead of narrating the room. Camera frames stay on device. No Gemini API, Google AI Studio, or cloud LLM path during inference.",
+      "End-to-End Prototype: Built the full loop from camera capture through LiteRT-LM constrained JSON decisions to spoken alerts. Demo architecture uses an iPhone as camera and speaker over local Bonjour while Gemma 4 runs on a Mac. Long-term form factor is a wearable, not a phone app.",
+      "Honest Scope: Documented limits including approximate distance, starter hazard lists, multi-second latency, and the need for formal BLV user testing. Positioned Treadwell as an additional signal, not a replacement for cane, guide dog, or mobility training.",
+    ],
+    tags: ["Gemma 4", "LiteRT-LM", "On-Device ML", "Accessibility", "Hackathon"],
+    github: "https://github.com/ronitbhatia/treadwell",
+    color: "hsl(142 60% 42%)",
+  },
   {
     id: "ai-hackathon",
     title: "Participant: AI Hackathon – Conference Buddy",
