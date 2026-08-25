@@ -33,6 +33,50 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "trend-mill",
+    title: "Trend Mill",
+    type: "speculative",
+    subject: "What if Google made treadmills?",
+    oneLiner:
+      "Home cardio usually means live instructor classes or lonely simulated worlds, while people already use search and voice while walking to think. Trend Mill turns rising search interest into daily runnable routes and shapes Gemini answers for elevated heart rate, so Google's index becomes the workout surface.",
+    period: "2026",
+    problem:
+      "Existing fitness platforms compete on celebrity coaches or game worlds. Google does not own either advantage. Meanwhile, search curiosity, calendar context, and map knowledge stay disconnected from movement. The treadmill remains a dumb belt, and useful thinking happens only when users stop moving.",
+    insight:
+      "Google's edge is not Street View alone. It is Trends, Maps, Calendar, and Gemini used together. A treadmill can treat collective search interest as content, answer questions at a pace the body can handle, and provide social presence through aggregated behavior rather than live performers.",
+    principles: [
+      "Routes follow curiosity and rising search interest, not celebrity playlists",
+      "Answer length shortens as heart rate rises",
+      "Async social proof through anonymous runners, not live instructor performance",
+      "Calendar context shapes session length before meetings",
+      "Privacy controls are hardware-visible: mute, no camera by default, clear opt-outs",
+    ],
+    concept:
+      "Trend Mill is a minimal home treadmill with a curved display and a hardware privacy switch. Trends Routes publish daily runs tied to rising search themes, rendered with Maps and Street View where terrain allows. Kinetic Search lets users ask Gemini mid-run with breath-length answers that shorten under high effort. Ghost Run shows anonymous pace markers from people who completed the same Trends Route in the last day. Fitbit and Calendar sync set session length around real schedules.",
+    tradeoffs:
+      "Combining Trends, health, and Calendar data can feel invasive without hard boundaries and obvious opt-outs. Google product lifespan risk conflicts with treadmill buyers who expect multi-year appliances. Street View immersion breaks when incline cannot match real terrain. Ghost Run may feel cold compared with instructor communities. Sponsored Trends Routes would destroy trust. Health and legal queries mid-workout need stricter guardrails than desktop Search.",
+    tags: ["Speculative", "Google", "Fitness", "Trends", "Maps", "AI", "Hardware"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("trend-mill", "cover.png"),
+      caption: "Trend Mill hero: a treadmill driven by rising search interest.",
+    },
+    gallery: [
+      {
+        src: base("trend-mill", "01.png"),
+        caption: "Trends Routes: daily runs sourced from rising search themes.",
+      },
+      {
+        src: base("trend-mill", "02.png"),
+        caption: "Ghost Run with Kinetic Search: anonymous runners plus mid-run Gemini.",
+      },
+      {
+        src: base("trend-mill", "03.png"),
+        caption: "Google One Fit: ad-free Trends, longer Kinetic Search, no sponsor bumpers.",
+      },
+    ],
+  },
+  {
     id: "glyph-home",
     title: "Glyph Home",
     type: "speculative",

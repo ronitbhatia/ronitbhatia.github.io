@@ -111,6 +111,9 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
       "the last phone",
       "nothing",
       "glyph home",
+      "google",
+      "treadmill",
+      "trend mill",
     ],
     page: "/product-lab",
     section: null,
@@ -501,6 +504,7 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
       "still-waiting": "still-waiting",
       "commons-map": "commons-map",
       "glyph-home": "glyph-home",
+      "trend-mill": "trend-mill",
     };
     if (section && PRODUCT_LAB_SECTIONS[section]) {
       return {

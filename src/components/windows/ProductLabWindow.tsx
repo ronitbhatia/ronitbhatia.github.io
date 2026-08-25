@@ -198,8 +198,8 @@ const ProductLabWindow: React.FC<ProductLabWindowProps> = ({
           className="text-xs mb-5"
           style={{ fontFamily: "var(--font-body)", color: "hsl(var(--mac-dark))", opacity: 0.7 }}
         >
-          Five case studies: two redesigns and three speculative concepts. Each follows the same
-          structure: problem, insight, principles, concept, and tradeoffs.
+          Six case studies: two redesigns and four speculative concepts. Each follows the same
+          structure: summary, problem, insight, principles, concept, and tradeoffs.
         </p>
 
         <div className="product-lab-grid">
