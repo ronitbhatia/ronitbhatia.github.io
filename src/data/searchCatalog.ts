@@ -290,6 +290,25 @@ export const searchEntries: SearchEntry[] = [
     target: { type: "timeline", windowId: "product-lab", entryId: "trend-mill" },
     group: "Product Lab",
   },
+  {
+    id: "lab-fitbit-focus-monitor",
+    keywords: [
+      "fitbit",
+      "focus monitor",
+      "monitor",
+      "posture",
+      "eye strain",
+      "desk",
+      "workspace",
+      "sleep",
+      "stress",
+      "wellness",
+    ],
+    title: "Fitbit Focus Monitor",
+    description: "Speculative: a desk monitor that senses health and adjusts in real time.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "fitbit-focus-monitor" },
+    group: "Product Lab",
+  },
 
   /* Education */
   {

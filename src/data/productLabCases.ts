@@ -33,6 +33,50 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "fitbit-focus-monitor",
+    title: "Fitbit Focus Monitor",
+    type: "speculative",
+    subject: "What if Fitbit made a computer monitor?",
+    oneLiner:
+      "Desk work shapes sleep, stress, and activity, but fitness trackers only see the wrist while monitors only show pixels. Fitbit Focus Monitor treats the display as a health surface that senses posture, strain, and focus, then adjusts the setup and connects screen habits to the Fitbit dashboard.",
+    period: "2026",
+    problem:
+      "Knowledge workers spend most of their day at a screen that does nothing for their body. Wearables report heart rate and sleep after the damage is done. Blue-light apps and posture reminders exist as separate tools that users ignore. Nobody owns the closed loop from desk environment to health outcome while work is still happening.",
+    insight:
+      "Fitbit already owns longitudinal health context: sleep, stress, activity, and recovery. The missing surface is the place where desk strain actually starts. A monitor can sense the workspace in real time and act on it, then explain sleep and stress using screen exposure and sitting patterns instead of generic wellness tips.",
+    principles: [
+      "Act during work, not only report after the fact",
+      "Adjust the setup before interrupting the user with another notification",
+      "Link screen habits to sleep, stress, and activity in one dashboard",
+      "Respect deep focus: mute interruptions when concentration signals are strong",
+      "Make sensing optional and visible with hardware privacy controls",
+    ],
+    concept:
+      "Fitbit Focus Monitor is a desk display with sensors for posture and viewing distance, blink and gaze patterns for eye strain, heart rate and stress via a base sensor, plus ambient light, noise, and air quality. It warms color temperature at night, suggests short movement breaks, offers guided breathing during stress spikes, and dims notifications in deep focus. The Fitbit app shows how late screen exposure and long uninterrupted desk blocks relate to sleep and stress, not only that the night went poorly.",
+    tradeoffs:
+      "Always-on workplace sensing raises privacy and employer-surveillance concerns. Camera or IR posture tracking can feel invasive even with a hardware shutter. Heart-rate sensing from a monitor base may be less accurate than a wrist wearable. Auto-adjustments can interrupt flow if timing is wrong. Competing with Dell, Apple, and wellness startups in a crowded monitor category is expensive. Medical claims need careful boundaries so the product stays wellness, not diagnosis.",
+    tags: ["Speculative", "Fitbit", "Hardware", "Health", "Workplace", "Sensors"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("fitbit-focus-monitor", "cover.png"),
+      caption: "Fitbit Focus Monitor hero: a desk display that looks after the person behind it.",
+    },
+    gallery: [
+      {
+        src: base("fitbit-focus-monitor", "01.png"),
+        caption: "Sensor stack: posture, eye strain, base heart rate, and ambient conditions.",
+      },
+      {
+        src: base("fitbit-focus-monitor", "02.png"),
+        caption: "Focus Mode: notifications fade while deep work continues.",
+      },
+      {
+        src: base("fitbit-focus-monitor", "03.png"),
+        caption: "Cause chain: late screen and long sitting linked to lighter sleep.",
+      },
+    ],
+  },
+  {
     id: "trend-mill",
     title: "Trend Mill",
     type: "speculative",
