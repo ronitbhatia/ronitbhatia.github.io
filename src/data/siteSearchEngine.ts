@@ -144,6 +144,8 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
       "trend mill",
       "fitbit",
       "focus monitor",
+      "rhode",
+      "rhode frame",
     ],
     page: "/product-lab",
     section: null,
@@ -537,6 +539,7 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
       "glyph-home": "glyph-home",
       "trend-mill": "trend-mill",
       "fitbit-focus-monitor": "fitbit-focus-monitor",
+      "rhode-frame": "rhode-frame",
     };
     if (section && PRODUCT_LAB_SECTIONS[section]) {
       return {

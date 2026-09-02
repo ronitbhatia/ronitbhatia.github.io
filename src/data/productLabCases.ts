@@ -33,28 +33,72 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "rhode-frame",
+    title: "Rhode Frame",
+    type: "speculative",
+    subject: "What if Rhode made a digital camera?",
+    oneLiner:
+      "Rhode built its identity on a specific aesthetic of skin, light, and minimal color, but that aesthetic still depends entirely on phone cameras and third-party editing to come through in photos. Rhode Frame is a compact digital camera tuned to render skin tone and soft light the way Rhode's own products are designed to look, turning the brand's visual language into hardware.",
+    period: "2026",
+    problem:
+      "Rhode has built a loyal audience around a consistent visual identity across packaging, campaign imagery, and social content, yet that identity breaks down the moment a customer tries to recreate it. Phone cameras apply their own color science and skin smoothing, which fights against the exact softness and warmth Rhode's own photography relies on. Customers compensate with presets and filters that approximate the look but never quite match it, and the gap between brand imagery and everyday photos remains a constant source of friction for a community that treats aesthetic accuracy as a core part of the product experience.",
+    insight:
+      "Rhode's actual expertise is not photography, it is color and light as applied to skin, which is precisely the hardest problem in consumer camera tuning. A camera built by a beauty brand can start from skin tone rendering as the primary design constraint rather than a secondary correction applied after the fact. That reframes the product from a general-purpose camera with beauty filters bolted on to a camera whose entire color pipeline is built around one specific, well-understood use case.",
+    principles: [
+      "Tune color science around skin tone accuracy first, general scene rendering second",
+      "Keep the interface to one dial and one shutter so the camera stays approachable",
+      "Ship presets as calibrated looks, not filters layered on top of raw output",
+      "Design hardware that photographs well itself, since the object will appear in its own content",
+      "Treat the companion app as a light editing space, not a second camera app",
+    ],
+    concept:
+      "Rhode Frame is a pocket-sized digital camera with a fixed lens and a single control dial for exposure. Its sensor and color profile are calibrated specifically for a range of skin tones under soft, mixed lighting, the exact conditions Rhode's own campaigns are shot in. Three built-in looks, developed with Rhode's creative team, replace a filter library with calibrated presets that adjust warmth and contrast without altering skin texture. The companion app handles transfer and light cropping, and deliberately stops short of duplicating a full editing suite.",
+    tradeoffs:
+      "Optimizing color science for skin tone under soft light means the camera will underperform in landscapes, low light, and high-contrast scenes, which limits its use to a narrow category of photography. A single-dial interface trades flexibility for approachability, and more advanced users will likely find it restrictive. Manufacturing a dedicated camera is a significant departure from Rhode's existing supply chain and retail model, and hardware margins differ substantially from skincare margins. The product also depends on a moment in culture where physical cameras remain desirable alongside phones, which is not guaranteed to hold.",
+    tags: ["Speculative", "Rhode", "Hardware", "Beauty", "Photography", "Consumer Electronics"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("rhode-digicam", "cover.png"),
+      caption: "Rhode Frame hero: a digital camera calibrated for skin tone and soft light.",
+    },
+    gallery: [
+      {
+        src: base("rhode-digicam", "01.png"),
+        caption: "Color pipeline built around skin tone accuracy under mixed lighting.",
+      },
+      {
+        src: base("rhode-digicam", "02.png"),
+        caption: "Single-dial interface with three calibrated looks in place of filters.",
+      },
+      {
+        src: base("rhode-digicam", "03.png"),
+        caption: "Companion app scoped to transfer and light cropping only.",
+      },
+    ],
+  },
+  {
     id: "fitbit-focus-monitor",
     title: "Fitbit Focus Monitor",
     type: "speculative",
     subject: "What if Fitbit made a computer monitor?",
     oneLiner:
-      "Desk work shapes sleep, stress, and activity, but fitness trackers only see the wrist while monitors only show pixels. Fitbit Focus Monitor treats the display as a health surface that senses posture, strain, and focus, then adjusts the setup and connects screen habits to the Fitbit dashboard.",
+      "Desk work shapes sleep, stress, and activity, yet fitness trackers only see the wrist while monitors only render pixels. Fitbit Focus Monitor treats the display as a health surface that senses posture, strain, and focus, then adjusts the setup and feeds those signals into the existing Fitbit dashboard.",
     period: "2026",
     problem:
-      "Knowledge workers spend most of their day at a screen that does nothing for their body. Wearables report heart rate and sleep after the damage is done. Blue-light apps and posture reminders exist as separate tools that users ignore. Nobody owns the closed loop from desk environment to health outcome while work is still happening.",
+      "Knowledge workers spend the majority of their day at a screen that does nothing to support their physical wellbeing. Wearables report heart rate and sleep only after the damage has already occurred. Blue light filters and posture reminders exist as disconnected point solutions that most users eventually stop using. No product currently owns the full loop from desk environment to health outcome while the work is actually happening.",
     insight:
-      "Fitbit already owns longitudinal health context: sleep, stress, activity, and recovery. The missing surface is the place where desk strain actually starts. A monitor can sense the workspace in real time and act on it, then explain sleep and stress using screen exposure and sitting patterns instead of generic wellness tips.",
+      "Fitbit already holds longitudinal health context across sleep, stress, activity, and recovery. What is missing is visibility into the environment where desk-related strain actually originates. A monitor is positioned to sense the workspace continuously and respond to it in real time, then explain sleep and stress patterns using screen exposure and sitting behavior instead of generic wellness tips.",
     principles: [
-      "Act during work, not only report after the fact",
-      "Adjust the setup before interrupting the user with another notification",
-      "Link screen habits to sleep, stress, and activity in one dashboard",
-      "Respect deep focus: mute interruptions when concentration signals are strong",
-      "Make sensing optional and visible with hardware privacy controls",
+      "Act during the workday itself, not only in retrospective reports",
+      "Adjust the setup automatically before resorting to another notification",
+      "Connect screen habits to sleep, stress, and activity in a single dashboard",
+      "Protect deep focus by muting interruptions when concentration signals are strong",
+      "Make sensing optional and visible through hardware-level privacy controls",
     ],
     concept:
-      "Fitbit Focus Monitor is a desk display with sensors for posture and viewing distance, blink and gaze patterns for eye strain, heart rate and stress via a base sensor, plus ambient light, noise, and air quality. It warms color temperature at night, suggests short movement breaks, offers guided breathing during stress spikes, and dims notifications in deep focus. The Fitbit app shows how late screen exposure and long uninterrupted desk blocks relate to sleep and stress, not only that the night went poorly.",
+      "Fitbit Focus Monitor is a desk display equipped with sensors for posture and viewing distance, blink and gaze tracking for eye strain, heart rate and stress detection through a base sensor, and ambient monitoring for light, noise, and air quality. It warms color temperature in the evening, prompts short movement breaks, offers guided breathing during stress spikes, and dims notifications during deep focus. The companion Fitbit app shows how late screen exposure and extended desk sessions relate to sleep quality and stress levels, going beyond a simple report that the previous night was poor.",
     tradeoffs:
-      "Always-on workplace sensing raises privacy and employer-surveillance concerns. Camera or IR posture tracking can feel invasive even with a hardware shutter. Heart-rate sensing from a monitor base may be less accurate than a wrist wearable. Auto-adjustments can interrupt flow if timing is wrong. Competing with Dell, Apple, and wellness startups in a crowded monitor category is expensive. Medical claims need careful boundaries so the product stays wellness, not diagnosis.",
+      "Always-on workplace sensing raises legitimate privacy and employer-surveillance concerns that would need to be addressed directly. Camera or infrared posture tracking can feel invasive even with a hardware shutter in place. Heart-rate sensing from a monitor base is likely to be less accurate than a wrist-worn device. Automatic adjustments risk interrupting flow state if the timing is off. Competing against Dell, Apple, and a growing field of wellness startups in the monitor category requires significant investment. Medical claims must be carefully bounded so the product stays positioned as wellness support rather than diagnostic hardware.",
     tags: ["Speculative", "Fitbit", "Hardware", "Health", "Workplace", "Sensors"],
     color: "hsl(32 95% 44%)",
     cover: {
@@ -82,23 +126,23 @@ export const productLabCases: ProductLabCase[] = [
     type: "speculative",
     subject: "What if Google made treadmills?",
     oneLiner:
-      "Home cardio usually means live instructor classes or lonely simulated worlds, while people already use search and voice while walking to think. Trend Mill turns rising search interest into daily runnable routes and shapes Gemini answers for elevated heart rate, so Google's index becomes the workout surface.",
+      "Home cardio today means either live instructor classes or isolated simulated worlds, while people already use search and voice while walking to think. Trend Mill turns rising search interest into daily runnable routes and adapts Gemini answers to elevated heart rate, making Google's index the workout surface itself.",
     period: "2026",
     problem:
-      "Existing fitness platforms compete on celebrity coaches or game worlds. Google does not own either advantage. Meanwhile, search curiosity, calendar context, and map knowledge stay disconnected from movement. The treadmill remains a dumb belt, and useful thinking happens only when users stop moving.",
+      "Existing fitness platforms compete on celebrity coaches or immersive game worlds, and Google does not hold either advantage today. Meanwhile, search curiosity, calendar context, and map knowledge remain disconnected from movement. The treadmill stays a dumb belt, and the moments when users are most curious to learn something new happen only after they have stopped moving.",
     insight:
-      "Google's edge is not Street View alone. It is Trends, Maps, Calendar, and Gemini used together. A treadmill can treat collective search interest as content, answer questions at a pace the body can handle, and provide social presence through aggregated behavior rather than live performers.",
+      "Google's real advantage is not Street View in isolation. It is Trends, Maps, Calendar, and Gemini working together as a single system. Applied to a treadmill, that system can treat collective search interest as content, answer questions at a pace the body can actually process, and create social presence through aggregated behavior rather than live performers.",
     principles: [
       "Routes follow curiosity and rising search interest, not celebrity playlists",
-      "Answer length shortens as heart rate rises",
-      "Async social proof through anonymous runners, not live instructor performance",
-      "Calendar context shapes session length before meetings",
-      "Privacy controls are hardware-visible: mute, no camera by default, clear opt-outs",
+      "Answer length shortens automatically as heart rate rises",
+      "Social proof is asynchronous and anonymous, not built around live instructors",
+      "Calendar context shapes session length ahead of real meetings",
+      "Privacy controls are hardware-visible: a physical mute, no camera by default, and clear opt-outs",
     ],
     concept:
-      "Trend Mill is a minimal home treadmill with a curved display and a hardware privacy switch. Trends Routes publish daily runs tied to rising search themes, rendered with Maps and Street View where terrain allows. Kinetic Search lets users ask Gemini mid-run with breath-length answers that shorten under high effort. Ghost Run shows anonymous pace markers from people who completed the same Trends Route in the last day. Fitbit and Calendar sync set session length around real schedules.",
+      "Trend Mill is a minimal home treadmill with a curved display and a hardware privacy switch. Trends Routes publish daily runs tied to rising search themes, rendered through Maps and Street View where terrain allows. Kinetic Search lets users query Gemini mid-run and receive breath-length answers that shorten under higher effort. Ghost Run overlays anonymous pace markers from other people who completed the same Trends Route in the previous day. Fitbit and Calendar integration set session length around the user's actual schedule.",
     tradeoffs:
-      "Combining Trends, health, and Calendar data can feel invasive without hard boundaries and obvious opt-outs. Google product lifespan risk conflicts with treadmill buyers who expect multi-year appliances. Street View immersion breaks when incline cannot match real terrain. Ghost Run may feel cold compared with instructor communities. Sponsored Trends Routes would destroy trust. Health and legal queries mid-workout need stricter guardrails than desktop Search.",
+      "Combining Trends, health, and Calendar data can feel invasive without firm boundaries and clearly visible opt-outs. Google's track record on product longevity conflicts with the multi-year expectations treadmill buyers typically hold. Street View immersion breaks down whenever incline cannot match real terrain. Ghost Run may read as cold compared to instructor-led communities. Sponsored Trends Routes would undermine trust quickly. Health and legal queries during a workout require stricter guardrails than a standard desktop search.",
     tags: ["Speculative", "Google", "Fitness", "Trends", "Maps", "AI", "Hardware"],
     color: "hsl(32 95% 44%)",
     cover: {
@@ -126,23 +170,23 @@ export const productLabCases: ProductLabCase[] = [
     type: "speculative",
     subject: "What if Nothing built an AI assistant device?",
     oneLiner:
-      "Smart speakers are common in homes, but trust remains low because users cannot easily see when the device is listening or how their data is used. Glyph Home proposes a voice-first assistant that uses Glyph state feedback and transparent hardware to make behavior visible without relying on a screen.",
+      "Smart speakers are already common in homes, but trust remains low because users cannot easily tell when a device is listening or how their data is being used. Glyph Home proposes a voice-first assistant that uses Glyph state feedback and transparent hardware to make its behavior legible without relying on a screen.",
     period: "2026",
     problem:
-      "The trust gap shows up in daily behavior: users mute speakers, limit what they ask, or unplug devices entirely. Without clear listening indicators and understandable data boundaries, even useful assistants feel like opaque boxes rather than household tools.",
+      "This trust gap shows up in everyday behavior. Users mute their speakers, limit what they ask, or unplug the device outright. Without a clear listening indicator and an understandable boundary around data use, even a genuinely useful assistant ends up feeling like an opaque box sitting in the home.",
     insight:
-      "Nothing already uses Glyph to show device state without a full display. The same pattern applies to AI assistants: voice for responses, dot matrix for status. Visible hardware design can reinforce clearer privacy behavior, especially when paired with explicit listening indicators.",
+      "Nothing already uses Glyph lighting to communicate device state without a full display. The same pattern extends naturally to AI assistants: voice carries the response, and a dot-matrix pattern communicates status. Visible hardware design can reinforce more transparent privacy behavior, particularly when paired with an explicit, physical listening indicator.",
     principles: [
       "Voice is the primary interface; visual feedback supports state, not content feeds",
-      "Internal components are visible by design to signal transparency",
-      "Listening state must be obvious through a dedicated indicator and physical mute",
-      "Idle behavior should feel useful and human, not promotional",
-      "Local actions run on device; cloud is used only for requested tasks",
+      "Internal components remain visible by design to signal transparency",
+      "Listening state is always obvious through a dedicated indicator and a physical mute",
+      "Idle behavior should feel useful and human rather than promotional",
+      "Local actions run on-device; cloud processing is used only for requests that need it",
     ],
     concept:
-      "Glyph Home is a compact transparent puck for desk or shelf use. Users ask questions by voice and receive spoken answers plus Glyph states such as listening, thinking, and complete. The product ships without a screen or camera by default. Setup happens through Nothing OS on phone, with a hardware mute switch and visible red indicator when the microphone is active.",
+      "Glyph Home is a compact, transparent puck built for a desk or shelf. Users ask questions by voice and receive spoken answers alongside Glyph states such as listening, thinking, and complete. The product ships without a screen or camera by default. Setup happens through Nothing OS on the phone, and a hardware mute switch pairs with a visible red indicator whenever the microphone is active.",
     tradeoffs:
-      "Complex answers that need maps, lists, or images still depend on phone screens. Expression-only feedback may feel limited compared with chat apps. Transparent materials can age visually over time. The category is crowded with Apple, Amazon, and phone-native assistants. A playful form factor may reduce credibility in enterprise or care settings where trust is critical.",
+      "Complex answers that require maps, lists, or images still depend on a phone screen. Expression-only feedback may feel limited relative to chat-based interfaces. Transparent materials can age visually with regular use. The category is already crowded with Apple, Amazon, and phone-native assistants. A playful form factor may also undercut credibility in enterprise or care settings where trust matters most.",
     tags: ["Speculative", "Nothing", "AI", "Hardware", "Glyph", "Voice"],
     color: "hsl(32 95% 44%)",
     cover: {
@@ -170,23 +214,23 @@ export const productLabCases: ProductLabCase[] = [
     type: "speculative",
     subject: "What if Wikipedia made maps?",
     oneLiner:
-      "Consumer maps often prioritize paid placement over useful local information, which weakens user trust at the moment of navigation. Commons Map applies Wikipedia's editorial model to places, so ranking is driven by citations and community maintenance rather than sponsorship.",
+      "Consumer maps often prioritize paid placement over genuinely useful local information, which quietly erodes trust at the exact moment a user is navigating. Commons Map applies Wikipedia's editorial model to places, so ranking is driven by citations and community maintenance rather than sponsorship.",
     period: "2026",
     problem:
-      "The impact is practical, not abstract. Travelers miss reliable restroom and safety information, hikers get outdated trail access, and local businesses with better service can lose visibility to paid listings. When ranking follows revenue, users stop trusting the map for decisions that matter.",
+      "The impact is practical rather than abstract. Travelers miss reliable restroom and safety information, hikers rely on outdated trail access data, and local businesses that offer better service lose visibility to paid listings. When ranking follows revenue rather than relevance, users stop trusting the map for decisions that actually matter.",
     insight:
-      "Wikipedia shows that community-maintained knowledge can scale with high trust when governance is clear. Mapping still relies heavily on ad-driven ranking. The opportunity is not only better routing, but a map layer where placement is earned through citations and editorial process rather than payment.",
+      "Wikipedia demonstrates that community-maintained knowledge can scale with high trust when governance is clear. Mapping, by contrast, still relies heavily on ad-driven ranking. The opportunity is not simply better routing, but a map layer where placement is earned through citations and editorial process instead of payment.",
     principles: [
       "No sponsored pins in discovery or ranking",
       "Every place supports discussion, citations, and revision history",
-      "Offline access is required for low-connectivity and outdoor use cases",
-      "Contributors are attributed with transparent edit history",
-      "Safety and accessibility data are first-class map layers",
+      "Offline access is required to support low-connectivity and outdoor use cases",
+      "Contributors are attributed with a transparent edit history",
+      "Safety and accessibility data are treated as first-class map layers",
     ],
     concept:
-      "Commons Map combines open routing data with a Wikipedia-style place layer. Each location includes sourced details, edit history, and dispute workflows. Dedicated layers cover restrooms, night safety, closures, and accessibility constraints. City editors maintain local accuracy using the same revert-and-discuss model used on Wikipedia.",
+      "Commons Map combines open routing data with a Wikipedia-style place layer. Each location includes sourced details, edit history, and dispute workflows. Dedicated layers cover restrooms, night safety, closures, and accessibility constraints. City editors maintain local accuracy using the same revert-and-discuss model already proven on Wikipedia.",
     tradeoffs:
-      "Removing ads requires sustainable funding through grants, institutions, or donations. Map vandalism can create immediate safety risk compared with encyclopedia edits. Local editor bias can affect coverage quality. Data depth will vary by region, and replacing commercial traffic intelligence is costly. A strict no-ads promise is difficult to maintain at global scale.",
+      "Removing ads requires a sustainable funding model built on grants, institutions, or donations. Map vandalism creates more immediate safety risk than an encyclopedia edit ever would. Local editor bias can affect coverage quality over time. Data depth will vary significantly by region, and replacing commercial-grade traffic intelligence is expensive. A strict no-ads promise is difficult to sustain at global scale.",
     tags: ["Speculative", "Wikipedia", "Maps", "Commons", "Trust"],
     color: "hsl(32 95% 44%)",
     cover: {
@@ -214,23 +258,23 @@ export const productLabCases: ProductLabCase[] = [
     type: "redesign",
     subject: "Redesign: the clinic waiting room",
     oneLiner:
-      "Patients experience the most friction in waiting rooms when queue status is unclear and they cannot plan around delay. Care Queue treats waiting as a service surface with live stage updates, realistic time ranges, and optional status sharing for family members.",
+      "Patients experience the most friction in waiting rooms when queue status is unclear and they have no way to plan around the delay. Care Queue treats waiting as a service surface, providing live stage updates, realistic time ranges, and optional status sharing for family members.",
     period: "2026",
     problem:
-      "That uncertainty creates operational drag. Front desks field repeated status questions, patients miss names when called once, and families wait without updates. The result is lower satisfaction scores, avoidable no-shows, and cascading lateness across the rest of a patient's day.",
+      "That uncertainty creates real operational drag. Front desks field repeated status questions, patients miss their name when it is called only once, and families wait without any update at all. The cumulative result is lower satisfaction scores, avoidable no-shows, and delays that cascade through the rest of a patient's day.",
     insight:
-      "Patients tolerate wait time better when progress is visible. The core pain is uncertainty, not duration alone. Treating waiting as an operational product surface, not dead time, can improve satisfaction without changing clinical capacity on day one.",
+      "Patients tolerate wait time considerably better when they can see progress being made. The core source of frustration is uncertainty, not duration by itself. Treating waiting as an operational product surface, rather than dead time to be endured, can improve satisfaction without requiring any change to clinical capacity on day one.",
     principles: [
-      "Show current stage: checked in, with nurse, with doctor, imaging, checkout",
+      "Show the current stage: checked in, with nurse, with doctor, imaging, checkout",
       "Provide realistic time ranges instead of optimistic fixed estimates",
       "Allow one trusted contact to follow queue status remotely",
-      "Support brief away time without losing queue position",
-      "Communicate delays early with specific updated ranges",
+      "Support brief time away from the waiting room without losing queue position",
+      "Communicate delays early, with specific and updated time ranges",
     ],
     concept:
-      "Care Queue gives each patient a live status card on phone or kiosk with stage, position, and expected range. A share link lets a family member monitor progress outside the clinic. Optional walk radius sends a return notification when the patient should come back. Messaging stays factual and avoids gamified delay language.",
+      "Care Queue gives each patient a live status card on phone or kiosk showing stage, position, and expected time range. A share link lets a family member follow progress from outside the clinic. An optional walk radius sends a return notification when the patient should head back. Messaging stays factual throughout and avoids gamified delay language.",
     tradeoffs:
-      "Transparent delay data can affect public reviews during peak load. Shared links introduce privacy risk on shared devices. Walk notifications fail without reliable mobile connectivity. Staff may adjust ranges to manage perception. Some clinicians may resist making delay visible to patients.",
+      "Transparent delay data can affect public reviews during periods of peak load. Shared links introduce a privacy risk on shared devices. Walk notifications fail without reliable mobile connectivity. Staff may be tempted to adjust ranges to manage perception rather than reflect reality. Some clinicians may resist making delay visible to patients in the first place.",
     tags: ["Redesign", "Healthcare", "Operations", "Service Design"],
     color: "hsl(207 89% 42%)",
     cover: {
@@ -258,23 +302,23 @@ export const productLabCases: ProductLabCase[] = [
     type: "speculative",
     subject: "What if Patagonia made a smartphone?",
     oneLiner:
-      "Smartphones are designed around short upgrade cycles, which increases e-waste and makes long-term ownership difficult. Worn In applies Patagonia's repair-first philosophy to a modular phone built for years of use, with replaceable parts and stable long-term software support.",
+      "Smartphones are designed around short upgrade cycles, which drives unnecessary e-waste and makes long-term ownership genuinely difficult. Worn In applies Patagonia's repair-first philosophy to a modular phone built for years of use, with replaceable parts and stable long-term software support.",
     period: "2026",
     problem:
-      "Failure points are predictable: battery degradation, cracked screens, and camera issues often trigger full replacement because repair paths are limited. Software support windows shorten effective device life, and trade-in programs reinforce upgrade behavior instead of retention.",
+      "Failure points are predictable: battery degradation, cracked screens, and camera issues often trigger a full replacement simply because repair paths are limited. Shortened software support windows compress the effective life of a device, and trade-in programs actively reinforce upgrade behavior rather than encouraging retention.",
     insight:
-      "Patagonia's core product philosophy favors durability, repair, and reduced unnecessary consumption. Applied to phones, the value proposition shifts from newest model status to reliable long-term utility. That creates a differentiated position in a category optimized for annual upgrades.",
+      "Patagonia's core product philosophy prioritizes durability, repair, and reduced unnecessary consumption. Applied to phones, the value proposition shifts away from newest-model status and toward reliable long-term utility. That shift creates a genuinely differentiated position within a category currently optimized for annual upgrades.",
     principles: [
-      "Commit to long hardware support as a product requirement, not marketing language",
+      "Commit to long hardware support as a product requirement, not a marketing claim",
       "Make high-failure parts user-replaceable with standard tools",
       "Prioritize stability updates over feature churn in mature devices",
-      "Use durable materials that age well with normal use",
-      "Offer modular upgrades instead of full device replacement",
+      "Use durable materials that age well under normal use",
+      "Offer modular upgrades in place of full device replacement",
     ],
     concept:
-      "Worn In is a repair-first phone with replaceable battery, screen, and camera module. Software updates focus on security, performance, and battery health. A lifetime repair program replaces trade-in incentives. The product is positioned as a long-term tool that improves in reliability over time rather than forcing yearly replacement.",
+      "Worn In is a repair-first phone with a replaceable battery, screen, and camera module. Software updates focus on security, performance, and battery health rather than new features. A lifetime repair program replaces the usual trade-in incentive. The product is positioned as a long-term tool that becomes more reliable over time, rather than one designed to be replaced every year.",
     tradeoffs:
-      "Long lifecycle design conflicts with hardware upgrade revenue models. Repairability adds size and assembly complexity. Modular camera performance may trail flagship integrated systems. Carrier and platform partners may resist extended OS commitments. Brand transfer from apparel to consumer electronics requires careful positioning.",
+      "A long product lifecycle directly conflicts with revenue models built around hardware upgrades. Repairability adds size and assembly complexity to the device. Modular camera performance is likely to trail fully integrated flagship systems. Carrier and platform partners may resist committing to extended OS support. Transferring brand trust from apparel to consumer electronics requires careful, deliberate positioning.",
     tags: ["Speculative", "Patagonia", "Hardware", "Repair", "Sustainability"],
     color: "hsl(32 95% 44%)",
     cover: {
@@ -302,23 +346,23 @@ export const productLabCases: ProductLabCase[] = [
     type: "redesign",
     subject: "Redesign: web bot verification (CAPTCHA)",
     oneLiner:
-      "CAPTCHA creates avoidable friction at login and checkout, especially for users on assistive technology, while still failing against advanced bots. Human Handshake shifts verification to passkey trust by default and uses accessible challenges only when session risk requires escalation.",
+      "CAPTCHA introduces avoidable friction at login and checkout, particularly for users on assistive technology, while still failing to stop advanced bots. Human Handshake shifts verification to passkey trust by default and reserves accessible challenges for sessions where risk actually warrants escalation.",
     period: "2026",
     problem:
-      "The cost lands on product and support teams. Conversion drops at account recovery, accessibility complaints increase, and security teams compensate by adding more puzzles. Over time, the default gate punishes real users more than it stops sophisticated automation.",
+      "The cost of this approach falls on product and support teams. Conversion drops during account recovery, accessibility complaints increase, and security teams respond by adding still more puzzles. Over time, the default gate ends up punishing real users more than it stops sophisticated automation.",
     insight:
-      "Most sessions can be trusted using device signals and modern authentication before showing a challenge. CAPTCHA should be a last-resort control, not the default gate. Shifting verification effort from users to the platform improves both security posture and completion rate when designed with clear fallback logic.",
+      "Most sessions can already be trusted using device signals and modern authentication before any challenge is ever shown. CAPTCHA should function as a last-resort control rather than the default gate. Shifting verification effort from the user to the platform improves both security posture and completion rate, provided the fallback logic is designed clearly.",
     principles: [
-      "Default to trusted session flow for known devices and passkey users",
-      "Use risk-based escalation instead of universal puzzle challenges",
-      "Ensure any required challenge is accessible within 10 seconds",
-      "Disclose when user input contributes to model training",
-      "Provide actionable recovery when verification fails",
+      "Default to a trusted session flow for known devices and passkey users",
+      "Use risk-based escalation instead of a universal puzzle challenge",
+      "Ensure any required challenge is accessible and completable within ten seconds",
+      "Disclose clearly when user input contributes to model training",
+      "Provide an actionable recovery path when verification fails",
     ],
     concept:
-      "Human Handshake uses passkeys and device attestation for routine access. High-risk sessions receive one accessible verification step with audio and text alternatives. Image-grid CAPTCHA appears only as a final fallback, with explicit reason codes and a human review path for repeated failure.",
+      "Human Handshake uses passkeys and device attestation to handle routine access. High-risk sessions receive a single accessible verification step, offered in both audio and text form. Image-grid CAPTCHA appears only as a final fallback, with explicit reason codes and a human review path available after repeated failure.",
     tradeoffs:
-      "Silent trust is weaker against coordinated bot farms than constant puzzles. Device attestation can exclude shared devices, older hardware, and privacy-focused browsers. Accessible challenges may be easier to automate than complex image tasks. Security stakeholders may resist reducing visible friction.",
+      "Silent trust is inherently weaker against coordinated bot farms than constant puzzle challenges. Device attestation can exclude shared devices, older hardware, and privacy-focused browsers. Accessible challenges may also prove easier to automate than complex image tasks. Security stakeholders may resist reducing visible friction even when the data supports it.",
     tags: ["Redesign", "Trust", "Accessibility", "Auth", "Web"],
     color: "hsl(207 89% 42%)",
     cover: {

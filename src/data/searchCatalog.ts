@@ -309,6 +309,23 @@ export const searchEntries: SearchEntry[] = [
     target: { type: "timeline", windowId: "product-lab", entryId: "fitbit-focus-monitor" },
     group: "Product Lab",
   },
+  {
+    id: "lab-rhode-frame",
+    keywords: [
+      "rhode",
+      "rhode frame",
+      "camera",
+      "digital camera",
+      "beauty",
+      "skin tone",
+      "photography",
+      "digicam",
+    ],
+    title: "Rhode Frame: Rhode digital camera",
+    description: "Speculative: a camera calibrated for skin tone and soft light.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "rhode-frame" },
+    group: "Product Lab",
+  },
 
   /* Education */
   {
