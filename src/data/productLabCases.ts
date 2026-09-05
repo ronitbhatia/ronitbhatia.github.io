@@ -33,6 +33,138 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "casio-dist-finder",
+    title: "Dist Finder",
+    type: "speculative",
+    subject: "What if Casio made a Bluetooth item tracker?",
+    oneLiner:
+      "AirTag-class finders put all intelligence behind a locked phone screen, while Casio's audience wants a glanceable number and a battery they can swap themselves. Dist Finder is a Bluetooth item tracker shaped like a shrunken F-91W face, with an always-on LCD that shows distance in meters without opening an app.",
+    period: "2026",
+    problem:
+      "Existing Bluetooth trackers treat the physical object as dumb hardware and place every useful answer inside an OS-locked app. Battery doors need special tools, sealed units get discarded, and checking whether a bag is nearby still means unlocking a phone. For the person who already wears a ten-dollar Casio calculator watch, that workflow fights the instinct they already trust: look at a screen, read a number, move on.",
+    insight:
+      "Casio's product language is glanceable digital readouts, user-serviceable batteries, and radical price-to-durability. The category problem is not whether Bluetooth can find keys. It is that no major tracker puts the answer on the object itself. Building the readout into the tracker reframes the product as a stopwatch for distance rather than a silent disc waiting for a phone.",
+    principles: [
+      "Information belongs on the object, not locked behind an app for the basic case",
+      "User-replaceable power over sealed disposability",
+      "Radical price-to-durability ratio, drugstore rather than boutique",
+      "Toughness as the default specification, not a premium tier",
+      "One core unit with accessories that adapt attachment, like Casio strap ecosystems",
+    ],
+    concept:
+      "Dist Finder is a coin-sized Bluetooth tracker that looks like a shrunken F-91W watch face with the strap lugs removed: segmented LCD, silver bezel, two flat side buttons, visible screw heads, and a molded battery door. The always-on display shows live distance to the paired phone in meters. Side buttons cycle distance, proximity chevrons, and a plain clock mode. The coin cell pops open with a fingernail and coin-slot groove for DIY replacement. It ships blister-carded for pegboard retail around fifteen dollars, with a molded keyring hole and an optional carabiner accessory.",
+    tradeoffs:
+      "An always-on LCD and distance calculation use more power than a silent AirTag-class chip, so battery life is measured in months rather than years. BLE RSSI-to-distance is approximate, so the meter readout will sometimes be wrong, which is an awkward fit for a brand built on exact digital numbers. Without deep Find My or Google network integration, Dist Finder cannot crowd-source location outside Bluetooth range. It is an honest tool for is-it-in-this-room, not a competitor for where-in-the-world.",
+    tags: ["Speculative", "Casio", "Hardware", "Bluetooth", "Tracker", "Consumer Electronics"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("casio-dist-finder", "cover.png"),
+      caption: "Dist Finder hero: a Casio-style tracker with distance on the object itself.",
+    },
+    gallery: [
+      {
+        src: base("casio-dist-finder", "01.png"),
+        caption: "Coin-cell door: fingernail and coin-slot battery swap ritual.",
+      },
+      {
+        src: base("casio-dist-finder", "02.png"),
+        caption: "LCD modes: meters, proximity chevrons, and plain clock.",
+      },
+      {
+        src: base("casio-dist-finder", "03.png"),
+        caption: "Blister-card pegboard packing with keyring hole and optional clip.",
+      },
+    ],
+  },
+  {
+    id: "hermes-ecoute",
+    title: "Écoute",
+    type: "speculative",
+    subject: "What if Hermès made a headset?",
+    oneLiner:
+      "Someone whose bag, shoes, belt, and scarf are chosen with care still ends the day in headphones designed around spec sheets rather than worn objects. Écoute treats a headset the way Hermès treats a bag strap: saddle-stitched leather, hardware that ages, and reconditioning instead of annual plastic upgrades.",
+    period: "2026",
+    problem:
+      "Premium audio brands optimize for driver graphs and noise-cancellation chips, then wrap the result in injection-molded plastic that yellows within a few years. Fashion houses already know how to make objects people wear daily and keep for decades, but almost none of that craft has been applied to headphones. The result is a wardrobe mismatch: everything else is chosen as a worn object, while the headset remains an engineering accessory that never quite belongs.",
+    insight:
+      "Hermès's advantage is not audio silicon. It is material, handwork, and a service culture built around reconditioning rather than replacement. A headset designed from that starting point reframes seasonal refresh as color and cushion swaps, and longevity as authorized repair, instead of a new chipset every year.",
+    principles: [
+      "Craft materials and visible handwork over injection-molded uniformity",
+      "Design the object to be reconditioned, not upgraded every season",
+      "Use color and material as the seasonal refresh instead of new chipsets",
+      "Hardware details should feel continuous with bags and straps, not plastic ratchets",
+      "Fold and travel like a bag handle, so the headset lives inside the rest of the wardrobe",
+    ],
+    concept:
+      "Écoute is an over-ear headset with a saddle-stitched leather headband in natural barénia-adjacent leather and brushed steel yokes. Size adjustment uses a miniature turn-lock clasp rather than a plastic ratchet. Ear cups rotate and fold flat for travel. Cushions are interchangeable by color and material, like bag straps. Packaging follows the house language: orange box, felt dust bag, canvas travel pouch with leather trim, and a reconditioning card inviting the owner to bring it back for service rather than discard it.",
+    tradeoffs:
+      "Noise cancellation and driver performance will likely lag Sony or Bose, because R&D spend goes into tanning and stitching rather than silicon. This is a fashion object with audio inside it, not an audio product with fashion applied. Leather needs conditioning and will show wear patterns a plastic headband never will, which is either the point or a dealbreaker. Price will be justified largely by material and brand, which is an honest trade for the right customer and a poor one for anyone shopping on watts per dollar.",
+    tags: ["Speculative", "Hermès", "Hardware", "Fashion", "Audio", "Craft"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("hermes-ecoute", "cover.png"),
+      caption: "Écoute hero: a headset designed as a worn object, not a plastic accessory.",
+    },
+    gallery: [
+      {
+        src: base("hermes-ecoute", "01.png"),
+        caption: "Folded travel state: cups rotate flat like a bag handle going down.",
+      },
+      {
+        src: base("hermes-ecoute", "02.png"),
+        caption: "Turn-lock size clasp and interchangeable leather cushions.",
+      },
+      {
+        src: base("hermes-ecoute", "03.png"),
+        caption: "Orange-box packing with dust bag, travel pouch, and reconditioning card.",
+      },
+    ],
+  },
+  {
+    id: "charge-for-life",
+    title: "A Charge for Life",
+    type: "speculative",
+    subject: "What if Rolex made a power bank?",
+    oneLiner:
+      "People who buy mechanical watches because the object will outlive them still place scuffed plastic power bricks beside them on hotel nightstands. A Charge for Life is a steel power bank designed to be kept and serviced, so the charging accessory no longer apologizes for sitting next to everything else they own.",
+    period: "2026",
+    problem:
+      "Most charging accessories are designed to be replaced within two years. Capacity and wattage keep climbing, but the objects themselves stay disposable: plastic shells, sealed cells, no service path. For someone whose watch, pen, and luggage are chosen for permanence, that mismatch is the real friction. They do not need more milliamps. They need a charging object that belongs with the rest of their things.",
+    insight:
+      "Rolex's brand promise is not novelty. It is permanence, mechanical legibility, and authorized service over decades. Applied to a power bank, the luxury is not peak wattage. It is a case designed to be opened, a cell module designed to be replaced, and a readout that reads like a power-reserve hand rather than a disposable LED strip.",
+    principles: [
+      "Permanence over disposability",
+      "Mechanical legibility over digital percentage readouts",
+      "Serviceability as the real luxury, not the finish alone",
+      "The object should feel like something you charge a phone from, not something a phone outlives",
+      "Design packaging and materials for a ten-year service relationship, not a two-year replace cycle",
+    ],
+    concept:
+      "A Charge for Life is a squat cylinder in brushed 904L steel with a fluted bezel, visually close to a watch case until the recessed USB-C ports on the caseback appear. Unscrewing the bezel reveals a coiled braided steel-mesh cable stored under tension. Charge remaining is shown on a small analog gauge under sapphire crystal, with a sweeping hand calibrated like a power-reserve indicator. Cells are modular and meant to be swapped at an authorized service center. It ships in a fitted walnut travel case with a chamois cloth and a service booklet.",
+    tradeoffs:
+      "Steel is heavy, and airport security will notice. Charging is slower than a cheap anonymous brick because the internals prioritize thermal calm and cell longevity over peak wattage. Batteries degrade regardless of the case, so heirloom is aspirational rather than literal. The honest promise is that failing parts get replaced, not that the object never ages. Positioning risk remains if buyers expect immortal capacity rather than a serviceable shell.",
+    tags: ["Speculative", "Rolex", "Hardware", "Luxury", "Power", "Serviceability"],
+    color: "hsl(32 95% 44%)",
+    cover: {
+      src: base("charge-for-life", "cover.png"),
+      caption: "A Charge for Life hero: a steel power bank lit like a Datejust.",
+    },
+    gallery: [
+      {
+        src: base("charge-for-life", "01.png"),
+        caption: "Fluted bezel opens to a coiled steel-mesh cable bay.",
+      },
+      {
+        src: base("charge-for-life", "02.png"),
+        caption: "Analog charge gauge under sapphire, read like a power reserve.",
+      },
+      {
+        src: base("charge-for-life", "03.png"),
+        caption: "Walnut travel case, chamois, and service booklet for cell replacement.",
+      },
+    ],
+  },
+  {
     id: "rhode-frame",
     title: "Rhode Frame",
     type: "speculative",

@@ -146,6 +146,13 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
       "focus monitor",
       "rhode",
       "rhode frame",
+      "hermes",
+      "écoute",
+      "ecoute",
+      "rolex",
+      "charge for life",
+      "casio",
+      "dist finder",
     ],
     page: "/product-lab",
     section: null,
@@ -540,6 +547,9 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
       "trend-mill": "trend-mill",
       "fitbit-focus-monitor": "fitbit-focus-monitor",
       "rhode-frame": "rhode-frame",
+      "hermes-ecoute": "hermes-ecoute",
+      "charge-for-life": "charge-for-life",
+      "casio-dist-finder": "casio-dist-finder",
     };
     if (section && PRODUCT_LAB_SECTIONS[section]) {
       return {
