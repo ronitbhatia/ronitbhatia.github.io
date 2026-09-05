@@ -1,6 +1,6 @@
 /**
  * Product Lab case studies: product thinking archive.
- * Images live in /public/product-lab/<id>/ (cover.png + 01-03.png).
+ * Images live in /public/product-lab/<id>/ as optimized WebP (cover.webp + gallery).
  * Order: most recent work first.
  */
 
@@ -58,24 +58,24 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Redesign", "Apple", "iPhone Air", "Hardware", "Battery", "Thermal"],
     color: "hsl(207 89% 42%)",
     cover: {
-      src: base("iphone-air-monocoque", "cover.png"),
+      src: base("iphone-air-monocoque", "cover.webp"),
       caption: "Monocoque hero: the frame is the battery, so the center finally has room.",
     },
     gallery: [
       {
-        src: base("iphone-air-monocoque", "01.png"),
+        src: base("iphone-air-monocoque", "01.webp"),
         caption: "Cutaway: laminated structural cell inside the titanium perimeter band.",
       },
       {
-        src: base("iphone-air-monocoque", "02.png"),
+        src: base("iphone-air-monocoque", "02.webp"),
         caption: "Freed center: side-laid periscope under one flush camera window.",
       },
       {
-        src: base("iphone-air-monocoque", "03.png"),
+        src: base("iphone-air-monocoque", "03.webp"),
         caption: "Full-panel vapor chamber and MagSafe coils against the ring battery.",
       },
       {
-        src: base("iphone-air-monocoque", "04.png"),
+        src: base("iphone-air-monocoque", "04.webp"),
         caption: "Exterior: cherry-red Air body with dual-camera plateau and ultra-thin profile.",
       },
     ],
@@ -106,20 +106,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Casio", "Hardware", "Bluetooth", "Tracker", "Consumer Electronics"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("casio-dist-finder", "cover.png"),
+      src: base("casio-dist-finder", "cover.webp"),
       caption: "Dist Finder hero: a Casio-style tracker with distance on the object itself.",
     },
     gallery: [
       {
-        src: base("casio-dist-finder", "01.png"),
+        src: base("casio-dist-finder", "01.webp"),
         caption: "Coin-cell door: fingernail and coin-slot battery swap ritual.",
       },
       {
-        src: base("casio-dist-finder", "02.png"),
+        src: base("casio-dist-finder", "02.webp"),
         caption: "LCD modes: meters, proximity chevrons, and plain clock.",
       },
       {
-        src: base("casio-dist-finder", "03.png"),
+        src: base("casio-dist-finder", "03.webp"),
         caption: "Blister-card pegboard packing with keyring hole and optional clip.",
       },
     ],
@@ -150,20 +150,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Hermès", "Hardware", "Fashion", "Audio", "Craft"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("hermes-ecoute", "cover.png"),
+      src: base("hermes-ecoute", "cover.webp"),
       caption: "Écoute hero: a headset designed as a worn object, not a plastic accessory.",
     },
     gallery: [
       {
-        src: base("hermes-ecoute", "01.png"),
+        src: base("hermes-ecoute", "01.webp"),
         caption: "Folded travel state: cups rotate flat like a bag handle going down.",
       },
       {
-        src: base("hermes-ecoute", "02.png"),
+        src: base("hermes-ecoute", "02.webp"),
         caption: "Turn-lock size clasp and interchangeable leather cushions.",
       },
       {
-        src: base("hermes-ecoute", "03.png"),
+        src: base("hermes-ecoute", "03.webp"),
         caption: "Orange-box packing with dust bag, travel pouch, and reconditioning card.",
       },
     ],
@@ -194,20 +194,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Rolex", "Hardware", "Luxury", "Power", "Serviceability"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("charge-for-life", "cover.png"),
+      src: base("charge-for-life", "cover.webp"),
       caption: "A Charge for Life hero: a steel power bank lit like a Datejust.",
     },
     gallery: [
       {
-        src: base("charge-for-life", "01.png"),
+        src: base("charge-for-life", "01.webp"),
         caption: "Fluted bezel opens to a coiled steel-mesh cable bay.",
       },
       {
-        src: base("charge-for-life", "02.png"),
+        src: base("charge-for-life", "02.webp"),
         caption: "Analog charge gauge under sapphire, read like a power reserve.",
       },
       {
-        src: base("charge-for-life", "03.png"),
+        src: base("charge-for-life", "03.webp"),
         caption: "Walnut travel case, chamois, and service booklet for cell replacement.",
       },
     ],
@@ -238,20 +238,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Rhode", "Hardware", "Beauty", "Photography", "Consumer Electronics"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("rhode-digicam", "cover.png"),
+      src: base("rhode-digicam", "cover.webp"),
       caption: "Rhode Frame hero: a digital camera calibrated for skin tone and soft light.",
     },
     gallery: [
       {
-        src: base("rhode-digicam", "01.png"),
+        src: base("rhode-digicam", "01.webp"),
         caption: "Color pipeline built around skin tone accuracy under mixed lighting.",
       },
       {
-        src: base("rhode-digicam", "02.png"),
+        src: base("rhode-digicam", "02.webp"),
         caption: "Single-dial interface with three calibrated looks in place of filters.",
       },
       {
-        src: base("rhode-digicam", "03.png"),
+        src: base("rhode-digicam", "03.webp"),
         caption: "Companion app scoped to transfer and light cropping only.",
       },
     ],
@@ -282,20 +282,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Fitbit", "Hardware", "Health", "Workplace", "Sensors"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("fitbit-focus-monitor", "cover.png"),
+      src: base("fitbit-focus-monitor", "cover.webp"),
       caption: "Fitbit Focus Monitor hero: a desk display that looks after the person behind it.",
     },
     gallery: [
       {
-        src: base("fitbit-focus-monitor", "01.png"),
+        src: base("fitbit-focus-monitor", "01.webp"),
         caption: "Sensor stack: posture, eye strain, base heart rate, and ambient conditions.",
       },
       {
-        src: base("fitbit-focus-monitor", "02.png"),
+        src: base("fitbit-focus-monitor", "02.webp"),
         caption: "Focus Mode: notifications fade while deep work continues.",
       },
       {
-        src: base("fitbit-focus-monitor", "03.png"),
+        src: base("fitbit-focus-monitor", "03.webp"),
         caption: "Cause chain: late screen and long sitting linked to lighter sleep.",
       },
     ],
@@ -326,20 +326,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Google", "Fitness", "Trends", "Maps", "AI", "Hardware"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("trend-mill", "cover.png"),
+      src: base("trend-mill", "cover.webp"),
       caption: "Trend Mill hero: a treadmill driven by rising search interest.",
     },
     gallery: [
       {
-        src: base("trend-mill", "01.png"),
+        src: base("trend-mill", "01.webp"),
         caption: "Trends Routes: daily runs sourced from rising search themes.",
       },
       {
-        src: base("trend-mill", "02.png"),
+        src: base("trend-mill", "02.webp"),
         caption: "Ghost Run with Kinetic Search: anonymous runners plus mid-run Gemini.",
       },
       {
-        src: base("trend-mill", "03.png"),
+        src: base("trend-mill", "03.webp"),
         caption: "Google One Fit: ad-free Trends, longer Kinetic Search, no sponsor bumpers.",
       },
     ],
@@ -370,20 +370,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Nothing", "AI", "Hardware", "Glyph", "Voice"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("glyph-home", "cover.png"),
+      src: base("glyph-home", "cover.webp"),
       caption: "Glyph Home hero: voice-first assistant with dot-matrix feedback.",
     },
     gallery: [
       {
-        src: base("glyph-home", "01.png"),
+        src: base("glyph-home", "01.webp"),
         caption: "Exploded view of shell, mic ring, PCB, and base components.",
       },
       {
-        src: base("glyph-home", "02.png"),
+        src: base("glyph-home", "02.webp"),
         caption: "State system: idle, listening, thinking, and complete.",
       },
       {
-        src: base("glyph-home", "03.png"),
+        src: base("glyph-home", "03.webp"),
         caption: "Unboxing and phone pairing flow in Nothing design language.",
       },
     ],
@@ -414,20 +414,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Wikipedia", "Maps", "Commons", "Trust"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("commons-map", "cover.png"),
+      src: base("commons-map", "cover.webp"),
       caption: "Commons Map hero: navigation without paid placement.",
     },
     gallery: [
       {
-        src: base("commons-map", "01.png"),
+        src: base("commons-map", "01.webp"),
         caption: "Current model: paid placement can dominate local discovery.",
       },
       {
-        src: base("commons-map", "02.png"),
+        src: base("commons-map", "02.webp"),
         caption: "Place page with citations, discussion, and revision controls.",
       },
       {
-        src: base("commons-map", "03.png"),
+        src: base("commons-map", "03.webp"),
         caption: "Safety, restroom, and accessibility layers enabled together.",
       },
     ],
@@ -458,20 +458,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Redesign", "Healthcare", "Operations", "Service Design"],
     color: "hsl(207 89% 42%)",
     cover: {
-      src: base("still-waiting", "cover.png"),
+      src: base("still-waiting", "cover.webp"),
       caption: "Still Waiting hero: uncertainty as the primary patient pain point.",
     },
     gallery: [
       {
-        src: base("still-waiting", "01.png"),
+        src: base("still-waiting", "01.webp"),
         caption: "Current state: static room with limited status visibility.",
       },
       {
-        src: base("still-waiting", "02.png"),
+        src: base("still-waiting", "02.webp"),
         caption: "Care Queue card with stage, range, and family share option.",
       },
       {
-        src: base("still-waiting", "03.png"),
+        src: base("still-waiting", "03.webp"),
         caption: "Walk radius flow with return notification before appointment slot.",
       },
     ],
@@ -502,20 +502,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Speculative", "Patagonia", "Hardware", "Repair", "Sustainability"],
     color: "hsl(32 95% 44%)",
     cover: {
-      src: base("the-last-phone", "cover.png"),
+      src: base("the-last-phone", "cover.webp"),
       caption: "Worn In hero: a phone designed to stay in use for years.",
     },
     gallery: [
       {
-        src: base("the-last-phone", "01.png"),
+        src: base("the-last-phone", "01.webp"),
         caption: "Tool-less battery and modular component access.",
       },
       {
-        src: base("the-last-phone", "02.png"),
+        src: base("the-last-phone", "02.webp"),
         caption: "Repair desk as core service touchpoint.",
       },
       {
-        src: base("the-last-phone", "03.png"),
+        src: base("the-last-phone", "03.webp"),
         caption: "Stable OS update policy focused on security and performance.",
       },
     ],
@@ -546,20 +546,20 @@ export const productLabCases: ProductLabCase[] = [
     tags: ["Redesign", "Trust", "Accessibility", "Auth", "Web"],
     color: "hsl(207 89% 42%)",
     cover: {
-      src: base("select-all-buses", "cover.png"),
+      src: base("select-all-buses", "cover.webp"),
       caption: "Select All Buses hero: reframing web verification as a trust product.",
     },
     gallery: [
       {
-        src: base("select-all-buses", "01.png"),
+        src: base("select-all-buses", "01.webp"),
         caption: "Current flow: high-friction visual challenge at entry points.",
       },
       {
-        src: base("select-all-buses", "02.png"),
+        src: base("select-all-buses", "02.webp"),
         caption: "Trusted path with passkey and no puzzle step.",
       },
       {
-        src: base("select-all-buses", "03.png"),
+        src: base("select-all-buses", "03.webp"),
         caption: "Accessible fallback designed for screen reader completion.",
       },
     ],

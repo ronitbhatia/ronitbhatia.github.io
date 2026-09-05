@@ -32,7 +32,13 @@ function CaseImage({
             <code>{src.split("/").slice(-2).join("/")}</code>
           </div>
         ) : (
-          <img src={src} alt={alt} onError={() => setFailed(true)} loading="lazy" />
+          <img
+            src={src}
+            alt={alt}
+            onError={() => setFailed(true)}
+            loading="lazy"
+            decoding="async"
+          />
         )}
       </div>
       {caption && <figcaption className="product-lab-caption">{caption}</figcaption>}
