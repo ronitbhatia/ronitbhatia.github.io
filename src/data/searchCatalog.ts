@@ -377,6 +377,23 @@ export const searchEntries: SearchEntry[] = [
     target: { type: "timeline", windowId: "product-lab", entryId: "casio-dist-finder" },
     group: "Product Lab",
   },
+  {
+    id: "lab-iphone-air-monocoque",
+    keywords: [
+      "iphone air",
+      "monocoque",
+      "apple",
+      "structural battery",
+      "periscope",
+      "vapor chamber",
+      "thermal",
+      "redesign",
+    ],
+    title: "Monocoque: iPhone Air redesign",
+    description: "Redesign: structural frame battery frees the center for camera and cooling.",
+    target: { type: "timeline", windowId: "product-lab", entryId: "iphone-air-monocoque" },
+    group: "Product Lab",
+  },
 
   /* Education */
   {

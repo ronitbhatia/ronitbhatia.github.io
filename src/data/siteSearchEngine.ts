@@ -153,6 +153,8 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
       "charge for life",
       "casio",
       "dist finder",
+      "iphone air",
+      "monocoque",
     ],
     page: "/product-lab",
     section: null,
@@ -550,6 +552,7 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
       "hermes-ecoute": "hermes-ecoute",
       "charge-for-life": "charge-for-life",
       "casio-dist-finder": "casio-dist-finder",
+      "iphone-air-monocoque": "iphone-air-monocoque",
     };
     if (section && PRODUCT_LAB_SECTIONS[section]) {
       return {

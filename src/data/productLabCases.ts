@@ -33,6 +33,54 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "iphone-air-monocoque",
+    title: "Monocoque",
+    type: "redesign",
+    subject: "Redesign: iPhone Air frame as structural battery",
+    oneLiner:
+      "The iPhone Air's thinness comes with weak battery life, a single camera, and heat, because a flat battery, tall camera stack, and thermal mass all compete for the same center volume. Monocoque moves the battery into the structural metal band around the phone, so the freed interior can finally hold a flush periscope and a full-panel vapor chamber.",
+    period: "2026",
+    problem:
+      "Buyers who want the Air's thinness still get short battery life, one camera, and thermal throttling. The deeper issue is not any single weak spec. Apple's engineers are fighting over the same flat rectangle of internal volume for three things that all want the center of the phone: a big flat battery, a tall camera stack, and thermal mass. Every gram given to one starves the other two. That is why the Air overheats, ships with one camera, and dies early at the same time.",
+    insight:
+      "The fix is not to shrink one of the three competitors. It is to move one of them somewhere it was never competing for space: the edge. Electric vehicles already treat the chassis as a structural battery pack instead of bolting a separate box underneath. Applied to the Air, the titanium perimeter band can store charge while remaining the frame you grip, which frees the flat center for camera optics and heat spreading.",
+    principles: [
+      "Stop treating battery, camera, and thermal mass as competitors for the same volume",
+      "Find one of them a completely different physical place to live so the other two stop losing",
+      "Let a structural part of the phone do two jobs instead of adding a fourth component",
+      "Make the shape of the solution the design story, not a raw spec increase",
+      "Use the freed center for real optical zoom and full-panel cooling, not leftover fillers",
+    ],
+    concept:
+      "Monocoque reimagines the iPhone Air so the titanium perimeter band is a laminated structural battery cell, rigid enough to be the frame and able to store charge. With the flat battery slab gone, the center holds a periscope zoom lens on its side behind one unified camera window, flush with no second bump, plus a full-panel vapor chamber that spreads heat under the screen and dumps into the metal frame band as a passive heatsink. Because the battery is a ring, MagSafe coils sit directly against it with less air gap and waste heat than a coil stacked on a separate slab.",
+    tradeoffs:
+      "Structural batteries are real but immature. Energy density in a thin metal band is currently lower than a purpose-built flat lithium cell, so total capacity gain is not guaranteed on day one. Shipping first-generation structural-battery hardware at iPhone volumes is a genuine engineering and safety risk: a damaged frame is now a damaged battery, and a bent phone becomes a scarier failure mode. Repairability gets harder, because replacing the battery means replacing the entire structural frame. A flush side-laid periscope may also cost some maximum zoom versus a Pro tall module. The redesign solves the Air's three original sins at the cost of new, less familiar ones.",
+    tags: ["Redesign", "Apple", "iPhone Air", "Hardware", "Battery", "Thermal"],
+    color: "hsl(207 89% 42%)",
+    cover: {
+      src: base("iphone-air-monocoque", "cover.png"),
+      caption: "Monocoque hero: the frame is the battery, so the center finally has room.",
+    },
+    gallery: [
+      {
+        src: base("iphone-air-monocoque", "01.png"),
+        caption: "Cutaway: laminated structural cell inside the titanium perimeter band.",
+      },
+      {
+        src: base("iphone-air-monocoque", "02.png"),
+        caption: "Freed center: side-laid periscope under one flush camera window.",
+      },
+      {
+        src: base("iphone-air-monocoque", "03.png"),
+        caption: "Full-panel vapor chamber and MagSafe coils against the ring battery.",
+      },
+      {
+        src: base("iphone-air-monocoque", "04.png"),
+        caption: "Exterior: cherry-red Air body with dual-camera plateau and ultra-thin profile.",
+      },
+    ],
+  },
+  {
     id: "casio-dist-finder",
     title: "Dist Finder",
     type: "speculative",
