@@ -1,0 +1,37 @@
+.pixel-ronit { display: block; width: 112px; height: 116px; flex-shrink: 0; overflow: hidden; image-rendering: pixelated; pointer-events: none; }
+.ronit-label { display: block; font: 10px/1.5 monospace; text-transform: uppercase; letter-spacing: .12em; color: #65715f; }
+.ronit-hello { display: flex; align-items: center; gap: 10px; margin: 16px 0 22px; width: fit-content; }
+.ronit-wave { flex-shrink: 0; border-radius: 18px; transform-origin: bottom center; }
+.ronit-wave .pixel-ronit { width: 100px; height: 104px; }
+.ronit-wave:hover, .ronit-wave:focus-visible { animation: ronit-greeting .6s ease-in-out; }
+.ronit-speech { position: relative; background: #e1ead8; border: 1px solid #c4d1b8; padding: 13px 18px; border-radius: 16px 16px 16px 3px; }
+.ronit-speech p { font-size: 14px; margin: 3px 0; }
+.ronit-hint { color: #66705e; font-size: 10px; }
+.ronit-note { display: flex; align-items: center; gap: 6px; max-width: 340px; font-size: 13px; color: #606859; }
+.ronit-note .pixel-ronit { width: 85px; height: 92px; }
+.ronit-note p { margin: 0; max-width: 225px; font-size: inherit; }
+.ronit-discovery { display: flex; align-items: center; gap: 14px; padding: 20px 24px; margin: 35px 0 0; background: #eee9de; border: 1px solid #d9d5c9; border-radius: 3px 24px 24px 24px; color: #232923; }
+.ronit-discovery p { margin: 4px 0 10px; font-size: 20px; font-weight: 500; }
+.ronit-discovery p a { text-decoration: underline; text-decoration-color: #a9b19c; text-underline-offset: 5px; }
+.ronit-discovery button { font-size: 12px; min-height: 36px; border-bottom: 1px solid #8f9a83; }
+.ronit-discovery button:hover { color: #a43b20; }
+.ronit-discovery-compact { margin: 12px 0 0; padding: 8px 14px; gap: 8px; }
+.ronit-discovery-compact .pixel-ronit { width: 62px; height: 66px; }
+.ronit-discovery-compact p { font-size: 14px; margin: 2px 0; }
+.ronit-discovery-compact button { min-height: 32px; font-size: 11px; }
+.spotlight-launcher .pixel-ronit { width: 48px; height: 50px; margin: -8px -6px -5px -4px; }
+.spotlight-top .pixel-ronit { width: 55px; height: 58px; }
+.studio-contact .ronit-note { color: inherit; margin-bottom: 20px; }
+@keyframes ronit-greeting { 25% { transform: rotate(-5deg) translateY(-3px); } 65% { transform: rotate(4deg) translateY(-3px); } }
+@media (max-width: 600px) { .ronit-hello { gap: 0; } .ronit-wave .pixel-ronit { width: 76px; height: 82px; } .ronit-speech { padding: 10px 12px; } .ronit-speech p { font-size: 12px; } .ronit-discovery { padding: 14px; gap: 4px; } .ronit-discovery .pixel-ronit { width: 85px; height: 90px; } .ronit-discovery p { font-size: 17px; } .ronit-discovery-compact .pixel-ronit { width: 54px; height: 57px; } .ronit-discovery-compact p { font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .ronit-wave:hover, .ronit-wave:focus-visible { animation: none; } }
+.ronit-auto { animation: ronit-greeting .7s ease-in-out; }
+.ronit-auto.is-paused { animation: none; }
+.ronit-dialogue { animation: ronit-dialogue-in .35s ease-out; }
+.ronit-speech { min-height: 94px; width: 290px; max-width: calc(100vw - 135px); }
+.ronit-pause { min-height: 24px; padding: 2px 6px; margin-left: -6px; text-decoration: underline; text-underline-offset: 3px; }
+@keyframes ronit-dialogue-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .ronit-auto, .ronit-dialogue { animation: none !important; } }
+.ronit-discovery > div { min-width: 0; }
+.ronit-discovery p.ronit-discovery-description { max-width: 65ch; font-size: 14px; line-height: 1.6; font-weight: 400; color: #606859; margin: 6px 0 10px; }
+.ronit-discovery-compact p.ronit-discovery-description { font-size: 12px; margin: 5px 0; }

@@ -1,0 +1,144 @@
+import PersonalTrail from "@/components/studio/PersonalTrail";
+import ProjectMarginNote, { ProductLabMarginNote } from "@/components/studio/ProjectMarginNote";
+import { scrollToStudioTop } from "@/components/studio/scrollMemory";
+import { RonitHello, RonitNote, RonitDiscovery } from "@/components/studio/PixelRonit";
+import { useEffect, useState } from "react";
+import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
+import { StudioExperience, StudioInitiatives, StudioEducation } from "@/components/studio/StudioBackground";
+import StudioSkills from "@/components/studio/StudioSkills";
+import StudioNav from "@/components/studio/StudioNav";
+import { projects } from "@/data/projects";
+import { productLabCases } from "@/data/productLabCases";
+import "@/styles/studio.css";
+
+const selectedProjects = projects.filter((project) => [12, 11, 1].includes(project.id));
+const selectedConcepts = productLabCases.slice(0, 3);
+
+export default function Studio() {
+  const [showAllProjects, setShowAllProjects] = useState(() => { try { return sessionStorage.getItem("studio-all-projects") === "true"; } catch { return false; } });
+  const [showAllIdeas, setShowAllIdeas] = useState(() => { try { return sessionStorage.getItem("studio-all-ideas") === "true"; } catch { return false; } });
+  useEffect(() => { try { sessionStorage.setItem("studio-all-projects", String(showAllProjects)); sessionStorage.setItem("studio-all-ideas", String(showAllIdeas)); } catch { /* Storage may be disabled. */ } }, [showAllProjects, showAllIdeas]);
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = "Ronit Amar Bhatia | Engineering × Product";
+    return () => { document.title = previousTitle; };
+  }, []);
+
+  return (
+    <div className="studio" id="studio-top" data-scroll-page={window.location.pathname}>
+      <a className="studio-skip" href="#studio-main">Skip to content</a>
+      <header className="studio-header">
+        <a className="studio-brand" href="#studio-top" onClick={scrollToStudioTop} aria-label="Ronit Amar Bhatia, back to top">
+          <span className="studio-monogram" aria-hidden="true">rb.</span>
+          <span>Ronit Amar Bhatia</span>
+        </a>
+        <StudioNav home />
+      </header>
+
+      <main id="studio-main" tabIndex={-1}>
+        <PersonalTrail />
+        <section className="studio-hero" aria-labelledby="studio-heading">
+          <div className="studio-eyebrow"><span className="studio-dot" /> Software engineering · AI · Product thinking</div>
+          <h1 id="studio-heading">Engineering.<br /><span className="studio-hero-second">With a product <em>mind.</em></span></h1>
+          <RonitHello />
+          <div className="studio-hero-bottom">
+            <p>I’m Ronit, a Forward Deployed Engineer. I help customers get systems into production and build products of my own, from on-device AI to an iOS learning app.</p>
+            <a className="studio-button" href="#work">Explore selected projects <ArrowDown size={17} aria-hidden="true" /></a>
+          </div>
+          <div className="studio-hero-links" aria-label="Resume and profiles">
+            <a className="studio-button" href="/studio/resume">View my resume <ArrowUpRight size={16} aria-hidden="true" /></a>
+            <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/ronitbhatia" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a className="studio-hero-email" href="mailto:roncy.bhatia@gmail.com">roncy.bhatia@gmail.com ↗</a>
+          </div>
+          <aside className="studio-current-role" aria-labelledby="current-role-heading">
+            <div><p className="studio-eyebrow"><span className="studio-dot" /> Currently at Y Meadows</p><h2 id="current-role-heading">Forward Deployed Engineer</h2><span className="studio-role-date">Jan 2026 to present</span></div>
+            <p>I work with customers to get their systems into production, from onboarding and integrations to the details that make a deployment reliable.</p>
+          </aside>
+          <div className="studio-hero-footnote"><span>From working systems to what could be.</span><span>Engineering × Product Studio</span></div>
+        </section>
+
+        <StudioExperience />
+
+        <section className="studio-section" id="work" aria-labelledby="work-heading">
+          <div className="studio-section-heading">
+            <div><p className="studio-eyebrow">02 / Projects</p><h2 id="work-heading">Ideas, in practice.</h2></div>
+            <RonitNote pose="build">The things I’ve spent a lot of time figuring out.</RonitNote>
+          </div>
+          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/work">Browse & filter projects ↗</a><span aria-live="polite">{showAllProjects ? projects.length : selectedProjects.length} of {projects.length} projects</span><button type="button" aria-expanded={showAllProjects} aria-controls="studio-project-collection" onClick={() => setShowAllProjects(!showAllProjects)}>{showAllProjects ? "Show selected projects" : "View all projects"} <ArrowDown size={15} aria-hidden="true" /></button></div>
+          <div className="studio-projects" id="studio-project-collection">
+            {(showAllProjects ? projects : selectedProjects).map((project, index) => {
+              const [name, subtitle] = project.name.split(": ");
+              return (
+                <article className="studio-project" key={project.id}>
+                  <div className="studio-project-meta"><span>{String(index + 1).padStart(2, "0")}</span><span>{project.status}</span></div>
+                  <h3><a href={`/studio/work/${project.id}`}>{name} <span aria-hidden="true">↗</span></a></h3>
+                  <p className="studio-project-subtitle">{subtitle}</p>
+                  <ProjectMarginNote projectId={project.id} />
+                  <div className="studio-tags">{project.stack.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
+                  <details className="studio-details">
+                    <summary>Read project overview <Plus size={17} aria-hidden="true" /></summary>
+                    <div className="studio-details-body"><p>{project.description}</p></div>
+                  </details>
+                  <div className="studio-project-links">
+                    {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${name} on GitHub (opens in a new tab)`}>GitHub <ArrowUpRight size={15} aria-hidden="true" /></a>}
+                    {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`${name}: ${project.demoLabel ?? "Visit project"} (opens in a new tab)`}>{project.demoLabel ?? "Visit project"} <ArrowUpRight size={15} aria-hidden="true" /></a>}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="studio-section studio-lab" id="lab" aria-labelledby="lab-heading">
+          <div className="studio-section-heading">
+            <div><p className="studio-eyebrow">03 / Product Lab</p><h2 id="lab-heading">A little “what if?”</h2></div>
+            <RonitNote pose="explore">This is where “what if” gets a sketch.</RonitNote>
+          </div>
+          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/lab">Browse & filter ideas ↗</a><span aria-live="polite">{showAllIdeas ? productLabCases.length : selectedConcepts.length} of {productLabCases.length} ideas</span><button type="button" aria-expanded={showAllIdeas} aria-controls="studio-idea-collection" onClick={() => setShowAllIdeas(!showAllIdeas)}>{showAllIdeas ? "Show selected ideas" : "View all ideas"} <ArrowDown size={15} aria-hidden="true" /></button></div>
+          <div className={`studio-lab-grid${showAllIdeas ? " studio-lab-grid-all" : ""}`} id="studio-idea-collection">
+            {(showAllIdeas ? productLabCases : selectedConcepts).map(concept => (
+              <article className="studio-concept" key={concept.id}>
+                <div className="studio-concept-image"><img src={concept.cover.src} alt={concept.cover.caption} loading="lazy" decoding="async" width="960" height="540" /></div>
+                <div className="studio-concept-meta"><span>{concept.type === "redesign" ? "Redesign" : "Speculative concept"}</span><span>{concept.period}</span></div>
+                <h3><a href={`/studio/lab/${concept.id}`}>{concept.title} <span aria-hidden="true">↗</span></a></h3>
+                <p className="studio-concept-subject">{concept.subject}</p>
+                <ProductLabMarginNote conceptId={concept.id} />
+                <details className="studio-details">
+                  <summary>Explore the idea <Plus size={17} aria-hidden="true" /></summary>
+                  <div className="studio-details-body"><p>{concept.oneLiner}</p><h4>Tradeoffs</h4><p>{concept.tradeoffs}</p></div>
+                </details>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <RonitDiscovery />
+        <StudioInitiatives />
+        <StudioEducation />
+        <StudioSkills />
+
+        <section className="studio-about studio-section" id="about" aria-labelledby="about-heading">
+          <div className="studio-about-image"><img src="/new-pic.png" alt="Ronit Amar Bhatia" loading="lazy" decoding="async" width="640" height="800" /></div>
+          <div className="studio-about-copy">
+            <p className="studio-eyebrow">07 / The person behind the work</p>
+            <h2 id="about-heading">The bigger picture.<br /><span>The finer details.</span></h2>
+            <p>I tend to get interested in the decisions around the code. When should a navigation tool speak up? What makes a flashcard worth keeping? Those questions have shaped my projects as much as the models and frameworks behind them.</p>
+            <p>Product Lab is where I give that curiosity a bit more room. Sometimes it leads to a phone redesign. Sometimes I end up wondering what a Bluetooth tracker would look like if Casio made it.</p>
+            <a className="studio-text-link" href="/studio/resume">Read my resume <ArrowUpRight size={18} aria-hidden="true" /></a>
+          </div>
+        </section>
+
+        <section className="studio-contact" id="contact" aria-labelledby="contact-heading">
+          <div><RonitNote pose="hello">You’ve met the pixel version. Say hi to the real one.</RonitNote><p className="studio-eyebrow">Have something in mind?</p><h2 id="contact-heading">Let’s make<br /><em>something matter.</em></h2></div>
+          <a className="studio-contact-link" href="mailto:roncy.bhatia@gmail.com"><span>Get in touch<span className="studio-email">roncy.bhatia@gmail.com</span></span><ArrowUpRight size={28} aria-hidden="true" /></a>
+        </section>
+      </main>
+
+      <footer className="studio-footer">
+        <span>© {new Date().getFullYear()} Ronit Amar Bhatia</span>
+        <div><a href="https://github.com/ronitbhatia" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="#studio-top" onClick={scrollToStudioTop}>Back to top ↑</a></div>
+      </footer>
+    </div>
+  );
+}

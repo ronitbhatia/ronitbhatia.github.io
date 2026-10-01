@@ -1,48 +1,42 @@
-# Ronit Amar Bhatia — Retro OS Portfolio
+# Ronit Amar Bhatia | Engineering × Product Studio
 
-Interactive portfolio styled as a desktop OS: windows, dock, menu bar, and in-browser “assistant” search over site content.
+A personal portfolio for engineering experience, software projects, product ideas, education, and skills. Pixel Ronit hosts the Studio, with Spotlight search, project discovery, a full-screen image viewer, and a browser-safe resume.
 
-## Live site
+## Development
 
-[ronitbhatia.github.io](https://ronitbhatia.github.io/)
-
-## Local development
-
-Requires [Node.js](https://nodejs.org/) (LTS recommended) and npm.
+Use Node.js 20 or newer and npm.
 
 ```sh
-git clone https://github.com/ronitbhatia/retro-os-portfolio.git
-cd retro-os-portfolio
-npm install
+npm ci
 npm run dev
 ```
 
-The dev server defaults to port **8080** (see `vite.config.ts`).
+The local server uses port 8080. Studio is the homepage at `/`; `/studio` remains a compatible alias. The former desktop interface has been removed entirely.
 
-### Scripts
+## Checks
 
-| Command        | Description              |
-| -------------- | ------------------------ |
-| `npm run dev`  | Start Vite dev server    |
-| `npm run build`| Production build → `dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint               |
-| `npm test`     | Run Vitest               |
+```sh
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm run verify:build
+```
+
+To inspect the production build without a development fallback:
+
+```sh
+python3 -m http.server 8081 --bind 127.0.0.1 --directory dist
+```
 
 ## Stack
 
-- **Vite** — build tooling
-- **React 18** + **TypeScript**
-- **Tailwind CSS**
-- **shadcn/ui** (Radix primitives)
-- **React Router**, **Framer Motion**, **TanStack Query**
+React, TypeScript, Vite, React Router, Framer Motion, Radix Dialog, Lucide icons, and Tailwind's CSS foundation. Studio styling lives in `src/styles`. Content and search live in `src/data`.
 
-## Deploy (GitHub Pages)
+## Deployment
 
-This repo includes **Deploy to GitHub Pages** (`.github/workflows/deploy-pages.yml`), which builds with `npm run build` and publishes `dist/`.
+The GitHub Pages workflow validates the code and production artifacts before publishing `dist/`. It targets a root-domain site at `https://ronitbhatia.github.io/`. GitHub Pages must use **GitHub Actions** as its source. Pushing to main triggers deployment.
 
-In the GitHub repo: **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from branch”), so the live site serves the production bundle instead of the dev `index.html` entry.
-
-## License
+See [launch acceptance](docs/LAUNCH-CHECKLIST.md) for review steps. Resume regeneration instructions are in `scripts/render-resume.py`; character provenance is in `public/pixel-ronit/README.md`.
 
 © Ronit Amar Bhatia. All rights reserved.

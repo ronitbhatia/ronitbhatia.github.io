@@ -491,40 +491,40 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
   const { page, section } = item;
 
   if (page === "/") {
-    if (!section || section === "about") return { type: "window", id: "home" };
-    if (section === "resume") return { type: "window", id: "resume" };
-    if (section === "contact") return { type: "window", id: "contact" };
+    if (!section || section === "about") return { type: "section", id: "home" };
+    if (section === "resume") return { type: "section", id: "resume" };
+    if (section === "contact") return { type: "section", id: "contact" };
     if (section === "github") return { type: "external", url: "https://github.com/ronitbhatia" };
     if (section === "linkedin") return { type: "external", url: "https://www.linkedin.com/in/ronit-bhatia/" };
-    return { type: "window", id: "home" };
+    return { type: "section", id: "home" };
   }
 
   if (page === "/projects") {
     if (section && PROJECT_SECTION_TO_ID[section] !== undefined) {
       return { type: "project", projectId: PROJECT_SECTION_TO_ID[section]! };
     }
-    return { type: "window", id: "projects" };
+    return { type: "section", id: "projects" };
   }
 
   if (page === "/experience") {
     if (section && EXPERIENCE_SECTION_TO_ENTRY[section]) {
       return {
         type: "timeline",
-        windowId: "experience",
+        sectionId: "experience",
         entryId: EXPERIENCE_SECTION_TO_ENTRY[section]!,
       };
     }
-    return { type: "window", id: "experience" };
+    return { type: "section", id: "experience" };
   }
 
   if (page === "/education") {
     if (section === "cornell") {
-      return { type: "timeline", windowId: "education", entryId: "cornell" };
+      return { type: "timeline", sectionId: "education", entryId: "cornell" };
     }
     if (section === "coursework") {
-      return { type: "window", id: "education" };
+      return { type: "section", id: "education" };
     }
-    return { type: "window", id: "education" };
+    return { type: "section", id: "education" };
   }
 
   if (page === "/skills") {
@@ -532,11 +532,11 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
     if (section && skillSections.includes(section)) {
       return { type: "skills-section", sectionId: section };
     }
-    return { type: "window", id: "skills" };
+    return { type: "section", id: "skills" };
   }
 
   if (page === "/initiative-impact") {
-    return { type: "window", id: "initiative-impact" };
+    return { type: "section", id: "initiative-impact" };
   }
 
   if (page === "/product-lab") {
@@ -557,14 +557,14 @@ export function resolveSiteIndexToTarget(item: SiteIndexItem): SearchTarget {
     if (section && PRODUCT_LAB_SECTIONS[section]) {
       return {
         type: "timeline",
-        windowId: "product-lab",
+        sectionId: "product-lab",
         entryId: PRODUCT_LAB_SECTIONS[section],
       };
     }
-    return { type: "window", id: "product-lab" };
+    return { type: "section", id: "product-lab" };
   }
 
-  return { type: "window", id: "home" };
+  return { type: "section", id: "home" };
 }
 
 function stableEntryId(item: SiteIndexItem): string {

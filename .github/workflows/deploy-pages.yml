@@ -27,7 +27,11 @@ jobs:
           node-version: "20"
           cache: npm
       - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
       - run: npm run build
+      - run: npm run verify:build
       - name: Ensure production index (not Vite dev entry)
         run: |
           if grep -q 'src/main.tsx' dist/index.html; then

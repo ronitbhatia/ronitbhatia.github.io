@@ -1,0 +1,15 @@
+// Product reasoning grounded in productLabCases.ts; concepts, not validated outcomes.
+export const productLabNotes: Record<string, string> = {
+  "iphone-air-monocoque": "I reframed battery, camera, and cooling as a shared space constraint. The concept explores architectural differentiation, but safety, repair cost, and viable capacity would determine whether that differentiation creates customer value.",
+  "casio-dist-finder": "I focused on the nearby-item use case, putting the answer on the tracker itself. That narrower promise fits Casio’s practical appeal, provided the display communicates Bluetooth’s uncertainty rather than implying exact measurement.",
+  "hermes-ecoute": "I built the concept around a customer who values wearability and long ownership. Reconditioning and replaceable cushions extend the brand’s service proposition into audio, with acoustic performance an explicit competitive tradeoff.",
+  "charge-for-life": "I positioned serviceability as the reason to pay a premium. Replaceable cells make the ownership promise concrete; the proposition depends on customers valuing longevity enough to accept greater weight and slower charging.",
+  "rhode-frame": "I chose a narrow customer job: reproducing the brand’s skin-tone and lighting aesthetic. The concept prioritises that result over a broad feature set, making demand for dedicated hardware the key assumption to validate.",
+  "fitbit-focus-monitor": "I placed the intervention where desk habits form, rather than only reporting their effects later. Adoption depends on useful adjustments that protect focus, with sensing optional so wellbeing does not become perceived surveillance.",
+  "trend-mill": "I used search curiosity as the reason to return, drawing on Google’s existing services instead of an instructor-led model. Adaptive answer length supports the workout; privacy and long-term hardware support remain adoption constraints.",
+  "glyph-home": "I treated trust as an adoption requirement. Visible listening states and physical mute give users control at the moment of use; a screen-free interface deliberately gives up rich visual answers.",
+  "commons-map": "I made information governance the differentiator: citations, revision history, and dispute resolution. The model’s viability depends on reliable local coverage and sustainable funding, not just the absence of sponsored pins.",
+  "still-waiting": "I targeted uncertainty, a problem the service can address without increasing clinical capacity. Live stages and realistic time ranges support patient planning; staff must be able to keep that promise operationally.",
+  "the-last-phone": "I made continued ownership the product goal. Modular repairs and sustained software support must work together, backed by a business model that can fund service without depending on frequent replacement.",
+  "select-all-buses": "I reserved verification friction for sessions that warrant it. The product decision must balance completion, abuse prevention, and accessibility, with a usable recovery path for people who cannot use the trusted route.",
+};

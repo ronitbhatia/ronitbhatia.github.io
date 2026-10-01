@@ -1,6 +1,6 @@
 /**
- * Shared search index for the desktop assistant (formerly Spotlight).
- * Timeline targets deep-link into Experience / Education / Initiative windows.
+ * Search catalog for Studio Spotlight.
+ * Timeline targets link to experience, education, and initiative sections.
  */
 
 import {
@@ -9,13 +9,13 @@ import {
   normalizeSearchInput,
 } from "./searchQueryUtils";
 
-export type TimelineWindowId = "experience" | "education" | "initiative-impact" | "product-lab";
+export type TimelineSectionId = "experience" | "education" | "initiative-impact" | "product-lab";
 
 export type SearchTarget =
-  | { type: "window"; id: string }
+  | { type: "section"; id: string }
   | { type: "external"; url: string }
   | { type: "action"; action: "downloadResume" | "copyEmail" }
-  | { type: "timeline"; windowId: TimelineWindowId; entryId: string }
+  | { type: "timeline"; sectionId: TimelineSectionId; entryId: string }
   | { type: "project"; projectId: number }
   | { type: "skills-section"; sectionId: string };
 
@@ -46,7 +46,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["home", "about", "me", "who am i", "bio", "summary"],
     title: "Home",
     description: "Overview of Ronit Amar Bhatia, software engineer & ML enthusiast.",
-    target: { type: "window", id: "home" },
+    target: { type: "section", id: "home" },
     group: "About",
   },
   {
@@ -54,7 +54,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["project", "projects", "portfolio", "work", "treadwell", "quivlo", "unclogai", "voyagelog", "lenscraft", "startup planner", "taskify", "gdelt"],
     title: "Projects",
     description: "All featured projects, from Treadwell to UnclogAI.",
-    target: { type: "window", id: "projects" },
+    target: { type: "section", id: "projects" },
     group: "Projects",
   },
   {
@@ -82,7 +82,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["experience", "work", "job", "internship", "career"],
     title: "Experience",
     description: "All professional experience and internships.",
-    target: { type: "window", id: "experience" },
+    target: { type: "section", id: "experience" },
     group: "Experience",
   },
   {
@@ -90,7 +90,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["education", "school", "university", "degree", "coursework"],
     title: "Education",
     description: "Cornell MEng and UC Davis CS background.",
-    target: { type: "window", id: "education" },
+    target: { type: "section", id: "education" },
     group: "Education",
   },
   {
@@ -98,7 +98,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["initiative", "impact", "leadership", "hackathon", "community"],
     title: "Initiative & Impact",
     description: "Leadership, hackathons, and community impact.",
-    target: { type: "window", id: "initiative-impact" },
+    target: { type: "section", id: "initiative-impact" },
     group: "Initiative & Impact",
   },
   {
@@ -114,7 +114,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Product Lab",
     description: "Archive of product thinking: redesigns and speculative concepts.",
-    target: { type: "window", id: "product-lab" },
+    target: { type: "section", id: "product-lab" },
     group: "Product Lab",
   },
   {
@@ -122,23 +122,23 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["skills", "skill", "python", "go", "sql", "javascript", "swift", "swiftui", "aws", "gcp", "llm", "ml", "ai", "gemma", "litert", "tools"],
     title: "Skills",
     description: "Technical skills, languages, ML & tools.",
-    target: { type: "window", id: "skills" },
+    target: { type: "section", id: "skills" },
     group: "Skills",
   },
   {
     id: "contact",
     keywords: ["contact", "email", "reach out", "get in touch"],
     title: "Contact",
-    description: "Contact window and message form.",
-    target: { type: "window", id: "contact" },
+    description: "Email and professional profile links.",
+    target: { type: "section", id: "contact" },
     group: "Contact",
   },
   {
-    id: "resume-window",
+    id: "resume-page",
     keywords: ["resume", "cv", "download resume", "open resume", "pdf"],
-    title: "Open Resume Window",
-    description: "Open in-app Resume window with embedded PDF & download.",
-    target: { type: "window", id: "resume" },
+    title: "View Resume",
+    description: "Read the resume or download the original PDF.",
+    target: { type: "section", id: "resume" },
     group: "Other",
   },
   {
@@ -188,7 +188,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["y meadows", "meadows", "implementation", "onboarding", "integrations", "salesforce", "jira", "customer", "full time"],
     title: "Y Meadows — Forward Deplpyed Engineer",
     description: "Jan 2026 – Present · Full time · Customer onboarding, integrations, deployment.",
-    target: { type: "timeline", windowId: "experience", entryId: "y-meadows" },
+    target: { type: "timeline", sectionId: "experience", entryId: "y-meadows" },
     group: "Experience",
   },
   {
@@ -196,7 +196,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["qalienai", "q alien", "ml engineer", "compliance", "ftc", "fda", "bedrock", "pgvector"],
     title: "QAlienAI — ML Engineer Intern",
     description: "Oct 2025 – Feb 2026 · LLMs, multimodal AI, compliance.",
-    target: { type: "timeline", windowId: "experience", entryId: "qalienai" },
+    target: { type: "timeline", sectionId: "experience", entryId: "qalienai" },
     group: "Experience",
   },
   {
@@ -204,7 +204,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["gallox", "semiconductor", "testing", "automation", "python"],
     title: "Gallox Semiconductors — Software Engineer Intern",
     description: "Nov 2024 – Jan 2025 · Test automation for power devices.",
-    target: { type: "timeline", windowId: "experience", entryId: "gallox" },
+    target: { type: "timeline", sectionId: "experience", entryId: "gallox" },
     group: "Experience",
   },
   {
@@ -212,7 +212,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["cornell cals", "cals", "research assistant", "ghg", "geopandas", "climate", "agriculture"],
     title: "Cornell CALS — Research Assistant",
     description: "Aug 2024 – Dec 2024 · ML for agricultural emissions.",
-    target: { type: "timeline", windowId: "experience", entryId: "cornell-cals" },
+    target: { type: "timeline", sectionId: "experience", entryId: "cornell-cals" },
     group: "Experience",
   },
   {
@@ -220,7 +220,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["colentai", "colent", "nlp", "bert", "fine-tuning", "taxonomy"],
     title: "ColentAI — Software Developer Intern",
     description: "Jan 2024 – Mar 2024 · NLP, LLM fine-tuning.",
-    target: { type: "timeline", windowId: "experience", entryId: "colentai" },
+    target: { type: "timeline", sectionId: "experience", entryId: "colentai" },
     group: "Experience",
   },
   {
@@ -228,7 +228,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["cardinality", "data analyst", "sql", "matlab", "first internship"],
     title: "Cardinality-AI — Data Analyst Intern",
     description: "June 2021 – Sept 2021 · Data pipelines, SQL.",
-    target: { type: "timeline", windowId: "experience", entryId: "cardinality-ai" },
+    target: { type: "timeline", sectionId: "experience", entryId: "cardinality-ai" },
     group: "Experience",
   },
 
@@ -238,7 +238,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["captcha", "select all buses", "bot", "passkey", "handshake", "accessibility"],
     title: "Select All Buses: CAPTCHA redesign",
     description: "Stop making humans do machine work.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "select-all-buses" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "select-all-buses" },
     group: "Product Lab",
   },
   {
@@ -246,7 +246,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["patagonia", "phone", "repair", "the last phone", "worn in", "sustainability"],
     title: "The Last Phone: Patagonia smartphone",
     description: "Speculative: a phone designed to be kept.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "the-last-phone" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "the-last-phone" },
     group: "Product Lab",
   },
   {
@@ -254,7 +254,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["waiting room", "clinic", "queue", "healthcare", "still waiting", "eta"],
     title: "Still Waiting: clinic queue redesign",
     description: "The pain is not the wait. The pain is not knowing.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "still-waiting" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "still-waiting" },
     group: "Product Lab",
   },
   {
@@ -262,7 +262,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["wikipedia", "maps", "commons", "navigation", "sponsored pins", "local knowledge"],
     title: "Commons Map: Wikipedia maps",
     description: "Speculative: navigation as a commons, no ads.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "commons-map" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "commons-map" },
     group: "Product Lab",
   },
   {
@@ -270,7 +270,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["nothing", "glyph home", "ai assistant", "smart speaker", "glyph", "voice", "carl pei"],
     title: "Glyph Home: Nothing AI assistant",
     description: "Speculative: voice-first AI with Glyph state feedback.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "glyph-home" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "glyph-home" },
     group: "Product Lab",
   },
   {
@@ -287,7 +287,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Trend Mill: Google treadmill",
     description: "Speculative: Trends-powered routes and Kinetic Search for home cardio.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "trend-mill" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "trend-mill" },
     group: "Product Lab",
   },
   {
@@ -306,7 +306,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Fitbit Focus Monitor",
     description: "Speculative: a desk monitor that senses health and adjusts in real time.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "fitbit-focus-monitor" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "fitbit-focus-monitor" },
     group: "Product Lab",
   },
   {
@@ -323,7 +323,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Rhode Frame: Rhode digital camera",
     description: "Speculative: a camera calibrated for skin tone and soft light.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "rhode-frame" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "rhode-frame" },
     group: "Product Lab",
   },
   {
@@ -341,7 +341,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Écoute: Hermès headset",
     description: "Speculative: a headset designed as a worn object for reconditioning.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "hermes-ecoute" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "hermes-ecoute" },
     group: "Product Lab",
   },
   {
@@ -357,7 +357,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "A Charge for Life: Rolex power bank",
     description: "Speculative: a steel power bank designed to be kept and serviced.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "charge-for-life" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "charge-for-life" },
     group: "Product Lab",
   },
   {
@@ -374,7 +374,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Dist Finder: Casio Bluetooth tracker",
     description: "Speculative: a glanceable item finder with distance on the object itself.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "casio-dist-finder" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "casio-dist-finder" },
     group: "Product Lab",
   },
   {
@@ -391,7 +391,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Monocoque: iPhone Air redesign",
     description: "Redesign: structural frame battery frees the center for camera and cooling.",
-    target: { type: "timeline", windowId: "product-lab", entryId: "iphone-air-monocoque" },
+    target: { type: "timeline", sectionId: "product-lab", entryId: "iphone-air-monocoque" },
     group: "Product Lab",
   },
 
@@ -401,7 +401,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["cornell", "meng", "engineering management", "ivy", "ithaca"],
     title: "Cornell University — MEng Engineering Management",
     description: "Aug 2024 – May 2025 · Graduate degree.",
-    target: { type: "timeline", windowId: "education", entryId: "cornell" },
+    target: { type: "timeline", sectionId: "education", entryId: "cornell" },
     group: "Education",
   },
   {
@@ -409,7 +409,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["uc davis", "davis", "bachelor", "bs", "computer science", "undergrad"],
     title: "UC Davis — BS Computer Science",
     description: "Sept 2020 – June 2024 · Undergraduate.",
-    target: { type: "timeline", windowId: "education", entryId: "uc-davis" },
+    target: { type: "timeline", sectionId: "education", entryId: "uc-davis" },
     group: "Education",
   },
 
@@ -430,7 +430,7 @@ export const searchEntries: SearchEntry[] = [
     ],
     title: "Treadwell @ DeepMind x UK AI Agents Lab",
     description: "Aug 2026 · Solo on-device Gemma 4 hazard navigation for BLV users.",
-    target: { type: "timeline", windowId: "initiative-impact", entryId: "treadwell" },
+    target: { type: "timeline", sectionId: "initiative-impact", entryId: "treadwell" },
     group: "Initiative & Impact",
   },
   {
@@ -438,7 +438,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["conference buddy", "ai hackathon", "healthcare sales", "hackathon finalist"],
     title: "AI Hackathon — Conference Buddy",
     description: "Aug 2025 · Healthcare sales + AI prototype.",
-    target: { type: "timeline", windowId: "initiative-impact", entryId: "ai-hackathon" },
+    target: { type: "timeline", sectionId: "initiative-impact", entryId: "ai-hackathon" },
     group: "Initiative & Impact",
   },
   {
@@ -446,7 +446,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["ambassador", "unibuddy", "prospective students", "cornell meng"],
     title: "Cornell Student Ambassador",
     description: "Feb 2025 – Present · Prospective student outreach.",
-    target: { type: "timeline", windowId: "initiative-impact", entryId: "ambassador" },
+    target: { type: "timeline", sectionId: "initiative-impact", entryId: "ambassador" },
     group: "Initiative & Impact",
   },
   {
@@ -454,7 +454,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["pm club", "product management club", "outreach leader", "cornell graduate"],
     title: "Cornell Graduate PM Club — Outreach Leader",
     description: "Dec 2024 – May 2025 · Launched the club.",
-    target: { type: "timeline", windowId: "initiative-impact", entryId: "pm-club" },
+    target: { type: "timeline", sectionId: "initiative-impact", entryId: "pm-club" },
     group: "Initiative & Impact",
   },
   {
@@ -462,7 +462,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["consulting club", "merqube", "fintech", "cornell consulting"],
     title: "Cornell Consulting — MerQube project",
     description: "Nov 2024 – May 2025 · Market & value chain analysis.",
-    target: { type: "timeline", windowId: "initiative-impact", entryId: "consulting" },
+    target: { type: "timeline", sectionId: "initiative-impact", entryId: "consulting" },
     group: "Initiative & Impact",
   },
   {
@@ -470,7 +470,7 @@ export const searchEntries: SearchEntry[] = [
     keywords: ["talent 2.0", "johnson and johnson", "j&j", "vr onboarding", "hackathon finalist"],
     title: "Talent 2.0 Hackathon Finalist",
     description: "Nov 2024 · VR onboarding with J&J.",
-    target: { type: "timeline", windowId: "initiative-impact", entryId: "talent-hackathon" },
+    target: { type: "timeline", sectionId: "initiative-impact", entryId: "talent-hackathon" },
     group: "Initiative & Impact",
   },
 ];

@@ -1,0 +1,44 @@
+import { afterEach, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { CopyLink, ReadingProgress } from "@/components/studio/StudioDetailTools";
+import StudioImageViewer, { ImageButton } from "@/components/studio/StudioImageViewer";
+afterEach(() => { cleanup(); vi.restoreAllMocks(); });
+it("copies the current address and reports clipboard failure honestly", async () => {
+  const writeText = vi.fn().mockResolvedValue(undefined);
+  Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
+  render(<CopyLink />);
+  fireEvent.click(screen.getByRole("button"));
+  await screen.findByText("Copied");
+  expect(writeText).toHaveBeenCalledWith(window.location.href);
+  writeText.mockRejectedValue(new Error("Denied"));
+  fireEvent.click(screen.getByRole("button"));
+  expect(await screen.findByRole("status")).toHaveTextContent("Copy unavailable");
+});
+it("tracks the actual scrolling container and hides the line on short pages", () => {
+  const { container } = render(<div className="studio"><main><ReadingProgress /></main></div>);
+  const scroller = container.firstChild as HTMLElement;
+  const progress = screen.getByRole("progressbar", { hidden: true });
+  expect(progress).not.toBeVisible();
+  Object.defineProperties(scroller, { scrollHeight: { configurable: true, value: 2000 }, clientHeight: { value: 1000 }, scrollTop: { configurable: true, value: 500 } });
+  fireEvent.scroll(scroller);
+  expect(progress).toBeVisible();
+  expect(progress).toHaveAttribute("aria-valuenow", "50");
+  Object.defineProperty(scroller, "scrollTop", { value: 1200 });
+  fireEvent.scroll(scroller);
+  expect(progress).toHaveAttribute("aria-valuenow", "100");
+});
+it("opens the selected image, cycles by keyboard and restores focus on Escape", async () => {
+  const images = [{ src: "/one.webp", caption: "First sketch" }, { src: "/two.webp", caption: "Second sketch" }];
+  render(<StudioImageViewer images={images} title="Sketchbook">{open => images.map((image, index) => <ImageButton key={image.src} image={image} onClick={button => open(index, button)} />)}</StudioImageViewer>);
+  const trigger = screen.getByRole("button", { name: "Open full-size image: Second sketch" });
+  fireEvent.click(trigger);
+  const dialog = screen.getByRole("dialog");
+  expect(within(dialog).getByRole("img")).toHaveAttribute("src", "/two.webp");
+  fireEvent.keyDown(dialog, { key: "ArrowRight" });
+  expect(within(dialog).getByRole("img")).toHaveAttribute("src", "/one.webp");
+  fireEvent.click(within(dialog).getByRole("button", { name: "Previous image" }));
+  expect(within(dialog).getByRole("img")).toHaveAttribute("src", "/two.webp");
+  fireEvent.keyDown(dialog, { key: "Escape" });
+  await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+  expect(trigger).toHaveFocus();
+});

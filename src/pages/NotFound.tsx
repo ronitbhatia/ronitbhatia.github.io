@@ -1,25 +1,11 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { RonitNote } from "@/components/studio/PixelRonit";
+import StudioShell from "@/components/studio/StudioShell";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    document.title = "Ronit Amar Bhatia | Portfolio";
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
-    </div>
-  );
-};
-
-export default NotFound;
+export default function NotFound() {
+  return <StudioShell title="Page not found"><div className="studio-collection-intro">
+    <p className="studio-eyebrow">404 / A wrong turn</p>
+    <h1>This room isn’t here.</h1>
+    <RonitNote>I don’t think I built this room. Back to the Studio?</RonitNote>
+    <a className="studio-button" href="/">Return to Studio ↗</a>
+  </div></StudioShell>;
+}
