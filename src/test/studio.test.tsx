@@ -65,17 +65,19 @@ describe("Studio phase-one homepage", () => {
     render(<Studio />);
     const work = screen.getByRole("region", { name: "Ideas, in practice." });
     const lab = screen.getByRole("region", { name: "A little “what if?”" });
-    fireEvent.click(screen.getByRole("button", { name: "View all projects" }));
+    fireEvent.click(screen.getByRole("button", { name: "View all 12 projects" }));
     expect(within(work).getAllByRole("article")).toHaveLength(projects.length);
     expect(within(lab).getAllByRole("article")).toHaveLength(3);
-    fireEvent.click(screen.getByRole("button", { name: "View all ideas" }));
+    fireEvent.click(screen.getByRole("button", { name: "View all 12 ideas" }));
     expect(within(lab).getAllByRole("article")).toHaveLength(productLabCases.length);
     for (const concept of productLabCases) {
       expect(within(lab).getByRole("heading", { name: concept.title })).toBeInTheDocument();
       expect(existsSync(resolve("public", concept.cover.src.slice(1)))).toBe(true);
     }
     fireEvent.click(screen.getByRole("button", { name: "Show selected projects" }));
+    expect(screen.getByRole("heading", { name: "Ideas, in practice." })).toHaveFocus();
     fireEvent.click(screen.getByRole("button", { name: "Show selected ideas" }));
+    expect(screen.getByRole("heading", { name: "A little “what if?”" })).toHaveFocus();
     expect(within(work).getAllByRole("article")).toHaveLength(3);
     expect(within(lab).getAllByRole("article")).toHaveLength(3);
   });

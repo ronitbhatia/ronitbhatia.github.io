@@ -2,7 +2,7 @@ import PersonalTrail from "@/components/studio/PersonalTrail";
 import ProjectMarginNote, { ProductLabMarginNote } from "@/components/studio/ProjectMarginNote";
 import { scrollToStudioTop } from "@/components/studio/scrollMemory";
 import { RonitHello, RonitNote, RonitDiscovery } from "@/components/studio/PixelRonit";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
 import { StudioExperience, StudioInitiatives, StudioEducation } from "@/components/studio/StudioBackground";
 import StudioSkills from "@/components/studio/StudioSkills";
@@ -17,6 +17,14 @@ const selectedConcepts = productLabCases.slice(0, 3);
 export default function Studio() {
   const [showAllProjects, setShowAllProjects] = useState(() => { try { return sessionStorage.getItem("studio-all-projects") === "true"; } catch { return false; } });
   const [showAllIdeas, setShowAllIdeas] = useState(() => { try { return sessionStorage.getItem("studio-all-ideas") === "true"; } catch { return false; } });
+  const returnHeading = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    if (!returnHeading.current) return;
+    const heading = document.getElementById(returnHeading.current);
+    returnHeading.current = null;
+    heading?.focus({ preventScroll: true });
+    heading?.scrollIntoView({ block: "start", behavior: "instant" });
+  }, [showAllProjects, showAllIdeas]);
   useEffect(() => { try { sessionStorage.setItem("studio-all-projects", String(showAllProjects)); sessionStorage.setItem("studio-all-ideas", String(showAllIdeas)); } catch { /* Storage may be disabled. */ } }, [showAllProjects, showAllIdeas]);
   useEffect(() => {
     const previousTitle = document.title;
@@ -62,10 +70,10 @@ export default function Studio() {
 
         <section className="studio-section" id="work" aria-labelledby="work-heading">
           <div className="studio-section-heading">
-            <div><p className="studio-eyebrow">02 / Projects</p><h2 id="work-heading">Ideas, in practice.</h2></div>
+            <div><p className="studio-eyebrow">02 / Projects</p><h2 id="work-heading" tabIndex={-1}>Ideas, in practice.</h2></div>
             <RonitNote pose="build">The things I’ve spent a lot of time figuring out.</RonitNote>
           </div>
-          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/work">Browse & filter projects ↗</a><span aria-live="polite">{showAllProjects ? projects.length : selectedProjects.length} of {projects.length} projects</span><button type="button" aria-expanded={showAllProjects} aria-controls="studio-project-collection" onClick={() => setShowAllProjects(!showAllProjects)}>{showAllProjects ? "Show selected projects" : "View all projects"} <ArrowDown size={15} aria-hidden="true" /></button></div>
+          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/work">Browse & filter projects ↗</a><span aria-live="polite">{showAllProjects ? projects.length : selectedProjects.length} of {projects.length} projects</span></div>
           <div className="studio-projects" id="studio-project-collection">
             {(showAllProjects ? projects : selectedProjects).map((project, index) => {
               const [name, subtitle] = project.name.split(": ");
@@ -88,14 +96,15 @@ export default function Studio() {
               );
             })}
           </div>
+          <div className="studio-collection-footer"><button type="button" aria-expanded={showAllProjects} aria-controls="studio-project-collection" onClick={() => { if (showAllProjects) returnHeading.current = "work-heading"; setShowAllProjects(!showAllProjects); }}>{showAllProjects ? "Show selected projects" : `View all ${projects.length} projects`} <ArrowDown size={15} aria-hidden="true" /></button></div>
         </section>
 
         <section className="studio-section studio-lab" id="lab" aria-labelledby="lab-heading">
           <div className="studio-section-heading">
-            <div><p className="studio-eyebrow">03 / Product Lab</p><h2 id="lab-heading">A little “what if?”</h2></div>
+            <div><p className="studio-eyebrow">03 / Product Lab</p><h2 id="lab-heading" tabIndex={-1}>A little “what if?”</h2></div>
             <RonitNote pose="explore">This is where “what if” gets a sketch.</RonitNote>
           </div>
-          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/lab">Browse & filter ideas ↗</a><span aria-live="polite">{showAllIdeas ? productLabCases.length : selectedConcepts.length} of {productLabCases.length} ideas</span><button type="button" aria-expanded={showAllIdeas} aria-controls="studio-idea-collection" onClick={() => setShowAllIdeas(!showAllIdeas)}>{showAllIdeas ? "Show selected ideas" : "View all ideas"} <ArrowDown size={15} aria-hidden="true" /></button></div>
+          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/lab">Browse & filter ideas ↗</a><span aria-live="polite">{showAllIdeas ? productLabCases.length : selectedConcepts.length} of {productLabCases.length} ideas</span></div>
           <div className={`studio-lab-grid${showAllIdeas ? " studio-lab-grid-all" : ""}`} id="studio-idea-collection">
             {(showAllIdeas ? productLabCases : selectedConcepts).map(concept => (
               <article className="studio-concept" key={concept.id}>
@@ -111,6 +120,7 @@ export default function Studio() {
               </article>
             ))}
           </div>
+          <div className="studio-collection-footer"><button type="button" aria-expanded={showAllIdeas} aria-controls="studio-idea-collection" onClick={() => { if (showAllIdeas) returnHeading.current = "lab-heading"; setShowAllIdeas(!showAllIdeas); }}>{showAllIdeas ? "Show selected ideas" : `View all ${productLabCases.length} ideas`} <ArrowDown size={15} aria-hidden="true" /></button></div>
         </section>
 
         <RonitDiscovery />
