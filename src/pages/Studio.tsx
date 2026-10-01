@@ -48,16 +48,20 @@ export default function Studio() {
         <section className="studio-hero" aria-labelledby="studio-heading">
           <div className="studio-eyebrow"><span className="studio-dot" /> Software engineering · AI · Product thinking</div>
           <h1 id="studio-heading">Engineering.<br /><span className="studio-hero-second">With a product <em>mind.</em></span></h1>
-          <RonitHello />
           <div className="studio-hero-bottom">
-            <p>I’m Ronit, a Forward Deployed Engineer. I help customers get systems into production and build products of my own, from on-device AI to an iOS learning app.</p>
-            <a className="studio-button" href="#work">Explore selected projects <ArrowDown size={17} aria-hidden="true" /></a>
-          </div>
-          <div className="studio-hero-links" aria-label="Resume and profiles">
-            <a className="studio-button" href="/studio/resume">View my resume <ArrowUpRight size={16} aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            <a href="https://github.com/ronitbhatia" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a className="studio-hero-email" href="mailto:roncy.bhatia@gmail.com">roncy.bhatia@gmail.com ↗</a>
+            <div className="studio-hero-intro">
+              <p>I’m Ronit, a Forward Deployed Engineer. I help customers get systems into production and build products of my own, from on-device AI to an iOS learning app.</p>
+              <div className="studio-hero-actions">
+                <a className="studio-button" href="#work">Explore projects <ArrowDown size={17} aria-hidden="true" /></a>
+                <a className="studio-button studio-button-outline" href="/studio/resume">View my resume <ArrowUpRight size={16} aria-hidden="true" /></a>
+              </div>
+              <div className="studio-hero-links" aria-label="Profiles and contact">
+                <a href="https://www.linkedin.com/in/ronit-bhatia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a href="https://github.com/ronitbhatia" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                <a className="studio-hero-email" href="mailto:roncy.bhatia@gmail.com">roncy.bhatia@gmail.com ↗</a>
+              </div>
+            </div>
+            <div className="studio-hero-host"><RonitHello /></div>
           </div>
           <aside className="studio-current-role" aria-labelledby="current-role-heading">
             <div><p className="studio-eyebrow"><span className="studio-dot" /> Currently at Y Meadows</p><h2 id="current-role-heading">Forward Deployed Engineer</h2><span className="studio-role-date">Jan 2026 to present</span></div>
