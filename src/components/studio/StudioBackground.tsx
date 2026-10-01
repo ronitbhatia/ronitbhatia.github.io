@@ -1,3 +1,4 @@
+import { ronitContexts } from "./useRonitContext";
 import { RonitNote } from "./PixelRonit";
 import StudioSkills from "./StudioSkills";
 import { experiences, education, initiatives } from "@/data/background";
@@ -5,7 +6,7 @@ import { experiences, education, initiatives } from "@/data/background";
 export function StudioExperience() {
   return (
     <section className="studio-section" id="experience" aria-labelledby="experience-heading">
-      <div className="studio-section-heading"><div><p className="studio-eyebrow">01 / Experience</p><h2 id="experience-heading">Where I’ve worked.</h2></div><RonitNote pose="build">From customer onboarding to production.</RonitNote></div>
+      <div className="studio-section-heading"><div><p className="studio-eyebrow">01 / Experience</p><h2 id="experience-heading">Where I’ve worked.</h2></div><RonitNote pose={ronitContexts.experience.pose}>{ronitContexts.experience.note}</RonitNote></div>
       <div className="studio-timeline">{experiences.map((entry, index) => <article id={`experience-${entry.id}`} key={entry.id} className="studio-timeline-entry">
         <div className="studio-timeline-date">{index === 0 && <span className="studio-current-label">Current role</span>}<p>{entry.period}</p><p>{entry.location} · {entry.type}</p></div>
         <div><h3>{entry.role}</h3><p className="studio-entry-company">{entry.company}</p><p>{entry.description}</p><div className="studio-tags">{entry.tech.map(tag => <span key={tag}>{tag}</span>)}</div><details className="studio-details"><summary>Responsibilities and achievements</summary><div className="studio-details-body">{entry.readMore.map(text => <p key={text}>{text}</p>)}</div></details></div>

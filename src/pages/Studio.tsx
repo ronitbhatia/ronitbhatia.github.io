@@ -1,3 +1,5 @@
+import { ronitContexts } from "@/components/studio/useRonitContext";
+import StudioBrand from "@/components/studio/StudioBrand";
 import PersonalTrail from "@/components/studio/PersonalTrail";
 import ProjectMarginNote, { ProductLabMarginNote } from "@/components/studio/ProjectMarginNote";
 import { scrollToStudioTop } from "@/components/studio/scrollMemory";
@@ -36,10 +38,7 @@ export default function Studio() {
     <div className="studio" id="studio-top" data-scroll-page={window.location.pathname}>
       <a className="studio-skip" href="#studio-main">Skip to content</a>
       <header className="studio-header">
-        <a className="studio-brand" href="#studio-top" onClick={scrollToStudioTop} aria-label="Ronit Amar Bhatia, back to top">
-          <span className="studio-monogram" aria-hidden="true">rb.</span>
-          <span>Ronit Amar Bhatia</span>
-        </a>
+        <StudioBrand home />
         <StudioNav home />
       </header>
 
@@ -75,7 +74,7 @@ export default function Studio() {
         <section className="studio-section" id="work" aria-labelledby="work-heading">
           <div className="studio-section-heading">
             <div><p className="studio-eyebrow">02 / Projects</p><h2 id="work-heading" tabIndex={-1}>Ideas, in practice.</h2></div>
-            <RonitNote pose="build">The things I’ve spent a lot of time figuring out.</RonitNote>
+            <RonitNote pose={ronitContexts.work.pose}>{ronitContexts.work.note}</RonitNote>
           </div>
           <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/work">Browse & filter projects ↗</a><span aria-live="polite">{showAllProjects ? projects.length : selectedProjects.length} of {projects.length} projects</span></div>
           <div className="studio-projects" id="studio-project-collection">
@@ -106,7 +105,7 @@ export default function Studio() {
         <section className="studio-section studio-lab" id="lab" aria-labelledby="lab-heading">
           <div className="studio-section-heading">
             <div><p className="studio-eyebrow">03 / Product Lab</p><h2 id="lab-heading" tabIndex={-1}>A little “what if?”</h2></div>
-            <RonitNote pose="explore">This is where “what if” gets a sketch.</RonitNote>
+            <RonitNote pose={ronitContexts.lab.pose}>{ronitContexts.lab.note}</RonitNote>
           </div>
           <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/lab">Browse & filter ideas ↗</a><span aria-live="polite">{showAllIdeas ? productLabCases.length : selectedConcepts.length} of {productLabCases.length} ideas</span></div>
           <div className={`studio-lab-grid${showAllIdeas ? " studio-lab-grid-all" : ""}`} id="studio-idea-collection">

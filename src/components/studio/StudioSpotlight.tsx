@@ -1,3 +1,4 @@
+import { useRonitContext } from "./useRonitContext";
 import { PixelRonit, RonitDiscovery, RonitNote } from "./PixelRonit";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -33,6 +34,7 @@ function Spotlight() {
   const reduced = useReducedMotion();
   const location = useLocation();
   const navigate = useNavigate();
+  const ronitContext = useRonitContext(location.pathname);
   const results = useMemo(() => searchStudio(query).slice(0, 12), [query]);
   const choices = query.trim() ? results : shortcuts;
   const selectedIndex = Math.min(active, Math.max(0, choices.length - 1));
@@ -87,7 +89,7 @@ function Spotlight() {
   return <Dialog.Root open={open} onOpenChange={changeOpen}>
     <Dialog.Trigger asChild>
       <motion.button ref={trigger} className="spotlight-launcher" layoutId={open ? undefined : "studio-spotlight"} style={{ visibility: open ? "hidden" : "visible" }} aria-label="Open Studio Spotlight" transition={{ duration: reduced ? 0 : .25 }}>
-        <PixelRonit pose={location.pathname.includes("/lab") || location.hash === "#lab" ? "explore" : location.pathname.includes("/work") || location.hash === "#work" ? "build" : "hello"} /><span className="spotlight-launcher-label"><Search size={15} aria-hidden="true" /> Find anything</span><kbd>⌘K</kbd>
+        <PixelRonit pose={ronitContext?.pose ?? "hello"} /><span className="spotlight-launcher-label"><Search size={15} aria-hidden="true" /> Find anything</span><kbd>⌘K</kbd>
       </motion.button>
     </Dialog.Trigger>
     <AnimatePresence>

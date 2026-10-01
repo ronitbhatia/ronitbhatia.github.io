@@ -1,3 +1,4 @@
+import StudioBrand from "./StudioBrand";
 import StudioNav from "./StudioNav";
 import { RonitNote } from "./PixelRonit";
 import { useEffect, type ReactNode } from "react";
@@ -12,7 +13,7 @@ export default function StudioShell({ title, children }: { title: string; childr
   return <div className="studio" data-scroll-page={window.location.pathname}>
     <a className="studio-skip" href="#collection-main">Skip to content</a>
     <header className="studio-header">
-      <a className="studio-brand" href="/studio"><span className="studio-monogram" aria-hidden="true">rb.</span><span>Ronit Amar Bhatia</span></a>
+      <StudioBrand />
       <StudioNav />
     </header>
     <main className="studio-collection-main" id="collection-main" tabIndex={-1}>{children}</main>

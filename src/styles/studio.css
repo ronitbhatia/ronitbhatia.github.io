@@ -355,3 +355,18 @@ ul.studio-toolbox-chips { list-style: none; display: flex; flex-wrap: wrap; gap:
   .studio-hero-host .ronit-speech { width: 245px; max-width: calc(100vw - 135px); }
   .studio-hero-actions .studio-button { gap: 14px; padding: 14px 16px; }
 }
+.studio-monogram { cursor: pointer; flex-shrink: 0; transition: background .2s; }
+.studio-monogram:hover { background: var(--studio-accent); }
+.studio-project h3 a, .studio-concept h3 a, .studio-archive-card h2 a { transition: color .2s; }
+.studio-project h3 a > span, .studio-concept h3 a > span, .studio-archive-card h2 a > span { display: inline-block; transition: transform .2s; }
+.studio-project:focus-within h3 a, .studio-concept:focus-within h3 a, .studio-archive-card:focus-within h2 a { color: var(--studio-accent); }
+.studio-project:focus-within h3 a > span, .studio-concept:focus-within h3 a > span, .studio-archive-card:focus-within h2 a > span { transform: translate(2px, -2px); }
+.studio-concept:focus-within .studio-concept-image img, .studio-archive-card:focus-within .studio-concept-image img { transform: scale(1.025); }
+@media (hover: hover) {
+  .studio-project:hover h3 a, .studio-concept:hover h3 a, .studio-archive-card:hover h2 a { color: var(--studio-accent); }
+  .studio-project:hover h3 a > span, .studio-concept:hover h3 a > span, .studio-archive-card:hover h2 a > span { transform: translate(2px, -2px); }
+  .studio-archive-card:hover .studio-concept-image img { transform: scale(1.025); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-project h3 a > span, .studio-concept h3 a > span, .studio-archive-card h2 a > span, .studio-concept .studio-concept-image img, .studio-archive-card .studio-concept-image img { transform: none !important; transition: none !important; }
+}

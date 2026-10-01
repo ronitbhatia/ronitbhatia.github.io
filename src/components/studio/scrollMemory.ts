@@ -11,5 +11,5 @@ export function scrollToStudioTop(event: MouseEvent<HTMLAnchorElement>) {
   event.preventDefault();
   const root = event.currentTarget.closest<HTMLElement>(".studio");
   root?.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
-  root?.querySelector<HTMLElement>(".studio-brand")?.focus({ preventScroll: true });
+  root?.querySelector<HTMLElement>(".studio-brand a, a.studio-brand")?.focus({ preventScroll: true });
 }
