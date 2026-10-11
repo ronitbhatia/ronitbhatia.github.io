@@ -1,5 +1,6 @@
 // Product reasoning grounded in productLabCases.ts; concepts, not validated outcomes.
 export const productLabNotes: Record<string, string> = {
+  "ipod-transport": "I made reduced distraction the reason to carry a second device. Familiar streaming services lower switching friction; the Burgundy finish tests whether restraint can feel premium. The key question is whether that focus is worth another purchase and charging habit.",
   "iphone-air-monocoque": "I reframed battery, camera, and cooling as a shared space constraint. The concept explores architectural differentiation, but safety, repair cost, and viable capacity would determine whether that differentiation creates customer value.",
   "casio-dist-finder": "I focused on the nearby-item use case, putting the answer on the tracker itself. That narrower promise fits Casio’s practical appeal, provided the display communicates Bluetooth’s uncertainty rather than implying exact measurement.",
   "hermes-ecoute": "I built the concept around a customer who values wearability and long ownership. Reconditioning and replaceable cushions extend the brand’s service proposition into audio, with acoustic performance an explicit competitive tradeoff.",

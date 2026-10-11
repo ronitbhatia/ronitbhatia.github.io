@@ -1,5 +1,6 @@
 // Engineering decisions grounded in projects.ts; no unverified outcome claims.
 export const projectNotes: Record<number, string> = {
+  13: "I treated the decision to intervene as part of the system design. Longer-session triggers and a minimum-context rule keep weak signals from becoming confident advice. Local rules and templates support offline use while keeping personal activity off a server.",
   12: "I constrained the model’s output before connecting it to speech: structured decisions, confidence gates, and duplicate suppression. Multi-second latency and untested user behaviour remain the barriers between a working demo and a dependable assistive system.",
   11: "I split capture, extraction, card planning, and persistence into separate services. Quality gates reject weak content before rendering, while editable cards give users a recovery path when generation misses the mark.",
   1: "I kept financial calculations outside the model boundary. AI selects the presentation; a deterministic TypeScript engine, schema validation, and template fallbacks preserve predictable behaviour when the AI layer fails.",

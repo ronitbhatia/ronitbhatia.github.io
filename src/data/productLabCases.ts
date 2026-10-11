@@ -33,6 +33,54 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "ipod-transport",
+    title: "iPod Transport",
+    type: "speculative",
+    subject: "What if iPod returned as a dedicated streaming player?",
+    oneLiner:
+      "A music player with Apple Music, Spotify, and a tactile edge dial, without the feeds and notifications of a phone. Transport pairs a deliberately limited interface with a satin Burgundy finish, treating focused listening as a contemporary choice rather than a nostalgic one.",
+    period: "2026",
+    problem:
+      "Opening a phone to choose a song also opens the door to messages, feeds, and notifications. Transport is for someone who wants streaming music without that pull, or a parent considering a first device for a child. The challenge is to make a separate player feel worth carrying when the phone already plays everything.",
+    insight:
+      "The reason to own another device has to be what it leaves out. Familiar music services lower the cost of switching, while a tactile control makes everyday listening less dependent on looking at a screen. A restrained Burgundy finish positions that limitation as an intentional choice, with the material character of a contemporary flagship rather than a toy-like throwback.",
+    principles: [
+      "Limit the device to listening, with no feeds or general-purpose app browsing",
+      "Keep familiar streaming libraries so focus does not require starting over",
+      "Give the thumb a distinct edge control for navigation and playback",
+      "Use satin Burgundy and a dark interface to make the object visually quiet",
+      "Keep track-change feedback brief and subtle, without notification-style flashes",
+    ],
+    concept:
+      "Transport is a speculative iPod for 2026, finished with a satin Burgundy back and matching edge dial. The cover places it against a near-black wine-red background, with album art filling the display and a tone-on-tone ‘Do One Thing’ engraving on the back. A vertical home menu offers Apple Music, Spotify, Podcasts, Downloaded, and Settings in warm off-white, with a faint Burgundy selection highlight. A recessed groove helps the thumb locate the touch-sensitive edge ring by feel. The offline Library keeps the same quiet palette; the idle screen shows only album art and a clock, with a thin Burgundy edge glow when a track changes.",
+    tradeoffs:
+      "A dedicated player asks people to buy, charge, and carry another object for something their phone already does. Burgundy supports a more premium position but may weaken the playful, giftable appeal of earlier iPods, especially for children; tying the finish to a flagship-style palette also risks dating the design. Streaming apps would need supported integrations, account setup, and licensing, while offline access would depend on each service’s subscription and download rules. A touch-sensitive ring provides a physical landmark but does not guarantee mechanical feedback or reliable eyes-free use. Those interactions, parental controls, and the value of carrying a second device would need validation before this could become a product.",
+    tags: ["Speculative", "Apple", "iPod", "Audio", "Hardware", "Digital Wellbeing"],
+    color: "hsl(345 42% 26%)",
+    cover: {
+      src: base("ipod-transport", "cover.webp"),
+      caption: "Transport in satin Burgundy: full-bleed album art against a near-black wine-red backdrop.",
+    },
+    gallery: [
+      {
+        src: base("ipod-transport", "01.webp"),
+        caption: "Home: five listening-focused destinations, warm off-white text, and a subtle Burgundy selection highlight.",
+      },
+      {
+        src: base("ipod-transport", "02.webp"),
+        caption: "Edge dial: a satin Burgundy touch-sensitive ring with a recessed groove to locate by feel.",
+      },
+      {
+        src: base("ipod-transport", "03.webp"),
+        caption: "Offline Library: downloaded listening in the same dark, quiet interface.",
+      },
+      {
+        src: base("ipod-transport", "04.webp"),
+        caption: "Idle state: album art and a clock, with a restrained bezel glow at a track change.",
+      },
+    ],
+  },
+  {
     id: "iphone-air-monocoque",
     title: "Monocoque",
     type: "redesign",

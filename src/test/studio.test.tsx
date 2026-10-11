@@ -31,7 +31,7 @@ describe("Studio phase-one homepage", () => {
 
   it("reuses original project descriptions and preserves their external destinations", () => {
     render(<Studio />);
-    for (const id of [12, 11, 1]) {
+    for (const id of [13, 12, 11]) {
       const project = projects.find((item) => item.id === id)!;
       const article = screen.getByRole("heading", { name: project.name.split(": ")[0] }).closest("article")!;
       expect(within(article).getByText(project.description)).toBeInTheDocument();
@@ -65,10 +65,10 @@ describe("Studio phase-one homepage", () => {
     render(<Studio />);
     const work = screen.getByRole("region", { name: "Ideas, in practice." });
     const lab = screen.getByRole("region", { name: "A little “what if?”" });
-    fireEvent.click(screen.getByRole("button", { name: "View all 12 projects" }));
+    fireEvent.click(screen.getByRole("button", { name: `View all ${projects.length} projects` }));
     expect(within(work).getAllByRole("article")).toHaveLength(projects.length);
     expect(within(lab).getAllByRole("article")).toHaveLength(3);
-    fireEvent.click(screen.getByRole("button", { name: "View all 12 ideas" }));
+    fireEvent.click(screen.getByRole("button", { name: `View all ${productLabCases.length} ideas` }));
     expect(within(lab).getAllByRole("article")).toHaveLength(productLabCases.length);
     for (const concept of productLabCases) {
       expect(within(lab).getByRole("heading", { name: concept.title })).toBeInTheDocument();

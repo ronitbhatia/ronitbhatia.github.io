@@ -15,6 +15,23 @@ const QUIVLO_APP_STORE = "https://apps.apple.com/us/app/quivlo/id6759634487";
 
 export const projects: Project[] = [
   {
+    id: 13,
+    name: "Syro: Private Reflection for Intentional Scrolling",
+    description:
+      "Shipped an iPhone app that turns selected Screen Time activity into timely check-ins and daily reflections. Syro helps people understand their scrolling without blocking apps or imposing limits. Activity processing, reflection generation, and storage stay on the device, with no account, tracking, or external AI service.",
+    readMore: [
+      "Intervention Design: Built the experience around longer sessions in apps and categories the user explicitly selects. Check-ins create an opportunity to pause rather than enforcing a behaviour change. Optional context, such as boredom, avoidance, habit, or needing a break, lets users explain the moment without assigning a positive or negative score.",
+      "Deterministic Reflection: Used rules and language templates to create concise daily reflections on the device. Reflections combine observed sessions with any context the user chooses to add, while withholding output when there is not enough context. This keeps the experience available offline and avoids dependence on an external AI service.",
+      "Privacy and Product Boundaries: Integrated Apple’s Screen Time technologies to monitor selected activity without reading content inside other apps. Screen Time access supports monitoring; notifications remain optional. Day, Week, and Month views let users revisit reflections without introducing another feed, cloud account, analytics pipeline, or advertising model.",
+    ],
+    stack: ["iOS", "Screen Time", "On-Device Processing", "Rule-Based Systems", "Privacy"],
+    github: "",
+    demo: "https://apps.apple.com/us/app/syro-gentle-nudges/id6813056429",
+    demoLabel: "App Store",
+    color: "hsl(280 60% 94%)",
+    status: "Live",
+  },
+  {
     id: 12,
     name: "Treadwell: On-Device Hazard Navigation with Gemma 4",
     description:
