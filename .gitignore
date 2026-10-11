@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local source artwork, excluded from Git and deployment
+/local-originals/

@@ -1,6 +1,6 @@
 # iPod Transport, Burgundy
 
-This folder contains the finished renders and their original PNG sources. To update a render, replace its WebP file. Keep the filenames below exactly as written. The homepage, Product Lab collection, case study, and full-screen gallery already use these paths, so no code edits are needed when replacing them.
+This folder contains only the WebP renders used by the website. To update a render, replace its WebP file. Keep the filenames below exactly as written. The homepage, Product Lab collection, case study, and full-screen gallery already use these paths, so no code edits are needed when replacing them.
 
 Use real **WebP** files, preferably **1600 × 900 (16:9)**, in sRGB. Aim for under 400 KB per image where practical. Convert PNG/JPEG exports to WebP; renaming the extension alone does not convert an image. Refresh the local preview after replacement.
 
@@ -12,7 +12,7 @@ Use real **WebP** files, preferably **1600 × 900 (16:9)**, in sRGB. Aim for und
 | `03.webp` | Offline Library | Downloaded library view in the same quiet dark palette, suitable for bedside, travel, or gym use. |
 | `04.webp` | Idle screen | Only album art and a clock, with a thin, restrained Burgundy bezel glow representing a track change. |
 
-The website uses the WebP files. Original sources are retained as `cover.png` and `1.png` through `4.png`. The concept is explicitly speculative; the copy does not assert that Burgundy is an official iPhone finish or that streaming integrations are available.
+The website uses the WebP files. Original PNG sources are kept locally in `local-originals/product-lab/ipod-transport/`, outside the public directory and ignored by Git. The concept is explicitly speculative; the copy does not assert that Burgundy is an official iPhone finish or that streaming integrations are available.
 
 Content: `src/data/productLabCases.ts` (id `ipod-transport`).
 Thinking note: `src/data/productLabNotes.ts`.
