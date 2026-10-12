@@ -33,6 +33,54 @@ const base = (id: string, file: string) => `/product-lab/${id}/${file}`;
 
 export const productLabCases: ProductLabCase[] = [
   {
+    id: "blackberry-keyline",
+    title: "Keyline",
+    type: "redesign",
+    subject: "Redesign: BlackBerry for focused, private communication",
+    oneLiner:
+      "A BlackBerry redesign built around a physical keyboard, selective reachability, and familiar apps. Keyline proposes a phone for people who value deliberate communication over more screen time, with individual ownership first and workplace management optional. Be reachable. On your terms.",
+    period: "2026",
+    problem:
+      "A lawyer, journalist, clinician, or founder may need to stay available to a few people without giving every app equal access to their attention. Full-screen phones make communication compete with feeds, while a second device adds friction if essential apps are missing. Keyline also serves people who prefer a real keyboard and want a phone that feels like a tool. The challenge is to earn a place in their working day without asking them to leave their existing services behind.",
+    insight:
+      "The opportunity is to separate BlackBerry’s distinctive interaction model from the burden of a separate app ecosystem. A keyboard, contact-based signals, and explicit hardware controls offer a focused reason to choose the device; compatibility reduces the cost of that choice. Designing setup for an individual makes adoption possible before an employer decides to support it.",
+    principles: [
+      "Make typing, focus, and user control the reason to buy, beyond nostalgia",
+      "Support the apps people already rely on instead of creating another closed ecosystem",
+      "Design for individual ownership, with enterprise management as an optional layer",
+      "Make privacy controls physically legible and independently verifiable",
+      "Let people choose who earns an interruption, with clear limits when radios are off",
+    ],
+    concept:
+      "Keyline is a matte black candy-bar phone with a shorter display above fixed, sculpted QWERTY keys. Touch-sensitive key surfaces double as a trackpad for scrolling and cursor control; holding a key launches a chosen action, such as B for a browser-free briefing or C for compose. A red LED signals only messages from selected contacts, with visibility intended for face-down desk use. A proposed hardware slider cuts power to the microphone, cameras, and radios. The Hub brings supported email, SMS, and messaging integrations into a priority inbox, with proposed on-device AI for sender-based sorting and short reply drafts. The platform direction combines Android app compatibility with a proposed QNX-based isolation layer for sensitive work data. A plain-box setup offers Work Mode and Life Mode without requiring an IT department, with optional managed enrolment and an iPhone companion mode to explore. The cover uses dark slate, hard side lighting, a dimmed screen, and the single red light, with only a small embossed logo on the back.",
+    tradeoffs:
+      "The keyboard permanently reduces display space, favouring typing over video, maps, and browsing. Android compatibility brings platform dependencies, while a hardened environment could create certification or compatibility problems for banking and streaming apps. The proposed QNX isolation layer is an architectural direction, not a validated security guarantee; implementation, updates, and independent audits would determine its credibility. Cutting radio power also ends reachability, so priority alerts cannot arrive in that state. A unified Hub depends on the access each messaging service permits, and an iPhone companion mode would need a clearly bounded integration. On-device AI still needs evaluation for reply quality, latency, and power use. A manufacturing partner, sustained software support, and viable niche economics matter more than launch-week nostalgia.",
+    tags: ["Redesign", "BlackBerry", "Hardware", "Privacy", "Productivity", "Mobile"],
+    color: "hsl(215 15% 25%)",
+    cover: {
+      src: base("blackberry-keyline", "cover.webp"),
+      caption: "Keyline: a matte black keyboard phone on dark slate, with a single red priority light. Be reachable. On your terms.",
+    },
+    gallery: [
+      {
+        src: base("blackberry-keyline", "01.webp"),
+        caption: "Physical QWERTY: sculpted keys, proposed touch-sensitive scrolling, and hold-to-launch shortcuts.",
+      },
+      {
+        src: base("blackberry-keyline", "02.webp"),
+        caption: "Visible controls: a contact-priority LED and proposed hardware power isolation. Radios off means unreachable.",
+      },
+      {
+        src: base("blackberry-keyline", "03.webp"),
+        caption: "The Hub: a proposed priority inbox across supported services, with local sorting and reply drafts.",
+      },
+      {
+        src: base("blackberry-keyline", "04.webp"),
+        caption: "Individual-first setup: Work Mode and Life Mode, with optional workplace enrolment and a proposed isolated work environment.",
+      },
+    ],
+  },
+  {
     id: "ipod-transport",
     title: "iPod Transport",
     type: "speculative",

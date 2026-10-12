@@ -7,7 +7,7 @@ const read = path => readFileSync(path, 'utf8');
 const walk = dir => readdirSync(dir).flatMap(name => { const path = join(dir, name); return statSync(path).isDirectory() ? walk(path) : [path]; });
 const files = walk(root);
 const documents = files.filter(path => path.endsWith('.html'));
-assert(documents.length === 33, 'Missing static route documents');
+assert(documents.length === 34, 'Missing static route documents');
 for (const path of documents) {
   const html = read(path);
   assert(!html.includes('/src/main.tsx'), `Development entry in ${path}`);
