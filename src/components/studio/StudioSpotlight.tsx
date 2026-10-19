@@ -13,7 +13,7 @@ import "@/styles/spotlight.css";
 const shortcuts = [
   { title: "Work", description: "Experience & roles", url: "/studio#experience", icon: BriefcaseBusiness },
   { title: "Projects", description: "Software & systems", url: "/studio#work", icon: BriefcaseBusiness },
-  { title: "Product Lab", description: "Ideas & experiments", url: "/studio/lab", icon: FlaskConical },
+  { title: "Product Lab", description: "Product case studies", url: "/studio/lab", icon: FlaskConical },
   { title: "Extracurricular", description: "Beyond the day job", url: "/studio#initiatives", icon: UserRound },
   { title: "Contact", description: "Start a conversation", url: "/studio#contact", icon: Mail },
 ];

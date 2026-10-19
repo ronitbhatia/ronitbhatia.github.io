@@ -36,7 +36,7 @@ export function RonitNote({ pose = "think", children }: { pose?: Pose; children:
 
 const discoveries = [
   ...projects.map(p => ({ title: p.name.split(": ")[0], description: projectSummaries[p.id], url: `/studio/work/${p.id}`, kind: "Project · From the workbench", pose: "build" as Pose })),
-  ...productLabCases.map(p => ({ title: p.title, description: p.subject, url: `/studio/lab/${p.id}`, kind: `${p.type === "redesign" ? "Redesign" : "Speculative concept"} · Product Lab`, pose: "explore" as Pose })),
+  ...productLabCases.map(p => ({ title: p.title, description: p.subject, url: `/studio/lab/${p.id}`, kind: `${p.type === "redesign" ? "Redesign case study" : "New product assessment"} · Product Lab`, pose: "explore" as Pose })),
 ];
 export function RonitDiscovery({ compact = false, exclude = "" }: { compact?: boolean; exclude?: string }) {
   const [pick, setPick] = useState<(typeof discoveries)[number] | null>(null);

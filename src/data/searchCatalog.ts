@@ -1,3 +1,4 @@
+import { productLabCases } from "./productLabCases";
 /**
  * Search catalog for Studio Spotlight.
  * Timeline targets link to experience, education, and initiative sections.
@@ -39,6 +40,122 @@ export interface SearchEntry {
 }
 
 const EMAIL = "roncy.bhatia@gmail.com";
+
+const productLabAliases: Record<string, string[]> = {
+  "select-all-buses": [
+    "captcha",
+    "select all buses",
+    "bot",
+    "passkey",
+    "handshake",
+    "accessibility"
+  ],
+  "the-last-phone": [
+    "patagonia",
+    "phone",
+    "repair",
+    "the last phone",
+    "worn in",
+    "sustainability"
+  ],
+  "still-waiting": [
+    "waiting room",
+    "clinic",
+    "queue",
+    "healthcare",
+    "still waiting",
+    "eta"
+  ],
+  "commons-map": [
+    "wikipedia",
+    "maps",
+    "commons",
+    "navigation",
+    "sponsored pins",
+    "local knowledge"
+  ],
+  "glyph-home": [
+    "nothing",
+    "glyph home",
+    "ai assistant",
+    "smart speaker",
+    "glyph",
+    "voice",
+    "carl pei"
+  ],
+  "trend-mill": [
+    "google",
+    "treadmill",
+    "trend mill",
+    "trends routes",
+    "kinetic search",
+    "ghost run",
+    "fitness",
+    "fitbit"
+  ],
+  "fitbit-focus-monitor": [
+    "fitbit",
+    "focus monitor",
+    "monitor",
+    "posture",
+    "eye strain",
+    "desk",
+    "workspace",
+    "sleep",
+    "stress",
+    "wellness"
+  ],
+  "rhode-frame": [
+    "rhode",
+    "rhode frame",
+    "camera",
+    "digital camera",
+    "beauty",
+    "skin tone",
+    "photography",
+    "digicam"
+  ],
+  "hermes-ecoute": [
+    "hermes",
+    "hermès",
+    "ecoute",
+    "écoute",
+    "headset",
+    "headphones",
+    "leather",
+    "fashion",
+    "audio"
+  ],
+  "charge-for-life": [
+    "rolex",
+    "power bank",
+    "charge for life",
+    "904L",
+    "luxury",
+    "serviceability",
+    "analog gauge"
+  ],
+  "casio-dist-finder": [
+    "casio",
+    "dist finder",
+    "airtag",
+    "bluetooth",
+    "tracker",
+    "item finder",
+    "f-91w",
+    "lcd"
+  ],
+  "iphone-air-monocoque": [
+    "iphone air",
+    "monocoque",
+    "apple",
+    "structural battery",
+    "periscope",
+    "vapor chamber",
+    "thermal",
+    "redesign"
+  ]
+};
 
 export const searchEntries: SearchEntry[] = [
   {
@@ -232,168 +349,15 @@ export const searchEntries: SearchEntry[] = [
     group: "Experience",
   },
 
-  /* Product Lab */
-  {
-    id: "lab-select-all-buses",
-    keywords: ["captcha", "select all buses", "bot", "passkey", "handshake", "accessibility"],
-    title: "Select All Buses: CAPTCHA redesign",
-    description: "Stop making humans do machine work.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "select-all-buses" },
+  /* Product Lab: keep discovery aligned with the case studies. */
+  ...productLabCases.map((c): SearchEntry => ({
+    id: `lab-${c.id}`,
+    keywords: [c.title, c.subject, ...c.tags, "case study", ...(productLabAliases[c.id] ?? [])],
+    title: c.title,
+    description: c.subject,
+    target: { type: "timeline", sectionId: "product-lab", entryId: c.id },
     group: "Product Lab",
-  },
-  {
-    id: "lab-the-last-phone",
-    keywords: ["patagonia", "phone", "repair", "the last phone", "worn in", "sustainability"],
-    title: "The Last Phone: Patagonia smartphone",
-    description: "Speculative: a phone designed to be kept.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "the-last-phone" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-still-waiting",
-    keywords: ["waiting room", "clinic", "queue", "healthcare", "still waiting", "eta"],
-    title: "Still Waiting: clinic queue redesign",
-    description: "The pain is not the wait. The pain is not knowing.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "still-waiting" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-commons-map",
-    keywords: ["wikipedia", "maps", "commons", "navigation", "sponsored pins", "local knowledge"],
-    title: "Commons Map: Wikipedia maps",
-    description: "Speculative: navigation as a commons, no ads.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "commons-map" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-glyph-home",
-    keywords: ["nothing", "glyph home", "ai assistant", "smart speaker", "glyph", "voice", "carl pei"],
-    title: "Glyph Home: Nothing AI assistant",
-    description: "Speculative: voice-first AI with Glyph state feedback.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "glyph-home" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-trend-mill",
-    keywords: [
-      "google",
-      "treadmill",
-      "trend mill",
-      "trends routes",
-      "kinetic search",
-      "ghost run",
-      "fitness",
-      "fitbit",
-    ],
-    title: "Trend Mill: Google treadmill",
-    description: "Speculative: Trends-powered routes and Kinetic Search for home cardio.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "trend-mill" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-fitbit-focus-monitor",
-    keywords: [
-      "fitbit",
-      "focus monitor",
-      "monitor",
-      "posture",
-      "eye strain",
-      "desk",
-      "workspace",
-      "sleep",
-      "stress",
-      "wellness",
-    ],
-    title: "Fitbit Focus Monitor",
-    description: "Speculative: a desk monitor that senses health and adjusts in real time.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "fitbit-focus-monitor" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-rhode-frame",
-    keywords: [
-      "rhode",
-      "rhode frame",
-      "camera",
-      "digital camera",
-      "beauty",
-      "skin tone",
-      "photography",
-      "digicam",
-    ],
-    title: "Rhode Frame: Rhode digital camera",
-    description: "Speculative: a camera calibrated for skin tone and soft light.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "rhode-frame" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-hermes-ecoute",
-    keywords: [
-      "hermes",
-      "hermès",
-      "ecoute",
-      "écoute",
-      "headset",
-      "headphones",
-      "leather",
-      "fashion",
-      "audio",
-    ],
-    title: "Écoute: Hermès headset",
-    description: "Speculative: a headset designed as a worn object for reconditioning.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "hermes-ecoute" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-charge-for-life",
-    keywords: [
-      "rolex",
-      "power bank",
-      "charge for life",
-      "904L",
-      "luxury",
-      "serviceability",
-      "analog gauge",
-    ],
-    title: "A Charge for Life: Rolex power bank",
-    description: "Speculative: a steel power bank designed to be kept and serviced.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "charge-for-life" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-casio-dist-finder",
-    keywords: [
-      "casio",
-      "dist finder",
-      "airtag",
-      "bluetooth",
-      "tracker",
-      "item finder",
-      "f-91w",
-      "lcd",
-    ],
-    title: "Dist Finder: Casio Bluetooth tracker",
-    description: "Speculative: a glanceable item finder with distance on the object itself.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "casio-dist-finder" },
-    group: "Product Lab",
-  },
-  {
-    id: "lab-iphone-air-monocoque",
-    keywords: [
-      "iphone air",
-      "monocoque",
-      "apple",
-      "structural battery",
-      "periscope",
-      "vapor chamber",
-      "thermal",
-      "redesign",
-    ],
-    title: "Monocoque: iPhone Air redesign",
-    description: "Redesign: structural frame battery frees the center for camera and cooling.",
-    target: { type: "timeline", sectionId: "product-lab", entryId: "iphone-air-monocoque" },
-    group: "Product Lab",
-  },
+  })),
 
   /* Education */
   {

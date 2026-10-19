@@ -159,7 +159,7 @@ const EXTRA_SITE_ITEMS: SiteIndexItem[] = [
     page: "/product-lab",
     section: null,
     title: "Product Lab",
-    description: "Archive of product thinking: redesigns and speculative concepts.",
+    description: "Independent product case studies: customer needs, strategic alternatives, and clear verdicts.",
   },
 ];
 

@@ -1,17 +1,17 @@
-// Product reasoning grounded in productLabCases.ts; concepts, not validated outcomes.
+// Decision summaries for independent Product Lab case studies.
 export const productLabNotes: Record<string, string> = {
-  "blackberry-keyline": "I separated the reason to buy from the cost of switching: keyboard and attention controls create the distinction, while familiar apps preserve utility. The business case depends on repeat use and funded security support, not nostalgia or unverified privacy claims.",
-  "ipod-transport": "I made reduced distraction the reason to carry a second device. Familiar streaming services lower switching friction; the Burgundy finish tests whether restraint can feel premium. The key question is whether that focus is worth another purchase and charging habit.",
-  "iphone-air-monocoque": "I reframed battery, camera, and cooling as a shared space constraint. The concept explores architectural differentiation, but safety, repair cost, and viable capacity would determine whether that differentiation creates customer value.",
-  "casio-dist-finder": "I focused on the nearby-item use case, putting the answer on the tracker itself. That narrower promise fits Casio’s practical appeal, provided the display communicates Bluetooth’s uncertainty rather than implying exact measurement.",
-  "hermes-ecoute": "I built the concept around a customer who values wearability and long ownership. Reconditioning and replaceable cushions extend the brand’s service proposition into audio, with acoustic performance an explicit competitive tradeoff.",
-  "charge-for-life": "I positioned serviceability as the reason to pay a premium. Replaceable cells make the ownership promise concrete; the proposition depends on customers valuing longevity enough to accept greater weight and slower charging.",
-  "rhode-frame": "I chose a narrow customer job: reproducing the brand’s skin-tone and lighting aesthetic. The concept prioritises that result over a broad feature set, making demand for dedicated hardware the key assumption to validate.",
-  "fitbit-focus-monitor": "I placed the intervention where desk habits form, rather than only reporting their effects later. Adoption depends on useful adjustments that protect focus, with sensing optional so wellbeing does not become perceived surveillance.",
-  "trend-mill": "I used search curiosity as the reason to return, drawing on Google’s existing services instead of an instructor-led model. Adaptive answer length supports the workout; privacy and long-term hardware support remain adoption constraints.",
-  "glyph-home": "I treated trust as an adoption requirement. Visible listening states and physical mute give users control at the moment of use; a screen-free interface deliberately gives up rich visual answers.",
-  "commons-map": "I made information governance the differentiator: citations, revision history, and dispute resolution. The model’s viability depends on reliable local coverage and sustainable funding, not just the absence of sponsored pins.",
-  "still-waiting": "I targeted uncertainty, a problem the service can address without increasing clinical capacity. Live stages and realistic time ranges support patient planning; staff must be able to keep that promise operationally.",
-  "the-last-phone": "I made continued ownership the product goal. Modular repairs and sustained software support must work together, backed by a business model that can fund service without depending on frequent replacement.",
-  "select-all-buses": "I reserved verification friction for sessions that warrant it. The product decision must balance completion, abuse prevention, and accessibility, with a usable recovery path for people who cannot use the trusted route.",
+  "blackberry-keyline": "I would test whether the keyboard changes daily behaviour before buying into a platform strategy. Familiar apps reduce switching cost; funded support determines whether a niche can last.",
+  "ipod-transport": "The product decision is whether focus earns another device. I would test repeated choice over a phone before treating brand recognition as demand.",
+  "iphone-air-monocoque": "Freeing space is not enough. I would choose the architecture that improves everyday use without transferring the cost into safety, repair, or manufacturing risk.",
+  "casio-dist-finder": "I would narrow the promise before expanding the feature list. An honest proximity cue is more valuable than a precise-looking number the product cannot reliably support.",
+  "hermes-ecoute": "Brand fit can open a category, but it cannot replace its basic performance requirements. I would partner for audio and differentiate through wearability and service.",
+  "charge-for-life": "I would separate a good serviceability idea from a weak brand extension. The case for Rolex must exceed visual resemblance and a premium finish.",
+  "rhode-frame": "I would prove that the look improves a real workflow before manufacturing a camera. Brand affinity is useful distribution, not evidence that the image pipeline works.",
+  "fitbit-focus-monitor": "I would validate a useful intervention before investing in more sensing. The monitor is a possible delivery channel, not the customer problem.",
+  "trend-mill": "The potential advantage is content that earns another workout. I would test that separately from the cost and service burden of manufacturing treadmills.",
+  "glyph-home": "I would measure privacy comprehension as well as task success. A reassuring appearance is not a substitute for behaviour people can understand and control.",
+  "commons-map": "Governance is part of the product. I would prioritise correction speed and local ownership over feature breadth or an unsupported promise of universal coverage.",
+  "still-waiting": "I would make staff workflow reliability the launch gate. A reassuring interface only helps when the clinic can keep its promises during the busiest hour.",
+  "the-last-phone": "I would put a funded support model ahead of a modular design. Longevity is an operating commitment, not a promise a product rendering can make.",
+  "select-all-buses": "I would judge the redesign on legitimate completion and abuse together. Fewer puzzles is a design choice; safer, more accessible access is the outcome to prove."
 };

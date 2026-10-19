@@ -46,7 +46,7 @@ describe("Studio phase-one homepage", () => {
     for (const concept of productLabCases.slice(0, 3)) {
       const article = screen.getByRole("heading", { name: concept.title }).closest("article")!;
       expect(within(article).getByText(concept.tradeoffs)).toBeInTheDocument();
-      expect(within(article).getByText(concept.type === "redesign" ? "Redesign" : "Speculative concept", { exact: true })).toBeInTheDocument();
+      expect(within(article).getByText(concept.type === "redesign" ? "Redesign case study" : "New product assessment", { exact: true })).toBeInTheDocument();
     }
   });
 
@@ -64,11 +64,11 @@ describe("Studio phase-one homepage", () => {
   it("opens both complete collections independently and returns to selections", () => {
     render(<Studio />);
     const work = screen.getByRole("region", { name: "Ideas, in practice." });
-    const lab = screen.getByRole("region", { name: "A little “what if?”" });
+    const lab = screen.getByRole("region", { name: "Should this exist?" });
     fireEvent.click(screen.getByRole("button", { name: `View all ${projects.length} projects` }));
     expect(within(work).getAllByRole("article")).toHaveLength(projects.length);
     expect(within(lab).getAllByRole("article")).toHaveLength(3);
-    fireEvent.click(screen.getByRole("button", { name: `View all ${productLabCases.length} ideas` }));
+    fireEvent.click(screen.getByRole("button", { name: `View all ${productLabCases.length} case studies` }));
     expect(within(lab).getAllByRole("article")).toHaveLength(productLabCases.length);
     for (const concept of productLabCases) {
       expect(within(lab).getByRole("heading", { name: concept.title })).toBeInTheDocument();
@@ -76,8 +76,8 @@ describe("Studio phase-one homepage", () => {
     }
     fireEvent.click(screen.getByRole("button", { name: "Show selected projects" }));
     expect(screen.getByRole("heading", { name: "Ideas, in practice." })).toHaveFocus();
-    fireEvent.click(screen.getByRole("button", { name: "Show selected ideas" }));
-    expect(screen.getByRole("heading", { name: "A little “what if?”" })).toHaveFocus();
+    fireEvent.click(screen.getByRole("button", { name: "Show selected case studies" }));
+    expect(screen.getByRole("heading", { name: "Should this exist?" })).toHaveFocus();
     expect(within(work).getAllByRole("article")).toHaveLength(3);
     expect(within(lab).getAllByRole("article")).toHaveLength(3);
   });

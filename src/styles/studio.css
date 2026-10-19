@@ -370,3 +370,7 @@ ul.studio-toolbox-chips { list-style: none; display: flex; flex-wrap: wrap; gap:
 @media (prefers-reduced-motion: reduce) {
   .studio-project h3 a > span, .studio-concept h3 a > span, .studio-archive-card h2 a > span, .studio-concept .studio-concept-image img, .studio-archive-card .studio-concept-image img { transform: none !important; transition: none !important; }
 }
+
+.studio-case-scope { color: var(--studio-muted); font-size: 13px; line-height: 1.6; margin-bottom: 24px; }
+.studio-concept-story .studio-case-verdict { background: #e6eadc; border-left: 3px solid var(--studio-accent); padding: 28px; }
+.studio-case-verdict p { margin-bottom: 0; }

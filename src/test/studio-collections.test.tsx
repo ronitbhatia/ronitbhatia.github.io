@@ -32,9 +32,13 @@ describe("Studio collections", () => {
   });
   for (const c of productLabCases) it(`preserves complete concept and image assets: ${c.id}`, () => {
     render(<MemoryRouter initialEntries={[`/studio/lab/${c.id}`]}><Routes><Route path="/studio/lab/:id" element={<StudioDetail kind="lab" />} /></Routes></MemoryRouter>);
-    [c.oneLiner, c.problem, c.insight, c.concept, c.tradeoffs, ...c.principles].forEach(text => expect(screen.getByText(text)).toBeInTheDocument());
+    [c.oneLiner, c.problem, c.insight, c.concept, c.tradeoffs, c.validation, c.verdict, ...c.principles].forEach(text => expect(screen.getByText(text)).toBeInTheDocument());
     [c.cover, ...c.gallery].forEach(image => expect(existsSync(resolve("public", image.src.slice(1)))).toBe(true));
     expect(screen.getAllByRole("img")).toHaveLength(c.gallery.length + 1);
+    const verdict = screen.getByRole("heading", { name: "My verdict" }).closest("section")!;
+    expect(verdict).toHaveTextContent(c.verdict);
+    expect(verdict.nextElementSibling).toBeNull();
+    expect(JSON.stringify(c)).not.toContain("\u2014");
   });
   it("handles unknown detail IDs", () => {
     render(<MemoryRouter initialEntries={["/studio/work/missing"]}><Routes><Route path="/studio/work/:id" element={<StudioDetail kind="work" />} /></Routes></MemoryRouter>);

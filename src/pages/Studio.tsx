@@ -104,26 +104,26 @@ export default function Studio() {
 
         <section className="studio-section studio-lab" id="lab" aria-labelledby="lab-heading">
           <div className="studio-section-heading">
-            <div><p className="studio-eyebrow">03 / Product Lab</p><h2 id="lab-heading" tabIndex={-1}>A little “what if?”</h2></div>
+            <div><p className="studio-eyebrow">03 / Product Lab</p><h2 id="lab-heading" tabIndex={-1}>Should this exist?</h2></div>
             <RonitNote pose={ronitContexts.lab.pose}>{ronitContexts.lab.note}</RonitNote>
           </div>
-          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/lab">Browse & filter ideas ↗</a><span aria-live="polite">{showAllIdeas ? productLabCases.length : selectedConcepts.length} of {productLabCases.length} ideas</span></div>
+          <div className="studio-collection-controls"><a className="studio-text-link" href="/studio/lab">Browse & filter case studies ↗</a><span aria-live="polite">{showAllIdeas ? productLabCases.length : selectedConcepts.length} of {productLabCases.length} case studies</span></div>
           <div className={`studio-lab-grid${showAllIdeas ? " studio-lab-grid-all" : ""}`} id="studio-idea-collection">
             {(showAllIdeas ? productLabCases : selectedConcepts).map(concept => (
               <article className="studio-concept" key={concept.id}>
                 <div className="studio-concept-image"><img src={concept.cover.src} alt={concept.cover.caption} loading="lazy" decoding="async" width="960" height="540" /></div>
-                <div className="studio-concept-meta"><span>{concept.type === "redesign" ? "Redesign" : "Speculative concept"}</span><span>{concept.period}</span></div>
+                <div className="studio-concept-meta"><span>{concept.type === "redesign" ? "Redesign case study" : "New product assessment"}</span><span>{concept.period}</span></div>
                 <h3><a href={`/studio/lab/${concept.id}`}>{concept.title} <span aria-hidden="true">↗</span></a></h3>
                 <p className="studio-concept-subject">{concept.subject}</p>
                 <ProductLabMarginNote conceptId={concept.id} />
                 <details className="studio-details">
-                  <summary>Explore the idea <Plus size={17} aria-hidden="true" /></summary>
-                  <div className="studio-details-body"><p>{concept.oneLiner}</p><h4>Tradeoffs</h4><p>{concept.tradeoffs}</p></div>
+                  <summary>Read the case study <Plus size={17} aria-hidden="true" /></summary>
+                  <div className="studio-details-body"><p>{concept.oneLiner}</p><h4>Tradeoffs & business risks</h4><p>{concept.tradeoffs}</p><h4>My verdict</h4><p>{concept.verdict}</p></div>
                 </details>
               </article>
             ))}
           </div>
-          <div className="studio-collection-footer"><button type="button" aria-expanded={showAllIdeas} aria-controls="studio-idea-collection" onClick={() => { if (showAllIdeas) returnHeading.current = "lab-heading"; setShowAllIdeas(!showAllIdeas); }}>{showAllIdeas ? "Show selected ideas" : `View all ${productLabCases.length} ideas`} <ArrowDown size={15} aria-hidden="true" /></button></div>
+          <div className="studio-collection-footer"><button type="button" aria-expanded={showAllIdeas} aria-controls="studio-idea-collection" onClick={() => { if (showAllIdeas) returnHeading.current = "lab-heading"; setShowAllIdeas(!showAllIdeas); }}>{showAllIdeas ? "Show selected case studies" : `View all ${productLabCases.length} case studies`} <ArrowDown size={15} aria-hidden="true" /></button></div>
         </section>
 
         <RonitDiscovery />
@@ -137,7 +137,7 @@ export default function Studio() {
             <p className="studio-eyebrow">07 / The person behind the work</p>
             <h2 id="about-heading">The bigger picture.<br /><span>The finer details.</span></h2>
             <p>I tend to get interested in the decisions around the code. When should a navigation tool speak up? What makes a flashcard worth keeping? Those questions have shaped my projects as much as the models and frameworks behind them.</p>
-            <p>Product Lab is where I give that curiosity a bit more room. Sometimes it leads to a phone redesign. Sometimes I end up wondering what a Bluetooth tracker would look like if Casio made it.</p>
+            <p>In Product Lab, I assess whether a company should build something new or redesign what it already offers. I look at the customer need, the alternatives, and what would make the decision worth pursuing. Each case ends with the choice I would make and the evidence that could change it.</p>
             <a className="studio-text-link" href="/studio/resume">Read my resume <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
         </section>

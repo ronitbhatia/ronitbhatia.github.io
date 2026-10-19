@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const ronitContexts = {
   experience: { pose: "build", note: "The work between a customer problem and production." },
   work: { pose: "think", note: "Look for the decisions behind each build." },
-  lab: { pose: "explore", note: "A sketch, a customer need, and a tradeoff." },
+  lab: { pose: "explore", note: "The customer need, the tradeoffs, and the decision I would make." },
 } as const;
 export type RonitContext = (typeof ronitContexts)[keyof typeof ronitContexts] | null;
 

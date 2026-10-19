@@ -19,7 +19,7 @@ it("follows the visible section during scrolling, independently of the URL hash"
   active = "work"; fireEvent.scroll(container.firstChild!);
   await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("think: Look for the decisions behind each build."));
   active = "lab"; fireEvent.scroll(container.firstChild!);
-  await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("explore: A sketch, a customer need, and a tradeoff."));
+  await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("explore: The customer need, the tradeoffs, and the decision I would make."));
   active = "hero"; fireEvent.scroll(container.firstChild!);
   await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("No section"));
 });
