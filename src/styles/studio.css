@@ -374,3 +374,7 @@ ul.studio-toolbox-chips { list-style: none; display: flex; flex-wrap: wrap; gap:
 .studio-case-scope { color: var(--studio-muted); font-size: 13px; line-height: 1.6; margin-bottom: 24px; }
 .studio-concept-story .studio-case-verdict { background: #e6eadc; border-left: 3px solid var(--studio-accent); padding: 28px; }
 .studio-case-verdict p { margin-bottom: 0; }
+
+.studio-case-economics { background: #eeece5; padding: clamp(20px, 4vw, 36px); border: 1px solid var(--studio-line); border-radius: 12px; }
+.studio-case-economics h3 { font-size: 17px; margin: 24px 0 12px; }
+.studio-case-economics .studio-economics-disclaimer, .studio-case-economics .studio-economics-limits { font-size: 14px; line-height: 1.7; color: var(--studio-muted); }

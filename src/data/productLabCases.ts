@@ -23,6 +23,13 @@ export interface ProductLabCase {
   principles: string[];
   concept: string;
   tradeoffs: string;
+  economics: {
+    basis: string;
+    assumptions: string[];
+    result: string;
+    interpretation: string;
+    limitations: string;
+  };
   validation: string;
   verdict: string;
   tags: string[];
@@ -49,7 +56,7 @@ export const productLabCases: ProductLabCase[] = [
       "Fund support before expanding scope"
     ],
     "concept": "The MVP would pair physical QWERTY keys, configurable shortcuts, a contact-priority LED, and supported Android apps. Start the Hub with email and SMS where access is available. Defer AI replies, iPhone companion mode, and the proposed QNX isolation layer. Sensor isolation and radio-off controls need distinct, understandable states: radios off means no incoming messages.",
-    "tradeoffs": "Keyboard space reduces browsing and media utility. Platform compatibility, manufacturing yield, returns, and years of security updates determine unit economics. A hardware switch does not establish whole-device security. The wider architecture shown in the renders would need feasibility work and independent review.",
+    "tradeoffs": "Keyboard space reduces browsing and media utility. Contribution margin must cover manufacturing, channel fees, returns, warranty, and per-device support before funding ongoing software development. A low-volume launch can still lose money despite a premium price. Hardware switches do not establish whole-device security; the illustrated architecture needs feasibility work and independent review.",
     "tags": [
       "Redesign",
       "BlackBerry",
@@ -81,8 +88,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: individual-first setup: Work Mode and Life Mode, with optional workplace enrolment and a proposed isolated work environment."
       }
     ],
-    "validation": "Recruit keyboard-preferring professionals for a multi-week comparison with their current phone. Track continued daily use, essential-app failures, typing comfort, and missed priority messages. Test willingness to pay against a partner quote that includes warranty and software support before setting a launch gate.",
-    "verdict": "Pilot through a partner; do not launch the full concept yet. I favour the keyboard and attention controls, but would remove the unproven security architecture from the initial promise. I would stop if users enjoy the demo but return to their primary phone, or if support costs make the niche uneconomic."
+    "validation": "Recruit keyboard-preferring professionals for a multi-week comparison with their current phone. Track retained daily use, essential-app failures, typing comfort, and missed priority messages. Test willingness to pay against a partner quote, then calculate the sales volume needed to cover fixed support costs. Stop if the reachable customer segment cannot support that volume.",
+    "verdict": "Pilot through a partner; do not launch the full concept yet. I favour the keyboard and attention controls, but would remove the unproven security architecture from the initial promise. I would stop if users enjoy the demo but return to their primary phone, or if support costs make the niche uneconomic.",
+    "economics": {
+      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "assumptions": [
+        "Net revenue: $700 per device, after channel deductions.",
+        "Variable cost: $490 per device, including production, fulfilment, warranty provision, and per-device support.",
+        "Fixed operating costs: $6,000,000 per year for continuing engineering, software, marketing, and administration.",
+        "Sales scenario: 20,000 devices per year, not a demand forecast."
+      ],
+      "result": "Contribution is $210 per device (30% of net revenue). Operating break-even is 28,572 devices per year. At 20,000 sales, the annual operating result is a loss of $1,800,000.",
+      "interpretation": "The model needs a repeatable niche, not just a successful launch week. I would require priced reservations and a funded update commitment before scaling. A $50 increase in unit cost raises operating break-even from 28,572 to 37,500 devices.",
+      "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
+    }
   },
   {
     "id": "ipod-transport",
@@ -100,7 +119,7 @@ export const productLabCases: ProductLabCase[] = [
       "Treat finish as supporting design"
     ],
     "concept": "Test a player with a tactile edge dial, downloaded music, basic playback, and familiar streaming libraries where integrations permit. Defer the parent-focused offer until account setup and parental controls have been tested separately. Burgundy is a design option, not a reason to buy.",
-    "tradeoffs": "Users take on another purchase, charging habit, and object to carry. Service licensing, offline entitlements, battery life, and support costs constrain the offer. A premium finish may conflict with an affordable first-device position. A touch-sensitive ring also needs usability testing rather than assumed eyes-free operation.",
+    "tradeoffs": "Users take on another purchase, charging habit, and object to carry. Licensing, offline entitlements, returns, and support reduce device margin. The business case should count incremental profit after purchases displaced from existing Apple devices, rather than treating all sales as new value. A premium finish may also conflict with an affordable first-device position.",
     "tags": [
       "New product assessment",
       "Apple",
@@ -132,8 +151,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: idle state: album art and a clock, with a restrained bezel glow at a track change."
       }
     ],
-    "validation": "Compare a limited prototype with phone-only listening over several weeks. Measure listening sessions completed without returning to the phone, repeat use after novelty fades, and willingness to pay. Check whether demand is incremental or mainly replaces purchases of existing devices.",
-    "verdict": "Do not fund a standalone launch yet. I prefer a focused listening test over a nostalgia-led hardware release. I would reconsider if users consistently choose the separate device and that preference survives a realistic price and charging routine."
+    "validation": "Compare a limited prototype with phone-only listening over several weeks. Measure sessions completed without returning to the phone, repeat use after novelty fades, and willingness to pay. Separate new demand from replacement purchases and estimate contribution after acquisition and support costs before funding hardware.",
+    "verdict": "Do not fund a standalone launch yet. I prefer a focused listening test over a nostalgia-led hardware release. I would reconsider if users consistently choose the separate device and that preference survives a realistic price and charging routine.",
+    "economics": {
+      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "assumptions": [
+        "Net revenue: $250 per device, after channel deductions.",
+        "Variable cost: $170 per device, including production, fulfilment, warranty provision, and per-device support.",
+        "Fixed operating costs: $8,000,000 per year for continuing engineering, software, marketing, and administration.",
+        "Sales scenario: 75,000 devices per year, not a demand forecast."
+      ],
+      "result": "Contribution is $80 per device (32% of net revenue). Operating break-even is 100,000 devices per year. At 75,000 sales, the annual operating result is a loss of $2,000,000.",
+      "interpretation": "A focused player needs enough incremental demand to fund its dedicated support and software. At this volume the model loses $2 million before launch costs or profit displaced from other Apple devices.",
+      "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
+    }
   },
   {
     "id": "iphone-air-monocoque",
@@ -151,7 +182,7 @@ export const productLabCases: ProductLabCase[] = [
       "Separate feasibility from launch readiness"
     ],
     "concept": "Commission a feasibility prototype of the proposed perimeter cell before pursuing the illustrated periscope, vapor chamber, or MagSafe arrangement. Define capacity, drop resistance, thermal behaviour, repair procedure, and manufacturing yield requirements together. The renders describe a direction, not an engineered system.",
-    "tradeoffs": "Capacity and cooling improvements are unproven. Damage to the frame could complicate battery safety and repair. Replacement cost, certification, yield, and service training may outweigh any gain in thinness. The product decision must include total ownership cost, not just internal space.",
+    "tradeoffs": "Capacity and cooling improvements are unproven. Frame damage could complicate battery safety and repair. Lower production yield, certification, and service training could outweigh any gain in thinness. Compare the added contribution from a price premium or higher demand with development and warranty costs, including a downside case where early manufacturing yield is poor.",
     "tags": [
       "Redesign",
       "Apple",
@@ -183,8 +214,19 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: exterior: cherry-red Air body with dual-camera plateau and ultra-thin profile."
       }
     ],
-    "validation": "Benchmark prototypes against a conventional battery design under matched workloads. Review usable capacity, heat, durability, repair time, cost, and production yield. Separately test customer preference for thinness versus a modest increase in thickness and battery life.",
-    "verdict": "Do not ship this architecture on the evidence available. I prefer a conventional battery and a more balanced thickness target for a near-term product. I would revisit structural storage only after safety, capacity, repairability, and yield are proven together."
+    "validation": "Benchmark prototypes against a conventional battery design under matched workloads. Review capacity, heat, durability, repair time, and production yield. Test willingness to pay for thinness versus modestly greater thickness and battery life. Release R&D funding in stages, with safety and a credible cost advantage as gates before launch investment.",
+    "verdict": "Do not ship this architecture on the evidence available. I prefer a conventional battery and a more balanced thickness target for a near-term product. I would revisit structural storage only after safety, capacity, repairability, and yield are proven together.",
+    "economics": {
+      "basis": "Incremental investment comparison with a conventional battery design.",
+      "assumptions": [
+        "Additional net revenue attributable to the redesign: $40 per device.",
+        "Additional manufacturing and warranty cost: $25 per device.",
+        "One-time development and qualification investment: $60 million."
+      ],
+      "result": "Incremental contribution is $15 per device. Recovering $60 million requires 4 million devices. At 2 million devices, incremental contribution is $30 million, leaving $30 million of investment unrecovered.",
+      "interpretation": "If added cost reaches $35, contribution falls to $5 and recovery requires 12 million devices. I would first test whether customers pay for the benefit, then prioritise yield and repairability over thinner packaging.",
+      "limitations": "Only incremental costs and revenue are modelled. Excludes the baseline phone business, continuing fixed-cost changes, tax, financing, and discounting. No sales volume or price premium has been validated."
+    }
   },
   {
     "id": "casio-dist-finder",
@@ -202,7 +244,7 @@ export const productLabCases: ProductLabCase[] = [
       "Price from a viable cost model"
     ],
     "concept": "Start with a replaceable battery, clear near/far states, an audible finding action, and simple pairing. The illustrated numeric display is a design exploration; the MVP should avoid metre-level claims unless measured performance supports them. Defer remote-location promises and complex accessories.",
-    "tradeoffs": "Bluetooth signal strength varies with walls, bodies, and orientation. A precise-looking number can create more distrust than a coarse but honest signal. Pairing support, battery life, and retailer margin must fit the intended accessible price; a target price is not a validated cost model.",
+    "tradeoffs": "Bluetooth signal strength varies with walls, bodies, and orientation. A precise-looking number can create more distrust than a coarse but honest signal. At an accessible price, the display, retailer margin, returns, and pairing support leave little room for error. Compare contribution per unit with a simpler no-display version before approving added hardware.",
     "tags": [
       "New product assessment",
       "Casio",
@@ -230,8 +272,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: blister-card pegboard packing with keyring hole and optional clip."
       }
     ],
-    "validation": "Test real rooms, bags, and crowded environments. Compare time to resolve a nearby check, false reassurance, pairing failures, and battery consumption across display and no-display prototypes. Use supplier costs and retailer feedback to assess margin before choosing the form factor.",
-    "verdict": "Proceed to a small prototype pilot. I choose a proximity display over a distance meter and a narrow utility promise over global tracking. I would drop the screen if it does not improve task completion enough to justify its cost."
+    "validation": "Test real rooms, bags, and crowded environments. Compare successful nearby checks, false reassurance, pairing failures, and battery consumption across display and no-display prototypes. Test willingness to pay for the display, then check supplier costs and retailer terms. Proceed only if the extra customer value can fund the extra cost.",
+    "verdict": "Proceed to a small prototype pilot. I choose a proximity display over a distance meter and a narrow utility promise over global tracking. I would drop the screen if it does not improve task completion enough to justify its cost.",
+    "economics": {
+      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "assumptions": [
+        "Net revenue: $35 per device, after channel deductions.",
+        "Variable cost: $22 per device, including production, fulfilment, warranty provision, and per-device support.",
+        "Fixed operating costs: $650,000 per year for continuing engineering, software, marketing, and administration.",
+        "Sales scenario: 40,000 devices per year, not a demand forecast."
+      ],
+      "result": "Contribution is $13 per device (37% of net revenue). Operating break-even is 50,000 devices per year. At 40,000 sales, the annual operating result is a loss of $130,000.",
+      "interpretation": "The display should earn a price premium or better conversion, because an accessible price leaves limited room for support costs. An extra $3 per unit in returns or support raises operating break-even from 50,000 to 65,000 devices.",
+      "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
+    }
   },
   {
     "id": "hermes-ecoute",
@@ -249,7 +303,7 @@ export const productLabCases: ProductLabCase[] = [
       "Use a partner for unfamiliar capabilities"
     ],
     "concept": "Test one partner-built headset with replaceable cushions, repairable wear points, comfortable adjustment, and a clear service offer. The illustrated leather, clasp, and travel packaging express that proposition. Defer seasonal variants until fit and service demand are understood.",
-    "tradeoffs": "Materials add weight and maintenance needs. Electronics and batteries age differently from leather. Partner dependence, repair logistics, warranty cost, and minimum production volumes could erode margin or brand trust. A high price does not remove the need for competitive sound and calls.",
+    "tradeoffs": "Materials add weight and maintenance needs, while electronics age faster than leather. Partner fees, minimum order quantities, unsold stock, and repair obligations put the premium margin at risk. A limited run reduces inventory exposure but raises unit costs. Brand fit cannot compensate for weak sound or calls.",
     "tags": [
       "New product assessment",
       "Hermès",
@@ -277,8 +331,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: orange-box packing with dust bag, travel pouch, and reconditioning card."
       }
     ],
-    "validation": "Run extended wear and travel trials with the intended segment. Compare comfort, call quality, sound satisfaction, purchase intent at a real price, and demand for repair. Validate partner economics and parts availability before approving a limited release.",
-    "verdict": "Choose a limited partner-led pilot. I prefer a credible audio platform with distinctive materials and service over a bespoke electronics stack. I would not proceed if design compromises comfort or if the repair promise cannot be funded."
+    "validation": "Run extended wear and travel trials with the intended segment. Compare comfort, call quality, sound satisfaction, and willingness to pay at a real price. Use a limited allocation to test full-price sell-through, returns, and contribution after partner and service costs. Secure parts availability before committing to a larger run.",
+    "verdict": "Choose a limited partner-led pilot. I prefer a credible audio platform with distinctive materials and service over a bespoke electronics stack. I would not proceed if design compromises comfort or if the repair promise cannot be funded.",
+    "economics": {
+      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "assumptions": [
+        "Net revenue: $900 per device, after channel deductions.",
+        "Variable cost: $550 per device, including production, fulfilment, warranty provision, and per-device support.",
+        "Fixed operating costs: $1,400,000 per year for continuing engineering, software, marketing, and administration.",
+        "Sales scenario: 5,000 devices per year, not a demand forecast."
+      ],
+      "result": "Contribution is $350 per device (39% of net revenue). Operating break-even is 4,000 devices per year. At 5,000 sales, the annual operating result is a surplus of $350,000.",
+      "interpretation": "A limited collection could cover annual operations, but a $350,000 surplus leaves little room for initial design costs or unsold stock. At 3,000 sales, the same model loses $350,000. Full-price sell-through matters more than the launch waiting list.",
+      "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
+    }
   },
   {
     "id": "charge-for-life",
@@ -296,7 +362,7 @@ export const productLabCases: ProductLabCase[] = [
       "Compare entry with doing nothing"
     ],
     "concept": "The design explores a steel case, an analog charge indicator, cable storage, and replaceable cell modules. A useful MVP would first test a safe, portable charger with an affordable replacement service. The material and packaging premium should follow demonstrated demand, not define the first release.",
-    "tradeoffs": "Steel adds weight; decorative mechanisms add failure points. Battery safety, thermal design, changing charging standards, and replacement logistics create a different operating model from watch servicing. An expensive case does not guarantee a long-lived product or viable service margin.",
+    "tradeoffs": "Steel adds weight; decorative mechanisms add failure points. Battery safety, changing charging standards, and replacement logistics create a different operating model from watch servicing. Include the cost of holding parts and providing future repairs in the price. A high hardware margin at launch can hide an uneconomic lifetime service promise.",
     "tags": [
       "New product assessment",
       "Rolex",
@@ -324,8 +390,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: walnut travel case, chamois, and service booklet for cell replacement."
       }
     ],
-    "validation": "Interview premium-accessory buyers about recent purchases and replacement behaviour, then compare priced prototypes with conventional chargers. Measure weight acceptance, charging reliability, and willingness to pay for cell replacement. Include service labour and parts inventory in the economics.",
-    "verdict": "Do not launch as Rolex hardware. I favour testing the repairable charger through a specialist brand. I would reconsider a collaboration only if demand depends meaningfully on Rolex participation and the support burden does not weaken its core proposition."
+    "validation": "Compare priced prototypes with conventional chargers among premium-accessory buyers. Measure weight acceptance, charging reliability, and willingness to pay for cell replacement. Model service labour, parts inventory, and replacement frequency over the promised life. Judge the return against a specialist partnership, not just whether a Rolex version could sell.",
+    "verdict": "Do not launch as Rolex hardware. I favour testing the repairable charger through a specialist brand. I would reconsider a collaboration only if demand depends meaningfully on Rolex participation and the support burden does not weaken its core proposition.",
+    "economics": {
+      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "assumptions": [
+        "Net revenue: $600 per device, after channel deductions.",
+        "Variable cost: $380 per device, including production, fulfilment, warranty provision, and per-device support.",
+        "Fixed operating costs: $1,100,000 per year for continuing engineering, software, marketing, and administration.",
+        "Sales scenario: 4,000 devices per year, not a demand forecast."
+      ],
+      "result": "Contribution is $220 per device (37% of net revenue). Operating break-even is 5,000 devices per year. At 4,000 sales, the annual operating result is a loss of $220,000.",
+      "interpretation": "Even a premium price does not justify a new service operation on its own. A specialist partner remains the more credible owner. At 4,000 sales, an extra $50 service provision per device would increase the annual loss from $220,000 to $420,000.",
+      "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
+    }
   },
   {
     "id": "rhode-frame",
@@ -343,7 +421,7 @@ export const productLabCases: ProductLabCase[] = [
       "Earn the move from software to hardware"
     ],
     "concept": "Pilot a small set of looks and a simple capture-to-share flow with an imaging partner. Test across skin tones and lighting before adding hardware. The compact camera, single dial, and minimal transfer app in the renders represent a possible later product, not necessary MVP scope.",
-    "tradeoffs": "Biased rendering can damage trust. Hardware brings certification, returns, inventory, and support obligations beyond a preset release. A fashionable camera may sell once without establishing durable use, while a software approach is cheaper to test but easier to copy.",
+    "tradeoffs": "Biased rendering can damage trust. Hardware ties up cash in inventory and adds certification, returns, and support. A software offer is cheaper to test but easier to copy. Brand reach may lower acquisition costs, yet a launch spike is not evidence of retention or a reason to carry manufacturing risk.",
     "tags": [
       "New product assessment",
       "Rhode",
@@ -371,8 +449,19 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: companion app scoped to transfer and light cropping only."
       }
     ],
-    "validation": "Use blind comparisons across diverse skin tones and lighting conditions. Track preference, unwanted skin changes, editing time, repeat use, and paid conversion. Test whether a physical camera improves the result enough to justify its price and transfer friction.",
-    "verdict": "Choose software and partnership first. I would not approve standalone hardware until users prefer its output over their existing workflow and keep using it after the novelty passes. Accurate, inclusive rendering matters more than matching campaign imagery."
+    "validation": "Use blind comparisons across skin tones and lighting conditions. Track unwanted skin changes, editing time, paid conversion, and repeat use by acquisition cohort. Compare acquisition cost with contribution from retained paying users. Test whether a physical camera improves the workflow enough to justify its price and transfer friction.",
+    "verdict": "Choose software and partnership first. I would not approve standalone hardware until users prefer its output over their existing workflow and keep using it after the novelty passes. Accurate, inclusive rendering matters more than matching campaign imagery.",
+    "economics": {
+      "basis": "Illustrative subscription model for the recommended imaging-software pilot.",
+      "assumptions": [
+        "Net monthly revenue: $6 per paying account; variable delivery and support cost: $1.5.",
+        "Customer acquisition cost: $18 per new paying account.",
+        "Fixed operating costs: $30,000 per month; scenario: 5,000 active paying accounts."
+      ],
+      "result": "Monthly contribution is $4.5 per account. Acquisition payback takes 4 paid months before fixed costs. Covering fixed operations requires 6,667 active paying accounts, before acquisition spending. At 5,000 accounts, the monthly result before acquisition spending is a loss of $7,500.0.",
+      "interpretation": "Payback requires four paid months, so trial downloads or launch purchases would not establish a viable offer. At only three paid months, contribution is $13.50 against $18 acquisition cost, before fixed operations.",
+      "limitations": "Assumes constant price and costs. Excludes upfront development, taxes, financing, and discounting. Retention is unvalidated; churn and replacement acquisition spending can prevent payback. This is not a lifetime-value forecast."
+    }
   },
   {
     "id": "fitbit-focus-monitor",
@@ -390,7 +479,7 @@ export const productLabCases: ProductLabCase[] = [
       "Do not turn correlation into a health claim"
     ],
     "concept": "Test opt-in break scheduling, user-controlled display adjustments, and a private history of desk habits. Keep employer access out of scope. The illustrated gaze, posture, heart-rate, and ambient sensors are longer-term hypotheses, not validated measures of stress or concentration.",
-    "tradeoffs": "Workplace sensing can feel like surveillance even when optional. False prompts disrupt focus; adjustments may affect colour-sensitive work. New hardware adds manufacturing and support costs. Observed associations with sleep would not establish causation or justify medical claims.",
+    "tradeoffs": "Workplace sensing can feel like surveillance even when optional. False prompts disrupt focus, and adjustments may affect colour-sensitive work. Hardware adds inventory and support costs before demand is proven. The business model must identify a willing payer without making employee monitoring the route to revenue. Observed sleep associations would not establish causation or medical benefit.",
     "tags": [
       "New product assessment",
       "Fitbit",
@@ -418,8 +507,19 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: screen habits alongside sleep data; no causal relationship established."
       }
     ],
-    "validation": "Compare the pilot with ordinary reminders over several working weeks. Measure continued opt-in use, useful versus dismissed prompts, interruption burden, and self-reported usefulness. Treat health effects as unproven and assess whether additional sensing changes outcomes enough to justify its privacy cost.",
-    "verdict": "Do not build a Fitbit monitor yet. I choose a small, private companion experience with manual control and optional hardware partners. I would add sensors only when they demonstrably improve a user-chosen behaviour without increasing perceived surveillance."
+    "validation": "Compare the pilot with ordinary reminders over several working weeks. Measure retained opt-in use, useful versus dismissed prompts, and interruption burden. Test willingness to pay separately from perceived usefulness, then estimate delivery and support cost per active user. Additional sensing earns investment only if its benefit justifies its cost and privacy burden.",
+    "verdict": "Do not build a Fitbit monitor yet. I choose a small, private companion experience with manual control and optional hardware partners. I would add sensors only when they demonstrably improve a user-chosen behaviour without increasing perceived surveillance.",
+    "economics": {
+      "basis": "Illustrative opt-in consumer subscription for the recommended software companion.",
+      "assumptions": [
+        "Net monthly revenue: $4 per paying account; variable delivery and support cost: $1.",
+        "Customer acquisition cost: $12 per new paying account.",
+        "Fixed operating costs: $20,000 per month; scenario: 5,000 active paying accounts."
+      ],
+      "result": "Monthly contribution is $3 per account. Acquisition payback takes 4 paid months before fixed costs. Covering fixed operations requires 6,667 active paying accounts, before acquisition spending. At 5,000 accounts, the monthly result before acquisition spending is a loss of $5,000.",
+      "interpretation": "The payer and recurring benefit need validation before any monitor investment. A free pilot can demonstrate usefulness without proving that enough people will pay through the four-month acquisition payback period.",
+      "limitations": "Assumes constant price and costs. Excludes upfront development, taxes, financing, and discounting. Retention is unvalidated; churn and replacement acquisition spending can prevent payback. This is not a lifetime-value forecast."
+    }
   },
   {
     "id": "trend-mill",
@@ -437,7 +537,7 @@ export const productLabCases: ProductLabCase[] = [
       "Partner before owning equipment"
     ],
     "concept": "Pilot a few curated virtual routes and short, optional voice responses on existing walking equipment. Let users choose session length manually. Defer health-data personalisation, calendar access, social ghosts, and subscriptions until the basic experience earns repeat use. The hardware renders illustrate the broader vision.",
-    "tradeoffs": "Extra interaction can distract from safe exercise. Data combinations may feel invasive, route imagery may not match movement, and generated responses can be unreliable. Equipment makers need stable support commitments; a subscription needs value beyond content users can already access elsewhere.",
+    "tradeoffs": "Extra interaction can distract from safe exercise. Route imagery and generated responses can be unreliable, and data combinations may feel invasive. A subscription must retain users beyond the first few workouts. Content licensing, delivery costs, and equipment-partner revenue share determine contribution; subscription revenue alone does not establish viability.",
     "tags": [
       "New product assessment",
       "Google",
@@ -466,8 +566,19 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: google One Fit: ad-free Trends, longer Kinetic Search, no sponsor bumpers."
       }
     ],
-    "validation": "Compare route-guided walks with users’ normal audio or video routine. Track repeat sessions, completion, perceived distraction, and willingness to pay. Use a partner pilot to assess integration cost and support demand before considering a larger commercial model.",
-    "verdict": "Pursue the software experience, not the treadmill. I would partner with equipment makers only after repeat use is established. I would stop if curiosity improves trial but not retention, or if interaction makes the workout less safe or comfortable."
+    "validation": "Compare route-guided walks with users’ normal audio or video routine. Track repeat sessions, completion, distraction, and paid retention across cohorts. Estimate contribution after partner and content costs, then test whether customer acquisition can be recovered before likely cancellation. Pilot on existing equipment before committing to a hardware roadmap.",
+    "verdict": "Pursue the software experience, not the treadmill. I would partner with equipment makers only after repeat use is established. I would stop if curiosity improves trial but not retention, or if interaction makes the workout less safe or comfortable.",
+    "economics": {
+      "basis": "Illustrative subscription on partner equipment; $4 delivery cost includes content, partner share, and support.",
+      "assumptions": [
+        "Net monthly revenue: $10 per paying account; variable delivery and support cost: $4.",
+        "Customer acquisition cost: $30 per new paying account.",
+        "Fixed operating costs: $60,000 per month; scenario: 12,000 active paying accounts."
+      ],
+      "result": "Monthly contribution is $6 per account. Acquisition payback takes 5 paid months before fixed costs. Covering fixed operations requires 10,000 active paying accounts, before acquisition spending. At 12,000 accounts, the monthly result before acquisition spending is a surplus of $12,000.",
+      "interpretation": "The model needs five paid months to recover acquisition spending. The $12,000 monthly surplus before acquisition spending funds only 400 new accounts at $30 each. Replacing more than 400 cancellations a month would consume that surplus before growth.",
+      "limitations": "Assumes constant price and costs. Excludes upfront development, taxes, financing, and discounting. Retention is unvalidated; churn and replacement acquisition spending can prevent payback. This is not a lifetime-value forecast."
+    }
   },
   {
     "id": "glyph-home",
@@ -485,7 +596,7 @@ export const productLabCases: ProductLabCase[] = [
       "Expose cloud dependencies clearly"
     ],
     "concept": "Start with a few dependable actions such as timers and supported playback controls, a microphone power switch, and distinguishable listening and processing states. Explain local and cloud behaviour at setup and during use. Defer an open-ended assistant until the basic utility is reliable.",
-    "tradeoffs": "A transparent shell is not evidence of privacy. Voice interfaces can fail in noise and lack visual context for complex answers. Cloud services introduce ongoing costs and dependencies. Light-only status is insufficient for users who cannot see or distinguish the signals.",
+    "tradeoffs": "A transparent shell is not evidence of privacy. Voice can fail in noise and lacks visual context for complex answers. Cloud inference creates a cost each time the product is used, so high engagement can reduce margin if service funding is unclear. Light-only status also excludes people who cannot see or distinguish the signals.",
     "tags": [
       "New product assessment",
       "Nothing",
@@ -513,8 +624,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: unboxing and phone pairing flow in Nothing design language."
       }
     ],
-    "validation": "Test whether participants can correctly explain listening, mute, and cloud states without coaching. Measure action completion, correction effort, repeat use, and comprehension across accessibility needs. Compare with their current assistant before treating design preference as switching intent.",
-    "verdict": "Run a focused utility pilot. I prefer reliable daily actions and verifiable controls over a broad AI promise. I would not launch if users like the object but cannot explain its privacy states or find a reason to use it regularly."
+    "validation": "Test whether participants understand listening, mute, and cloud states without coaching. Measure task completion, correction effort, and retained use across accessibility needs. Model service costs under both ordinary and heavy usage. Validate a price or service model that funds useful behaviour without relying on selling private data.",
+    "verdict": "Run a focused utility pilot. I prefer reliable daily actions and verifiable controls over a broad AI promise. I would not launch if users like the object but cannot explain its privacy states or find a reason to use it regularly.",
+    "economics": {
+      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "assumptions": [
+        "Net revenue: $180 per device, after channel deductions.",
+        "Variable cost: $115 per device, including production, fulfilment, warranty provision, and per-device support.",
+        "Fixed operating costs: $2,000,000 per year for continuing engineering, software, marketing, and administration.",
+        "Sales scenario: 25,000 devices per year, not a demand forecast."
+      ],
+      "result": "Contribution is $65 per device (36% of net revenue). Operating break-even is 30,770 devices per year. At 25,000 sales, the annual operating result is a loss of $375,000.",
+      "interpretation": "A one-time hardware sale must fund the promised service life. Here, variable cost includes a hypothetical $15 cloud-service reserve within the $115 total. If that reserve needs another $20 per device, operating break-even rises from 30,770 to 44,445 devices. A recurring service offer would need separate demand testing.",
+      "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
+    }
   },
   {
     "id": "commons-map",
@@ -532,7 +655,7 @@ export const productLabCases: ProductLabCase[] = [
       "Secure operating support before expansion"
     ],
     "concept": "Pilot one area and one bounded use case, such as venue accessibility details. Include source dates, edit history, dispute handling, correction reporting, and clear unknown states. Defer safety scoring, global coverage, and traffic-aware routing. The broader maps in the renders show a possible direction.",
-    "tradeoffs": "Volunteer coverage can be uneven. Moderation and stale data create ongoing operating costs, and incorrect access information can cause harm. Grants or institutional support must fund maintenance without giving sponsors control over ranking. Downloaded data needs visible freshness limits.",
+    "tradeoffs": "Volunteer coverage can be uneven, and incorrect access information can cause harm. Moderation and stale data create recurring costs even when contributors are unpaid. Grants can fund a launch without funding maintenance. Institutional support needs renewal commitments and editorial independence; downloaded data also needs visible freshness limits.",
     "tags": [
       "New product assessment",
       "Wikipedia",
@@ -559,8 +682,19 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: safety, restroom, and accessibility layers enabled together."
       }
     ],
-    "validation": "Work with local contributors and users to check coverage, accuracy, correction time, and repeat usefulness against existing sources. Track contributor retention and moderation cost. Expand only after a local organisation accepts maintenance responsibility and funding is credible.",
-    "verdict": "Pilot a sourced layer with a local partner. I choose a narrow, maintained service over an ambitious global replacement. I would not expand into safety-sensitive claims or new regions until correction workflows and local ownership are dependable."
+    "validation": "Pilot with local contributors and users. Check accuracy, correction time, contributor retention, and repeat usefulness against existing sources. Track cost per maintained location, including moderation and partner coordination. Expand only when recurring funding and a named local owner can support reliable coverage.",
+    "verdict": "Pilot a sourced layer with a local partner. I choose a narrow, maintained service over an ambitious global replacement. I would not expand into safety-sensitive claims or new regions until correction workflows and local ownership are dependable.",
+    "economics": {
+      "basis": "Illustrative annual funding model for a local information service, without advertising.",
+      "assumptions": [
+        "Coverage: 1,000 actively maintained locations.",
+        "Annual operating budget: $120,000 for coordination, moderation, hosting, and accessibility.",
+        "Funding scenario: four institutional partners contributing $25,000 annually each."
+      ],
+      "result": "Annual funding is $100,000 against a $120,000 budget, leaving a $20,000 gap. Cost per maintained location is $120 per year. Five partners on the same terms provide $125,000, leaving a $5,000 buffer.",
+      "interpretation": "I would secure recurring maintenance commitments before expanding coverage. Losing one of five partners reopens the $20,000 gap, so partner concentration and renewals matter as much as adding locations.",
+      "limitations": "This is a funding-sustainability model, not a profit forecast. Excludes initial data collection and donated volunteer time, which must be tracked separately. No grants or partner commitments are secured."
+    }
   },
   {
     "id": "still-waiting",
@@ -578,7 +712,7 @@ export const productLabCases: ProductLabCase[] = [
       "Improve information without promising capacity"
     ],
     "concept": "Start with a private status card, broad stages, realistic time ranges, and staff-owned delay updates in one clinic workflow. Offer a kiosk or verbal alternative. Defer family sharing and leave-and-return notifications until consent, identity, connectivity, and operational rules are dependable.",
-    "tradeoffs": "Stale estimates can damage trust more than no estimate. Triage changes mean order may shift; staff should not promise a fixed queue position. Sharing raises privacy concerns, and notification failures can cause missed appointments. Integration and staff training belong in the cost of delivery.",
+    "tradeoffs": "Stale estimates can damage trust, and triage prevents a fixed queue order. Sharing raises privacy concerns; failed notifications can cause missed appointments. Integration, staff training, and support determine cost per clinic. A subscription is justified only if the service reduces operational burden or improves patient experience enough for the buyer to fund it.",
     "tags": [
       "Redesign",
       "Healthcare",
@@ -604,8 +738,19 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: walk radius flow with return notification before appointment slot."
       }
     ],
-    "validation": "Pilot with clinic staff and patients, comparing status enquiries, update workload, missed calls, and reported uncertainty against the existing process. Check estimate accuracy and performance for people without smartphones. Expand only if staff can maintain the service during busy periods.",
-    "verdict": "Proceed with a small operational pilot. I prefer honest ranges and reliable updates over precise-looking countdowns or a large feature set. I would pause rollout if maintaining the system adds burden or if information becomes less reliable at peak demand."
+    "validation": "Pilot with staff and patients against the current process. Track status enquiries, update workload, missed calls, estimate accuracy, and access without a smartphone. Translate net staff time saved into capacity value without assuming it becomes cash savings. Compare that value and patient benefit with implementation and recurring fees before expansion.",
+    "verdict": "Proceed with a small operational pilot. I prefer honest ranges and reliable updates over precise-looking countdowns or a large feature set. I would pause rollout if maintaining the system adds burden or if information becomes less reliable at peak demand.",
+    "economics": {
+      "basis": "Illustrative clinic subscription, separating provider economics from customer value.",
+      "assumptions": [
+        "Provider revenue: $300 per clinic per month; delivery and support: $100 per clinic per month.",
+        "Provider onboarding cost: $1,200 per clinic; shared fixed operations: $10,000 per month.",
+        "Clinic assumption: 20 minutes saved each working day, across 22 days, valued at $30 per staff hour."
+      ],
+      "result": "Provider contribution is $200 per clinic per month, with six months to recover onboarding before shared costs. Operating break-even requires 50 active clinics before onboarding or acquisition spending. For the clinic, assumed time savings are worth $220 a month, below the $300 subscription.",
+      "interpretation": "The customer case is weaker than the provider margin suggests. Time savings alone would need to exceed roughly 27.3 minutes a day to cover the fee. I would validate patient benefit, reduce the price, or lower delivery costs before selling at this level.",
+      "limitations": "Staff capacity is not automatically a cash saving. Excludes customer acquisition, initial integrations, tax, financing, and discounting. Assumes clinics remain subscribed long enough to repay onboarding."
+    }
   },
   {
     "id": "the-last-phone",
@@ -623,7 +768,7 @@ export const productLabCases: ProductLabCase[] = [
       "Measure environmental claims"
     ],
     "concept": "Test a partner offer with replaceable high-wear parts, transparent repair pricing, spare-part access, and a funded software-support period. Treat the illustrated modular phone as a possible partner design. Avoid a lifetime promise until costs, obligations, and supplier commitments can support it.",
-    "tradeoffs": "Modularity can affect size, durability, and assembly cost. Longer ownership reduces replacement sales while extending service obligations. Software dependencies and spare-parts inventory can undermine a repair promise. Environmental benefit depends on actual use and avoided replacements, not the story alone.",
+    "tradeoffs": "Modularity can increase size and assembly cost. Longer ownership reduces replacement sales while extending support obligations. Parts stock ties up working capital, and software dependencies can undermine a repair promise. Model lifetime contribution after repairs and support, rather than relying on initial device margin. Environmental benefit still depends on avoided replacements.",
     "tags": [
       "New product assessment",
       "Patagonia",
@@ -650,8 +795,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: stable OS update policy focused on security and performance."
       }
     ],
-    "validation": "Assess repair completion, turnaround, parts cost, customer satisfaction, and device retention with a qualified partner. Model the cost of support across the promised life. Compare total ownership cost and seek a lifecycle assessment before making environmental claims.",
-    "verdict": "Choose a repair and longevity partnership; do not build a new phone platform. I favour measurable extensions of useful life over a branded sustainability object. I would reconsider hardware only if the partner model cannot deliver the needed improvements."
+    "validation": "Pilot repairs with a qualified partner and track completion, turnaround, parts cost, and device retention. Model support costs and parts availability across the promised life, including a low-sales scenario. Test whether repair and refurbishment revenue can fund continued service. Seek a lifecycle assessment before making environmental claims.",
+    "verdict": "Choose a repair and longevity partnership; do not build a new phone platform. I favour measurable extensions of useful life over a branded sustainability object. I would reconsider hardware only if the partner model cannot deliver the needed improvements.",
+    "economics": {
+      "basis": "Illustrative five-year contribution model for a partner-led longevity device.",
+      "assumptions": [
+        "Initial net device revenue: $500; production and fulfilment cost: $330.",
+        "Five-year support and warranty reserve: $100 per device.",
+        "Expected paid repair revenue: $60 per device over five years; associated parts and labour: $40.",
+        "Programme development and shared fixed costs: $3 million over five years."
+      ],
+      "result": "Modelled lifetime contribution is $90 per device: $500 minus $330 minus $100, plus $60 minus $40. Covering the $3 million programme requires 33,334 devices. At 20,000 devices, $1.8 million contribution leaves a $1.2 million shortfall.",
+      "interpretation": "If support needs another $50 per device, lifetime contribution falls to $40 and recovery requires 75,000 devices. I would prioritise a funded service reserve and partner obligations before making a five-year promise.",
+      "limitations": "Paid repairs are outside warranty and are averaged across all devices, not promised revenue from every owner. Excludes acquisition costs, parts working capital, taxes, financing, and discounting. Actual repair frequency and support costs are unknown."
+    }
   },
   {
     "id": "select-all-buses",
@@ -669,7 +826,7 @@ export const productLabCases: ProductLabCase[] = [
       "Keep rollout measurable and reversible"
     ],
     "concept": "Pilot one flow with risk-based escalation, accessible alternatives, clear retry guidance, and a support path. Use passkeys as one signal where the flow supports them, not a universal requirement. Keep fallback options for shared devices, older hardware, and users who minimise device tracking.",
-    "tradeoffs": "Attackers adapt, and a smoother flow can increase abuse if signals are weak. Device signals may create privacy and exclusion costs. Human review adds operational expense. Neither visible puzzles nor silent checks should be assumed stronger without measuring the attacks relevant to the service.",
+    "tradeoffs": "Attackers adapt, so smoother access may increase abuse. Device signals can create privacy and exclusion costs, while human review adds expense. Evaluate the value of recovered legitimate users against fraud losses, review, and support costs. Neither visible puzzles nor silent checks should be assumed stronger without measuring relevant attacks.",
     "tags": [
       "Redesign",
       "Trust",
@@ -696,8 +853,20 @@ export const productLabCases: ProductLabCase[] = [
         "caption": "Concept illustration: accessible fallback designed for screen reader completion."
       }
     ],
-    "validation": "Roll out gradually with a comparison group and a rollback path. Track legitimate completion, false rejection, confirmed abuse, recovery success, and support volume. Review results across browsers, devices, and assistive technologies; agree acceptable security limits before the experiment.",
-    "verdict": "Proceed with a staged, reversible redesign. I choose fewer unnecessary challenges, not the removal of verification. Expand only when legitimate completion improves without an unacceptable increase in abuse or exclusion. Keep the fallback until that evidence is strong."
+    "validation": "Roll out gradually with a comparison group and rollback path. Track legitimate completion, false rejection, confirmed abuse, recovery success, and support volume. Assess cost per successful legitimate interaction alongside security limits. Review results across devices and assistive technologies before scaling a conversion improvement.",
+    "verdict": "Proceed with a staged, reversible redesign. I choose fewer unnecessary challenges, not the removal of verification. Expand only when legitimate completion improves without an unacceptable increase in abuse or exclusion. Keep the fallback until that evidence is strong.",
+    "economics": {
+      "basis": "Illustrative monthly business impact for a service replacing its verification flow.",
+      "assumptions": [
+        "100,000 legitimate attempts a month; successful completion increases from 90% to 94%.",
+        "Each additional legitimate completion yields $1 in expected contribution after downstream delivery costs.",
+        "Incremental verification and review costs: $1,500 per month; additional confirmed abuse losses: $1,000 per month.",
+        "One-time implementation cost: $18,000."
+      ],
+      "result": "The assumed improvement recovers 4,000 legitimate completions and $4,000 contribution per month. After additional review and abuse costs, monthly benefit is $1,500. Simple implementation payback takes 12 months.",
+      "interpretation": "If additional abuse losses reach $2,500 a month, the recurring benefit disappears. I would require both accessibility improvement and security guardrails; higher completion is not enough to justify rollout.",
+      "limitations": "The $1 is an assumed expected contribution, not revenue per login. No conversion or abuse improvement has been observed. Excludes tax, financing, discounting, and unpriced privacy or exclusion harms, which remain separate decision constraints."
+    }
   }
 ];
 
