@@ -24,10 +24,9 @@ export interface ProductLabCase {
   concept: string;
   tradeoffs: string;
   economics: {
-    basis: string;
+    highlights: { value: string; label: string }[];
     assumptions: string[];
-    result: string;
-    interpretation: string;
+    takeaway: string;
     limitations: string;
   };
   validation: string;
@@ -91,15 +90,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Recruit keyboard-preferring professionals for a multi-week comparison with their current phone. Track retained daily use, essential-app failures, typing comfort, and missed priority messages. Test willingness to pay against a partner quote, then calculate the sales volume needed to cover fixed support costs. Stop if the reachable customer segment cannot support that volume.",
     "verdict": "Pilot through a partner; do not launch the full concept yet. I favour the keyboard and attention controls, but would remove the unproven security architecture from the initial promise. I would stop if users enjoy the demo but return to their primary phone, or if support costs make the niche uneconomic.",
     "economics": {
-      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "highlights": [
+        {
+          "value": "$210",
+          "label": "Contribution per phone"
+        },
+        {
+          "value": "28,572",
+          "label": "Annual sales to break even"
+        },
+        {
+          "value": "$1.8M",
+          "label": "Annual loss at 20,000 sales"
+        }
+      ],
+      "takeaway": "I would test paid demand before committing to years of software support.",
       "assumptions": [
         "Net revenue: $700 per device, after channel deductions.",
         "Variable cost: $490 per device, including production, fulfilment, warranty provision, and per-device support.",
         "Fixed operating costs: $6,000,000 per year for continuing engineering, software, marketing, and administration.",
         "Sales scenario: 20,000 devices per year, not a demand forecast."
       ],
-      "result": "Contribution is $210 per device (30% of net revenue). Operating break-even is 28,572 devices per year. At 20,000 sales, the annual operating result is a loss of $1,800,000.",
-      "interpretation": "The model needs a repeatable niche, not just a successful launch week. I would require priced reservations and a funded update commitment before scaling. A $50 increase in unit cost raises operating break-even from 28,572 to 37,500 devices.",
       "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
     }
   },
@@ -154,15 +165,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Compare a limited prototype with phone-only listening over several weeks. Measure sessions completed without returning to the phone, repeat use after novelty fades, and willingness to pay. Separate new demand from replacement purchases and estimate contribution after acquisition and support costs before funding hardware.",
     "verdict": "Do not fund a standalone launch yet. I prefer a focused listening test over a nostalgia-led hardware release. I would reconsider if users consistently choose the separate device and that preference survives a realistic price and charging routine.",
     "economics": {
-      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "highlights": [
+        {
+          "value": "$80",
+          "label": "Contribution per player"
+        },
+        {
+          "value": "100,000",
+          "label": "Annual sales to break even"
+        },
+        {
+          "value": "$2M",
+          "label": "Annual loss at 75,000 sales"
+        }
+      ],
+      "takeaway": "The player needs customers who would otherwise leave their money unspent, not just buyers switching from another Apple device.",
       "assumptions": [
         "Net revenue: $250 per device, after channel deductions.",
         "Variable cost: $170 per device, including production, fulfilment, warranty provision, and per-device support.",
         "Fixed operating costs: $8,000,000 per year for continuing engineering, software, marketing, and administration.",
         "Sales scenario: 75,000 devices per year, not a demand forecast."
       ],
-      "result": "Contribution is $80 per device (32% of net revenue). Operating break-even is 100,000 devices per year. At 75,000 sales, the annual operating result is a loss of $2,000,000.",
-      "interpretation": "A focused player needs enough incremental demand to fund its dedicated support and software. At this volume the model loses $2 million before launch costs or profit displaced from other Apple devices.",
       "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
     }
   },
@@ -217,14 +240,26 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Benchmark prototypes against a conventional battery design under matched workloads. Review capacity, heat, durability, repair time, and production yield. Test willingness to pay for thinness versus modestly greater thickness and battery life. Release R&D funding in stages, with safety and a credible cost advantage as gates before launch investment.",
     "verdict": "Do not ship this architecture on the evidence available. I prefer a conventional battery and a more balanced thickness target for a near-term product. I would revisit structural storage only after safety, capacity, repairability, and yield are proven together.",
     "economics": {
-      "basis": "Incremental investment comparison with a conventional battery design.",
+      "highlights": [
+        {
+          "value": "$15",
+          "label": "Extra contribution per phone"
+        },
+        {
+          "value": "$60M",
+          "label": "Development investment"
+        },
+        {
+          "value": "4M",
+          "label": "Phones to recover investment"
+        }
+      ],
+      "takeaway": "If repairs or lower manufacturing yields eat into that small premium, the conventional battery is the better bet.",
       "assumptions": [
         "Additional net revenue attributable to the redesign: $40 per device.",
         "Additional manufacturing and warranty cost: $25 per device.",
         "One-time development and qualification investment: $60 million."
       ],
-      "result": "Incremental contribution is $15 per device. Recovering $60 million requires 4 million devices. At 2 million devices, incremental contribution is $30 million, leaving $30 million of investment unrecovered.",
-      "interpretation": "If added cost reaches $35, contribution falls to $5 and recovery requires 12 million devices. I would first test whether customers pay for the benefit, then prioritise yield and repairability over thinner packaging.",
       "limitations": "Only incremental costs and revenue are modelled. Excludes the baseline phone business, continuing fixed-cost changes, tax, financing, and discounting. No sales volume or price premium has been validated."
     }
   },
@@ -275,15 +310,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Test real rooms, bags, and crowded environments. Compare successful nearby checks, false reassurance, pairing failures, and battery consumption across display and no-display prototypes. Test willingness to pay for the display, then check supplier costs and retailer terms. Proceed only if the extra customer value can fund the extra cost.",
     "verdict": "Proceed to a small prototype pilot. I choose a proximity display over a distance meter and a narrow utility promise over global tracking. I would drop the screen if it does not improve task completion enough to justify its cost.",
     "economics": {
-      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "highlights": [
+        {
+          "value": "$13",
+          "label": "Contribution per tracker"
+        },
+        {
+          "value": "50,000",
+          "label": "Annual sales to break even"
+        },
+        {
+          "value": "$130K",
+          "label": "Annual loss at 40,000 sales"
+        }
+      ],
+      "takeaway": "I would keep the display only if customers will pay enough for it to cover the extra hardware and support.",
       "assumptions": [
         "Net revenue: $35 per device, after channel deductions.",
         "Variable cost: $22 per device, including production, fulfilment, warranty provision, and per-device support.",
         "Fixed operating costs: $650,000 per year for continuing engineering, software, marketing, and administration.",
         "Sales scenario: 40,000 devices per year, not a demand forecast."
       ],
-      "result": "Contribution is $13 per device (37% of net revenue). Operating break-even is 50,000 devices per year. At 40,000 sales, the annual operating result is a loss of $130,000.",
-      "interpretation": "The display should earn a price premium or better conversion, because an accessible price leaves limited room for support costs. An extra $3 per unit in returns or support raises operating break-even from 50,000 to 65,000 devices.",
       "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
     }
   },
@@ -334,15 +381,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Run extended wear and travel trials with the intended segment. Compare comfort, call quality, sound satisfaction, and willingness to pay at a real price. Use a limited allocation to test full-price sell-through, returns, and contribution after partner and service costs. Secure parts availability before committing to a larger run.",
     "verdict": "Choose a limited partner-led pilot. I prefer a credible audio platform with distinctive materials and service over a bespoke electronics stack. I would not proceed if design compromises comfort or if the repair promise cannot be funded.",
     "economics": {
-      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "highlights": [
+        {
+          "value": "$350",
+          "label": "Contribution per device"
+        },
+        {
+          "value": "4,000",
+          "label": "Annual sales to break even"
+        },
+        {
+          "value": "$350K",
+          "label": "Annual surplus at 5,000 sales"
+        }
+      ],
+      "takeaway": "A small run can cover operations if it sells at full price. Unsold inventory could quickly erase that surplus.",
       "assumptions": [
         "Net revenue: $900 per device, after channel deductions.",
         "Variable cost: $550 per device, including production, fulfilment, warranty provision, and per-device support.",
         "Fixed operating costs: $1,400,000 per year for continuing engineering, software, marketing, and administration.",
         "Sales scenario: 5,000 devices per year, not a demand forecast."
       ],
-      "result": "Contribution is $350 per device (39% of net revenue). Operating break-even is 4,000 devices per year. At 5,000 sales, the annual operating result is a surplus of $350,000.",
-      "interpretation": "A limited collection could cover annual operations, but a $350,000 surplus leaves little room for initial design costs or unsold stock. At 3,000 sales, the same model loses $350,000. Full-price sell-through matters more than the launch waiting list.",
       "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
     }
   },
@@ -393,15 +452,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Compare priced prototypes with conventional chargers among premium-accessory buyers. Measure weight acceptance, charging reliability, and willingness to pay for cell replacement. Model service labour, parts inventory, and replacement frequency over the promised life. Judge the return against a specialist partnership, not just whether a Rolex version could sell.",
     "verdict": "Do not launch as Rolex hardware. I favour testing the repairable charger through a specialist brand. I would reconsider a collaboration only if demand depends meaningfully on Rolex participation and the support burden does not weaken its core proposition.",
     "economics": {
-      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "highlights": [
+        {
+          "value": "$220",
+          "label": "Contribution per charger"
+        },
+        {
+          "value": "5,000",
+          "label": "Annual sales to break even"
+        },
+        {
+          "value": "$220K",
+          "label": "Annual loss at 4,000 sales"
+        }
+      ],
+      "takeaway": "Even at a premium price, the charger needs a service partner that can afford to keep replacement cells available.",
       "assumptions": [
         "Net revenue: $600 per device, after channel deductions.",
         "Variable cost: $380 per device, including production, fulfilment, warranty provision, and per-device support.",
         "Fixed operating costs: $1,100,000 per year for continuing engineering, software, marketing, and administration.",
         "Sales scenario: 4,000 devices per year, not a demand forecast."
       ],
-      "result": "Contribution is $220 per device (37% of net revenue). Operating break-even is 5,000 devices per year. At 4,000 sales, the annual operating result is a loss of $220,000.",
-      "interpretation": "Even a premium price does not justify a new service operation on its own. A specialist partner remains the more credible owner. At 4,000 sales, an extra $50 service provision per device would increase the annual loss from $220,000 to $420,000.",
       "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
     }
   },
@@ -452,14 +523,26 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Use blind comparisons across skin tones and lighting conditions. Track unwanted skin changes, editing time, paid conversion, and repeat use by acquisition cohort. Compare acquisition cost with contribution from retained paying users. Test whether a physical camera improves the workflow enough to justify its price and transfer friction.",
     "verdict": "Choose software and partnership first. I would not approve standalone hardware until users prefer its output over their existing workflow and keep using it after the novelty passes. Accurate, inclusive rendering matters more than matching campaign imagery.",
     "economics": {
-      "basis": "Illustrative subscription model for the recommended imaging-software pilot.",
+      "highlights": [
+        {
+          "value": "$4.50",
+          "label": "Monthly contribution per subscriber"
+        },
+        {
+          "value": "$18",
+          "label": "Cost to acquire a subscriber"
+        },
+        {
+          "value": "4 months",
+          "label": "Paid use to recover acquisition cost"
+        }
+      ],
+      "takeaway": "A customer who cancels after three months still costs more to acquire than the subscription contributes.",
       "assumptions": [
         "Net monthly revenue: $6 per paying account; variable delivery and support cost: $1.5.",
         "Customer acquisition cost: $18 per new paying account.",
         "Fixed operating costs: $30,000 per month; scenario: 5,000 active paying accounts."
       ],
-      "result": "Monthly contribution is $4.5 per account. Acquisition payback takes 4 paid months before fixed costs. Covering fixed operations requires 6,667 active paying accounts, before acquisition spending. At 5,000 accounts, the monthly result before acquisition spending is a loss of $7,500.0.",
-      "interpretation": "Payback requires four paid months, so trial downloads or launch purchases would not establish a viable offer. At only three paid months, contribution is $13.50 against $18 acquisition cost, before fixed operations.",
       "limitations": "Assumes constant price and costs. Excludes upfront development, taxes, financing, and discounting. Retention is unvalidated; churn and replacement acquisition spending can prevent payback. This is not a lifetime-value forecast."
     }
   },
@@ -510,14 +593,26 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Compare the pilot with ordinary reminders over several working weeks. Measure retained opt-in use, useful versus dismissed prompts, and interruption burden. Test willingness to pay separately from perceived usefulness, then estimate delivery and support cost per active user. Additional sensing earns investment only if its benefit justifies its cost and privacy burden.",
     "verdict": "Do not build a Fitbit monitor yet. I choose a small, private companion experience with manual control and optional hardware partners. I would add sensors only when they demonstrably improve a user-chosen behaviour without increasing perceived surveillance.",
     "economics": {
-      "basis": "Illustrative opt-in consumer subscription for the recommended software companion.",
+      "highlights": [
+        {
+          "value": "$3",
+          "label": "Monthly contribution per account"
+        },
+        {
+          "value": "$12",
+          "label": "Cost to acquire a paying account"
+        },
+        {
+          "value": "4 months",
+          "label": "Paid use to recover acquisition cost"
+        }
+      ],
+      "takeaway": "A free trial can show that people find the prompts useful. I would test whether they keep paying before investing in a monitor.",
       "assumptions": [
         "Net monthly revenue: $4 per paying account; variable delivery and support cost: $1.",
         "Customer acquisition cost: $12 per new paying account.",
         "Fixed operating costs: $20,000 per month; scenario: 5,000 active paying accounts."
       ],
-      "result": "Monthly contribution is $3 per account. Acquisition payback takes 4 paid months before fixed costs. Covering fixed operations requires 6,667 active paying accounts, before acquisition spending. At 5,000 accounts, the monthly result before acquisition spending is a loss of $5,000.",
-      "interpretation": "The payer and recurring benefit need validation before any monitor investment. A free pilot can demonstrate usefulness without proving that enough people will pay through the four-month acquisition payback period.",
       "limitations": "Assumes constant price and costs. Excludes upfront development, taxes, financing, and discounting. Retention is unvalidated; churn and replacement acquisition spending can prevent payback. This is not a lifetime-value forecast."
     }
   },
@@ -569,14 +664,26 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Compare route-guided walks with users’ normal audio or video routine. Track repeat sessions, completion, distraction, and paid retention across cohorts. Estimate contribution after partner and content costs, then test whether customer acquisition can be recovered before likely cancellation. Pilot on existing equipment before committing to a hardware roadmap.",
     "verdict": "Pursue the software experience, not the treadmill. I would partner with equipment makers only after repeat use is established. I would stop if curiosity improves trial but not retention, or if interaction makes the workout less safe or comfortable.",
     "economics": {
-      "basis": "Illustrative subscription on partner equipment; $4 delivery cost includes content, partner share, and support.",
+      "highlights": [
+        {
+          "value": "$6",
+          "label": "Monthly contribution per subscriber"
+        },
+        {
+          "value": "5 months",
+          "label": "Paid use to recover acquisition cost"
+        },
+        {
+          "value": "10,000",
+          "label": "Subscribers to cover fixed costs"
+        }
+      ],
+      "takeaway": "Covering fixed costs leaves nothing for replacing subscribers who cancel. I would test retention on existing equipment first.",
       "assumptions": [
         "Net monthly revenue: $10 per paying account; variable delivery and support cost: $4.",
         "Customer acquisition cost: $30 per new paying account.",
         "Fixed operating costs: $60,000 per month; scenario: 12,000 active paying accounts."
       ],
-      "result": "Monthly contribution is $6 per account. Acquisition payback takes 5 paid months before fixed costs. Covering fixed operations requires 10,000 active paying accounts, before acquisition spending. At 12,000 accounts, the monthly result before acquisition spending is a surplus of $12,000.",
-      "interpretation": "The model needs five paid months to recover acquisition spending. The $12,000 monthly surplus before acquisition spending funds only 400 new accounts at $30 each. Replacing more than 400 cancellations a month would consume that surplus before growth.",
       "limitations": "Assumes constant price and costs. Excludes upfront development, taxes, financing, and discounting. Retention is unvalidated; churn and replacement acquisition spending can prevent payback. This is not a lifetime-value forecast."
     }
   },
@@ -627,15 +734,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Test whether participants understand listening, mute, and cloud states without coaching. Measure task completion, correction effort, and retained use across accessibility needs. Model service costs under both ordinary and heavy usage. Validate a price or service model that funds useful behaviour without relying on selling private data.",
     "verdict": "Run a focused utility pilot. I prefer reliable daily actions and verifiable controls over a broad AI promise. I would not launch if users like the object but cannot explain its privacy states or find a reason to use it regularly.",
     "economics": {
-      "basis": "Illustrative annual operating model for a partner-led hardware offer.",
+      "highlights": [
+        {
+          "value": "$65",
+          "label": "Contribution per device"
+        },
+        {
+          "value": "30,770",
+          "label": "Annual sales to break even"
+        },
+        {
+          "value": "$375K",
+          "label": "Annual loss at 25,000 sales"
+        }
+      ],
+      "takeaway": "Frequent use raises cloud costs after the device is sold. I would price that ongoing service before committing to hardware.",
       "assumptions": [
         "Net revenue: $180 per device, after channel deductions.",
         "Variable cost: $115 per device, including production, fulfilment, warranty provision, and per-device support.",
         "Fixed operating costs: $2,000,000 per year for continuing engineering, software, marketing, and administration.",
         "Sales scenario: 25,000 devices per year, not a demand forecast."
       ],
-      "result": "Contribution is $65 per device (36% of net revenue). Operating break-even is 30,770 devices per year. At 25,000 sales, the annual operating result is a loss of $375,000.",
-      "interpretation": "A one-time hardware sale must fund the promised service life. Here, variable cost includes a hypothetical $15 cloud-service reserve within the $115 total. If that reserve needs another $20 per device, operating break-even rises from 30,770 to 44,445 devices. A recurring service offer would need separate demand testing.",
       "limitations": "Excludes upfront development and tooling, taxes, financing, working capital, and discounting. Operating break-even does not recover launch investment. Warranty provision would need supplier and service evidence."
     }
   },
@@ -685,14 +804,26 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Pilot with local contributors and users. Check accuracy, correction time, contributor retention, and repeat usefulness against existing sources. Track cost per maintained location, including moderation and partner coordination. Expand only when recurring funding and a named local owner can support reliable coverage.",
     "verdict": "Pilot a sourced layer with a local partner. I choose a narrow, maintained service over an ambitious global replacement. I would not expand into safety-sensitive claims or new regions until correction workflows and local ownership are dependable.",
     "economics": {
-      "basis": "Illustrative annual funding model for a local information service, without advertising.",
+      "highlights": [
+        {
+          "value": "$120K",
+          "label": "Annual upkeep budget"
+        },
+        {
+          "value": "$100K",
+          "label": "Annual funding from four partners"
+        },
+        {
+          "value": "$20K",
+          "label": "Annual funding gap"
+        }
+      ],
+      "takeaway": "A fifth partner on the same terms would fund upkeep. I would secure that commitment before expanding coverage.",
       "assumptions": [
         "Coverage: 1,000 actively maintained locations.",
         "Annual operating budget: $120,000 for coordination, moderation, hosting, and accessibility.",
         "Funding scenario: four institutional partners contributing $25,000 annually each."
       ],
-      "result": "Annual funding is $100,000 against a $120,000 budget, leaving a $20,000 gap. Cost per maintained location is $120 per year. Five partners on the same terms provide $125,000, leaving a $5,000 buffer.",
-      "interpretation": "I would secure recurring maintenance commitments before expanding coverage. Losing one of five partners reopens the $20,000 gap, so partner concentration and renewals matter as much as adding locations.",
       "limitations": "This is a funding-sustainability model, not a profit forecast. Excludes initial data collection and donated volunteer time, which must be tracked separately. No grants or partner commitments are secured."
     }
   },
@@ -741,14 +872,26 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Pilot with staff and patients against the current process. Track status enquiries, update workload, missed calls, estimate accuracy, and access without a smartphone. Translate net staff time saved into capacity value without assuming it becomes cash savings. Compare that value and patient benefit with implementation and recurring fees before expansion.",
     "verdict": "Proceed with a small operational pilot. I prefer honest ranges and reliable updates over precise-looking countdowns or a large feature set. I would pause rollout if maintaining the system adds burden or if information becomes less reliable at peak demand.",
     "economics": {
-      "basis": "Illustrative clinic subscription, separating provider economics from customer value.",
+      "highlights": [
+        {
+          "value": "$300",
+          "label": "Monthly fee per clinic"
+        },
+        {
+          "value": "$220",
+          "label": "Monthly value of staff time saved"
+        },
+        {
+          "value": "6 months",
+          "label": "Provider onboarding payback"
+        }
+      ],
+      "takeaway": "Staff time saved does not cover the fee on its own. The pilot must show enough additional benefit for patients or the clinic.",
       "assumptions": [
         "Provider revenue: $300 per clinic per month; delivery and support: $100 per clinic per month.",
         "Provider onboarding cost: $1,200 per clinic; shared fixed operations: $10,000 per month.",
         "Clinic assumption: 20 minutes saved each working day, across 22 days, valued at $30 per staff hour."
       ],
-      "result": "Provider contribution is $200 per clinic per month, with six months to recover onboarding before shared costs. Operating break-even requires 50 active clinics before onboarding or acquisition spending. For the clinic, assumed time savings are worth $220 a month, below the $300 subscription.",
-      "interpretation": "The customer case is weaker than the provider margin suggests. Time savings alone would need to exceed roughly 27.3 minutes a day to cover the fee. I would validate patient benefit, reduce the price, or lower delivery costs before selling at this level.",
       "limitations": "Staff capacity is not automatically a cash saving. Excludes customer acquisition, initial integrations, tax, financing, and discounting. Assumes clinics remain subscribed long enough to repay onboarding."
     }
   },
@@ -798,15 +941,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Pilot repairs with a qualified partner and track completion, turnaround, parts cost, and device retention. Model support costs and parts availability across the promised life, including a low-sales scenario. Test whether repair and refurbishment revenue can fund continued service. Seek a lifecycle assessment before making environmental claims.",
     "verdict": "Choose a repair and longevity partnership; do not build a new phone platform. I favour measurable extensions of useful life over a branded sustainability object. I would reconsider hardware only if the partner model cannot deliver the needed improvements.",
     "economics": {
-      "basis": "Illustrative five-year contribution model for a partner-led longevity device.",
+      "highlights": [
+        {
+          "value": "$90",
+          "label": "Five-year contribution per phone"
+        },
+        {
+          "value": "$3M",
+          "label": "Five-year programme cost"
+        },
+        {
+          "value": "33,334",
+          "label": "Phones to recover programme cost"
+        }
+      ],
+      "takeaway": "A repair promise is only credible if the reserve covers parts and support throughout the promised life.",
       "assumptions": [
         "Initial net device revenue: $500; production and fulfilment cost: $330.",
         "Five-year support and warranty reserve: $100 per device.",
         "Expected paid repair revenue: $60 per device over five years; associated parts and labour: $40.",
         "Programme development and shared fixed costs: $3 million over five years."
       ],
-      "result": "Modelled lifetime contribution is $90 per device: $500 minus $330 minus $100, plus $60 minus $40. Covering the $3 million programme requires 33,334 devices. At 20,000 devices, $1.8 million contribution leaves a $1.2 million shortfall.",
-      "interpretation": "If support needs another $50 per device, lifetime contribution falls to $40 and recovery requires 75,000 devices. I would prioritise a funded service reserve and partner obligations before making a five-year promise.",
       "limitations": "Paid repairs are outside warranty and are averaged across all devices, not promised revenue from every owner. Excludes acquisition costs, parts working capital, taxes, financing, and discounting. Actual repair frequency and support costs are unknown."
     }
   },
@@ -856,15 +1011,27 @@ export const productLabCases: ProductLabCase[] = [
     "validation": "Roll out gradually with a comparison group and rollback path. Track legitimate completion, false rejection, confirmed abuse, recovery success, and support volume. Assess cost per successful legitimate interaction alongside security limits. Review results across devices and assistive technologies before scaling a conversion improvement.",
     "verdict": "Proceed with a staged, reversible redesign. I choose fewer unnecessary challenges, not the removal of verification. Expand only when legitimate completion improves without an unacceptable increase in abuse or exclusion. Keep the fallback until that evidence is strong.",
     "economics": {
-      "basis": "Illustrative monthly business impact for a service replacing its verification flow.",
+      "highlights": [
+        {
+          "value": "$1,500",
+          "label": "Monthly benefit after review and abuse costs"
+        },
+        {
+          "value": "$18K",
+          "label": "Implementation cost"
+        },
+        {
+          "value": "12 months",
+          "label": "Time to recover investment"
+        }
+      ],
+      "takeaway": "If abuse losses rise by another $1,500 a month, the gain disappears even if more legitimate users get through.",
       "assumptions": [
         "100,000 legitimate attempts a month; successful completion increases from 90% to 94%.",
         "Each additional legitimate completion yields $1 in expected contribution after downstream delivery costs.",
         "Incremental verification and review costs: $1,500 per month; additional confirmed abuse losses: $1,000 per month.",
         "One-time implementation cost: $18,000."
       ],
-      "result": "The assumed improvement recovers 4,000 legitimate completions and $4,000 contribution per month. After additional review and abuse costs, monthly benefit is $1,500. Simple implementation payback takes 12 months.",
-      "interpretation": "If additional abuse losses reach $2,500 a month, the recurring benefit disappears. I would require both accessibility improvement and security guardrails; higher completion is not enough to justify rollout.",
       "limitations": "The $1 is an assumed expected contribution, not revenue per login. No conversion or abuse improvement has been observed. Excludes tax, financing, discounting, and unpriced privacy or exclusion harms, which remain separate decision constraints."
     }
   }

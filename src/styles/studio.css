@@ -375,6 +375,16 @@ ul.studio-toolbox-chips { list-style: none; display: flex; flex-wrap: wrap; gap:
 .studio-concept-story .studio-case-verdict { background: #e6eadc; border-left: 3px solid var(--studio-accent); padding: 28px; }
 .studio-case-verdict p { margin-bottom: 0; }
 
-.studio-case-economics { background: #eeece5; padding: clamp(20px, 4vw, 36px); border: 1px solid var(--studio-line); border-radius: 12px; }
-.studio-case-economics h3 { font-size: 17px; margin: 24px 0 12px; }
-.studio-case-economics .studio-economics-disclaimer, .studio-case-economics .studio-economics-limits { font-size: 14px; line-height: 1.7; color: var(--studio-muted); }
+.studio-economics-body { min-width: 0; }
+.studio-economics-body .studio-economics-caption { color: var(--studio-muted); font-size: 13px; }
+.studio-economics-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 14px 0 18px; }
+.studio-economics-metrics > div { display: flex; flex-direction: column; gap: 3px; padding-left: 12px; border-left: 2px solid var(--studio-line); }
+.studio-economics-metrics dt { color: var(--studio-muted); font-size: 14px; line-height: 1.4; }
+.studio-economics-metrics dd { order: -1; margin: 0; font-size: clamp(22px, 2.5vw, 32px); font-variant-numeric: tabular-nums; line-height: 1.15; }
+.studio-economics-body details { margin-top: 12px; color: var(--studio-muted); font-size: 14px; }
+.studio-economics-body summary { cursor: pointer; width: fit-content; text-decoration: underline; text-underline-offset: 3px; }
+.studio-economics-body details ul { margin: 12px 0; }
+@media (max-width: 550px) {
+  .studio-economics-metrics { grid-template-columns: 1fr; gap: 8px; }
+  .studio-economics-metrics > div { display: grid; grid-template-columns: minmax(105px, auto) 1fr; align-items: baseline; gap: 12px; }
+}

@@ -36,8 +36,11 @@ describe("Studio collections", () => {
     [c.cover, ...c.gallery].forEach(image => expect(existsSync(resolve("public", image.src.slice(1)))).toBe(true));
     expect(screen.getAllByRole("img")).toHaveLength(c.gallery.length + 1);
     const economics = screen.getByRole("heading", { name: "Illustrative economics" }).closest("section")!;
-    [c.economics.basis, ...c.economics.assumptions, c.economics.result, c.economics.interpretation, c.economics.limitations].forEach(text => expect(economics).toHaveTextContent(text));
-    expect(economics).toHaveTextContent("Hypothetical estimates in USD");
+    expect(Array.from(economics.querySelectorAll("dd strong"), el => el.textContent)).toEqual(c.economics.highlights.map(metric => metric.value));
+    expect(economics).toHaveTextContent(c.economics.takeaway);
+    expect(economics).toHaveTextContent("Hypothetical scenario · USD");
+    expect(economics.querySelector("details")).not.toHaveAttribute("open");
+    c.economics.assumptions.forEach(text => expect(economics.querySelector("details")).toHaveTextContent(text));
     const verdict = screen.getByRole("heading", { name: "My verdict" }).closest("section")!;
     expect(verdict).toHaveTextContent(c.verdict);
     expect(verdict.nextElementSibling).toBeNull();
