@@ -28,6 +28,10 @@ describe("Studio collections", () => {
   for (const project of projects) it(`preserves all project content: ${project.id}`, () => {
     render(<MemoryRouter initialEntries={[`/studio/work/${project.id}`]}><Routes><Route path="/studio/work/:id" element={<StudioDetail kind="work" />} /></Routes></MemoryRouter>);
     expect(screen.getByText(project.description)).toBeInTheDocument();
+    const player = screen.getByLabelText(`Watch the idea: ${project.name}`);
+    for (const attr of ["src", "poster"]) expect(existsSync(resolve("public", player.getAttribute(attr)!.slice(1)))).toBe(true);
+    expect(player).toHaveAttribute("preload", "none");
+    expect(player).not.toHaveAttribute("autoplay");
     project.readMore?.forEach(text => expect(screen.getByText(text)).toBeInTheDocument());
   });
   for (const c of productLabCases) it(`preserves complete concept and image assets: ${c.id}`, () => {

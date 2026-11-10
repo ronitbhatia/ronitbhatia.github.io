@@ -1,3 +1,4 @@
+import ProjectFilm from "@/components/studio/ProjectFilm";
 import ProjectMarginNote, { ProductLabMarginNote } from "@/components/studio/ProjectMarginNote";
 import { RonitDiscovery } from "@/components/studio/PixelRonit";
 import { useParams } from "react-router-dom";
@@ -20,6 +21,7 @@ export default function StudioDetail({ kind }: { kind: "work" | "lab" }) {
     {project && <div className="studio-project-detail">
       <ProjectMarginNote projectId={project.id} />
       <section><h2>Overview</h2><p>{project.description}</p></section>
+      <ProjectFilm key={project.id} id={project.id} title={project.name} />
       {project.readMore && <section><h2>Inside the project</h2>{project.readMore.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</section>}
       {(project.github || project.demo) && <section><h2>Links</h2><div className="studio-project-links">{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}{project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer">{project.demoLabel ?? "Visit project"} ↗</a>}</div></section>}
     </div>}

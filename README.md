@@ -33,6 +33,12 @@ python3 -m http.server 8081 --bind 127.0.0.1 --directory dist
 
 React, TypeScript, Vite, React Router, Framer Motion, Radix Dialog, Lucide icons, and Tailwind's CSS foundation. Studio styling lives in `src/styles`. Content and search live in `src/data`.
 
+## Project films
+
+The 13 project pages play self-hosted H.264 MP4s with AAC narration, burned-in captions, WebP posters, and a text transcript. Assets live in `public/project-films/`; titles, durations, and transcripts are maintained in `src/data/projectFilms.ts`. The browser fetches the video on play. No video hosting account, backend, or model download is required for visitors.
+
+The Syro and VoyageLog openings were generated with Wan 2.1. The project explanations use locally animated illustrations; FFmpeg encodes the final media. The narration uses the [Piper LJSpeech voice](https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/ljspeech/medium).
+
 ## Deployment
 
 The GitHub Pages workflow validates the code and production artifacts before publishing `dist/`. It targets a root-domain site at `https://ronitbhatia.github.io/`. GitHub Pages must use **GitHub Actions** as its source. Pushing to main triggers deployment.

@@ -31,6 +31,13 @@ for (const source of ['src/data/productLabCases.ts', 'src/data/resumePreview.jso
   for (const match of read(source).matchAll(/["'](\/(?:product-lab|resume-preview)\/[^"']+)["']/g)) assert(existsSync(join(root, match[1])), `Missing content asset ${match[1]}`);
 }
 for (const asset of ['resume.pdf', 'new-pic.png', 'pixel-ronit/poses.png', 'favicon.svg', '.nojekyll']) assert(existsSync(join(root, asset)), `Missing ${asset}`);
+// Files linked at runtime must also be present in the static Pages artifact.
+for (const match of read('src/data/projectFilms.ts').matchAll(/"file":\s*"([\w-]+)"/g)) {
+  for (const ext of ['mp4', 'webp']) {
+    const asset = join(root, 'project-films', match[1] + '.' + ext);
+    assert(existsSync(asset) && statSync(asset).size > 0, `Missing project film asset: ${asset}`);
+  }
+}
 const oversized = files.filter(file => file.endsWith('.js') && statSync(file).size > 500_000);
 assert.deepEqual(oversized, [], 'JavaScript chunks exceed the 500 kB budget');
 console.log(`Production checks passed: ${documents.length} route documents, sitemap destinations, metadata, local assets, and JavaScript chunk budget.`);
