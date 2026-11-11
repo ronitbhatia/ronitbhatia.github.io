@@ -14,3 +14,20 @@ export const projectNotes: Record<number, string> = {
   9: "I reduced inputs from 96 × 96 to 32 × 32 to fit the device’s memory budget. The 56% deployed accuracy showed why validation on target hardware must determine readiness.",
   10: "I kept updates in tail pages and merged them into base storage in the background. Record-level locking and rollback handle transactional correctness alongside the columnar layout’s analytical access pattern.",
 };
+
+// Short card introductions; full reasoning remains on the project page.
+export const projectCardNotes: Record<number, string> = {
+  13: "I use minimum-context rules so a weak signal about scrolling does not become confident advice.",
+  12: "I gate spoken warnings by confidence and relevance, because detecting an object is not enough to justify an interruption.",
+  11: "I pair quality gates with editable cards so users can correct what AI gets wrong before saving it.",
+  1: "I let AI choose the presentation while a deterministic engine owns the financial calculations.",
+  2: "I make dependencies inspectable before asking a language model to recommend the next move.",
+  3: "I chose a small stack that covers journaling and mapping without adding unnecessary infrastructure.",
+  4: "I separate planning into inspectable stages and treat generated market assumptions as hypotheses to validate.",
+  5: "I evaluate classification and summarisation separately because a correct label does not guarantee a faithful summary.",
+  6: "I weigh build versus buy through cost, capability, and break-even analysis rather than architecture preference alone.",
+  7: "I treat synthetic-data results as a development signal, with real-team evaluation still needed before operational use.",
+  8: "I separate retrieval from inference so evidence can be inspected independently of generated investment ideas.",
+  9: "I use accuracy on the target hardware to judge readiness, where the deployed prototype reached 56%.",
+  10: "I preserve base records while appending updates, balancing transactional correctness with analytical access.",
+};

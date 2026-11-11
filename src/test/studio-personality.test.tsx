@@ -17,7 +17,7 @@ it("follows the visible section during scrolling, independently of the URL hash"
   const { container } = render(<div className="studio"><section id="experience" /><section id="work" /><section id="lab" /><ContextProbe /></div>);
   await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("build: The work between a customer problem and production."));
   active = "work"; fireEvent.scroll(container.firstChild!);
-  await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("think: Look for the decisions behind each build."));
+  await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("think: Watch the idea. Then explore the decisions behind it."));
   active = "lab"; fireEvent.scroll(container.firstChild!);
   await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("explore: The customer need, the tradeoffs, and the decision I would make."));
   active = "hero"; fireEvent.scroll(container.firstChild!);

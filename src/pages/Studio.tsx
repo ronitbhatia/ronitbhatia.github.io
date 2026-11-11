@@ -1,3 +1,4 @@
+import ProjectFilmPreview from "@/components/studio/ProjectFilmPreview";
 import { ronitContexts } from "@/components/studio/useRonitContext";
 import StudioBrand from "@/components/studio/StudioBrand";
 import PersonalTrail from "@/components/studio/PersonalTrail";
@@ -85,7 +86,8 @@ export default function Studio() {
                   <div className="studio-project-meta"><span>{String(index + 1).padStart(2, "0")}</span><span>{project.status}</span></div>
                   <h3><a href={`/studio/work/${project.id}`}>{name} <span aria-hidden="true">↗</span></a></h3>
                   <p className="studio-project-subtitle">{subtitle}</p>
-                  <ProjectMarginNote projectId={project.id} />
+                  <ProjectFilmPreview id={project.id} title={name} />
+                  <ProjectMarginNote projectId={project.id} compact />
                   <div className="studio-tags">{project.stack.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <details className="studio-details">
                     <summary>Read project overview <Plus size={17} aria-hidden="true" /></summary>

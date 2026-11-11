@@ -1,9 +1,9 @@
-import { projectNotes } from "@/data/projectNotes";
+import { projectCardNotes, projectNotes } from "@/data/projectNotes";
 import { productLabNotes } from "@/data/productLabNotes";
 import { PixelRonit } from "./PixelRonit";
 
-export default function ProjectMarginNote({ projectId }: { projectId: number }) {
-  return <ThinkingNote note={projectNotes[projectId]} />;
+export default function ProjectMarginNote({ projectId, compact = false }: { projectId: number; compact?: boolean }) {
+  return <ThinkingNote note={compact ? projectCardNotes[projectId] : projectNotes[projectId]} />;
 }
 
 export function ProductLabMarginNote({ conceptId }: { conceptId: string }) {

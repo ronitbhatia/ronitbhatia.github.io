@@ -53,7 +53,7 @@ describe("Studio phase-one homepage", () => {
   it("uses existing local assets and direct email contact", () => {
     const { container } = render(<Studio />);
     container.querySelectorAll<HTMLImageElement>("img").forEach((img) => {
-      expect(img.alt.length).toBeGreaterThan(0);
+      if (img.getAttribute("aria-hidden") !== "true") expect(img.alt.length).toBeGreaterThan(0);
       expect(existsSync(resolve("public", img.getAttribute("src")!.slice(1)))).toBe(true);
     });
     expect(screen.getByRole("link", { name: /Get in touch/ })).toHaveAttribute("href", "mailto:roncy.bhatia@gmail.com");
