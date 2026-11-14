@@ -1,0 +1,82 @@
+.lab-preview { min-width: 0; color: #263028; }
+.lp-stage { position: relative; isolation: isolate; aspect-ratio: 3 / 2; overflow: hidden; background: #deded4; }
+.lp-stage .lp-art { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lab-preview button { cursor: pointer; }
+.lab-preview :focus-visible { outline: 3px solid #af471c; outline-offset: 2px; }
+.lp-toolbar { display: flex; align-items: center; justify-content: space-between; min-height: 46px; border-bottom: 1px solid var(--studio-line); background: var(--studio-paper); }
+.lp-launch, .lp-title { font-size: 13px; font-weight: 500; color: var(--studio-ink); }
+.lp-launch { display: flex; width: 100%; min-height: 46px; align-items: center; justify-content: space-between; gap: 8px; text-align: left; }
+.lp-launch svg { color: var(--studio-accent); transition: transform .2s; }
+.lp-launch:hover svg { transform: translateX(3px); }
+.lp-close { display: grid; place-items: center; width: 44px; height: 44px; color: var(--studio-muted); }
+.lp-panel { padding: 0 0 12px; background: var(--studio-paper); border-bottom: 1px solid var(--studio-line); }
+.studio-archive-card .lp-toolbar, .studio-archive-card .lp-panel { padding-inline: 16px; }
+.lp-status, .lp-range, .lp-answer, .lp-actions { display: flex; gap: 8px; align-items: center; }
+.lp-status { justify-content: space-between; }
+.lp-status p { font-size: 13px; line-height: 1.45; }
+.lp-status button { min-width: 44px; height: 44px; display: grid; place-items: center; }
+.lp-actions { flex-wrap: wrap; }
+.lp-actions button, .lp-answer button { min-height: 44px; padding: 6px 12px; border: 1px solid #c9ccbe; border-radius: 5px; font-size: 12px; background: #eeeee5; }
+.lp-range, .lp-answer { font-size: 13px; }
+.lp-range input { appearance: none; background: transparent; flex: 1; min-width: 0; height: 44px; accent-color: #476646; }
+.lp-range input::-webkit-slider-runnable-track { height: 3px; background: #b8bfaf; border-radius: 3px; }
+.lp-range input::-webkit-slider-thumb { appearance: none; background: #526047; width: 16px; height: 16px; border-radius: 50%; margin-top: -6.5px; }
+.lp-range input::-moz-range-track { height: 3px; background: #b8bfaf; }
+.lp-range input::-moz-range-thumb { background: #526047; width: 16px; height: 16px; border: 0; border-radius: 50%; }
+.lp-answer { flex-wrap: wrap; }
+.lp-answer input { width: 6em; min-height: 44px; background: white; border: 1px solid #a3af9d; padding: 4px; }
+.lp-scrub { position: absolute; z-index: 2; inset: 17% 12%; width: 76%; height: 65%; opacity: 0; cursor: ew-resize; }
+.lp-object { position: absolute; inset: 15% 16%; z-index: 2; border: none; background: transparent; }
+.lab-preview[data-active=true] .lp-art { animation: lp-reveal .38s ease-out; }
+@keyframes lp-reveal { from { opacity: .65; transform: scale(1.025); } }
+.lp-led { position: absolute; left: 89%; top: 11%; width: 1.3%; aspect-ratio: 1; border-radius: 50%; background: #ff3643; box-shadow: 0 0 10px 4px #ff1a2b; animation: lp-pulse .7s ease-in-out 2 both; }
+@keyframes lp-pulse { 0%,100% { opacity: 0; } 45% { opacity: 1; } }
+.lp-route { flex: 0 0 48px; width: 48px; height: 34px; }
+.lp-status p { flex: 1; }
+.lp-route path { stroke: #527252; stroke-width: 2; fill: none; stroke-dasharray: 1; animation: lp-draw .8s both; }
+.lp-route circle { fill: #a83721; }
+@keyframes lp-draw { from { stroke-dashoffset: 1; } }
+.lp-pin, .lp-map-target { position: absolute; left: 63%; top: 42%; width: 44px; height: 44px; border-radius: 50%; }
+.lp-pin::before { content: ""; position: absolute; top: 14px; left: 14px; width: 15px; height: 15px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #d8e9a8; border: 2px solid #313e32; }
+.lp-map-target { background: transparent; }
+.lab-preview[data-case=rhode-frame][data-active=true] .lp-art { transform: scale(1.85); transform-origin: 20% 42%; animation: none; transition: filter .4s; }
+.lab-preview[data-case=rhode-frame][data-step="1"] .lp-art { filter: sepia(.17) saturate(1.08) brightness(1.04); }
+.lab-preview[data-case=rhode-frame][data-step="2"] .lp-art { filter: saturate(.78) contrast(.96) brightness(1.04); }
+.lab-preview[data-case=the-last-phone][data-step="2"] .lp-art { transform: scale(1.32); transform-origin: 52% 72%; }
+.lab-preview[data-case=the-last-phone] .lp-art { transition: transform .45s; }
+.lp-actions svg { display: inline-block; vertical-align: middle; margin-right: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  .lab-preview *, .lab-preview *::before { animation: none !important; transition: none !important; }
+  .lp-route circle { display: none; }
+}
+
+/* Show one photographed device state from each contact sheet. */
+.lab-preview[data-case=glyph-home][data-active=true] .lp-art,
+.lab-preview[data-case=casio-dist-finder][data-active=true] .lp-art {
+  position: absolute; max-width: none; object-fit: contain; animation: none;
+}
+.lab-preview[data-case=glyph-home][data-active=true] .lp-art {
+  width: 200%; height: auto; left: 0; top: 50%; transform: translateY(-25%);
+}
+.lab-preview[data-case=glyph-home][data-step="1"] .lp-art,
+.lab-preview[data-case=glyph-home][data-step="3"] .lp-art { left: -100%; }
+.lab-preview[data-case=glyph-home][data-step="2"] .lp-art,
+.lab-preview[data-case=glyph-home][data-step="3"] .lp-art { transform: translateY(-75%); }
+.lab-preview[data-case=glyph-home][data-active=true] .lp-stage { aspect-ratio: 16 / 9; }
+.lab-preview[data-case=casio-dist-finder][data-active=true] .lp-art {
+  width: 300%; height: auto; top: 50%; left: 0; transform: translateY(-50%); transition: left .32s ease-out;
+}
+.lab-preview[data-case=casio-dist-finder][data-step="1"] .lp-art { left: -100%; }
+.lab-preview[data-case=casio-dist-finder][data-step="2"] .lp-art { left: -200%; }
+.lp-focus-screen {
+  position: absolute; inset: 0; clip-path: polygon(22.4% 15.5%, 83% 12.4%, 81.2% 74.6%, 20% 72.6%);
+  background: #263d39; color: #f6f5e9; display: flex; flex-direction: column; justify-content: center;
+  align-items: center; padding-bottom: 7%; container-type: inline-size; animation: lp-screen-on .25s ease-out;
+}
+.lp-focus-screen span { font-size: clamp(10px,3cqw,15px); color: #c9dbcf; }
+.lp-focus-screen strong { font-size: clamp(17px,6cqw,32px); font-weight: 500; }
+.lab-preview[data-case=fitbit-focus-monitor][data-step="2"] .lp-focus-screen,
+.lab-preview[data-case=fitbit-focus-monitor][data-step="3"] .lp-focus-screen { background: #dce6d8; color: #253e32; }
+.lab-preview[data-case=fitbit-focus-monitor][data-step="2"] .lp-focus-screen span,
+.lab-preview[data-case=fitbit-focus-monitor][data-step="3"] .lp-focus-screen span { color: #465e50; }
+@keyframes lp-screen-on { from { opacity: .2; } }

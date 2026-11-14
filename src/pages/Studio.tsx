@@ -1,3 +1,4 @@
+import LabPreview from "@/components/studio/LabPreview";
 import ProjectFilmPreview from "@/components/studio/ProjectFilmPreview";
 import { ronitContexts } from "@/components/studio/useRonitContext";
 import StudioBrand from "@/components/studio/StudioBrand";
@@ -113,7 +114,7 @@ export default function Studio() {
           <div className={`studio-lab-grid${showAllIdeas ? " studio-lab-grid-all" : ""}`} id="studio-idea-collection">
             {(showAllIdeas ? productLabCases : selectedConcepts).map(concept => (
               <article className="studio-concept" key={concept.id}>
-                <div className="studio-concept-image"><img src={concept.cover.src} alt={concept.cover.caption} loading="lazy" decoding="async" width="960" height="540" /></div>
+                <LabPreview concept={concept} />
                 <div className="studio-concept-meta"><span>{concept.type === "redesign" ? "Redesign case study" : "New product assessment"}</span><span>{concept.period}</span></div>
                 <h3><a href={`/studio/lab/${concept.id}`}>{concept.title} <span aria-hidden="true">↗</span></a></h3>
                 <p className="studio-concept-subject">{concept.subject}</p>
