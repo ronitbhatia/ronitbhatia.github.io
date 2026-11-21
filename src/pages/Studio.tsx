@@ -15,7 +15,7 @@ import { projects } from "@/data/projects";
 import { productLabCases } from "@/data/productLabCases";
 import "@/styles/studio.css";
 
-const selectedProjects = projects.filter((project) => [13, 12, 11].includes(project.id));
+const selectedProjects = projects.filter((project) => [14, 13, 12].includes(project.id));
 const selectedConcepts = productLabCases.slice(0, 3);
 
 export default function Studio() {

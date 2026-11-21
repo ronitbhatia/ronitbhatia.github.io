@@ -1,5 +1,6 @@
 // Engineering decisions grounded in projects.ts; no unverified outcome claims.
 export const projectNotes: Record<number, string> = {
+  14: "I kept clearance decisions in an explicit policy layer and required source quotes for AI-extracted facts. Missing evidence and inconsistent model outputs route to review, so uncertainty stays visible to the analyst.",
   13: "I treated the decision to intervene as part of the system design. Longer-session triggers and a minimum-context rule keep weak signals from becoming confident advice. Local rules and templates support offline use while keeping personal activity off a server.",
   12: "I constrained the model’s output before connecting it to speech: structured decisions, confidence gates, and duplicate suppression. Multi-second latency and untested user behaviour remain the barriers between a working demo and a dependable assistive system.",
   11: "I split capture, extraction, card planning, and persistence into separate services. Quality gates reject weak content before rendering, while editable cards give users a recovery path when generation misses the mark.",
@@ -17,6 +18,7 @@ export const projectNotes: Record<number, string> = {
 
 // Short card introductions; full reasoning remains on the project page.
 export const projectCardNotes: Record<number, string> = {
+  14: "I require source evidence for extracted facts and route uncertainty to review, keeping clearance decisions inspectable.",
   13: "I use minimum-context rules so a weak signal about scrolling does not become confident advice.",
   12: "I gate spoken warnings by confidence and relevance, because detecting an object is not enough to justify an interruption.",
   11: "I pair quality gates with editable cards so users can correct what AI gets wrong before saving it.",

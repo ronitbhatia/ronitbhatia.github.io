@@ -159,6 +159,15 @@ const productLabAliases: Record<string, string[]> = {
 
 export const searchEntries: SearchEntry[] = [
   {
+    id: "project-alibi",
+    keywords: ["alibi", "watchlist", "screening", "entity resolution", "identity", "evidence", "python", "openrouter", "llm evaluation", "analyst", "projects"],
+    title: "ALIBI: Evidence-Based Watchlist Screening",
+    description: "Resolve customer identity against watchlist hits with source evidence and explicit review decisions.",
+    target: { type: "project", projectId: 14 },
+    group: "Projects",
+  },
+
+  {
     id: "home",
     keywords: ["home", "about", "me", "who am i", "bio", "summary"],
     title: "Home",

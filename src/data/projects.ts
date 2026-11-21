@@ -15,6 +15,23 @@ const QUIVLO_APP_STORE = "https://apps.apple.com/us/app/quivlo/id6759634487";
 
 export const projects: Project[] = [
   {
+    id: 14,
+    name: "ALIBI: Evidence-Based Watchlist Screening",
+    description: "Built an analyst workspace that determines whether a customer and a watchlist entry refer to the same person or company. ALIBI connects fragmented customer records, evaluates identity evidence, and explains each decision with its supporting sources. Unresolved matches stay open for review.",
+    readMore: [
+      "Identity Resolution: Linked customer records across accounts, logins, email, and approved identity checks. Evaluated aliases, dates, countries, and entity types against each watchlist hit, preserving source IDs so analysts can inspect the evidence behind a decision. An alert closes only when every hit is cleared.",
+      "Constrained AI Extraction: Used OpenRouter to read individual unresolved sentences, requiring a source quote for every extracted fact and verifying those quotes locally. An explicit policy layer decides whether evidence supports clearance, confirmation, or review. Missing evidence and failed extraction leave dependent hits for analyst review.",
+      "Practice Evaluation: On 50 labeled practice hits, all decisions, reason codes, and resolved customer records were correct, with zero unsafe clearances and 108 of 108 cost points saved against sending every hit to review. These results cover the configuration with an empty API key. The published development output contains 819 hits, of which 769 have no published practice labels.",
+      "Repeatability and Analyst Workflow: Five runs with an empty API key produced byte-identical verdict files for all 819 hits, taking about 2.5 to 2.8 seconds per run on the development Mac. With live model extraction, 808 of 819 hits agreed on decision and code across five runs. The comparison harness routed all 11 disagreements to review. The analyst interface exposes decisive records, rule outcomes, and independent run comparisons.",
+    ],
+    stack: ["Python", "Entity Resolution", "LLM Evaluation", "OpenRouter", "Evidence Tracing"],
+    github: "https://github.com/ronitbhatia/alibi-screening",
+    demo: "https://youtu.be/mr6N0Uj8eio",
+    demoLabel: "Full demo",
+    color: "hsl(155 22% 92%)",
+    status: "Open Source",
+  },
+  {
     id: 13,
     name: "Syro: Private Reflection for Intentional Scrolling",
     description:

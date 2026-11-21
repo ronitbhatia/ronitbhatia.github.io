@@ -1,5 +1,6 @@
 /** Short previews for discovery, grounded in the full project descriptions. */
 export const projectSummaries: Record<number, string> = {
+  14: "A watchlist screening workspace that traces identity decisions to source evidence and keeps uncertain matches open for review.",
   12: "An offline navigation prototype that detects path hazards and speaks only when a warning is needed.",
   11: "An iOS app that turns articles, text, and screenshots into editable flashcards, with processing on-device.",
   1: "A finance interface that adapts to your questions while keeping every calculation deterministic.",
